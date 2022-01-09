@@ -1,0 +1,10 @@
+<Context>
+
+  <Resource name="jdbc/Happourse" 
+  			auth="Container" type="javax.sql.DataSource"
+               maxActive="100" maxIdle="30" maxWait="10000"
+               username="webstudent" password="webstudent" 
+               driverClassName="com.mysql.cj.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/Happourse?useSSL=false&amp;serverTimezone=UTC"/>
+
+</Context>

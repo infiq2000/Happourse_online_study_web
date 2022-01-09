@@ -1,0 +1,606 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<!-- For IE -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<!-- For Resposive Device -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>Happourse - Muốn giàu hãy học đừng chơi coin </title>
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
+
+
+		<!-- Main style sheet -->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<!-- responsive style sheet -->
+		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+
+		<!-- Fix Internet Explorer ______________________________________-->
+
+		<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="vendor/html5shiv.js"></script>
+			<script src="vendor/respond.js"></script>
+		<![endif]-->
+
+			
+	</head>
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div id="loader-wrapper">
+				<div id="loader"></div>
+			</div>
+
+
+
+			<!-- 
+			=============================================
+				Theme Header
+			============================================== 
+			-->
+			<header class="theme-menu-wrapper menu-style-one">
+				<div class="container">
+					<div class="header-wrapper clearfix">
+						<!-- Logo -->
+						<div class="logo float-left tran4s"><a href="index.html"><img src="images/logo/logo.png" alt="Logo"></a></div>
+
+						<!-- ============================ Theme Menu ========================= -->
+						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">
+							<!-- Brand and toggle get grouped for better mobile display -->
+						   <div class="navbar-header">
+						     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+						       <span class="sr-only">Toggle navigation</span>
+						       <span class="icon-bar"></span>
+						       <span class="icon-bar"></span>
+						       <span class="icon-bar"></span>
+						     </button>
+						   </div>
+						   <!-- Collect the nav links, forms, and other content for toggling -->
+						   <div class="collapse navbar-collapse" id="navbar-collapse-1">
+								<ul class="nav">
+									<li class="dropdown-holder menu-list"><a href="index.html" class="tran3s">Home</a>
+										<ul class="sub-menu">
+											<li><a href="index.html">Home version one</a></li>
+											<li><a href="index-2.html">Home version Two</a></li>
+										</ul>
+									</li>
+									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Course</a>
+										<ul class="sub-menu">
+											<li><a href="course-grid.html">Course grid</a></li>
+											<li><a href="course-list.html">Course List</a></li>
+											<li><a href="course-details.html">Course Details</a></li>
+											<li class="dropdown-holder"><a href="#">Third Level menu</a>
+												<ul class="second-sub-menu">
+													<li><a href="#">menu one</a></li>
+													<li><a href="#">menu two</a></li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Pages</a>
+										<ul class="sub-menu width-half">
+											<li><a href="about-us.html">About Us</a></li>
+											<li><a href="our-teacher.html">Our teacher</a></li>
+											<li><a href="teachers-profile.html">teachers profile</a></li>
+											<li><a href="shop.html">Shop page</a></li>
+											<li><a href="shop-details.html">Shop Details</a></li>
+											<li><a href="portfolio-3-column.html">portfolio 3 column</a></li>
+											<li><a href="portfolio-4-column.html">portfolio 4 column</a></li>
+											<li><a href="pricing-plan.html">Pricing Plan</a></li>
+											<li><a href="faq.html">Faq Page</a></li>
+											<li><a href="404.html">Error Page</a></li>
+											<li><a href="sign-up.html">Registration</a></li>
+											<li class="dropdown-holder"><a href="#">Third Level menu</a>
+												<ul class="second-sub-menu">
+													<li><a href="#">menu one</a></li>
+													<li><a href="#">menu two</a></li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Event</a>
+										<ul class="sub-menu">
+											<li><a href="event-list.html">Event List</a></li>
+											<li><a href="event-grid.html">Event Grid</a></li>
+											<li><a href="event-details.html">Event Single</a></li>
+										</ul>
+									</li>
+									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Blog</a>
+										<ul class="sub-menu">
+											<li><a href="blog-grid.html">Blog grid</a></li>
+											<li><a href="blog-list.html">Blog List</a></li>
+											<li><a href="blog-details.html">blog Details</a></li>
+										</ul>
+									</li>
+									<li><a href="contact-us.html" class="tran3s">Contact Us</a></li>
+									<li class="dropdown-holder menu-list" ><a class="tran3s"><span class="login">HI ${name}</span></a> 
+										<ul class="sub-menu">
+											<c:url var="link2" value="Profile">
+													<c:param name="uid" value="${user_info.getUid()}"></c:param> 
+	  										</c:url>
+											<li><a href="${link2}">Tài khoản</a></li>
+											<c:url var="link4" value="UpdateTest">
+													<c:param name="aid" value="${user_info.getAid()}"></c:param>
+													<c:param name="uid" value="${user_info.getUid()}"></c:param> 
+	  										</c:url>
+											<li><a href="${link4}">Cập nhật thông tin</a></li>
+											<c:url var="tempLink" value="MyLearning">
+													<c:param name="aid_user" value="${user_info.getAid()}"></c:param>
+													<c:param name="uid" value="${user_info.getUid()}"></c:param> 
+	  										</c:url>
+											<li><a href="${tempLink} ">Khóa học</a></li>
+											<li><a href="Logout">Đăng xuất</a></li>
+										</ul>
+									</li>
+								</ul>
+						   </div><!-- /.navbar-collapse -->
+						</nav> <!-- /.theme-main-menu -->
+					</div> <!-- /.header-wrapper -->
+				</div>
+			</header> <!-- /.theme-menu-wrapper -->
+			
+			<!-- 
+			=============================================
+				Theme Inner Banner
+			============================================== 
+			-->
+			<div class="inner-banner">
+				<div class="opacity">
+					<div class="container">
+						<h2>Our Courses</h2>
+						<ul>
+							<li><a href="index.jsp" class="tran3s">Home</a></li>
+							<li>/</li>
+							<li>Courses</li>
+						</ul>
+					</div> <!-- /.container -->
+				</div> <!-- /.opacity -->
+			</div> <!-- /.inner-banner -->
+
+
+			<!-- 
+			=============================================
+				Our Course
+			============================================== 
+			-->
+			<div class="our-course course-grid">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-9 col-md-8 col-xs-12 popular-course float-right">
+							<div class="course-style-filter clearfix">
+								<ul class="float-left clearfix">
+									<li><a href="#" class="tran3s">Tending</a></li>
+									<li><a href="#" class="tran3s">New</a></li>
+									<li><a href="#" class="tran3s active">Populer</a></li>
+									<li><a href="#" class="tran3s">free</a></li>
+								</ul>
+								<ul class="float-right">
+									<li><a href="#" class="tran3s active"><i class="fa fa-th-large" aria-hidden="true"></i></a></li>
+									<li><a href="course-list.html" class="tran3s"><i class="fa fa-list" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+							<div class="row">
+								<c:forEach var="tempCourse" items="${listCourses}">
+									<div class="col-lg-4 col-sm-6 col-xs-6">
+										<div class="single-course">
+											<div class="image-box"><img src="images/course/33.jpg" alt=""></div>
+											<div class="text">
+												<div class="image"><img src="images/course/34.jpg" alt=""></div>
+												<div class="name clearfix">
+													<h6 class="float-left">${tempCourse.getIns_name() }</h6>
+													<span class="p-bg-color float-right">${tempCourse.getPrice()} $</span>
+												</div>
+												<c:url var="tempLink" value="CourseDetail">
+													<c:param name="course_id" value="${tempCourse.getCourses_id()}"></c:param>
+													<c:param name="uid" value="${user_info.getUid()}"></c:param>
+													<c:param name="aid" value="${user_info.getAid()}"></c:param>  
+	  											</c:url>
+												<h5><a href="${tempLink}" class="tran3s">${tempCourse.getName()}</a></h5>
+												<ul class="clearfix">
+													<li class="float-left">
+														<i class="flaticon-people"></i>
+														<a href="#" class="tran3s">2,680</a>
+													</li>
+													<li class="float-left">
+														<i class="flaticon-comments"></i>
+														<a href="#" class="tran3s">13</a>
+													</li>
+													<li class="float-right">
+														<i class="flaticon-heart"></i>
+														<a href="#" class="tran3s">${tempCourse.getStar_rate()}</a>
+													</li>
+												</ul>
+											</div>
+										</div> <!-- /.single-course -->
+									</div> <!-- /.col- -->
+								</c:forEach> 
+							</div> <!-- /.row -->
+							<ul class="theme-pagination clearfix">
+								<li><a href="" class="tran3s active">1</a></li>
+								<li><a href="" class="tran3s">2</a></li>
+								<li><a href="" class="tran3s">3</a></li>
+								<li><a href="#" class="tran3s">Next</a></li>
+							</ul> <!-- /.theme-pagination -->
+						</div> <!-- /.popular-course -->
+
+						<!-- ************************* SIDEBAR ***************************** -->
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							<div class="course-sidebar">
+								<div class="sidebar-categories">
+									<h4>Categories</h4>
+									<div class="panel-group theme-accordion" id="accordion">
+									  <div class="panel">
+									    <div class="panel-heading active-panel">
+									      <h6 class="panel-title">
+									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+									        Web Develoment</a>
+									      </h6>
+									    </div>
+									    <div id="collapse1" class="panel-collapse collapse in">
+									      <div class="panel-body">
+									      	<!-- <ul>
+									      		<li><a href="#" class="tran3s">Html/Css</a></li>
+									      		<li><a href="#" class="tran3s">jQuery</a></li>
+									      		<li><a href="#" class="tran3s">Sass/less</a></li>
+									      	</ul> -->
+									      </div>
+									    </div>
+									  </div> <!-- /panel 1 -->
+									  <div class="panel">
+									    <div class="panel-heading">
+									      <h6 class="panel-title">
+									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+									        Data Science</a>
+									      </h6>
+									    </div>
+									    <div id="collapse2" class="panel-collapse collapse">
+									      <div class="panel-body">
+									      	<!-- <ul>
+									      		<li><a href="#" class="tran3s">Html/Css</a></li>
+									      		<li><a href="#" class="tran3s">jQuery</a></li>
+									      		<li><a href="#" class="tran3s">Sass/less</a></li>
+									      	</ul> -->
+									      </div>
+									    </div>
+									  </div> <!-- /panel 2 -->
+									  <div class="panel">
+									    <div class="panel-heading">
+									      <h6 class="panel-title">
+									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+									        Machine Learning</a>
+									      </h6>
+									    </div>
+									    <div id="collapse3" class="panel-collapse collapse">
+									      <div class="panel-body">
+									      	<ul>
+									      		<li><a href="#" class="tran3s">Html/Css</a></li>
+									      		<li><a href="#" class="tran3s">jQuery</a></li>
+									      		<li><a href="#" class="tran3s">Sass/less</a></li>
+									      	</ul>
+									      </div>
+									    </div>
+									  </div> <!-- /panel 3 -->
+									  <div class="panel">
+									    <div class="panel-heading">
+									      <h6 class="panel-title">
+									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+									        Probability and Statistic</a>
+									      </h6>
+									    </div>
+									    <div id="collapse4" class="panel-collapse collapse">
+									      <div class="panel-body">
+									      	<!-- <ul>
+									      		<li><a href="#" class="tran3s">Html/Css</a></li>
+									      		<li><a href="#" class="tran3s">jQuery</a></li>
+									      		<li><a href="#" class="tran3s">Sass/less</a></li>
+									      	</ul> -->
+									      </div>
+									    </div>
+									  </div> <!-- /panel 4 -->
+									  <div class="panel">
+									    <div class="panel-heading">
+									      <h6 class="panel-title">
+									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+									        Others</a>
+									      </h6>
+									    </div>
+									    <div id="collapse5" class="panel-collapse collapse">
+									      <div class="panel-body">
+								<!-- 	      	<ul>
+									      		<li><a href="#" class="tran3s">Html/Css</a></li>
+									      		<li><a href="#" class="tran3s">jQuery</a></li>
+									      		<li><a href="#" class="tran3s">Sass/less</a></li>
+									      	</ul> -->
+									      </div>
+									    </div>
+									  </div> <!-- /panel 5 -->
+									</div> <!-- end #accordion -->
+								</div> <!-- /.sidebar-categories -->
+
+								<div class="course-filter">
+									<h4>Search By Filters</h4>
+									<form action="" class="main-wrapper">
+										<div class="tag-option">
+											<h5>Tag</h5>
+											<ul class="clearfix">
+												<li>
+													<input type="checkbox" id="book" checked>
+													<label for="book">Book</label>
+												</li>
+												<li>
+													<input type="checkbox" id="linux">
+													<label for="linux">Linux</label>
+												</li>
+												<li>
+													<input type="checkbox" id="design" checked>
+													<label for="design">Design</label>
+												</li>
+												<li>
+													<input type="checkbox" id="development" checked>
+													<label for="development">Development</label>
+												</li>
+												<li>
+													<input type="checkbox" id="art" checked>
+													<label for="art">Art</label>
+												</li>
+												<li>
+													<input type="checkbox" id="web">
+													<label for="web">Design</label>
+												</li>
+												<li>
+													<input type="checkbox" id="software">
+													<label for="software">Softwear</label>
+												</li>
+												<li>
+													<input type="checkbox" id="php" checked>
+													<label for="php">PHP</label>
+												</li>
+											</ul>
+										</div> <!-- /.tag-option -->
+
+										<div class="course-price-filter">
+											<h5>Price Range</h5>
+											<div class="price-ranger">
+												<div class="ranger-min-max-block">
+													<ul class="clearfix">
+														<li class="float-left">
+															<label for="min">From</label>
+															<input type="text" class="min" readonly>
+														</li>
+														<li class="float-left">
+															<label for="max">To</label>
+															<input type="text" class="max" readonly>
+														</li>
+													</ul>
+												</div>
+												<div id="slider-range"></div>
+											</div> <!-- /price-ranger -->
+										</div> <!-- /.course-price-filter -->
+
+										<div class="course-work-level">
+											<h5>Work level</h5>
+											<ul class="clearfix">
+												<li>
+													<input type="checkbox" id="starting">
+													<label for="starting">Starting</label>
+												</li>
+												<li>
+													<input type="checkbox" id="begainer">
+													<label for="begainer">Begainer</label>
+												</li>
+												<li>
+													<input type="checkbox" id="expert" checked>
+													<label for="expert">Expert</label>
+												</li>
+												<li>
+													<input type="checkbox" id="intermediate">
+													<label for="intermediate">Intermediate</label>
+												</li>
+												<li>
+													<input type="checkbox" id="advance">
+													<label for="advance">Advance</label>
+												</li>
+											</ul>
+										</div> <!-- /.course-work-level -->
+
+										<div class="course-location">
+											<h5>Location</h5>
+											<div class="form-group">
+										      <div>
+										        <select id="loaction" class="selectpicker show-tick form-control" data-live-search="true">
+										          <option>Dhaka</option>
+										          <option>Bab Ezzouar</option>
+										          <option>Baguio</option>
+										          <option>London</option>
+										          <option>Paris</option>
+										          <option>Dubai</option>
+										          <option>New York</option>
+										          <option>Singapore</option>
+										          <option>Kuala Lumpur</option>
+										          <option>Istanbul</option>
+										          <option>Tokyo</option>
+										          <option>Seoul</option>
+										          <option>Amsterdam</option>
+										          <option>Osaka</option>
+										          <option>Vienna</option>
+										        </select>
+										      </div>
+										    </div>
+										</div> <!-- /.course-location -->
+
+										<div class="button-wrapper"><input type="submit" value="Apply filters" class="p-bg-color tran3s"></div>
+									</form> <!-- /.main-wrapper -->
+								</div> <!-- /.course-filter -->
+							</div> <!-- /.course-sidebar -->
+						</div> <!-- /.col- -->
+					</div> <!-- /.row -->
+				</div> <!-- /.container -->
+			</div> <!-- /.our-course -->
+
+
+			
+			<!-- 
+			=============================================
+				Footer
+			============================================== 
+			-->
+			<footer>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3 col-sm-6">
+							<div class="footer-logo">
+								<a href="index.html"><img src="images/logo/logo2.png" alt="Logo"></a>
+								<p>It was some time before he obtained any answer, and the reply, when made, was unpropitious.</p>
+								<ul>
+									<li><a href="" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+									<li><a href="" class="tran3s"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+									<li><a href="" class="tran3s"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+									<li><a href="" class="tran3s"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-2 col-sm-3 footer-list">
+							<h6>Company</h6>
+							<ul>
+								<li><a href="about-us.html" class="tran3s">About Us</a></li>
+								<li><a href="blog-grid.html" class="tran3s">Blog</a></li>
+								<li><a href="#" class="tran3s">Become a Teacher</a></li>
+								<li><a href="contact-us.html" class="tran3s">Contact</a></li>
+								<li><a href="faq.html" class="tran3s">Faq &amp; Plicy</a></li>
+							</ul>
+						</div>
+						<div class="col-md-2 col-sm-3 footer-list">
+							<h6>Product</h6>
+							<ul>
+								<li><a href="#" class="tran3s">Education Pack</a></li>
+								<li><a href="#" class="tran3s">Eucation Starter</a></li>
+								<li><a href="#" class="tran3s">Features &amp; Skills</a></li>
+								<li><a href="#" class="tran3s">Pricing</a></li>
+								<li><a href="#" class="tran3s">Sell Your Products</a></li>
+							</ul>
+						</div>
+						<div class="col-md-2 col-sm-6 footer-list">
+							<h6>About us</h6>
+							<ul>
+								<li><a href="blog-list.html" class="tran3s">Blog</a></li>
+								<li><a href="#" class="tran3s">Toll Free Number</a></li>
+								<li><a href="#" class="tran3s">Press Releases</a></li>
+								<li><a href="#" class="tran3s">Jobs</a></li>
+								<li><a href="#" class="tran3s">Feedback</a></li>
+							</ul>
+						</div>
+						<div class="col-md-3 col-sm-6 col-xs-12 footer-subscribe">
+							<h6>Subscribe Us</h6>
+							<p>This sounded a very good reason, and Alice was quite pleased.</p>
+							<form action="#">
+								<input type="text" placeholder="Your Email">
+								<button class="tran3s p-bg-color"><i class="flaticon-envelope-back-view-outline"></i></button>
+							</form>
+						</div>
+					</div> <!-- /.row -->
+				</div> <!-- /.container -->
+
+				<div class="bottom-footer">
+					<div class="container">
+						<ul class="float-right">
+							<li><h3><span class="counter p-color">8,997</span> Products</h3></li>
+							<li><h3><span class="counter p-color">53,701</span> Members</h3></li>
+							<li><h3><span class="counter p-color">1,119</span> Shops</h3></li>
+						</ul>
+						<p class="float-left">&copy; 2019 <a href="#" class="tran3s p-color">heloshape</a>. All rights reserved</p>		
+					</div>
+				</div> <!-- /.bottom-footer -->
+			</footer>
+
+
+			<!-- Sign-in Modal -->
+			<div class="modal fade signInModal theme-modal-box" role="dialog">
+				<div class="modal-dialog">
+				    <!-- Modal content-->
+				    <div class="modal-content">
+					    <div class="modal-body">
+					        <h3>Login with Social Networks</h3>
+					        <ul class="clearfix">
+					        	<li class="float-left"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> facebook</a></li>
+					        	<li class="float-left"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i> Google</a></li>
+					        	<li class="float-left"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+					        	<li class="float-left"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
+					        </ul>
+					        <form action="#">
+					        	<h3>Login with Site Account</h3>
+					        	<div class="wrapper">
+					        		<input type="text" placeholder="Username or Email">
+					        		<input type="password" placeholder="Password">
+					        		<ul class="clearfix">
+										<li class="float-left">
+											<input type="checkbox" id="remember">
+											<label for="remember">Remember Me</label>
+										</li>
+										<li class="float-right"><a href="#" class="s-color">Lost Your Password?</a></li>
+									</ul>
+									<button class="p-bg-color hvr-trim">Login</button>
+					        	</div>
+					        </form>
+					        <div><a href="sign-up.html" class="p-color tran3s">Not an account?? Sign Up</a></div>
+					    </div> <!-- /.modal-body -->
+				    </div> <!-- /.modal-content -->
+				</div> <!-- /.modal-dialog -->
+			</div> <!-- /.signInModal -->
+
+	        
+
+	        <!-- Scroll Top Button -->
+			<button class="scroll-top tran3s">
+				<i class="fa fa-angle-up" aria-hidden="true"></i>
+			</button>
+			
+
+
+		<!-- Js File_________________________________ -->
+
+		<!-- j Query -->
+		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
+		<!-- Bootstrap Select JS -->
+		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
+
+		<!-- Bootstrap JS -->
+		<script type="text/javascript" src="vendor/bootstrap/bootstrap.min.js"></script>
+
+		<!-- Vendor js _________ -->
+		<!-- Camera Slider -->
+		<script type='text/javascript' src='vendor/Camera-master/scripts/jquery.mobile.customized.min.js'></script>
+	    <script type='text/javascript' src='vendor/Camera-master/scripts/jquery.easing.1.3.js'></script> 
+	    <script type='text/javascript' src='vendor/Camera-master/scripts/camera.min.js'></script>
+	    <!-- Mega menu  -->
+		<script type="text/javascript" src="vendor/bootstrap-mega-menu/js/menu.js"></script>
+		
+		<!-- WOW js -->
+		<script type="text/javascript" src="vendor/WOW-master/dist/wow.min.js"></script>
+		<!-- owl.carousel -->
+		<script type="text/javascript" src="vendor/owl-carousel/owl.carousel.min.js"></script>
+		<!-- js count to -->
+		<script type="text/javascript" src="vendor/Counter/jquery.counterup.min.js"></script>
+		<script src="vendor/Counter/jquery.waypoints.min.js"></script>
+		<!-- js ui -->
+		<script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+
+		<!-- Theme js -->
+		<script type="text/javascript" src="js/theme.js"></script>
+
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>
