@@ -166,7 +166,7 @@
  ul {list-style-type: none;}
  a {text-decoration: none; display: inline-block; font-family: 'Montserrat', sans-serif;}
  a:hover,a:focus,a:visited {text-decoration: none; outline: none;}
- img {max-width: 100%; display: block;}
+ img {max-width: 100%; display: block; height: 10px;}
  button {border:none;outline: none;-webkit-box-shadow: none;box-shadow: none;display: block; padding: 0;}
  input,textarea {outline: none; -webkit-box-shadow: none; box-shadow: none;-webkit-transition: all 0.3s ease-in-out;transition: all 0.3s ease-in-out;}
 .float-left {float:left;}
@@ -535,8 +535,8 @@ header.menu-style-two.fixed .logo {width: 10%;top:0;}
   font-size: 35px;
   text-align: center;
 }
-#theme-main-banner .camera_prev:before {content: '';}
-#theme-main-banner .camera_next:before {content: '';}
+#theme-main-banner .camera_prev:before {content: 'ï„„';}
+#theme-main-banner .camera_next:before {content: 'ï„…';}
 #theme-main-banner.camera_wrap .camera_pag .camera_pag_ul {
   position: absolute;
   text-align: center;
@@ -682,7 +682,7 @@ header.menu-style-two.fixed .logo {width: 10%;top:0;}
   text-align: center;
 }
 .theme-modal-box .modal-content .modal-body form ul li input[type="checkbox"]:checked + label:before {
-  content: "";
+  content: "ï€Œ";
   font-family: 'font-awesome';
 }
 .theme-modal-box .modal-content .modal-body form ul {padding: 10px 0 20px 0;}
@@ -759,7 +759,7 @@ header.menu-style-two.fixed .logo {width: 10%;top:0;}
 }
 .bootstrap-select.btn-group .dropdown-toggle .bs-caret:before {
   font-family: 'font-awesome';
-  content: '';
+  content: 'ïƒ—';
   position: absolute;
   top:0;
   left: 0;
@@ -1814,7 +1814,7 @@ footer .bottom-footer {
   display: block; 
 }
 .course-sidebar .sidebar-categories .panel-heading a:before {
-  content: '';
+  content: 'ï„‡';
   font-family: 'font-awesome';
   color: #b4bfc7;
   line-height: 48px;
@@ -1822,7 +1822,7 @@ footer .bottom-footer {
   right: 25px;
   top:0;
 }
-.course-sidebar .sidebar-categories .panel-heading.active-panel a:before{content: '';}
+.course-sidebar .sidebar-categories .panel-heading.active-panel a:before{content: 'ï„†';}
 .course-sidebar .sidebar-categories .panel-heading.active-panel a,
 .course-sidebar .sidebar-categories .panel .panel-body {background: #f9fafb;}
 .course-sidebar .sidebar-categories .panel .panel-body {
@@ -1885,7 +1885,7 @@ footer .bottom-footer {
   opacity: 0;
 }
 .course-sidebar .main-wrapper .tag-option ul li input[type="checkbox"]:checked + label:before {
-  content: "";
+  content: "ï€�";
   font-family: 'font-awesome';
   opacity: 1;
 }
@@ -1953,7 +1953,7 @@ footer .bottom-footer {
   opacity: 0;
 }
 .course-sidebar .main-wrapper .course-work-level ul li input[type="checkbox"]:checked + label:before {
-  content: "";
+  content: "ï€Œ";
   font-family: 'font-awesome';
   opacity: 1;
 }
@@ -1979,7 +1979,7 @@ footer .bottom-footer {
   font-size: 20px;
 }
 .course-sidebar .main-wrapper .course-location .bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark:before {
-  content: '';
+  content: 'ï€Œ';
   font-family: 'font-awesome';
   line-height: 40px;
   color: #fff;
