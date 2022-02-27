@@ -93,7 +93,6 @@ public class courseUtil {
        
         int rowAffected = pstmt.executeUpdate();
    
-        System.out.println(rowAffected);
 		myConn.close();
 		
 	}
@@ -116,4 +115,32 @@ public class courseUtil {
 		myConn.close();
 		return ls;
   }
+
+	public List<Courses> getCourseByCategory(int cid) throws SQLException {
+		Connection myConn = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT * FROM happourse.courses c, Happourse.instructor i WHERE cid=? AND (c.ins_id = i.ins_id);";
+		PreparedStatement pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, cid);
+		myRS = pstmt.executeQuery();
+		List<Courses> ls = new ArrayList<>();
+		while (myRS.next()) {			
+			int courses_id = myRS.getInt("course_id");
+			String name = myRS.getString("name");
+			String skill = myRS.getString("skill");
+			int price = myRS.getInt("price");
+			String language = myRS.getString("language");
+			String description = myRS.getString("description");
+			double star_rate = myRS.getDouble("star_rate");
+			int  ins_id = myRS.getInt("ins_id");
+			String ins_name = myRS.getString("ins_name");
+			String major = myRS.getString("major");
+			Courses course = new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major);
+			ls.add(course);
+		}
+		myConn.close();
+		return ls;
+	}
+
 }

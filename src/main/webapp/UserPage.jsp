@@ -56,7 +56,7 @@
 				<div class="container">
 					<div class="header-wrapper clearfix">
 						<!-- Logo -->
-						<div class="logo float-left tran4s"><a href="index.html"><img src="images/logo/logo.png" alt="Logo"></a></div>
+						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/logo_1.png" alt="Logo"></a></div>
 
 						<!-- ============================ Theme Menu ========================= -->
 						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">
@@ -247,9 +247,14 @@
 										  <div class="panel">
 										    <div class="panel-heading active-panel">
 										      <h6 class="panel-title">
-										        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+										      	<c:url var="CateLink" value="HomePage">
+													<c:param name="cid" value="${categoryName.getCid()}"></c:param>
+													<c:param name="uid" value="${user_info.getUid()}"></c:param>
+													<c:param name="aid" value="${user_info.getAid()}"></c:param>
+	  											</c:url>
+										        <a data-toggle="collapse" data-parent="#accordion" href="${CateLink}">
 										        ${categoryName.getName() }</a>
-										      </h6>
+										      </h6>										      
 										    </div>
 										    <div id="collapse1" class="panel-collapse collapse in">
 										      <div class="panel-body">
