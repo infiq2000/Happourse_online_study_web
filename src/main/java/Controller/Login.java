@@ -86,7 +86,7 @@ public class Login extends HttpServlet {
 				}
 			}
 			else {
-				 request.setAttribute("errorString", "Tên đăng nhập hoặc mật khẩu bị sai");
+				 request.setAttribute("errorString", "TÃªn Ä‘Äƒng nháº­p hoáº·c máº­t kháº©u bá»‹ sai");
 				 RequestDispatcher dispatcher = request.getRequestDispatcher("/invalidLogin.jsp");
 				 dispatcher.forward(request, response);
 			}
@@ -98,5 +98,4 @@ public class Login extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
 }

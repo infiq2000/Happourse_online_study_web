@@ -10,7 +10,7 @@
 		<!-- For Resposive Device -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Happourse - Muốn giàu hãy học đừng chơi coin</title>
+		<title>Hapourse - Online Study Website</title>
 
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
@@ -54,7 +54,7 @@
 				<div class="container">
 					<div class="header-wrapper clearfix">
 						<!-- Logo -->
-						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/logo.png" alt="Logo"></a></div>
+						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/x.png" alt="Logo"></a></div>
 
 						<!-- ============================ Theme Menu ========================= -->
 						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">
@@ -101,7 +101,7 @@
 											<li><a href="pricing-plan.html">Pricing Plan</a></li>
 											<li><a href="faq.html">Faq Page</a></li>
 											<li><a href="404.html">Error Page</a></li>
-											<li><a href="sign-up.html">Registration</a></li>
+											<li><a href="Signup.jsp">Registration</a></li>
 											<li class="dropdown-holder"><a href="#">Third Level menu</a>
 												<ul class="second-sub-menu">
 													<li><a href="#">menu one</a></li>
@@ -142,20 +142,20 @@
 				<div data-src="images/home/slide-5.jpg">
 					<div class="camera_caption">
 						<div class="container text-center">
-							<h3 class="wow fadeInUp animated">Happourse - Học là vui, vui là không chán</h3>
-							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s"> Happourse<span class="s-color"> The way of learning of the future </span></h1>
-							<a href="course-2-column.html" class="tran3s wow fadeInLeft animated banner-button" data-wow-delay="0.3s">Học nào!</a>
-							<a href="Signup.jsp" class="tran3s wow fadeInRight animated button-one banner-button hvr-trim" data-wow-delay="0.3s">Đăng kí thoai!</a>
+							<h3 class="wow fadeInUp animated">Hapourse - Do It Today, Don't Delay</h3>
+							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s"> Hapourse<span class="s-color"> Draw Your Future </span></h1>
+							<a href="course-2-column.html" class="tran3s wow fadeInLeft animated banner-button" data-wow-delay="0.3s">Learn Now!</a>
+							<a href="Signup.jsp" class="tran3s wow fadeInRight animated button-one banner-button hvr-trim" data-wow-delay="0.3s">Sign Up Now!</a>
 						</div> <!-- /.container -->
 					</div> <!-- /.camera_caption -->
 				</div>
-				<div data-src="images/home/slide-6.jpg">
+				<div data-src="images/home/slide-7.jpg">
 					<div class="camera_caption">
 						<div class="container text-center">
-							<h3 class="wow fadeInUp animated">Happourse - Học là vui, vui là không chán</h3>
-							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s">Happourse <span class="s-color"> The way of learning of the future</span></h1>
-							<a href="course-2-column.html" class="tran3s wow fadeInLeft animated banner-button" data-wow-delay="0.3s">Học nào</a>
-							<a href="Signup.jsp" class="tran3s wow fadeInRight animated button-one banner-button hvr-trim" data-wow-delay="0.3s">Đăng kí thoai!</a>
+							<h3 class="wow fadeInUp animated">Hapourse - Do It Today, Don't Delay</h3>
+							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s">Hapourse <span class="s-color"> Draw Your Future</span></h1>
+							<a href="course-2-column.html" class="tran3s wow fadeInLeft animated banner-button" data-wow-delay="0.3s">Learn Now!</a>
+							<a href="Signup.jsp" class="tran3s wow fadeInRight animated button-one banner-button hvr-trim" data-wow-delay="0.3s">Sign Up Now!</a>
 						</div> <!-- /.container -->
 					</div> <!-- /.camera_caption -->
 				</div>
@@ -295,7 +295,7 @@
 
 							<div class="col-md-7 col-xs-12">
 								<div class="text-wrapper">
-									<h2>We Have More <br>Than <span class="p-color">28,690+Student</span> Currently Useing Eskul</h2>
+									<h2>We Have More <br>Than <span class="p-color">28,690+Student</span> Currently Useing Hapourse</h2>
 
 									<ul class="clearfix">
 										<li class="float-left">
@@ -709,7 +709,7 @@
 					<div class="row">
 						<div class="col-md-3 col-sm-6">
 							<div class="footer-logo">
-								<a href="index.html"><img src="images/logo/logo2.png" alt="Logo"></a>
+								<a href="index.jsp"><img src="images/logo/x.png" alt="Logo"></a>
 								<p>It was some time before he obtained any answer, and the reply, when made, was unpropitious.</p>
 								<ul>
 									<li><a href="" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -743,7 +743,6 @@
 							<h6>About us</h6>
 							<ul>
 								<li><a href="blog-list.html" class="tran3s">Blog</a></li>
-								<li><a href="#" class="tran3s">Toll Free Number</a></li>
 								<li><a href="#" class="tran3s">Press Releases</a></li>
 								<li><a href="#" class="tran3s">Jobs</a></li>
 								<li><a href="#" class="tran3s">Feedback</a></li>

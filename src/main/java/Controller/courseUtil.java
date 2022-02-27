@@ -99,7 +99,6 @@ public class courseUtil {
 	}
 
 	public List<Category> getCategories() throws SQLException {
-		// TODO Auto-generated method stub
 		System.out.println("OK");
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -117,7 +116,5 @@ public class courseUtil {
 		}
 		myConn.close();
 		return ls;
-		
-	}
-
+  }
 }
