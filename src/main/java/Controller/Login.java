@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import Model.Account;
+import Model.Category;
 import Model.Courses;
 import Model.User;
 /**
@@ -27,6 +28,7 @@ public class Login extends HttpServlet {
 	AccountUtil accUtil; 
     UserUtil userUtil;
     InstructorUtil insUtil;
+    courseUtil couUtil;
 	
     @Override
 	public void init() throws ServletException {
@@ -35,6 +37,7 @@ public class Login extends HttpServlet {
 		accUtil = new AccountUtil(dataSource);
 		userUtil = new UserUtil(dataSource);
 		insUtil = new InstructorUtil(dataSource);
+		couUtil = new courseUtil(dataSource);
     }
 
 	/**
@@ -58,6 +61,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("username");
 		String passWord = request.getParameter("password");
+		System.out.println("hello");
 		try {
 			User user = null;
 			Account tmp = accUtil.validation(userName,passWord);
@@ -70,6 +74,9 @@ public class Login extends HttpServlet {
 					 * Hashtable<Integer,String> namebyID = userUtil.getNameById(); for(Courses c :
 					 * courses) { c.setIns_name(namebyID.get(c.getIns_id())); }
 					 */
+					List<Category> categories = couUtil.getCategories();
+					System.out.println("Ok2");
+					request.setAttribute("cate", categories);
 					request.setAttribute("user_info",user);
 					String[] a = user.getFull_name().split(" ");
 					String b = a[a.length - 1];
