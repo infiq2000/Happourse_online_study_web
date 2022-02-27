@@ -243,12 +243,12 @@
 								<div class="sidebar-categories">
 									<h4>Categories</h4>
 									<div class="panel-group theme-accordion" id="accordion">
-									  <c:forEach var="category_name" items=${cate }>
+									  <c:forEach var="categoryName" items="${cate }">
 										  <div class="panel">
 										    <div class="panel-heading active-panel">
 										      <h6 class="panel-title">
 										        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-										        ${category_name.getName()}</a>
+										        ${categoryName.getName() }</a>
 										      </h6>
 										    </div>
 										    <div id="collapse1" class="panel-collapse collapse in">

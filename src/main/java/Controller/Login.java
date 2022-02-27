@@ -73,9 +73,9 @@ public class Login extends HttpServlet {
 					 * Hashtable<Integer,String> namebyID = userUtil.getNameById(); for(Courses c :
 					 * courses) { c.setIns_name(namebyID.get(c.getIns_id())); }
 					 */
-//					List<Category> categories = couUtil.getCategories();
-//					System.out.println("Ok2");
-//					request.setAttribute("cate", categories);
+					List<Category> categories = couUtil.getCategories();
+					System.out.println("Ok2");
+					request.setAttribute("cate", categories);
 					request.setAttribute("user_info",user);
 					String[] a = user.getFull_name().split(" ");
 					String b = a[a.length - 1];

@@ -99,6 +99,7 @@ public class courseUtil {
 	}
 
 	public List<Category> getCategories() throws SQLException {
+		System.out.println("OK");
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
@@ -106,8 +107,7 @@ public class courseUtil {
 		String sql = "SELECT * FROM category;";
 		myStmt = myConn.prepareStatement(sql);
 		myRS = myStmt.executeQuery();
-		List<Category> ls = new ArrayList<>();
-		System.out.println("OK");
+		List<Category> ls = new ArrayList<>();		
 		while (myRS.next()) {			
 			int cid = myRS.getInt("cid");
 			String name = myRS.getString("name");
