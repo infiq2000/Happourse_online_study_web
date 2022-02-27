@@ -61,7 +61,6 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("username");
 		String passWord = request.getParameter("password");
-		System.out.println("hello");
 		try {
 			User user = null;
 			Account tmp = accUtil.validation(userName,passWord);
@@ -75,7 +74,6 @@ public class Login extends HttpServlet {
 					 * courses) { c.setIns_name(namebyID.get(c.getIns_id())); }
 					 */
 					List<Category> categories = couUtil.getCategories();
-					System.out.println("Ok2");
 					request.setAttribute("cate", categories);
 					request.setAttribute("user_info",user);
 					String[] a = user.getFull_name().split(" ");

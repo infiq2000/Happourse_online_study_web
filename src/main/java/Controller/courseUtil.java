@@ -99,7 +99,6 @@ public class courseUtil {
 	}
 
 	public List<Category> getCategories() throws SQLException {
-		System.out.println("OK");
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
