@@ -10,7 +10,7 @@
 		<!-- For Resposive Device -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Eskul - Responsive Bootstrap  Education HTML5 Template</title>
+		<title>Hapourse - Online Study Website</title>
 
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
@@ -101,7 +101,7 @@
 											<li><a href="pricing-plan.html">Pricing Plan</a></li>
 											<li><a href="faq.html">Faq Page</a></li>
 											<li><a href="404.html">Error Page</a></li>
-											<li><a href="sign-up.html">Registration</a></li>
+											<li><a href="Signup.jsp">Registration</a></li>
 											<li class="dropdown-holder"><a href="#">Third Level menu</a>
 												<ul class="second-sub-menu">
 													<li><a href="#">menu one</a></li>
@@ -175,7 +175,7 @@
 					        		<input type="email" placeholder="Email">
 					        		<input type="password" placeholder="Password">
 					        		<input type="password" placeholder="Repeat Password">
-									<button class="p-bg-color hvr-trim">Sing up</button>
+									<button class="p-bg-color hvr-trim">Sign up</button>
 					        	</div>
 					        </form>
 					    </div> <!-- /.modal-body -->
