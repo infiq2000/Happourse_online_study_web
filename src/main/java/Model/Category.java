@@ -15,5 +15,10 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public Category(int cid, String name) {
+		super();
+		this.cid = cid;
+		this.name = name;
+	}
 	
 }
