@@ -61,6 +61,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("username");
 		String passWord = request.getParameter("password");
+		System.out.println("hello");
 		try {
 			User user = null;
 			Account tmp = accUtil.validation(userName,passWord);

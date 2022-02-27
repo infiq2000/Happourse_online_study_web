@@ -261,7 +261,7 @@
 										      </div>
 										    </div>
 										  </div> 
-									  </c:forEach>						  									  
+									  </c:forEach>	
 									</div> <!-- end #accordion -->
 								</div> <!-- /.sidebar-categories -->
 

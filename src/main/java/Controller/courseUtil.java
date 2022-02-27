@@ -116,5 +116,5 @@ public class courseUtil {
 		}
 		myConn.close();
 		return ls;
-	}
+  }
 }
