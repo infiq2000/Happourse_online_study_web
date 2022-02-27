@@ -101,7 +101,7 @@
 											<li><a href="pricing-plan.html">Pricing Plan</a></li>
 											<li><a href="faq.html">Faq Page</a></li>
 											<li><a href="404.html">Error Page</a></li>
-											<li><a href="sign-up.html">Registration</a></li>
+											<li><a href="Signup.jsp">Registration</a></li>
 											<li class="dropdown-holder"><a href="#">Third Level menu</a>
 												<ul class="second-sub-menu">
 													<li><a href="#">menu one</a></li>
