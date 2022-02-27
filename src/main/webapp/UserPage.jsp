@@ -243,91 +243,25 @@
 								<div class="sidebar-categories">
 									<h4>Categories</h4>
 									<div class="panel-group theme-accordion" id="accordion">
-									  <div class="panel">
-									    <div class="panel-heading active-panel">
-									      <h6 class="panel-title">
-									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-									        Web Develoment</a>
-									      </h6>
-									    </div>
-									    <div id="collapse1" class="panel-collapse collapse in">
-									      <div class="panel-body">
-									      	<!-- <ul>
-									      		<li><a href="#" class="tran3s">Html/Css</a></li>
-									      		<li><a href="#" class="tran3s">jQuery</a></li>
-									      		<li><a href="#" class="tran3s">Sass/less</a></li>
-									      	</ul> -->
-									      </div>
-									    </div>
-									  </div> <!-- /panel 1 -->
-									  <div class="panel">
-									    <div class="panel-heading">
-									      <h6 class="panel-title">
-									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-									        Data Science</a>
-									      </h6>
-									    </div>
-									    <div id="collapse2" class="panel-collapse collapse">
-									      <div class="panel-body">
-									      	<!-- <ul>
-									      		<li><a href="#" class="tran3s">Html/Css</a></li>
-									      		<li><a href="#" class="tran3s">jQuery</a></li>
-									      		<li><a href="#" class="tran3s">Sass/less</a></li>
-									      	</ul> -->
-									      </div>
-									    </div>
-									  </div> <!-- /panel 2 -->
-									  <div class="panel">
-									    <div class="panel-heading">
-									      <h6 class="panel-title">
-									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-									        Machine Learning</a>
-									      </h6>
-									    </div>
-									    <div id="collapse3" class="panel-collapse collapse">
-									      <div class="panel-body">
-									      	<ul>
-									      		<li><a href="#" class="tran3s">Html/Css</a></li>
-									      		<li><a href="#" class="tran3s">jQuery</a></li>
-									      		<li><a href="#" class="tran3s">Sass/less</a></li>
-									      	</ul>
-									      </div>
-									    </div>
-									  </div> <!-- /panel 3 -->
-									  <div class="panel">
-									    <div class="panel-heading">
-									      <h6 class="panel-title">
-									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-									        Probability and Statistic</a>
-									      </h6>
-									    </div>
-									    <div id="collapse4" class="panel-collapse collapse">
-									      <div class="panel-body">
-									      	<!-- <ul>
-									      		<li><a href="#" class="tran3s">Html/Css</a></li>
-									      		<li><a href="#" class="tran3s">jQuery</a></li>
-									      		<li><a href="#" class="tran3s">Sass/less</a></li>
-									      	</ul> -->
-									      </div>
-									    </div>
-									  </div> <!-- /panel 4 -->
-									  <div class="panel">
-									    <div class="panel-heading">
-									      <h6 class="panel-title">
-									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-									        Others</a>
-									      </h6>
-									    </div>
-									    <div id="collapse5" class="panel-collapse collapse">
-									      <div class="panel-body">
-								<!-- 	      	<ul>
-									      		<li><a href="#" class="tran3s">Html/Css</a></li>
-									      		<li><a href="#" class="tran3s">jQuery</a></li>
-									      		<li><a href="#" class="tran3s">Sass/less</a></li>
-									      	</ul> -->
-									      </div>
-									    </div>
-									  </div> <!-- /panel 5 -->
+									  <c:forEach var="category_name" items=${cate }>
+										  <div class="panel">
+										    <div class="panel-heading active-panel">
+										      <h6 class="panel-title">
+										        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+										        ${category_name.getName()}</a>
+										      </h6>
+										    </div>
+										    <div id="collapse1" class="panel-collapse collapse in">
+										      <div class="panel-body">
+										      	<!-- <ul>
+										      		<li><a href="#" class="tran3s">Html/Css</a></li>
+										      		<li><a href="#" class="tran3s">jQuery</a></li>
+										      		<li><a href="#" class="tran3s">Sass/less</a></li>
+										      	</ul> -->
+										      </div>
+										    </div>
+										  </div> 
+									  </c:forEach>						  									  
 									</div> <!-- end #accordion -->
 								</div> <!-- /.sidebar-categories -->
 
