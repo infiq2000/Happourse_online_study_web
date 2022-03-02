@@ -98,7 +98,13 @@ public class CourseDetail extends HttpServlet {
 			List<Chapter> list_chapter = lecUtil.getChapterOfCourse(detailC.getCourses_id());
 			request.setAttribute("chapter", list_chapter);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/Course_detail.jsp");
+			
+			RequestDispatcher dispatcher;
+			if (courseUtil.checkSignedCourse(course_id, uid) == null) {
+				dispatcher = request.getRequestDispatcher("/Course_detail.jsp");
+			} else {				
+				dispatcher = request.getRequestDispatcher("/CourseSigned.jsp");
+			}		
 			dispatcher.forward(request, response);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
