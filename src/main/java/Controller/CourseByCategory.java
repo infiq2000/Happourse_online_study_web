@@ -24,8 +24,8 @@ import Model.User;
 /**
  * Servlet implementation class HomePage
  */
-@WebServlet("/HomePage")
-public class HomePage extends HttpServlet {
+@WebServlet("/CourseByCategory")
+public class CourseByCategory extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
        
@@ -48,7 +48,7 @@ public class HomePage extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HomePage() {
+    public CourseByCategory() {
         super();
         // TODO Auto-generated constructor stub
     }
