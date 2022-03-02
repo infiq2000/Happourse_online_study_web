@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -10,7 +9,7 @@
 		<!-- For Resposive Device -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Hapourse - Online Study Website</title>
+		<title>Eskul - Responsive Bootstrap  Education HTML5 Template</title>
 
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
@@ -101,7 +100,7 @@
 											<li><a href="pricing-plan.html">Pricing Plan</a></li>
 											<li><a href="faq.html">Faq Page</a></li>
 											<li><a href="404.html">Error Page</a></li>
-											<li><a href="Signup.jsp">Registration</a></li>
+											<li><a href="sign-up.html">Registration</a></li>
 											<li class="dropdown-holder"><a href="#">Third Level menu</a>
 												<ul class="second-sub-menu">
 													<li><a href="#">menu one</a></li>
@@ -141,55 +140,37 @@
 			<div class="inner-banner">
 				<div class="opacity">
 					<div class="container">
-						<h2>Sign Up</h2>
+						<h2>Page Not Found</h2>
 						<ul>
 							<li><a href="index.html" class="tran3s">Home</a></li>
 							<li>/</li>
-							<li><a href="#">pages</a></li>
-							<li>/</li>
-							<li>Registration</li>
+							<li>error</li>
 						</ul>
 					</div> <!-- /.container -->
 				</div> <!-- /.opacity -->
 			</div> <!-- /.inner-banner -->
 
-	        
 
-			<!-- Sign-Up Modal -->
-			<div class="signUpModal theme-modal-box">
-				<div class="modal-dialog">
-				    <!-- Modal content-->
-				    <div class="modal-content">
-					    <div class="modal-body">
-					        <h3>Login with Social Networks</h3>
-					        <ul class="clearfix">
-					        	<li class="float-left"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> facebook</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i> Google</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
-					        </ul>
-					     
-					        <form action="SignUp" method="post">
-					        	<h3>Sign Up</h3>
-					        	<div class="wrapper">
-					        		<input name = "txtUsername" type="text" placeholder="Username">
-					        		<input name = "txtEmail"type="email" placeholder="Email">
-					        		<input name = "txtPassword" type="password" placeholder="Password">
-					        		<input name = "txtRepeatPassword" type="password" placeholder="Repeat Password">
-									
-									<!-- <body bgcolor="#9999CC">
-									<script language="javascript">
-									alert( "This is an Error message" );
-									</script>
-									<p></p> -->
-									<button class="p-bg-color hvr-trim">Sign up</button> 
-					        	</div>
-					        </form>
-					    </div> <!-- /.modal-body -->
-				    </div> <!-- /.modal-content -->
-				</div> <!-- /.modal-dialog -->
-			</div> <!-- /.signUpModal -->
 
+			<!-- 
+			=============================================
+				Error Page
+			============================================== 
+			-->
+			<div class="container error-page">
+				<h2>404</h2>
+				<h3>Looks like somthing went wrong</h3>
+				<p>The page you are looking for was moved, removed, renamed or might never existed.</p>
+				<div>
+					<a href="index.html" class="tran3s s-bg-color hvr-trim">Go Home</a>
+					<span class="or">Or</span>
+					<form action="#">
+						<input type="text" placeholder="Search...">
+						<button><i class="fa fa-search" aria-hidden="true"></i></button>
+					</form>
+				</div>
+			</div> <!-- /.error-page -->
+			
 
 
 			<!-- 
@@ -300,13 +281,14 @@
 				</div> <!-- /.modal-dialog -->
 			</div> <!-- /.signInModal -->
 
+	        
 
-			<!-- Scroll Top Button -->
+	        <!-- Scroll Top Button -->
 			<button class="scroll-top tran3s">
 				<i class="fa fa-angle-up" aria-hidden="true"></i>
 			</button>
-			
 
+		
 
 		<!-- Js File_________________________________ -->
 
@@ -333,6 +315,7 @@
 		<!-- js count to -->
 		<script type="text/javascript" src="vendor/Counter/jquery.counterup.min.js"></script>
 		<script src="vendor/Counter/jquery.waypoints.min.js"></script>
+
 
 		<!-- Theme js -->
 		<script type="text/javascript" src="js/theme.js"></script>
