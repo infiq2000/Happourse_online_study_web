@@ -1,4 +1,4 @@
-package Controller;
+package Dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,10 +14,10 @@ import Model.Category;
 import Model.Courses;
 
 
-public class courseUtil {
+public class CourseUtil {
 	private DataSource dataSource;
 
-	public courseUtil(DataSource dataSource) {
+	public CourseUtil(DataSource dataSource) {
 		super();
 		this.dataSource = dataSource;
 	}

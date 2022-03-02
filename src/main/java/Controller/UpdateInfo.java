@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import Dao.AccountUtil;
+import Dao.InstructorUtil;
+import Dao.LectureUtil;
+import Dao.UserUtil;
 import Model.User;
 
 
@@ -23,7 +27,7 @@ public class UpdateInfo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
-	Controller.courseUtil courseUtil; 
+	Dao.CourseUtil courseUtil; 
 	AccountUtil accUtil; 
     UserUtil userUtil;
     InstructorUtil insUtil;
@@ -34,7 +38,7 @@ public class UpdateInfo extends HttpServlet {
 		super.init();
 		accUtil = new AccountUtil(dataSource);
 		userUtil = new UserUtil(dataSource);
-		courseUtil = new Controller.courseUtil(dataSource);
+		courseUtil = new Dao.CourseUtil(dataSource);
 		insUtil = new InstructorUtil(dataSource);
 		lecUtil = new LectureUtil(dataSource);
 	}
