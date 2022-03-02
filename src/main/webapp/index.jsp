@@ -211,11 +211,8 @@
 			</div> <!-- /.find-course -->
 
 
-			<c:if test="$(not empty msg)">
-				<div class = "alert alert-$(alert)">
-					$(msg)
-				</div>
-			</c:if>			
+
+			
 			<!-- 
 			=============================================
 				Find Course Block
@@ -788,7 +785,7 @@
 					        	<li class="float-left"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
 					        	<li class="float-left"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
 					        </ul>
-					        <form action="Login" method="post">
+					        <form action="Login" method="Post">
 					        	<h3>Login with Site Account</h3>
 					        	<div class="wrapper">
 					        		<!-- // Sửa ở đây -->
