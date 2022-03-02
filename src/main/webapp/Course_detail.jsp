@@ -237,7 +237,7 @@
 									</div>
 									<div class="panel-group theme-accordion" id="accordionTwo">
 									<c:forEach var="tempChapter" items="${chapter}" varStatus="myIndex">
-									  <div class="panel">
+									 <div class="panel">
 									    <div class="panel-heading">
 									      <h5 class="panel-title">
 									        <a data-toggle="collapse" data-parent="#accordionTwo" href="#collapse62" class="clearfix">

@@ -144,7 +144,7 @@
 						<div class="container text-center">
 							<h3 class="wow fadeInUp animated">Hapourse - Do It Today, Don't Delay</h3>
 							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s"> Hapourse<span class="s-color"> Draw Your Future </span></h1>
-							<a href="course-2-column.html" class="tran3s wow fadeInLeft animated banner-button" data-wow-delay="0.3s">Learn Now!</a>
+							<a class="tran3s wow fadeInLeft animated banner-button" data-wow-delay="0.3s" data-toggle="modal" data-target=".signInModal">Learn Now!</a>
 							<a href="Signup.jsp" class="tran3s wow fadeInRight animated button-one banner-button hvr-trim" data-wow-delay="0.3s">Sign Up Now!</a>
 						</div> <!-- /.container -->
 					</div> <!-- /.camera_caption -->
@@ -154,7 +154,7 @@
 						<div class="container text-center">
 							<h3 class="wow fadeInUp animated">Hapourse - Do It Today, Don't Delay</h3>
 							<h1 class="wow fadeInUp animated" data-wow-delay="0.2s">Hapourse <span class="s-color"> Draw Your Future</span></h1>
-							<a href="course-2-column.html" class="tran3s wow fadeInLeft animated banner-button" data-wow-delay="0.3s">Learn Now!</a>
+							<a class="tran3s wow fadeInLeft animated banner-button" data-wow-delay="0.3s" data-toggle="modal" data-target=".signInModal">Learn Now!</a>
 							<a href="Signup.jsp" class="tran3s wow fadeInRight animated button-one banner-button hvr-trim" data-wow-delay="0.3s">Sign Up Now!</a>
 						</div> <!-- /.container -->
 					</div> <!-- /.camera_caption -->
@@ -788,7 +788,7 @@
 					        	<li class="float-left"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
 					        	<li class="float-left"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
 					        </ul>
-					        <form action="Login" method="post">
+					        <form action="Login" method="Post">
 					        	<h3>Login with Site Account</h3>
 					        	<div class="wrapper">
 					        		<!-- // Sửa ở đây -->
