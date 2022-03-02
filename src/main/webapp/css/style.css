@@ -166,7 +166,7 @@
  ul {list-style-type: none;}
  a {text-decoration: none; display: inline-block; font-family: 'Montserrat', sans-serif;}
  a:hover,a:focus,a:visited {text-decoration: none; outline: none;}
- img {max-width: 100%; display: block;}
+ img {max-width: 100%; display: block; height: 10px;}
  button {border:none;outline: none;-webkit-box-shadow: none;box-shadow: none;display: block; padding: 0;}
  input,textarea {outline: none; -webkit-box-shadow: none; box-shadow: none;-webkit-transition: all 0.3s ease-in-out;transition: all 0.3s ease-in-out;}
 .float-left {float:left;}
@@ -534,10 +534,9 @@ header.menu-style-two.fixed .logo {width: 10%;top:0;}
   width: 100%;
   font-size: 35px;
   text-align: center;
-  color: black;
 }
-#theme-main-banner .camera_prev:before {content: '<';}
-#theme-main-banner .camera_next:before {content: '>';}
+#theme-main-banner .camera_prev:before {content: 'ï„„';}
+#theme-main-banner .camera_next:before {content: 'ï„…';}
 #theme-main-banner.camera_wrap .camera_pag .camera_pag_ul {
   position: absolute;
   text-align: center;
@@ -760,7 +759,7 @@ header.menu-style-two.fixed .logo {width: 10%;top:0;}
 }
 .bootstrap-select.btn-group .dropdown-toggle .bs-caret:before {
   font-family: 'font-awesome';
-  content: '';
+  content: 'ïƒ—';
   position: absolute;
   top:0;
   left: 0;
@@ -1748,8 +1747,8 @@ footer .bottom-footer {
   margin-bottom: 150px;
 }
 .inner-banner .opacity {
-  /*background: rgba(0,0,0,0.6);
-  padding: 240px 0 95px 0;*/
+  background: rgba(0,0,0,0.6);
+  padding: 240px 0 95px 0;
 }
 .inner-banner .opacity h2 {
   font-size: 48px;
@@ -1779,7 +1778,7 @@ footer .bottom-footer {
 .about-text .row {margin: 0 -35px;}
 .about-text .row [class*="col-"] {padding: 0 35px;}
 /*-------------------------- Our Course ---------------------*/
-.our-course {padding-bottom: 150px; margin-top: 50px;}
+.our-course {padding-bottom: 150px;}
 .course-sidebar h4 {
   font-size: 24px;
   font-weight: 700;
@@ -1823,7 +1822,7 @@ footer .bottom-footer {
   right: 25px;
   top:0;
 }
-.course-sidebar .sidebar-categories .panel-heading.active-panel a:before{content: '>';}
+.course-sidebar .sidebar-categories .panel-heading.active-panel a:before{content: 'ï„†';}
 .course-sidebar .sidebar-categories .panel-heading.active-panel a,
 .course-sidebar .sidebar-categories .panel .panel-body {background: #f9fafb;}
 .course-sidebar .sidebar-categories .panel .panel-body {
