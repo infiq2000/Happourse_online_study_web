@@ -211,8 +211,11 @@
 			</div> <!-- /.find-course -->
 
 
-
-			
+			<c:if test="$(not empty msg)">
+				<div class = "alert alert-$(alert)">
+					$(msg)
+				</div>
+			</c:if>			
 			<!-- 
 			=============================================
 				Find Course Block
