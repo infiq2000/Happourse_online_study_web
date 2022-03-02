@@ -12,7 +12,7 @@
 		<!-- For Resposive Device -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Happourse - Muốn giàu hãy học đừng chơi coin </title>
+		<title>Hapourse - Online Study Website </title>
 
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
@@ -56,7 +56,7 @@
 				<div class="container">
 					<div class="header-wrapper clearfix">
 						<!-- Logo -->
-						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/logo_1.png" alt="Logo"></a></div>
+						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/x.png" alt="Logo"></a></div>
 
 						<!-- ============================ Theme Menu ========================= -->
 						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">
@@ -158,18 +158,44 @@
 				Theme Inner Banner
 			============================================== 
 			-->
-			<div class="inner-banner">
-				<div class="opacity">
-					<div class="container">
-						<h2>Our Courses</h2>
-						<ul>
-							<li><a href="index.jsp" class="tran3s">Home</a></li>
-							<li>/</li>
-							<li>Courses</li>
-						</ul>
-					</div> <!-- /.container -->
-				</div> <!-- /.opacity -->
-			</div> <!-- /.inner-banner -->
+			<div id="theme-main-banner" class="banner-one">
+				<div data-src="images/home/slide-5.jpg">
+					<div class="camera_caption">
+						<div class="container text-center">
+							<div class="inner-banner">
+								<div class="opacity">
+									<div class="container">
+										<h2 class="wow fadeInUp animated">Our Courses</h2>
+										<ul>
+											<li><a href="index.jsp" class="tran3s" class="wow fadeInUp animated" data-wow-delay="0.2s">Home</a></li>
+											<li class="wow fadeInUp animated" data-wow-delay="0.2s">/</li>
+											<li class="wow fadeInUp animated" data-wow-delay="0.2s">Courses</li>
+										</ul>
+									</div> <!-- /.container -->
+								</div> <!-- /.opacity -->
+							</div> <!-- /.inner-banner -->
+						</div>
+					</div>
+				</div>
+				<div data-src="images/home/slide-7.jpg">
+					<div class="camera_caption">
+						<div class="container text-center">
+							<div class="inner-banner">
+								<div class="opacity">
+									<div class="container">
+										<h2 class="wow fadeInUp animated">Our Courses</h2>
+										<ul>
+											<li><a href="index.jsp" class="tran3s" class="wow fadeInUp animated" data-wow-delay="0.2s">Home</a></li>
+											<li class="wow fadeInUp animated" data-wow-delay="0.2s">/</li>
+											<li class="wow fadeInUp animated" data-wow-delay="0.2s">Courses</li>
+										</ul>
+									</div> <!-- /.container -->
+								</div> <!-- /.opacity -->
+							</div> <!-- /.inner-banner -->
+						</div>
+					</div>
+				</div>
+			</div>
 
 
 			<!-- 
