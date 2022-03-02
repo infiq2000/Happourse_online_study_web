@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import Dao.AccountUtil;
+import Dao.InstructorUtil;
+import Dao.UserUtil;
+import Dao.CourseUtil;
 import Model.Category;
 import Model.Courses;
 import Model.User;
@@ -30,7 +34,7 @@ public class HomePage extends HttpServlet {
 	AccountUtil accUtil; 
     UserUtil userUtil;
     InstructorUtil insUtil;
-    courseUtil couUtil;
+    CourseUtil couUtil;
 	
     @Override
 	public void init() throws ServletException {
@@ -39,7 +43,7 @@ public class HomePage extends HttpServlet {
 		accUtil = new AccountUtil(dataSource);
 		userUtil = new UserUtil(dataSource);
 		insUtil = new InstructorUtil(dataSource);
-		couUtil = new courseUtil(dataSource);
+		couUtil = new CourseUtil(dataSource);
     }
     /**
      * @see HttpServlet#HttpServlet()
