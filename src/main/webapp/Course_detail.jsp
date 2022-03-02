@@ -441,7 +441,7 @@
 												</div>
 											</li>
 										</ul>
-										<p><b>1,625</b> Students Enroolled</p>
+										<p><b>1,625</b> Students Enrolled</p>
 									</div>
 									<c:url var="link3" value="TakeCourse">
 										<c:param name="uid" value="${user_info.getUid()}"></c:param>  
