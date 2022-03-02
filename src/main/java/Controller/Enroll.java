@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -52,14 +53,14 @@ public class Enroll extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int course_id = Integer.parseInt(request.getParameter("course_id"));
 		int uid = Integer.parseInt(request.getParameter("uid"));
-		System.out.println(course_id + " " + uid);
+//		System.out.println(course_id + " " + uid);
 		try {
 			courseUtil.insert(course_id, uid);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/CourseSigned.jsp");
 	}
 
 }

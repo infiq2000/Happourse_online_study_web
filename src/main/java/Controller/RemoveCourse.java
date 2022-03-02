@@ -86,6 +86,7 @@ public class RemoveCourse extends HttpServlet {
 			Instructor ins_info = insUtil.getIns_Info(detailC.getIns_id());
 			request.setAttribute("ins_info", ins_info);
 			
+			courseUtil.removeCourse(uid,course_id);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/Course_detail.jsp");
 			dispatcher.forward(request, response);
 		} catch (SQLException e) {

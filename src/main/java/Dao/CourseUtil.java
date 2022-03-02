@@ -157,10 +157,24 @@ public class CourseUtil {
 		Courses course;
 		if (myRS.next()) {
 			course = getCourseDetail(course_id);
+			myConn.close();
 			return course;
 		} else {
+			myConn.close();
 			return null;
 		}
+	}
+
+	public void removeCourse(int uid, int course_id) throws SQLException {
+		Connection myConn = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "DELETE FROM happourse.user_course WHERE uid=? AND course_id=?;";
+		PreparedStatement pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, uid);
+		pstmt.setInt(2, course_id);
+		myRS = pstmt.executeQuery();
+		myConn.close();
 	}
 
 }
