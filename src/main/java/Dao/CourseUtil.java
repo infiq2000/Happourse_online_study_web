@@ -16,10 +16,12 @@ import Model.Courses;
 
 public class CourseUtil {
 	private DataSource dataSource;
+	UserUtil userUtil;
 
 	public CourseUtil(DataSource dataSource) {
 		super();
 		this.dataSource = dataSource;
+		userUtil = new UserUtil(dataSource);
 	}
 	
 	public Courses getCourseDetail(int course_id) throws SQLException {
@@ -141,6 +143,24 @@ public class CourseUtil {
 		}
 		myConn.close();
 		return ls;
+	}
+
+	public Courses checkSignedCourse(int course_id, int uid) throws SQLException {
+		Connection myConn = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT * FROM happourse.user_course c WHERE uid=? AND course_id=?;";
+		PreparedStatement pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, uid);
+		pstmt.setInt(2, course_id);
+		myRS = pstmt.executeQuery();
+		Courses course;
+		if (myRS.next()) {
+			course = getCourseDetail(course_id);
+			return course;
+		} else {
+			return null;
+		}
 	}
 
 }

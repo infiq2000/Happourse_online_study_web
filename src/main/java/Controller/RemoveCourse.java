@@ -2,7 +2,6 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -19,16 +18,15 @@ import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
 import Model.Account;
-import Model.Chapter;
 import Model.Courses;
 import Model.Instructor;
 import Model.User;
 
 /**
- * Servlet implementation class CourseDetail
+ * Servlet implementation class RemoveCourse
  */
-@WebServlet("/CourseDetail")
-public class CourseDetail extends HttpServlet {
+@WebServlet("/RemoveCourse")
+public class RemoveCourse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
@@ -36,21 +34,16 @@ public class CourseDetail extends HttpServlet {
 	AccountUtil accUtil; 
     UserUtil userUtil;
     InstructorUtil insUtil;
-    LectureUtil lecUtil;
-       
+    LectureUtil lecUtil;   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CourseDetail() {
+    public RemoveCourse() {
         super();
         // TODO Auto-generated constructor stub
     }
-
-	/**
-	 * @see Servlet#init(ServletConfig)
-	 */
-	public void init(ServletConfig config) throws ServletException {
-		// TODO Auto-generated method stub
+    
+    public void init(ServletConfig config) throws ServletException {
 		super.init();
 		accUtil = new AccountUtil(dataSource);
 		userUtil = new UserUtil(dataSource);
@@ -63,12 +56,10 @@ public class CourseDetail extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		int course_id = Integer.parseInt(request.getParameter("course_id"));
 		int uid = Integer.parseInt(request.getParameter("uid"));
 		int aid = Integer.parseInt(request.getParameter("aid"));
 		try {
-			/* Account ac = accUtil.getAccount(aid); */
 			User user = userUtil.getUser(aid);
 			Account acc =  accUtil.getAccount(aid);
 			request.setAttribute("account", acc);
@@ -80,12 +71,12 @@ public class CourseDetail extends HttpServlet {
 			request.setAttribute("uid", uid);
 			request.setAttribute("user_info",user);
 			request.setAttribute("course_id", course_id);
-		} catch (SQLException e1) {
+		}  catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
-		
+			
 			Courses detailC = courseUtil.getCourseDetail(course_id);
 			request.setAttribute("course_detail",detailC);	
 			
@@ -95,22 +86,12 @@ public class CourseDetail extends HttpServlet {
 			Instructor ins_info = insUtil.getIns_Info(detailC.getIns_id());
 			request.setAttribute("ins_info", ins_info);
 			
-			List<Chapter> list_chapter = lecUtil.getChapterOfCourse(detailC.getCourses_id());
-			request.setAttribute("chapter", list_chapter);
-			
-			
-			RequestDispatcher dispatcher;
-			if (courseUtil.checkSignedCourse(course_id, uid) == null) {
-				dispatcher = request.getRequestDispatcher("/Course_detail.jsp");
-			} else {				
-				dispatcher = request.getRequestDispatcher("/CourseSigned.jsp");
-			}		
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/Course_detail.jsp");
 			dispatcher.forward(request, response);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 }

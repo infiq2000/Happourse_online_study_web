@@ -443,12 +443,12 @@
 										</ul>
 										<p><b>1,625</b> Students Enrolled</p>
 									</div>
-									<c:url var="link3" value="TakeCourse">
+									<c:url var="link3" value="RemoveCourse">
 										<c:param name="uid" value="${user_info.getUid()}"></c:param>  
 										<c:param name="aid" value="${user_info.getAid()}"></c:param> 
 										<c:param name="course_id" value="${course_id}"></c:param> 
 	  								</c:url>
-									<a href="${link3}" class="tran3s s-bg-color take-course hvr-trim">Take this course</a>
+									<a href="${link3}" class="tran3s p-bg-color follow hvr-trim">Remove this course</a>
 								</div> <!-- /.sidebar-course-information -->
 
 								<div class="sidebar-instructor-info">
