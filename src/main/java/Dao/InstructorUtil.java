@@ -36,7 +36,6 @@ public class InstructorUtil {
 				double total_rating = myRS.getDouble("total_rating");
 				int aid = myRS.getInt("aid");
 				ins = new Instructor(ins_id,ins_name,major,desciption ,total_course, total_rating,aid);
-				System.out.println(aid);
 			}
 			return ins;
 		} 
@@ -49,7 +48,7 @@ public class InstructorUtil {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
-		System.out.println("getCate");
+
 		try {
 			myConn = dataSource.getConnection();
 			String sql = "select * from category where cid = ?";
