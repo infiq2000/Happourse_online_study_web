@@ -87,7 +87,8 @@ public class CourseUtil {
 		String sql = "INSERT INTO user_course(transaction_id,uid, course_id, start_date)" 
 	            + "VALUES(?,?,?,?)";
 		PreparedStatement pstmt = myConn.prepareStatement(sql);
-		pstmt.setString(1, "T004");
+		String index = this.getIndex();
+		pstmt.setString(1, index);
 		pstmt.setInt(2, uid);
         pstmt.setInt(3, course_id);
         @SuppressWarnings("deprecation")
@@ -95,10 +96,37 @@ public class CourseUtil {
         java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
         pstmt.setDate(4, sqlDate);
        
-        int rowAffected = pstmt.executeUpdate();
+        pstmt.executeUpdate();
    
 		myConn.close();
 		
+	}
+	public String getIndex() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "SELECT transaction_id FROM happourse.user_course;";
+			myStmt = myConn.prepareStatement(sql);
+			myRS = myStmt.executeQuery();
+			List<String> lstIndex = new ArrayList<String>();
+			while (myRS.next()) {
+				String idx = myRS.getString("transaction_id");
+				lstIndex.add(idx);
+			}
+			int i = 1;
+			while(true) {
+				if(lstIndex.contains(Integer.toString(i))) {
+					i++;
+				} else {
+					return Integer.toString(i);
+				}
+			}
+		} 
+		finally {
+			myConn.close();
+		}
 	}
 
 	public List<Category> getCategories() throws SQLException {

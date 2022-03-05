@@ -51,6 +51,7 @@ public class Enroll extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("vo day chua ");
 		int course_id = Integer.parseInt(request.getParameter("course_id"));
 		int uid = (int)request.getSession(false).getAttribute("uid");
 		try {

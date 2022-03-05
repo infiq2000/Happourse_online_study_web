@@ -71,6 +71,7 @@ public class TakeCourse extends HttpServlet {
 			
 			Instructor ins_info = insUtil.getIns_Info(detailC.getIns_id());
 			request.setAttribute("ins_info", ins_info);
+			request.setAttribute("course_id", course_id);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/takecourse.jsp");
 			dispatcher.forward(request, response);
