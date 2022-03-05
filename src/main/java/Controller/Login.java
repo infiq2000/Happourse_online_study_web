@@ -95,7 +95,7 @@ public class Login extends HttpServlet {
 				}
 			}
 			else {
-				 request.setAttribute("errorString", "TÃªn Ä‘Äƒng nháº­p hoáº·c máº­t kháº©u bá»‹ sai");
+				 request.setAttribute("errorString", "Username or password is incorrect");
 				 RequestDispatcher dispatcher = request.getRequestDispatcher("/invalidLogin.jsp");
 				 dispatcher.forward(request, response);
 			}

@@ -27,10 +27,11 @@
 						   <!-- Collect the nav links, forms, and other content for toggling -->
 						   <div class="collapse navbar-collapse" id="navbar-collapse-1">
 								<ul class="nav">
-									<li class="dropdown-holder menu-list"><a href="index.html" class="tran3s">Home</a>
+									
+									<li class="dropdown-holder menu-list"><a href="index.jsp" class="tran3s">Home</a>
 										<ul class="sub-menu">
-											<li><a href="index.html">Home version one</a></li>
-											<li><a href="index-2.html">Home version Two</a></li>
+											<li><a href="index.jsp">Home version one</a></li>
+											<li><a href="index.jsp">Home version Two</a></li>
 										</ul>
 									</li>
 									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Course</a>
@@ -81,7 +82,20 @@
 											<li><a href="blog-details.html">blog Details</a></li>
 										</ul>
 									</li>
+									
 									<li><a href="contact-us.html" class="tran3s">Contact Us</a></li>
+									
+									<li>
+										<div class="search-container">
+										    <form class="sbox" action="/search" method="get">
+												<input class="stext tran5s" type="text" name="q" placeholder="Search...">
+												<a class="sbutton" type="submit" href="index.jsp">
+												<i class="fa fa-search"></i>
+												</a>
+											</form>
+										</div>
+									</li>
+									
 									<%
 										String name = (String)session.getAttribute("name");
 									%>
