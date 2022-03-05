@@ -1,12 +1,14 @@
 package Dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 import Model.Account;
@@ -14,7 +16,7 @@ import Model.User;
 
 public class AccountUtil {
 	private DataSource dataSource;
-
+	
 	public AccountUtil(DataSource dataSource) {
 		super();
 		this.dataSource = dataSource;

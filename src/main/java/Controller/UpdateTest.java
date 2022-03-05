@@ -54,8 +54,8 @@ public class UpdateTest extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int uid = Integer.parseInt(request.getParameter("uid"));
-		int aid = Integer.parseInt(request.getParameter("aid"));
+		int uid = (int)request.getSession(false).getAttribute("uid");
+		int aid = (int)request.getSession(false).getAttribute("aid");
 		request.setAttribute("uid", uid);
 		request.setAttribute("aid", aid);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/update_profile.jsp");

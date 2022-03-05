@@ -58,20 +58,9 @@ public class CourseByCategory extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int cid = Integer.parseInt(request.getParameter("cid"));
-		int uid = Integer.parseInt(request.getParameter("uid"));
-		int aid = Integer.parseInt(request.getParameter("aid"));
 		try {
 			List<Courses> courses = couUtil.getCourseByCategory(cid);
 			request.setAttribute("listCourses", courses);
-			
-			User user = userUtil.getUser(aid);
-			request.setAttribute("user_info",user);
-			String[] a = user.getFull_name().split(" ");
-			String b = a[a.length - 1];
-			request.setAttribute("name", b);
-			
-			List<Category> categories = couUtil.getCategories();
-			request.setAttribute("cate", categories);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
 			dispatcher.forward(request, response);
@@ -81,5 +70,4 @@ public class CourseByCategory extends HttpServlet {
 		}
 		
 	}
-
 }

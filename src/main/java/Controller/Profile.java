@@ -58,7 +58,7 @@ public class Profile extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int uid = Integer.parseInt(request.getParameter("uid"));
+		int uid = (int)request.getSession(false).getAttribute("uid");
 		System.out.println("hello"  + uid);
 		User user = null;
 		try {

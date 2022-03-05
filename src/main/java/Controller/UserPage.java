@@ -51,10 +51,10 @@ public class UserPage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String uid = request.getParameter("uid");
+		int uid = (int)request.getSession(false).getAttribute("uid");
 		User user = null;
 		try {
-			user = userUtil.getUserbyID(Integer.parseInt(uid));
+			user = userUtil.getUserbyID(uid);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -67,9 +67,6 @@ public class UserPage extends HttpServlet {
 			courses = userUtil.getAll_Courses();
 			request.setAttribute("listCourses", courses);
 			request.setAttribute("user_info",user);
-			String[] a = user.getFull_name().split(" ");
-			String b = a[a.length - 1];
-			request.setAttribute("name", b);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
 			dispatcher.forward(request, response);
 		} catch (SQLException e) {

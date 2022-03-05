@@ -57,20 +57,7 @@ public class MyLearning extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int  user_aid = Integer.parseInt(request.getParameter("aid_user"));
-		int  uid = Integer.parseInt(request.getParameter("uid"));
-		try {
-			User user = userUtil.getUser(user_aid);
-			String[] a = user.getFull_name().split(" ");
-			String b = a[a.length - 1];
-			request.setAttribute("name", b);
-			request.setAttribute("user", uid);
-			request.setAttribute("aid", user_aid);
-			request.setAttribute("user_info", user);
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		int uid = (int)request.getSession(false).getAttribute("uid");
 		try {
 			List<Courses> ls = courseUtil.listCourse_Id(uid);
 			request.setAttribute("listCourses", ls);

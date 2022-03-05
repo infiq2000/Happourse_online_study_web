@@ -1,5 +1,8 @@
 package Model;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 public class Account {
 	private int aid;
 	private String username;
@@ -36,5 +39,4 @@ public class Account {
 	public void setType(boolean type) {
 		this.type = type;
 	}
-	
 }

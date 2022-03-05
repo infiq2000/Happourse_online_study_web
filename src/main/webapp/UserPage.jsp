@@ -1,7 +1,13 @@
+<%@page import="Dao.UserUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.*" %>
+<%@ page import="Model.Category" %>
+<%@ page import="Dao.CourseUtil" %>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
+<%@ page import="Model.User" %>
+<%@ page import="Dao.UserUtil" %>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -52,107 +58,7 @@
 				Theme Header
 			============================================== 
 			-->
-			<header class="theme-menu-wrapper menu-style-one">
-				<div class="container">
-					<div class="header-wrapper clearfix">
-						<!-- Logo -->
-						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/x.png" alt="Logo"></a></div>
-
-						<!-- ============================ Theme Menu ========================= -->
-						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">
-							<!-- Brand and toggle get grouped for better mobile display -->
-						   <div class="navbar-header">
-						     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-						       <span class="sr-only">Toggle navigation</span>
-						       <span class="icon-bar"></span>
-						       <span class="icon-bar"></span>
-						       <span class="icon-bar"></span>
-						     </button>
-						   </div>
-						   <!-- Collect the nav links, forms, and other content for toggling -->
-						   <div class="collapse navbar-collapse" id="navbar-collapse-1">
-								<ul class="nav">
-									<li class="dropdown-holder menu-list"><a href="index.html" class="tran3s">Home</a>
-										<ul class="sub-menu">
-											<li><a href="index.html">Home version one</a></li>
-											<li><a href="index-2.html">Home version Two</a></li>
-										</ul>
-									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Course</a>
-										<ul class="sub-menu">
-											<li><a href="course-grid.html">Course grid</a></li>
-											<li><a href="course-list.html">Course List</a></li>
-											<li><a href="course-details.html">Course Details</a></li>
-											<li class="dropdown-holder"><a href="#">Third Level menu</a>
-												<ul class="second-sub-menu">
-													<li><a href="#">menu one</a></li>
-													<li><a href="#">menu two</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Pages</a>
-										<ul class="sub-menu width-half">
-											<li><a href="about-us.html">About Us</a></li>
-											<li><a href="our-teacher.html">Our teacher</a></li>
-											<li><a href="teachers-profile.html">teachers profile</a></li>
-											<li><a href="shop.html">Shop page</a></li>
-											<li><a href="shop-details.html">Shop Details</a></li>
-											<li><a href="portfolio-3-column.html">portfolio 3 column</a></li>
-											<li><a href="portfolio-4-column.html">portfolio 4 column</a></li>
-											<li><a href="pricing-plan.html">Pricing Plan</a></li>
-											<li><a href="faq.html">Faq Page</a></li>
-											<li><a href="404.html">Error Page</a></li>
-											<li><a href="sign-up.html">Registration</a></li>
-											<li class="dropdown-holder"><a href="#">Third Level menu</a>
-												<ul class="second-sub-menu">
-													<li><a href="#">menu one</a></li>
-													<li><a href="#">menu two</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Event</a>
-										<ul class="sub-menu">
-											<li><a href="event-list.html">Event List</a></li>
-											<li><a href="event-grid.html">Event Grid</a></li>
-											<li><a href="event-details.html">Event Single</a></li>
-										</ul>
-									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Blog</a>
-										<ul class="sub-menu">
-											<li><a href="blog-grid.html">Blog grid</a></li>
-											<li><a href="blog-list.html">Blog List</a></li>
-											<li><a href="blog-details.html">blog Details</a></li>
-										</ul>
-									</li>
-									<li><a href="contact-us.html" class="tran3s">Contact Us</a></li>
-									<li class="dropdown-holder menu-list" ><a class="tran3s"><span class="login">HI ${name}</span></a> 
-										<ul class="sub-menu">
-											<c:url var="link2" value="Profile">
-													<c:param name="uid" value="${user_info.getUid()}"></c:param> 
-	  										</c:url>
-											<li><a href="${link2}">Tài khoản</a></li>
-											<c:url var="link4" value="UpdateTest">
-													<c:param name="aid" value="${user_info.getAid()}"></c:param>
-													<c:param name="uid" value="${user_info.getUid()}"></c:param> 
-	  										</c:url>
-											<li><a href="${link4}">Cập nhật thông tin</a></li>
-											<c:url var="tempLink" value="MyLearning">
-													<c:param name="aid_user" value="${user_info.getAid()}"></c:param>
-													<c:param name="uid" value="${user_info.getUid()}"></c:param> 
-	  										</c:url>
-											<li><a href="${tempLink} ">Khóa học</a></li>
-											<li><a href="Logout">Đăng xuất</a></li>
-										</ul>
-									</li>
-								</ul>
-						   </div><!-- /.navbar-collapse -->
-						</nav> <!-- /.theme-main-menu -->
-					</div> <!-- /.header-wrapper -->
-				</div>
-			</header> <!-- /.theme-menu-wrapper -->
-			
+			<jsp:include page="Header.jsp" />
 			<!-- 
 			=============================================
 				Theme Inner Banner
@@ -206,6 +112,9 @@
 			<div class="our-course course-grid">
 				<div class="container">
 					<div class="row">
+						
+						<!-- 	"Show course" -->
+						
 						<div class="col-lg-9 col-md-8 col-xs-12 popular-course float-right">
 							<div class="course-style-filter clearfix">
 								<ul class="float-left clearfix">
@@ -232,8 +141,6 @@
 												</div>
 												<c:url var="tempLink" value="CourseDetail">
 													<c:param name="course_id" value="${tempCourse.getCourses_id()}"></c:param>
-													<c:param name="uid" value="${user_info.getUid()}"></c:param>
-													<c:param name="aid" value="${user_info.getAid()}"></c:param>  
 	  											</c:url>
 												<h5><a href="${tempLink}" class="tran3s">${tempCourse.getName()}</a></h5>
 												<ul class="clearfix">
@@ -264,154 +171,14 @@
 						</div> <!-- /.popular-course -->
 
 						<!-- ************************* SIDEBAR ***************************** -->
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-							<div class="course-sidebar">
-								<div class="sidebar-categories">
-									<h4>Categories</h4>
-									<div class="panel-group theme-accordion" id="accordion">
-									  <c:forEach var="categoryName" items="${cate }">
-										  <div class="panel">
-										    <div class="panel-heading active-panel">
-										      <h6 class="panel-title">
-										      	<c:url var="CateLink" value="CourseByCategory">
-													<c:param name="cid" value="${categoryName.getCid()}"></c:param>
-													<c:param name="uid" value="${user_info.getUid()}"></c:param>
-													<c:param name="aid" value="${user_info.getAid()}"></c:param>
-	  											</c:url>
-										        <a data-toggle="collapse" data-parent="#accordion" href="${CateLink}">
-										        ${categoryName.getName() }</a>
-										      </h6>										      
-										    </div>
-										    <div id="collapse1" class="panel-collapse collapse in">
-										      <div class="panel-body">
-										      	<!-- <ul>
-										      		<li><a href="#" class="tran3s">Html/Css</a></li>
-										      		<li><a href="#" class="tran3s">jQuery</a></li>
-										      		<li><a href="#" class="tran3s">Sass/less</a></li>
-										      	</ul> -->
-										      </div>
-										    </div>
-										  </div> 
-									  </c:forEach>	
-									</div> <!-- end #accordion -->
-								</div> <!-- /.sidebar-categories -->
+						<jsp:include page="Category.jsp" />
+						
+						
+						<!-- Doan category bi xoa -->
 
-								<div class="course-filter">
-									<h4>Search By Filters</h4>
-									<form action="" class="main-wrapper">
-										<div class="tag-option">
-											<h5>Tag</h5>
-											<ul class="clearfix">
-												<li>
-													<input type="checkbox" id="book" checked>
-													<label for="book">Book</label>
-												</li>
-												<li>
-													<input type="checkbox" id="linux">
-													<label for="linux">Linux</label>
-												</li>
-												<li>
-													<input type="checkbox" id="design" checked>
-													<label for="design">Design</label>
-												</li>
-												<li>
-													<input type="checkbox" id="development" checked>
-													<label for="development">Development</label>
-												</li>
-												<li>
-													<input type="checkbox" id="art" checked>
-													<label for="art">Art</label>
-												</li>
-												<li>
-													<input type="checkbox" id="web">
-													<label for="web">Design</label>
-												</li>
-												<li>
-													<input type="checkbox" id="software">
-													<label for="software">Softwear</label>
-												</li>
-												<li>
-													<input type="checkbox" id="php" checked>
-													<label for="php">PHP</label>
-												</li>
-											</ul>
-										</div> <!-- /.tag-option -->
-
-										<div class="course-price-filter">
-											<h5>Price Range</h5>
-											<div class="price-ranger">
-												<div class="ranger-min-max-block">
-													<ul class="clearfix">
-														<li class="float-left">
-															<label for="min">From</label>
-															<input type="text" class="min" readonly>
-														</li>
-														<li class="float-left">
-															<label for="max">To</label>
-															<input type="text" class="max" readonly>
-														</li>
-													</ul>
-												</div>
-												<div id="slider-range"></div>
-											</div> <!-- /price-ranger -->
-										</div> <!-- /.course-price-filter -->
-
-										<div class="course-work-level">
-											<h5>Work level</h5>
-											<ul class="clearfix">
-												<li>
-													<input type="checkbox" id="starting">
-													<label for="starting">Starting</label>
-												</li>
-												<li>
-													<input type="checkbox" id="begainer">
-													<label for="begainer">Begainer</label>
-												</li>
-												<li>
-													<input type="checkbox" id="expert" checked>
-													<label for="expert">Expert</label>
-												</li>
-												<li>
-													<input type="checkbox" id="intermediate">
-													<label for="intermediate">Intermediate</label>
-												</li>
-												<li>
-													<input type="checkbox" id="advance">
-													<label for="advance">Advance</label>
-												</li>
-											</ul>
-										</div> <!-- /.course-work-level -->
-
-										<div class="course-location">
-											<h5>Location</h5>
-											<div class="form-group">
-										      <div>
-										        <select id="loaction" class="selectpicker show-tick form-control" data-live-search="true">
-										          <option>Dhaka</option>
-										          <option>Bab Ezzouar</option>
-										          <option>Baguio</option>
-										          <option>London</option>
-										          <option>Paris</option>
-										          <option>Dubai</option>
-										          <option>New York</option>
-										          <option>Singapore</option>
-										          <option>Kuala Lumpur</option>
-										          <option>Istanbul</option>
-										          <option>Tokyo</option>
-										          <option>Seoul</option>
-										          <option>Amsterdam</option>
-										          <option>Osaka</option>
-										          <option>Vienna</option>
-										        </select>
-										      </div>
-										    </div>
-										</div> <!-- /.course-location -->
-
-										<div class="button-wrapper"><input type="submit" value="Apply filters" class="p-bg-color tran3s"></div>
-									</form> <!-- /.main-wrapper -->
-								</div> <!-- /.course-filter -->
-							</div> <!-- /.course-sidebar -->
-						</div> <!-- /.col- -->
+						<!--Doan category bi xoa  -->
+						
+						
 					</div> <!-- /.row -->
 				</div> <!-- /.container -->
 			</div> <!-- /.our-course -->
