@@ -29,6 +29,7 @@ public class CourseUtil {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
+		System.out.println("getCourseDetail");
 		myConn = dataSource.getConnection();
 		String sql = "select * from courses where course_id = ?";
 		myStmt = myConn.prepareStatement(sql);
@@ -168,13 +169,20 @@ public class CourseUtil {
 
 	public void removeCourse(int uid, int course_id) throws SQLException {
 		Connection myConn = null;
-		ResultSet myRS = null;
-		myConn = dataSource.getConnection();
-		String sql = "DELETE FROM happourse.user_course WHERE uid=? AND course_id=?;";
-		PreparedStatement pstmt = myConn.prepareStatement(sql);
-		pstmt.setInt(1, uid);
-		pstmt.setInt(2, course_id);
-		myRS = pstmt.executeQuery();
-		myConn.close();
+		PreparedStatement pstmt = null;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "DELETE FROM happourse.user_course WHERE uid=? AND course_id=?;";
+			pstmt = myConn.prepareStatement(sql);
+			pstmt.setInt(1, uid);
+			pstmt.setInt(2, course_id);
+			pstmt.execute();
+			myConn.close();
+		}
+		finally {
+			if (!myConn.isClosed()) {
+				myConn.close();
+			}
+		}
 	}
 }

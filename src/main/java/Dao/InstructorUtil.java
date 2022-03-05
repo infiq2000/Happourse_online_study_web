@@ -20,6 +20,7 @@ public class InstructorUtil {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
+		
 		try {
 			myConn = dataSource.getConnection();
 			String sql = "select * from instructor where ins_id = ?";
@@ -48,6 +49,7 @@ public class InstructorUtil {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
+		System.out.println("getCate");
 		try {
 			myConn = dataSource.getConnection();
 			String sql = "select * from category where cid = ?";
