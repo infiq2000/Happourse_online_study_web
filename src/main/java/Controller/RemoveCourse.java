@@ -56,10 +56,10 @@ public class RemoveCourse extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doGetRemoveCourse");
 		int course_id = Integer.parseInt(request.getParameter("course_id"));
 		int uid = (int)request.getSession(false).getAttribute("uid");
-		int aid = (int)request.getSession(false).getAttribute("aid");
-	
+		
 		request.setAttribute("course_id", course_id);
 	
 		try {
@@ -72,8 +72,9 @@ public class RemoveCourse extends HttpServlet {
 			
 			Instructor ins_info = insUtil.getIns_Info(detailC.getIns_id());
 			request.setAttribute("ins_info", ins_info);
-			
+			System.out.println(uid + " " + course_id);
 			courseUtil.removeCourse(uid,course_id);
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/Course_detail.jsp");
 			dispatcher.forward(request, response);
 		} catch (SQLException e) {
