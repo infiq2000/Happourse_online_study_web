@@ -65,20 +65,12 @@ public class CourseDetail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int course_id = Integer.parseInt(request.getParameter("course_id"));
-		int uid = Integer.parseInt(request.getParameter("uid"));
-		int aid = Integer.parseInt(request.getParameter("aid"));
+		int uid = (int)request.getSession(false).getAttribute("uid");
+		int aid = (int)request.getSession(false).getAttribute("aid");
 		try {
 			/* Account ac = accUtil.getAccount(aid); */
-			User user = userUtil.getUser(aid);
 			Account acc =  accUtil.getAccount(aid);
 			request.setAttribute("account", acc);
-			String[] a = user.getFull_name().split(" ");
-			String b = a[a.length - 1];
-			request.setAttribute("name", b);
-			request.setAttribute("user",user);
-			request.setAttribute("aid", aid);
-			request.setAttribute("uid", uid);
-			request.setAttribute("user_info",user);
 			request.setAttribute("course_id", course_id);
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block

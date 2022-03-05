@@ -1,17 +1,23 @@
 package Controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.naming.InitialContext;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+
+import com.mysql.cj.Session;
 
 import Dao.AccountUtil;
 import Dao.InstructorUtil;
@@ -74,16 +80,16 @@ public class Login extends HttpServlet {
 					user = userUtil.getUser(tmp.getAid());
 					List<Courses> courses = userUtil.getAll_Courses();
 					request.setAttribute("listCourses", courses);
-					/*
-					 * Hashtable<Integer,String> namebyID = userUtil.getNameById(); for(Courses c :
-					 * courses) { c.setIns_name(namebyID.get(c.getIns_id())); }
-					 */
-					List<Category> categories = couUtil.getCategories();
-					request.setAttribute("cate", categories);
+					
 					request.setAttribute("user_info",user);
 					String[] a = user.getFull_name().split(" ");
 					String b = a[a.length - 1];
-					request.setAttribute("name", b);
+					
+					
+					HttpSession session = request.getSession(true);
+					session.setAttribute("name", b);
+					session.setAttribute("uid", user.getUid());
+					session.setAttribute("aid", user.getAid());
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
 					dispatcher.forward(request, response);
 				}

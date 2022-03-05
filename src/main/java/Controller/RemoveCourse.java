@@ -57,24 +57,11 @@ public class RemoveCourse extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int course_id = Integer.parseInt(request.getParameter("course_id"));
-		int uid = Integer.parseInt(request.getParameter("uid"));
-		int aid = Integer.parseInt(request.getParameter("aid"));
-		try {
-			User user = userUtil.getUser(aid);
-			Account acc =  accUtil.getAccount(aid);
-			request.setAttribute("account", acc);
-			String[] a = user.getFull_name().split(" ");
-			String b = a[a.length - 1];
-			request.setAttribute("name", b);
-			request.setAttribute("user",user);
-			request.setAttribute("aid", aid);
-			request.setAttribute("uid", uid);
-			request.setAttribute("user_info",user);
-			request.setAttribute("course_id", course_id);
-		}  catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		int uid = (int)request.getSession(false).getAttribute("uid");
+		int aid = (int)request.getSession(false).getAttribute("aid");
+	
+		request.setAttribute("course_id", course_id);
+	
 		try {
 			
 			Courses detailC = courseUtil.getCourseDetail(course_id);
