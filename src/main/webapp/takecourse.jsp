@@ -205,8 +205,6 @@
 										</div>
 									</div>
 									<c:url var="Link4" value="Enroll">
-										<c:param name="uid" value="${user_info.getUid()}"></c:param>  
-										<c:param name="aid" value="${user_info.getAid()}"></c:param> 
 										<c:param name="course_id" value="${course_id}"></c:param> 
 									</c:url>
 									<a href="${Link4}" class="add-cart tran3s" onclick="if (!(confirm('Ban da muon dang ki khoa hoc?'))) return false">Enroll</a>

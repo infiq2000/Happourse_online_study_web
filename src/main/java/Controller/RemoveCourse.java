@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -18,6 +19,7 @@ import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
 import Model.Account;
+import Model.Chapter;
 import Model.Courses;
 import Model.Instructor;
 import Model.User;
@@ -72,6 +74,9 @@ public class RemoveCourse extends HttpServlet {
 			
 			Instructor ins_info = insUtil.getIns_Info(detailC.getIns_id());
 			request.setAttribute("ins_info", ins_info);
+			
+			List<Chapter> list_chapter = lecUtil.getChapterOfCourse(detailC.getCourses_id());
+			request.setAttribute("chapter", list_chapter);
 
 			courseUtil.removeCourse(uid,course_id);
 			
