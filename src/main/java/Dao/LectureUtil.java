@@ -29,11 +29,14 @@ public class LectureUtil {
 		myStmt.setInt(1, course_id);
 		myRS = myStmt.executeQuery();
 		List<Chapter> chapter = new ArrayList<>();
+		int dem = 0;
 		while (myRS.next()) {
+			dem++;
 			int chap_id = myRS.getInt("chap_id");
 			String name = myRS.getString("name");
 			chapter.add(new Chapter(chap_id,name,course_id));
 		}
+		System.out.println(dem);
 		return chapter;
 	}
 }

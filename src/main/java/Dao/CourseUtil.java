@@ -205,12 +205,9 @@ public class CourseUtil {
 			pstmt.setInt(1, uid);
 			pstmt.setInt(2, course_id);
 			pstmt.execute();
-			myConn.close();
 		}
 		finally {
-			if (!myConn.isClosed()) {
-				myConn.close();
-			}
+			myConn.close();
 		}
 	}
 }
