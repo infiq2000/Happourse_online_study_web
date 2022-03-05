@@ -29,7 +29,7 @@ public class CourseUtil {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
-		System.out.println("getCourseDetail");
+
 		myConn = dataSource.getConnection();
 		String sql = "select * from courses where course_id = ?";
 		myStmt = myConn.prepareStatement(sql);
