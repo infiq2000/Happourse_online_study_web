@@ -210,4 +210,41 @@ public class CourseUtil {
 			myConn.close();
 		}
 	}
+
+	public List<Courses> searchCourseByName(String name) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		List<Courses> li = new ArrayList<>();
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "SELECT * FROM happourse.courses WHERE name like '%?%\';";
+			pstmt = myConn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			myRS = pstmt.executeQuery();
+			while (myRS.next()) {			
+				int courses_id = myRS.getInt("course_id");
+				String courseName = myRS.getString("name");
+				String skill = myRS.getString("skill");
+				int price = myRS.getInt("price");
+				String language = myRS.getString("language");
+				String description = myRS.getString("description");
+				double star_rate = myRS.getDouble("star_rate");
+				int  ins_id = myRS.getInt("ins_id");
+				int cid = myRS.getInt("cid");
+				String ins_name = myRS.getString("ins_name");
+				String major = myRS.getString("major");
+				Courses course = new Courses(courses_id,courseName,skill,price,language,star_rate,description,ins_id, cid,ins_name, major);
+				li.add(course);
+			}
+		} finally {
+			myConn.close();
+		}
+		System.out.println("Tim kiem khoa hoc");
+		if (li.isEmpty()) {
+			return null;
+		} else {
+			return li;
+		}
+	}
 }
