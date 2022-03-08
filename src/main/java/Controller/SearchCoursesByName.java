@@ -49,13 +49,13 @@ public class SearchCoursesByName extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String n = request.getParameter("q");
-		n = n.toLowerCase();
+		String txtSearch = request.getParameter("search");
+		//txtSearch = txtS.toLowerCase();
 		List<Courses> courses=null;
 		try {
-			courses = couUtil.searchCourseByName(n);
+			courses = couUtil.searchCourseByName(txtSearch);
 		} catch (Exception e) {
-
+			System.out.println(e);
 		} 
 		
 		request.setAttribute("listCourses", courses);
