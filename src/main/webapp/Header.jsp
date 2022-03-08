@@ -87,10 +87,9 @@
 									
 									<li>
 										<div class="search-container">
-										    <form class="sbox" action="index.jsp" method="get">
+										    <form class="sbox" action="SearchCoursesByName" method="get">
 												<input class="stext tran5s" type="text" name="q" placeholder="Search...">
-												<button class="tran6s" type="submit"><i class="fa fa-search"></i></button>
-												
+												<button class="tran6s" type="submit"><i class="fa fa-search"></i></button>												
 											</form>
 										</div>
 									</li>
