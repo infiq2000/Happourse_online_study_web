@@ -58,7 +58,7 @@
 				Theme Header
 			============================================== 
 			-->
-			<jsp:include page="Header.jsp" />
+			<jsp:include page="Header.jsp"></jsp:include>
 			<!-- 
 			=============================================
 				Theme Inner Banner
