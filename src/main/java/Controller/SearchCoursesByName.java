@@ -49,21 +49,20 @@ public class SearchCoursesByName extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String name = request.getParameter("q");
+		String n = request.getParameter("q");
+		n = n.toLowerCase();
+		List<Courses> courses=null;
 		try {
-			List<Courses> courses = couUtil.searchCourseByName(name);
-			System.out.println("Da vao duoc doGet cua search");
-			if (courses.isEmpty()) {
-				System.out.println("Khoa hoc rong!");
-			}
-			request.setAttribute("listCourses", courses);
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
-			dispatcher.forward(request, response);			
+			courses = couUtil.searchCourseByName(n);
 		} catch (Exception e) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("404.html");
-			dispatcher.forward(request, response);	
+
 		} 
+		
+		request.setAttribute("listCourses", courses);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
+		
+		dispatcher.forward(request, response);			
 	}
 
 }
