@@ -126,16 +126,7 @@
 									</li>
 									<li><a href="contact-us.html" class="tran3s">Contact Us</a></li>
 									
-									<li>
-										<div class="search-container">
-										    <form class="sbox" action="/search" method="get">
-												<input class="stext tran5s" type="text" name="q" placeholder="Search...">
-												<a class="sbutton" type="submit" href="index.jsp">
-												<i class="fa fa-search"></i>
-												</a>
-											</form>
-										</div>
-									</li>
+									
 									
 									<li class="login"><button class="tran3s" data-toggle="modal" data-target=".signInModal"><i class="flaticon-lock"></i> Login</button></li>
 								</ul>

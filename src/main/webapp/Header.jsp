@@ -89,9 +89,7 @@
 										<div class="search-container">
 										    <form class="sbox" action="SearchCoursesByName" method="get">
 												<input class="stext tran5s" type="text" name="q" placeholder="Search...">
-												<a class="sbutton" type="submit">
-												<i class="fa fa-search"></i>
-												</a>
+												<button class="tran6s" type="submit"><i class="fa fa-search"></i></button>												
 											</form>
 										</div>
 									</li>
