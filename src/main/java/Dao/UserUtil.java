@@ -90,7 +90,7 @@ public class UserUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "select * from courses ";
+		String sql = "SELECT * FROM happourse.courses c, Happourse.instructor i WHERE (c.ins_id = i.ins_id);";
 		myStmt = myConn.prepareStatement(sql);
 		myRS = myStmt.executeQuery();
 		List<Courses> courses = new ArrayList<>();
@@ -104,7 +104,10 @@ public class UserUtil {
 			double star_rate = myRS.getDouble("star_rate");
 			int  ins_id = myRS.getInt("ins_id");
 			int cid = myRS.getInt("cid");
-			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid));
+			String ins_name = myRS.getString("ins_name");
+			String major = myRS.getString("major");
+			Courses course = new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major);
+			courses.add(course);
 		}
 		return courses;
 	}
