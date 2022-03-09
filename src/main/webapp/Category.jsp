@@ -33,8 +33,6 @@
 										      <h6 class="panel-title">
 										      	<c:url var="CateLink" value="CourseByCategory">
 													<c:param name="cid" value="${categoryName.getCid()}"></c:param>
-													<c:param name="uid" value="${user_info.getUid()}"></c:param>
-													<c:param name="aid" value="${user_info.getAid()}"></c:param>
 	  											</c:url>
 										        <a data-toggle="collapse" data-parent="#accordion" href="${CateLink}">
 										        ${categoryName.getName() }</a>
