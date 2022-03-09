@@ -12,7 +12,7 @@
 				Theme Inner Banner
 			============================================== 
 			-->
-			<div id="theme-main-banner" class="banner-one" style="display: block;height: 550px;margin_bottom: 10px;margin: 0 0 50px 0;">
+			<div id="theme-main-banner" class="banner-one" style="display: block;height: 400px;margin: 0 0 50px 0;">
 				<div data-src="images/home/slide-5.jpg">
 					<div class="camera_caption">
 						<div class="container text-center">
@@ -21,7 +21,7 @@
 									<div class="container">
 										<h2 class="wow fadeInUp animated">Our Courses</h2>
 										<ul>
-											<li><a href="index.jsp" class="tran3s" class="wow fadeInUp animated" data-wow-delay="0.2s">Home</a></li>
+											<li><a href="index.jsp"  class="wow fadeInUp animated" data-wow-delay="0.2s">Home</a></li>
 											<li class="wow fadeInUp animated" data-wow-delay="0.2s">/</li>
 											<li class="wow fadeInUp animated" data-wow-delay="0.2s">Courses</li>
 										</ul>
@@ -39,7 +39,7 @@
 									<div class="container">
 										<h2 class="wow fadeInUp animated">Our Courses</h2>
 										<ul>
-											<li><a href="index.jsp" class="tran3s" class="wow fadeInUp animated" data-wow-delay="0.2s">Home</a></li>
+											<li><a href="index.jsp"  class="wow fadeInUp animated" data-wow-delay="0.2s">Home</a></li>
 											<li class="wow fadeInUp animated" data-wow-delay="0.2s">/</li>
 											<li class="wow fadeInUp animated" data-wow-delay="0.2s">Courses</li>
 										</ul>
