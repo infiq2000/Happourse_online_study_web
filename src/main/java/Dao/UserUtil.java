@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 import Model.Courses;
 import Model.User;
-
+import Dao.AccountUtil; 
 public class UserUtil {
 	private DataSource dataSource;
 
@@ -137,5 +137,61 @@ public class UserUtil {
 			myConn.close();
 		}
 		
+	}
+	public void addUser(int aid) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		// create SQL update statement;
+		try {
+			myConn = dataSource.getConnection();
+			
+			// create SQL update statement
+			String sql = "insert into happourse.users (uid, full_name, major, aid)" + "values(?, ?, ?, ?)";
+			
+			// prepare statement
+			myStmt = myConn.prepareStatement(sql);
+		
+			int tmp =getIndex();
+			myStmt.setInt(1,tmp);
+			System.out.println(tmp);
+			myStmt.setString(2, "NewUser");
+			myStmt.setString(3, "None");
+			myStmt.setInt(4, aid);
+			
+			// execute SQL statement
+			myStmt.execute();
+		}
+		finally {
+			myConn.close();
+		}		
+	}
+	
+	public Integer getIndex() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "select uid from happourse.users";
+			myStmt = myConn.prepareStatement(sql);
+			myRS = myStmt.executeQuery();
+			List<Integer> lstIndex = new ArrayList<Integer>();
+			while (myRS.next()) {
+				Integer idx = myRS.getInt("uid");
+				lstIndex.add(idx);
+			}
+			int i = 1;
+			while(true) {
+				if(lstIndex.contains(i)) {
+					i++;
+				} else {
+					return i;
+				}
+			}
+		} 
+		finally {
+			myConn.close();
+		}
 	}
 }

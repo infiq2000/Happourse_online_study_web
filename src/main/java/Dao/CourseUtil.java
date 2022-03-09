@@ -25,28 +25,34 @@ public class CourseUtil {
 		userUtil = new UserUtil(dataSource);
 	}
 	
+	protected Courses takeCourseFromRS(ResultSet myRS) throws SQLException {
+		int courses_id = myRS.getInt("course_id");
+		String name = myRS.getString("name");
+		String skill = myRS.getString("skill");
+		int price = myRS.getInt("price");
+		String language = myRS.getString("language");
+		String description = myRS.getString("description");
+		double star_rate = myRS.getDouble("star_rate");
+		int  ins_id = myRS.getInt("ins_id");
+		int cid = myRS.getInt("cid");
+		String ins_name = myRS.getString("ins_name");
+		String major = myRS.getString("major");
+		return new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major);
+	}
+	
 	public Courses getCourseDetail(int course_id) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 
 		myConn = dataSource.getConnection();
-		String sql = "select * from courses where course_id = ?";
+		String sql = "SELECT * FROM happourse.courses c, Happourse.instructor i WHERE course_id=? AND (c.ins_id = i.ins_id);";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, course_id);
 		myRS = myStmt.executeQuery();
 		Courses course = null;
 		if (myRS.next()) {			
-			int courses_id = myRS.getInt("course_id");
-			String name = myRS.getString("name");
-			String skill = myRS.getString("skill");
-			int price = myRS.getInt("price");
-			String language = myRS.getString("language");
-			String description = myRS.getString("description");
-			double star_rate = myRS.getDouble("star_rate");
-			int  ins_id = myRS.getInt("ins_id");
-			int cid = myRS.getInt("cid");
-			course = new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid);
+			course = takeCourseFromRS(myRS);
 		}
 		myConn.close();
 		return course;
@@ -63,18 +69,7 @@ public class CourseUtil {
 		myRS = myStmt.executeQuery();
 		List<Courses> ls = new ArrayList<>();
 		while (myRS.next()) {			
-			int courses_id = myRS.getInt("course_id");
-			String name = myRS.getString("name");
-			String skill = myRS.getString("skill");
-			int price = myRS.getInt("price");
-			String language = myRS.getString("language");
-			String description = myRS.getString("description");
-			double star_rate = myRS.getDouble("star_rate");
-			int  ins_id = myRS.getInt("ins_id");
-			int cid = myRS.getInt("cid");
-			String ins_name = myRS.getString("ins_name");
-			String major = myRS.getString("major");
-			Courses course = new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major);
+			Courses course = takeCourseFromRS(myRS);
 			ls.add(course);
 		}
 		myConn.close();
@@ -92,8 +87,8 @@ public class CourseUtil {
 		pstmt.setInt(2, uid);
         pstmt.setInt(3, course_id);
         @SuppressWarnings("deprecation")
-		java.util.Date myDate = new java.util.Date("10/10/2009");
-        java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
+        java.util.Date utilDate = new java.util.Date();
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         pstmt.setDate(4, sqlDate);
        
         pstmt.executeUpdate();
@@ -158,17 +153,7 @@ public class CourseUtil {
 		myRS = pstmt.executeQuery();
 		List<Courses> ls = new ArrayList<>();
 		while (myRS.next()) {			
-			int courses_id = myRS.getInt("course_id");
-			String name = myRS.getString("name");
-			String skill = myRS.getString("skill");
-			int price = myRS.getInt("price");
-			String language = myRS.getString("language");
-			String description = myRS.getString("description");
-			double star_rate = myRS.getDouble("star_rate");
-			int  ins_id = myRS.getInt("ins_id");
-			String ins_name = myRS.getString("ins_name");
-			String major = myRS.getString("major");
-			Courses course = new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major);
+			Courses course = takeCourseFromRS(myRS);
 			ls.add(course);
 		}
 		myConn.close();
@@ -221,23 +206,63 @@ public class CourseUtil {
 		pstmt = myConn.prepareStatement(sql);
 		pstmt.setString(1, "%"+name+"%");
 		myRS = pstmt.executeQuery();
-		while (myRS.next()) {			
-			int courses_id = myRS.getInt("course_id");
-			String courseName = myRS.getString("name");
-			String skill = myRS.getString("skill");
-			int price = myRS.getInt("price");
-			String language = myRS.getString("language");
-			String description = myRS.getString("description");
-			double star_rate = myRS.getDouble("star_rate");
-			int  ins_id = myRS.getInt("ins_id");
-			int cid = myRS.getInt("cid");
-			String ins_name = myRS.getString("ins_name");
-			String major = myRS.getString("major");
-			Courses course = new Courses(courses_id,courseName,skill,price,language,star_rate,description,ins_id, cid,ins_name, major);
+		while (myRS.next()) {
+			Courses course = takeCourseFromRS(myRS);
 			li.add(course);
 		}
 		myConn.close();
-		System.out.println("Tim kiem khoa hoc" + li.size());
+		return li;
+	}
+
+	public List<Courses> getNewCourses() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		List<Courses> li = new ArrayList<>();
+		myConn = dataSource.getConnection();
+		String sql = "SELECT * FROM happourse.courses c, Happourse.instructor i WHERE (c.ins_id = i.ins_id) ORDER BY posted DESC;";
+		pstmt = myConn.prepareStatement(sql);
+		myRS = pstmt.executeQuery();
+		while (myRS.next()) {
+			Courses course = takeCourseFromRS(myRS);
+			li.add(course);
+		}
+		myConn.close();
+		return li;
+	}
+
+	public List<Courses> getFreeCourses() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		List<Courses> li = new ArrayList<>();
+		myConn = dataSource.getConnection();
+		String sql = "SELECT * FROM happourse.courses c, Happourse.instructor i WHERE price = ? AND (c.ins_id = i.ins_id);";
+		pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, 0);
+		myRS = pstmt.executeQuery();
+		while (myRS.next()) {
+			Courses course = takeCourseFromRS(myRS);
+			li.add(course);
+		}
+		myConn.close();
+		return li;
+	}
+
+	public List<Courses> getPopularCourses() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		List<Courses> li = new ArrayList<>();
+		myConn = dataSource.getConnection();
+		String sql = "SELECT c.course_id, name, skill, price, language, c.description, star_rate, i.ins_id, cid, ins_name, major, COUNT(c.course_id) as dem FROM user_course u, courses c, instructor i WHERE (i.ins_id = c.ins_id) AND (u.course_id = c.course_id) GROUP BY c.course_id,name, skill, price, language, c.description, star_rate, i.ins_id, cid, ins_name, major ORDER BY dem DESC ;";
+		pstmt = myConn.prepareStatement(sql);
+		myRS = pstmt.executeQuery();
+		while (myRS.next()) {
+			Courses course = takeCourseFromRS(myRS);
+			li.add(course);
+		}
+		myConn.close();
 		return li;
 	}
 }

@@ -90,7 +90,7 @@ public class AccountUtil {
 			myConn.close();
 		}
 	}
-	public void addAccount(String username, String email, String password) throws SQLException {
+	public void addAccount(int aid, String username, String email, String password, int type) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		
@@ -99,15 +99,16 @@ public class AccountUtil {
 			myConn = dataSource.getConnection();
 			
 			// create SQL update statement
-			String sql = "insert into happourse.account (aid, username, password, type)" + "values(?, ?, ?, 0)";
+			String sql = "insert into happourse.account (aid, username, password, type)" + "values(?, ?, ?, ?)";
 			
 			// prepare statement
 			myStmt = myConn.prepareStatement(sql);
 			
 			// set params
-			myStmt.setInt(1, getIndex());
+			myStmt.setInt(1, aid);
 			myStmt.setString(2, username);
 			myStmt.setString(3, password);
+			myStmt.setInt(4, type);
 			
 			// execute SQL statement
 			myStmt.execute();
