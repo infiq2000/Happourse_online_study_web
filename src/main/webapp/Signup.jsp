@@ -95,6 +95,8 @@
 					        		<input name = "txtEmail"type="email" placeholder="Email">
 					        		<input name = "txtPassword" type="password" placeholder="Password">
 					        		<input name = "txtRepeatPassword" type="password" placeholder="Repeat Password">
+					        		<input id="instructor1" name = "checkboxInstructor" type="checkbox" value="Instructor" style="margin: 0 0 20px 20px; width: 18px; height: 18px;">
+					        		<label for="instructor1" style="margin-bottom: 20px; font-weight: normal;">Instructor?</label>
 									
 									<!-- <body bgcolor="#9999CC">
 									<script language="javascript">

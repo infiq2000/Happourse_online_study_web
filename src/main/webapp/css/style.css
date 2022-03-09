@@ -213,7 +213,7 @@
 .tran6s {
 	background: white;
 	float: right;
-  margin-top: 27px;
+  margin: 27px 0 0 2px;
   font-size: 17px;
   border: none;
   cursor: pointer;
@@ -788,7 +788,7 @@ header.menu-style-two.fixed .logo {width: 10%;top:0;}
 }
 .bootstrap-select.btn-group .dropdown-toggle .bs-caret:before {
   font-family: 'font-awesome';
-  content: 'ïƒ—';
+  content: 'v';
   position: absolute;
   top:0;
   left: 0;
@@ -1914,7 +1914,7 @@ footer .bottom-footer {
   opacity: 0;
 }
 .course-sidebar .main-wrapper .tag-option ul li input[type="checkbox"]:checked + label:before {
-  content: "Ă¯â‚¬ï¿½";
+  content: "";
   font-family: 'font-awesome';
   opacity: 1;
 }
@@ -1982,7 +1982,7 @@ footer .bottom-footer {
   opacity: 0;
 }
 .course-sidebar .main-wrapper .course-work-level ul li input[type="checkbox"]:checked + label:before {
-  content: "Ă¯â‚¬Å’";
+  content: "";
   font-family: 'font-awesome';
   opacity: 1;
 }
