@@ -63,7 +63,10 @@ public class SignUp extends HttpServlet {
 		if (checkPass(password, repassword)) {
 			try {
 				if (accUtil.checkOverlap(username) == false) {
-					accUtil.addAccount(username, email, password);
+					int aid = accUtil.getIndex();
+					accUtil.addAccount(aid, username, email, password);
+					System.out.println("aid"+aid);
+					userUtil.addUser(aid);
 					response.sendRedirect("index.jsp");
 				} else {
 					/* SomeService service = new SomeService(); */

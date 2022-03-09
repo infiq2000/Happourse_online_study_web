@@ -90,7 +90,7 @@ public class AccountUtil {
 			myConn.close();
 		}
 	}
-	public void addAccount(String username, String email, String password) throws SQLException {
+	public void addAccount(int aid, String username, String email, String password) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		
@@ -105,7 +105,7 @@ public class AccountUtil {
 			myStmt = myConn.prepareStatement(sql);
 			
 			// set params
-			myStmt.setInt(1, getIndex());
+			myStmt.setInt(1, aid);
 			myStmt.setString(2, username);
 			myStmt.setString(3, password);
 			
@@ -136,6 +136,7 @@ public class AccountUtil {
 				if(lstIndex.contains(i)) {
 					i++;
 				} else {
+					System.out.println(i);
 					return i;
 				}
 			}
