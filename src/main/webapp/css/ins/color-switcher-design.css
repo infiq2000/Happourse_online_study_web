@@ -1,0 +1,204 @@
+/*** 
+
+====================================================================
+	Color Palate Style / Color Switcher Style
+====================================================================
+
+***/
+
+.color-palate {
+    background: #fff none repeat scroll 0 0;
+	-webkit-box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
+	-ms-box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
+	-o-box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    right: -285px;
+    text-align: center;
+    top: 25%;
+    transition: all 0.5s ease 0s;
+    width: 285px;
+    z-index: 999999;
+}
+
+.color-palate-head {
+    background: #ff5773 none repeat scroll 0 0;
+    padding: 12px 0;
+}
+
+.color-palate-head h6,
+.secondary-head h6 {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0px;
+    margin-top: 4px;
+	text-transform:uppercase;
+}
+
+.palate {
+	position: relative;
+    width:40px;
+    height: 40px;
+    margin: 0 2.5% 2px;
+	border-radius:50%;
+    cursor: pointer;
+	display:inline-block;
+    background: #ff5773 none repeat scroll 0 0;
+}
+
+.colors-list .active::after{
+    background: url(../images/icons/tick.png) center center no-repeat !important;
+    background-repeat: no-repeat;
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.various-color {
+    overflow: hidden;
+    padding: 20px 0 15px;
+}
+
+.color-palate .purchase-btn{
+	position:relative;
+	font-weight:600;
+	color:#ff5773;
+	font-size:12px;
+	text-transform:uppercase;
+}
+
+.colors-list {
+    margin: 0 20px;
+}
+
+.secondary-head {
+    background: #222222 none repeat scroll 0 0;
+    padding: 14px 0;
+}
+
+.secondary-color {
+    padding: 23px 0;
+}
+
+.secondary-colors-list {
+    margin: 0 80px;
+}
+
+.palate-foo {
+    color: #777777;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 0 30px;
+	line-height:1.8em;
+}
+
+.palate-foo span{
+	display:block;
+	padding-top:20px;
+	margin-top:12px;
+	border-top:1px dotted #b2b2b2;
+}
+
+.palate.color-one {
+    background: #ff5773 none repeat scroll 0 0;
+}
+
+.palate.color-two {
+    background: #8b8ee4 none repeat scroll 0 0;
+}
+
+.palate.color-three {
+    background: #3aa2a1 none repeat scroll 0 0;
+}
+
+.palate.color-four {
+    background: #caa235 none repeat scroll 0 0;
+}
+
+.palate.color-five {
+    background: #4aba6f none repeat scroll 0 0;
+}
+
+.palate.color-six {
+    background: #4fc6a0 none repeat scroll 0 0;
+}
+
+.palate.color-seven {
+    background: #e5d91f none repeat scroll 0 0;
+}
+
+.palate.color-eight {
+    background: #4cd6d8 none repeat scroll 0 0;
+}
+
+.palate.color-nine {
+    background: #3d6ade none repeat scroll 0 0;
+}
+
+.palate.color-ten {
+    background: #255f4c none repeat scroll 0 0;
+}
+
+.palate.color-eleven {
+    background: #545454 none repeat scroll 0 0;
+}
+
+.palate.color-twelve {
+    background: #37356d none repeat scroll 0 0;
+}
+
+.color-trigger {
+    background: #ff5773 none repeat scroll 0 0;
+    cursor: pointer;
+    height: 50px;
+    left: -46px;
+    position: absolute;
+    top: 0;
+    width: 46px;
+    padding-top: 6px;
+}
+.color-trigger .fa{
+	-webkit-animation: rotating 2s linear infinite;
+    animation: rotating 2s linear infinite;
+	-moz-animation: rotating 2s linear infinite;
+	-ms-animation: rotating 2s linear infinite;
+	-o-animation: rotating 2s linear infinite;
+}
+.color-trigger:before{
+	content:'';
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+	height:100%;
+}
+
+.color-trigger i {
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 40px;
+}
+
+.color-palate.visible-palate {
+    right: 0px;
+}
+
+
+
+.color-palate .color-trigger .fa{
+	-webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+	from {
+			-webkit-transform: rotate(0deg);
+	}
+	to {
+			-webkit-transform: rotate(359deg);
+	}
+}

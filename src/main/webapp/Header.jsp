@@ -68,13 +68,7 @@
 											</li>
 										</ul>
 									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Event</a>
-										<ul class="sub-menu">
-											<li><a href="event-list.html">Event List</a></li>
-											<li><a href="event-grid.html">Event Grid</a></li>
-											<li><a href="event-details.html">Event Single</a></li>
-										</ul>
-									</li>
+									
 									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Blog</a>
 										<ul class="sub-menu">
 											<li><a href="blog-grid.html">Blog grid</a></li>
@@ -94,16 +88,27 @@
 										</div>
 									</li>
 									
+									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Instuctor</a>
+										<ul class="sub-menu">
+											<li><a href="dashboard.jsp">Instructor Dashboard</a></li>
+											<li><a href="#">Manage Courses</a></li>
+											<li><a href="#">Edit Course</a></li>
+											<li><a href="#">Earnings</a></li>
+											<li><a href="#">Instructor Profile</a></li>
+											<li><a href="#">Popular Instructors</a></li>
+										</ul>
+									</li>
+									
 									<%
 										String name = (String)session.getAttribute("name");
 									%>
 									
 									<li class="dropdown-holder menu-list" ><a class="tran3s"><span class="login">HI <%=name %></span></a> 
 										<ul class="sub-menu">
-											<li><a href="Profile">Tài khoản</a></li>
-											<li><a href="UpdateTest">Cập nhật thông tin</a></li>
-											<li><a href="MyLearning">Khóa học</a></li>
-											<li><a href="Logout">Đăng xuất</a></li>
+											<li><a href="Profile">My Profile</a></li>
+											<li><a href="UpdateTest">Update Profile</a></li>
+											<li><a href="MyLearning">My Learning</a></li>
+											<li><a href="Logout">Log out</a></li>
 										</ul>
 									</li>
 								</ul>

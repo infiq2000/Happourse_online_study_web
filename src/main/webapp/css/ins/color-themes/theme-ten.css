@@ -1,0 +1,230 @@
+@charset "utf-8";
+/* CSS Document */
+
+a,
+.theme_color,
+.btn-style-two,
+.sec-title .see-all,
+.contact-info-list li a:hover,
+.recent-posts .post a:hover,
+.tags-widget ul li a:hover,
+.categories-widget ul li a:hover,
+.categories-widget .all-category,
+.feature-block-two .inner-box h6 a:hover,
+.feature-block-two .inner-box .author span,
+.main-header .header-left .search-box .form-group button,
+.main-header .header-right .options-box .text,
+.course-block .inner-box .lower-content h6 a:hover,
+.course-block .inner-box .lower-content .author span,
+.testimonial-block .inner-box .designation,
+.testimonial-block .inner-box:hover .quote,
+.main-footer .links-widget li a:hover,
+.news-block .inner-box .reading,
+.main-menu .navigation > li > a,
+.certificate-box .box-inner ul li a,
+.news-block .inner-box h6 a:hover,
+.checkout-form .form-group .icon,
+.news-detail .inner-box .lower-content .author,
+.main-footer .logo-widget .social-box a:hover,
+.sidebar-page-container .comments-area .reply-option li a:hover,
+.hidden-bar .pages-list li.active a, .hidden-bar .pages-list li a:hover,
+.main-header .header-right .options-box .profile-box .pages li a:hover,
+.main-header .header-right .options-box .notification-box .view,
+.checkout-tabs .tab-btns .tab-btn.active-btn .icon,
+.checkout-tabs .tab-btns .tab-btn:hover .icon,
+.student-review-box .rating-column .inner-column .total-rating,
+.student-review-box .rating-column .inner-column .rating,
+.student-review-box .stars-column .rating,
+.reviewer-comment-box .rating .fa,
+.reviewer-comment-box .rating .total-rating,
+.reviewer-comment-box .like-option .report,
+.reviewer-comment-box .like-option li span:hover,
+.review-widget .intro-video .intro-video-box,
+.accordion-box .block .content .minutes,
+.accordion-box .block .play-icon .fa,
+.popular-posts .post a:hover,
+.earning-block .inner-box .content .courses span,
+.dashboard-block .inner-box .content .courses span,
+.achieve-block .inner-box .designation,
+.course-block-two .cource-inner-box h5 a:hover,
+.course-block-two .cource-inner-box .cource-sales,
+.statement-section .total-revenue,
+.styled-form .form-group .users a,
+.price-block .inner-box .price,
+.price-block .inner-box .list li.cross:before,
+.manage-cource-section .inner-container tbody tr .sales,
+.testview-section .inner-container .upper-box .certificate,
+.manage-cource-section .inner-container tbody tr .actions a:hover,
+.edit-cource-section .right-column .video-boxed .intro-video-box,
+.testview-section .inner-container .upper-box .question-box .question,
+.course-detail-section .upper-content .left-column .intro-video .intro-video-box,
+.hidden-bar .pages-list li:hover a .icon, .hidden-bar .pages-list li.active a .icon,
+.main-header .header-right .options-box .notification-block .inner h3 a:hover,
+.main-header .header-right .options-box .notification-box .notification-box-btn:hover{
+	color:#255f4c;
+}
+
+/* Background Color */
+
+.btn-style-one,
+.btn-style-two:before,
+.btn-style-four:before,
+.time-counter-two,
+.scroll-to-top:hover,
+.sidenav-list ul li a span,
+.main-header .left-sidebar-btn,
+.course-block .inner-box .image,
+.recent-posts .post .post-thumb,
+.video-box .overlay-box span,
+.featured-widget .owl-nav .owl-prev:hover,
+.featured-widget .owl-nav .owl-next:hover,
+.testimonial-section .owl-nav .owl-prev:hover,
+.testimonial-section .owl-nav .owl-next:hover,
+.feature-block-two .inner-box .content .image,
+.hidden-bar .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+.styled-pagination li.active a, .styled-pagination li:hover a,
+.feature-block-three .inner-box:hover .icon,
+.category-page-container .owl-nav .owl-prev:hover,
+.category-page-container .owl-nav .owl-next:hover,
+.ui-state-active, .ui-widget-content .ui-state-active,
+.help-tabs .tab-btns .tab-btn:before,
+.checkout-tabs .tab-btns .tab-btn:before,
+.course-detail-section .upper-content .right-column .rating .rate,
+.instructor-tabs .tab-btns .tab-btn:before,
+.course-tabs .tab-btns .tab-btn:before,
+.dashboard-block .inner-box .content .icon-box,
+.dashboard-section .owl-nav .owl-prev:hover,
+.dashboard-section .owl-nav .owl-next:hover,
+.earning-block .inner-box .content .icon-box,
+.accordion-box.style-two .block .content .text-link:before,
+.option-cource-box .form-group.tags a:hover,
+.setting-tabs .tab-btns .tab-btn:before,
+.main-menu .navigation > li > ul > li:hover > a,
+.main-menu .navigation > li > ul > li > ul > li:hover > a,
+.result-section .inner-container .result-options li:nth-child(2) .icon,
+.introduction-section .inner-box .lower-box .rating .rate,
+.signup-tabs .tab-btns .tab-btn:before,
+.quiz-form .check-box input[type="checkbox"]:checked + label:after,
+.main-header .header-right .options-box .notification-box .notification-alert{
+	background-color:#255f4c;
+}
+
+/* Light Background Color */
+
+.sidenav-list ul li a .icon,
+.tags-widget ul li a:hover,
+.main-header .header-left .form-group input[type="text"],
+.main-header .header-left .form-group input[type="search"],
+.main-header .header-right .options-box .notification-box .view,
+.feature-block-two .inner-box .content .dropdown-content span:hover,
+.hidden-bar .pages-list li.active a, .hidden-bar .pages-list li a:hover,
+.main-header .header-right .options-box .profile-box .profile-content .dark-mode .icon{
+	background-color:#d9efe8;
+}
+
+.news-block .inner-box .content .image:before{
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(37,95,76,.4) 100%);
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(37,95,76,.4) 100%);
+}
+
+.btn-style-one,
+.dashboard-block .inner-box .content .icon-box,
+.earning-block .inner-box .content .icon-box{
+	box-shadow:0px 10px 15px rgba(37,95,76,0.10);
+}
+
+.video-box .ripple,
+.video-box .ripple:before,
+.video-box .ripple:after,
+.accordion-box .block .play-icon .ripple,
+.accordion-box .block .play-icon .ripple:before,
+.accordion-box .block .play-icon .ripple:after{
+	-webkit-box-shadow: 0 0 0 0 rgba(37,95,76, .6);
+    -moz-box-shadow: 0 0 0 0 rgba(37,95,76, .6);
+    -ms-box-shadow: 0 0 0 0 rgba(37,95,76, .6);
+    -o-box-shadow: 0 0 0 0 rgba(37,95,76, .6);
+    box-shadow: 0 0 0 0 rgba(37,95,76, .6);
+}
+
+.edit-cource-section .right-column .video-boxed:before{
+	background-color:rgba(37,95,76,0.50);
+}
+
+/*Border Color*/
+
+.btn-style-two,
+.btn-style-four:hover,
+.sec-title .see-all,
+.btn-style-two:hover,
+.info-contact-box .box-inner:hover,
+.featured-widget .owl-nav .owl-prev:hover,
+.featured-widget .owl-nav .owl-next:hover,
+.categories-widget .all-category,
+.news-block .inner-box .reading,
+.testimonial-section .owl-nav .owl-prev:hover,
+.testimonial-section .owl-nav .owl-next:hover,
+.comment-form .form-group input[type="text"]:focus,
+.comment-form .form-group input[type="password"]:focus,
+.comment-form .form-group input[type="tel"]:focus,
+.comment-form .form-group input[type="email"]:focus,
+.comment-form .form-group select:focus,
+.comment-form .form-group textarea:focus,
+.ui-state-active, .ui-widget-content .ui-state-active,
+.category-page-container .owl-nav .owl-prev:hover,
+.category-page-container .owl-nav .owl-next:hover,
+.styled-form .form-group textarea:focus,
+.styled-form .form-group input:focus,
+.checkout-form .form-group textarea:focus,
+.checkout-form .form-group input:focus,
+.dashboard-section .owl-nav .owl-prev:hover,
+.dashboard-section .owl-nav .owl-next:hover,
+.edit-course-form .form-group textarea:focus,
+.edit-course-form .form-group input:focus,
+.feedback-form .form-group input[type="text"]:focus,
+.feedback-form .form-group input[type="password"]:focus,
+.feedback-form .form-group input[type="tel"]:focus,
+.feedback-form .form-group input[type="email"]:focus,
+.feedback-form .form-group select:focus,
+.feedback-form .form-group textarea:focus,
+.styled-form .form-group .check-box label:before,
+.styled-form .form-group .check-box input[type="checkbox"]:checked + label:before,
+.setting-form .form-group input[type="text"]:focus,
+.setting-form .form-group input[type="password"]:focus,
+.setting-form .form-group input[type="tel"]:focus,
+.setting-form .form-group input[type="email"]:focus,
+.setting-form .form-group select:focus,
+.setting-form .form-group textarea:focus,
+.quiz-form .form-group textarea:focus,
+.quiz-form .check-box input[type="checkbox"]:checked + label:before,
+.testview-section .inner-container .upper-box .certificate{
+	border-color:#255f4c;
+}
+
+/*RGBA Color Dark*/
+
+@media only screen and (max-width: 767px){
+	
+	.main-menu .navbar-header .navbar-toggle{
+		
+	}
+	
+	.main-menu .navbar-header .navbar-toggle,
+	.main-menu .navbar-collapse > .navigation,
+	.main-menu .navbar-collapse > .navigation > li > ul,
+	.main-menu .navbar-collapse > .navigation > li > ul > li > ul,
+	.main-menu .navbar-collapse > .navigation > li > a,
+	.main-menu .navbar-collapse > .navigation > li > ul > li > a,
+	.main-menu .navbar-collapse > .navigation > li > ul > li > ul > li > a,
+	.main-menu .navbar-collapse > .navigation > li > a:hover,
+	.main-menu .navbar-collapse > .navigation > li > a:active,
+	.main-menu .navbar-collapse > .navigation > li > a:focus,
+	.main-menu .navbar-collapse > .navigation > li:hover > a,
+	.main-menu .navbar-collapse > .navigation > li > ul > li:hover > a,
+	.main-menu .navbar-collapse > .navigation > li > ul > li > ul > li:hover > a,
+	.main-menu .navbar-collapse > .navigation > li.current > a,
+	.main-menu .navbar-collapse > .navigation > li.current-menu-item > a,
+	.header-style-two.inner-header .main-menu .navigation > li > a{
+		
+	}
+	
+}
