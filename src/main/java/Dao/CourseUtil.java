@@ -87,8 +87,8 @@ public class CourseUtil {
 		pstmt.setInt(2, uid);
         pstmt.setInt(3, course_id);
         @SuppressWarnings("deprecation")
-		java.util.Date myDate = new java.util.Date("10/10/2009");
-        java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
+        java.util.Date utilDate = new java.util.Date();
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
         pstmt.setDate(4, sqlDate);
        
         pstmt.executeUpdate();
@@ -211,7 +211,58 @@ public class CourseUtil {
 			li.add(course);
 		}
 		myConn.close();
-		System.out.println("Tim kiem khoa hoc" + li.size());
+		return li;
+	}
+
+	public List<Courses> getNewCourses() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		List<Courses> li = new ArrayList<>();
+		myConn = dataSource.getConnection();
+		String sql = "SELECT * FROM happourse.courses c, Happourse.instructor i WHERE (c.ins_id = i.ins_id) ORDER BY posted DESC;";
+		pstmt = myConn.prepareStatement(sql);
+		myRS = pstmt.executeQuery();
+		while (myRS.next()) {
+			Courses course = takeCourseFromRS(myRS);
+			li.add(course);
+		}
+		myConn.close();
+		return li;
+	}
+
+	public List<Courses> getFreeCourses() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		List<Courses> li = new ArrayList<>();
+		myConn = dataSource.getConnection();
+		String sql = "SELECT * FROM happourse.courses c, Happourse.instructor i WHERE price = ? AND (c.ins_id = i.ins_id);";
+		pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, 0);
+		myRS = pstmt.executeQuery();
+		while (myRS.next()) {
+			Courses course = takeCourseFromRS(myRS);
+			li.add(course);
+		}
+		myConn.close();
+		return li;
+	}
+
+	public List<Courses> getPopularCourses() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		List<Courses> li = new ArrayList<>();
+		myConn = dataSource.getConnection();
+		String sql = "SELECT c.course_id, name, skill, price, language, c.description, star_rate, i.ins_id, cid, ins_name, major, COUNT(c.course_id) as dem FROM user_course u, courses c, instructor i WHERE (i.ins_id = c.ins_id) AND (u.course_id = c.course_id) GROUP BY c.course_id,name, skill, price, language, c.description, star_rate, i.ins_id, cid, ins_name, major ORDER BY dem DESC ;";
+		pstmt = myConn.prepareStatement(sql);
+		myRS = pstmt.executeQuery();
+		while (myRS.next()) {
+			Courses course = takeCourseFromRS(myRS);
+			li.add(course);
+		}
+		myConn.close();
 		return li;
 	}
 }
