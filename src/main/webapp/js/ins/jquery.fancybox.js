@@ -2136,7 +2136,7 @@
             if ( slide.opts.smallBtn && !slide.$smallBtn ) {
                 slide.$smallBtn = $( self.translate( slide, slide.opts.btnTpl.smallBtn ) ).appendTo( slide.$content.filter('div,form').first() );
             }
-
+            
             if ( slide.opts.protect && slide.$content && !slide.hasError ) {
 
                 // Disable right click

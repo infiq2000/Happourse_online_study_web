@@ -61,7 +61,7 @@ a,
 .hidden-bar .pages-list li:hover a .icon, .hidden-bar .pages-list li.active a .icon,
 .main-header .header-right .options-box .notification-block .inner h3 a:hover,
 .main-header .header-right .options-box .notification-box .notification-box-btn:hover{
-	color:#ff5773;
+	color:#1b1d3d;
 }
 
 /* Background Color */
@@ -106,7 +106,7 @@ a,
 .signup-tabs .tab-btns .tab-btn:before,
 .quiz-form .check-box input[type="checkbox"]:checked + label:after,
 .main-header .header-right .options-box .notification-box .notification-alert{
-	background-color:#ff5773;
+	background-color:#1b1d3d;
 }
 
 /* Light Background Color */
@@ -197,7 +197,7 @@ a,
 .quiz-form .form-group textarea:focus,
 .quiz-form .check-box input[type="checkbox"]:checked + label:before,
 .testview-section .inner-container .upper-box .certificate{
-	border-color:#ff5773;
+	border-color:#1b1d3d;
 }
 
 /*RGBA Color Dark*/
