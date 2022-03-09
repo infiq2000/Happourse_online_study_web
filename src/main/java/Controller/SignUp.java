@@ -59,11 +59,23 @@ public class SignUp extends HttpServlet {
 		String email = request.getParameter("txtEmail");
 		String password = request.getParameter("txtPassword");
 		String repassword = request.getParameter("txtRepeatPassword");
-		
+		String[] isInstructor = request.getParameterValues("checkboxInstructor");
+		int type = -1;
 		if (checkPass(password, repassword)) {
 			try {
 				if (accUtil.checkOverlap(username) == false) {
-					accUtil.addAccount(username, email, password);
+					int aid = accUtil.getIndex();
+					type = 0;
+					if (isInstructor == null) {						
+						type =0;
+						accUtil.addAccount(aid, username, email, password, type);
+						userUtil.addUser(aid);
+					}else {
+						type = 1;
+						accUtil.addAccount(aid, username, email, password, type);
+						insUtil.addIns(aid);
+					}
+					userUtil.addUser(aid);
 					response.sendRedirect("index.jsp");
 				} else {
 					/* SomeService service = new SomeService(); */

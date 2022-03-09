@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
@@ -65,6 +67,67 @@ public class InstructorUtil {
 			myConn.close();
 		}
 	}
+	public void addIns(int aid) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		// create SQL update statement;
+		try {
+			myConn = dataSource.getConnection();
+			
+			// create SQL update statement
+			String sql = "insert into happourse.instructor (ins_id, ins_name, major, description, total_course, total_rating, aid)" 
+			+ "values(?, ?, ?, ?, ?, ?, ?)";
+			
+			// prepare statement
+			myStmt = myConn.prepareStatement(sql);
+		
+			int tmp = getIndex();
+			myStmt.setInt(1,tmp);
+			myStmt.setString(2, "NewUser");
+			myStmt.setString(3, "None");
+			myStmt.setString(4, "None");
+			myStmt.setInt(5, 0);
+			myStmt.setInt(6, 0);
+			myStmt.setInt(7, aid);
+			
+			// execute SQL statement
+			myStmt.execute();
+		}
+		finally {
+			myConn.close();
+		}		
+		
+	}
+	private int getIndex() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "select ins_id from happourse.instructor";
+			myStmt = myConn.prepareStatement(sql);
+			myRS = myStmt.executeQuery();
+			List<Integer> lstIndex = new ArrayList<Integer>();
+			while (myRS.next()) {
+				Integer idx = myRS.getInt("ins_id");
+				lstIndex.add(idx);
+			}
+			int i = 1;
+			while(true) {
+				if(lstIndex.contains(i)) {
+					i++;
+				} else {
+					return i;
+				}
+			}
+		} 
+		finally {
+			myConn.close();
+		}
+	}
+}
 
 	
-}
+
+
