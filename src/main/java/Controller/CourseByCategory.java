@@ -60,7 +60,11 @@ public class CourseByCategory extends HttpServlet {
 		int cid = Integer.parseInt(request.getParameter("cid"));
 		try {
 			List<Courses> courses = couUtil.getCourseByCategory(cid);
-			request.setAttribute("listCourses", courses);
+			int pagesNumber = couUtil.courseNumberPage(courses);
+			List<Courses> course = couUtil.getCoursesByPage(courses, 1);
+			request.setAttribute("pagesNumber", pagesNumber);
+			request.setAttribute("listCourses", course);
+			request.setAttribute("cid", cid);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
 			dispatcher.forward(request, response);

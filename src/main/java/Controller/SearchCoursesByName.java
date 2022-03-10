@@ -57,8 +57,11 @@ public class SearchCoursesByName extends HttpServlet {
 		} catch (Exception e) {
 			System.out.println(e);
 		} 
-		
-		request.setAttribute("listCourses", courses);
+		int pagesNumber = couUtil.courseNumberPage(courses);
+		List<Courses> li = couUtil.getCoursesByPage(courses, 1);
+		request.setAttribute("listCourses", li);
+		request.setAttribute("pagesNumber", pagesNumber);
+		request.setAttribute("search", txtSearch);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
 		
