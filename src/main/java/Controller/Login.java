@@ -80,7 +80,11 @@ public class Login extends HttpServlet {
 					User user = null;
 					user = userUtil.getUser(tmp.getAid());
 					List<Courses> courses = userUtil.getAll_Courses();
-					request.setAttribute("listCourses", courses);
+					
+					int pagesNumber = couUtil.courseNumberPage(courses, 3);
+					List<Courses> li = couUtil.getCoursesByPage(courses, 1);
+					request.setAttribute("listCourses", li);
+					request.setAttribute("pagesNumber", pagesNumber);
 					
 					request.setAttribute("user_info",user);
 					String[] a = user.getFull_name().split(" ");

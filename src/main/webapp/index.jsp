@@ -110,13 +110,7 @@
 											</li>
 										</ul>
 									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Event</a>
-										<ul class="sub-menu">
-											<li><a href="event-list.html">Event List</a></li>
-											<li><a href="event-grid.html">Event Grid</a></li>
-											<li><a href="event-details.html">Event Single</a></li>
-										</ul>
-									</li>
+									
 									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Blog</a>
 										<ul class="sub-menu">
 											<li><a href="blog-grid.html">Blog grid</a></li>

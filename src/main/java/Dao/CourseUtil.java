@@ -265,4 +265,19 @@ public class CourseUtil {
 		myConn.close();
 		return li;
 	}
+	
+	public int courseNumberPage(List<Courses> courses, int coursePage) {
+		int coursesNumber = courses.size();
+		int pagesNumber = (int) (coursesNumber / coursePage);
+		if (coursesNumber % coursePage != 0) pagesNumber++;
+		return pagesNumber;
+	}
+		
+	public List<Courses> getCoursesByPage(List<Courses> li, int page) {
+		List<Courses> course = new ArrayList<>();
+		for (int i = (page-1)*3; i <= page*3-1; i++) {
+			course.add(li.get(i));
+		}
+		return course;
+	}
 }
