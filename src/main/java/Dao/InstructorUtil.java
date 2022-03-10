@@ -9,7 +9,9 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import Model.Courses;
 import Model.Instructor;
+import Model.User;
 
 public class InstructorUtil {
 	private DataSource dataSource;
@@ -37,7 +39,7 @@ public class InstructorUtil {
 				int total_course = myRS.getInt("total_course");
 				double total_rating = myRS.getDouble("total_rating");
 				int aid = myRS.getInt("aid");
-				ins = new Instructor(ins_id,ins_name,major,desciption ,total_course, total_rating,aid);
+				ins = new Instructor(ins_id, ins_name, major, desciption ,total_course, total_rating,aid);
 			}
 			return ins;
 		} 
@@ -125,6 +127,57 @@ public class InstructorUtil {
 		finally {
 			myConn.close();
 		}
+	}
+	public Instructor getIns(int aid) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "select * from instructor where aid = ?";
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setInt(1, aid);
+			myRS = myStmt.executeQuery();
+			Instructor ins = null;
+			if (myRS.next()) {
+				
+				int ins_id = myRS.getInt("ins_id");
+				String ins_name = myRS.getString("ins_name");
+				String major = myRS.getString("major");
+				String desciption = myRS.getString("description");
+				int total_course = myRS.getInt("total_course");
+				double total_rating = myRS.getDouble("total_rating");
+				ins = new Instructor(ins_id, ins_name, major, desciption ,total_course, total_rating,aid);
+			}
+			return ins;
+		} 
+		finally {
+			myConn.close();
+		}
+	}
+	
+	public List<Courses> getAll_Courses() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "select * from courses ";
+		myStmt = myConn.prepareStatement(sql);
+		myRS = myStmt.executeQuery();
+		List<Courses> courses = new ArrayList<>();
+		while (myRS.next()) {
+			int courses_id = myRS.getInt("course_id");
+			String name = myRS.getString("name");
+			String skill = myRS.getString("skill");
+			int price = myRS.getInt("price");
+			String language = myRS.getString("language");
+			String description = myRS.getString("description");
+			double star_rate = myRS.getDouble("star_rate");
+			int  ins_id = myRS.getInt("ins_id");
+			int cid = myRS.getInt("cid");
+			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid));
+		}
+		return courses;
 	}
 }
 
