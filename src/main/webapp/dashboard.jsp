@@ -66,7 +66,7 @@
 						<h4>Instructor Dashboard</h4>
 					</div>
 					<div class="pull-right">
-						<a href="edit-course.html" class="see-all">Create Your Course</a>
+						<a href="add_course.jsp" class="see-all">Create New Course</a>
 					</div>
 				</div>
 			</div>
@@ -146,7 +146,7 @@
 			
 			<!-- Sec Title -->
 			<div class="sec-title">
-				<h4>Most Viewed Courses</h4>
+				<h4>My Courses</h4>
 			</div>
 			
 			<div class="single-item-carousel owl-carousel owl-theme">

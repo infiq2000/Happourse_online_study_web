@@ -8990,10 +8990,14 @@ img{
 .edit-course-form .form-group label{
 	position:relative;
 	color:#71718a;
-	font-size:14px;
+	font-size:18px;
 	font-weight:500;
 	margin-bottom:10px;
 	font-family: 'Roboto', sans-serif;
+}
+
+.label1{
+	font-size:14px;
 }
 
 .edit-course-form .form-group input{
