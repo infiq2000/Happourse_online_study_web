@@ -265,4 +265,67 @@ public class CourseUtil {
 		myConn.close();
 		return li;
 	}
+	
+	public int courseNumberPage(List<Courses> courses) {
+		int coursePage = 1;
+		int coursesNumber = courses.size();
+		int pagesNumber = (int) (coursesNumber / coursePage);
+		if (coursesNumber % coursePage != 0) pagesNumber++;
+		if (pagesNumber == 0) pagesNumber++;
+		return pagesNumber;
+	}
+		
+	public List<Courses> getCoursesByPage(List<Courses> li, int page) {
+		List<Courses> course = new ArrayList<>();
+		for (int i = (page-1)*1; i <= page*1-1; i++) {
+			if (i == li.size()) break;
+			course.add(li.get(i));
+		}
+		return course;
+	}
+	
+	public List<Courses> getCourseByType(String type) {
+		List<Courses> li = new ArrayList<>();
+		switch (type) {
+			case "all": {
+				try {
+					li = userUtil.getAll_Courses();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			}
+			case "new": {
+				try {
+					li = getNewCourses();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			}
+			case "popular": {
+				try {
+					li = getPopularCourses();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			}
+			case "free": {
+				try {
+					li = getFreeCourses();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			}
+			default:
+				throw new IllegalArgumentException("Unexpected value: " + type);
+		}
+		return li;
+	}
 }

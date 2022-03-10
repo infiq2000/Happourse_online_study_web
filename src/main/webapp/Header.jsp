@@ -98,7 +98,7 @@
 											<li><a href="#">Popular Instructors</a></li>
 										</ul>
 									</li>
-									
+									<li><a href="MyLearning">My Learning</a></li>
 									<%
 										String name = (String)session.getAttribute("name");
 									%>
@@ -107,7 +107,7 @@
 										<ul class="sub-menu">
 											<li><a href="Profile">My Profile</a></li>
 											<li><a href="UpdateTest">Update Profile</a></li>
-											<li><a href="MyLearning">My Learning</a></li>
+											
 											<li><a href="Logout">Log out</a></li>
 										</ul>
 									</li>

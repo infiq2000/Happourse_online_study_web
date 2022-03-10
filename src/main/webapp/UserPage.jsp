@@ -81,10 +81,10 @@
 						<div class="col-lg-9 col-md-8 col-xs-12 popular-course float-right">
 							<div class="course-style-filter clearfix">
 								<ul class="float-left clearfix">
-									<li><a href="Filter?type=all" class="tran3s active">All</a></li>
-									<li><a href="Filter?type=new" class="tran3s">New</a></li>
-									<li><a href="Filter?type=popular" class="tran3s">Popular</a></li>
-									<li><a href="Filter?type=free" class="tran3s">Free</a></li>
+									<li><a href="CourseByType?type=all" class="tran3s active">All</a></li>
+									<li><a href="CourseByType?type=new" class="tran3s">New</a></li>
+									<li><a href="CourseByType?type=popular" class="tran3s">Popular</a></li>
+									<li><a href="CourseByType?type=free" class="tran3s">Free</a></li>
 								</ul>
 								<ul class="float-right">
 									<li><a href="#" class="tran3s active"><i class="fa fa-th-large" aria-hidden="true"></i></a></li>
@@ -126,10 +126,10 @@
 								</c:forEach> 
 							</div> <!-- /.row -->
 							<ul class="theme-pagination clearfix">
-								<li><a href="" class="tran3s active">1</a></li>
-								<li><a href="" class="tran3s">2</a></li>
-								<li><a href="" class="tran3s">3</a></li>
-								<li><a href="#" class="tran3s">Next</a></li>
+								<c:forEach begin="1" end="${pagesNumber }" var="page">
+									<li><a href="PageCourses?page=${page }&txtSearch=${search }&cid=${cid}&type=${type}" class="tran3s">${page }</a></li>
+								</c:forEach>							
+								<!--  <li><a href="#" class="tran3s">Next</a></li> -->
 							</ul> <!-- /.theme-pagination -->
 						</div> <!-- /.popular-course -->
 

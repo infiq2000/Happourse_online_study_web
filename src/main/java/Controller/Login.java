@@ -26,6 +26,7 @@ import Dao.CourseUtil;
 import Model.Account;
 import Model.Category;
 import Model.Courses;
+import Model.Instructor;
 import Model.User;
 /**
  * Servlet implementation class Login
@@ -72,14 +73,18 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("username");
 		String passWord = request.getParameter("password");
-		try {
-			User user = null;
+		try {			
 			Account tmp = accUtil.validation(userName,passWord);
 			if (tmp!=null) {
 				if (!tmp.isType()) {
+					User user = null;
 					user = userUtil.getUser(tmp.getAid());
 					List<Courses> courses = userUtil.getAll_Courses();
-					request.setAttribute("listCourses", courses);
+					
+					int pagesNumber = couUtil.courseNumberPage(courses);
+					List<Courses> li = couUtil.getCoursesByPage(courses, 1);
+					request.setAttribute("listCourses", li);
+					request.setAttribute("pagesNumber", pagesNumber);
 					
 					request.setAttribute("user_info",user);
 					String[] a = user.getFull_name().split(" ");
@@ -90,6 +95,29 @@ public class Login extends HttpServlet {
 					session.setAttribute("name", b);
 					session.setAttribute("uid", user.getUid());
 					session.setAttribute("aid", user.getAid());
+					session.setAttribute("type", 0);
+					System.out.println("Type: " + 0);
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
+					dispatcher.forward(request, response);
+				}
+				else {
+					Instructor ins = null;
+					ins = insUtil.getIns(tmp.getAid());
+					List<Courses> courses = userUtil.getAll_Courses();
+					request.setAttribute("listCourses", courses);
+					
+					request.setAttribute("user_info",ins);
+					String[] a = ins.getIns_name().split(" ");
+					String b = a[a.length - 1];
+					
+					
+					HttpSession session = request.getSession(true);
+					session.setAttribute("name", b);
+					session.setAttribute("uid", ins.getIns_id());
+					session.setAttribute("aid", ins.getAid());
+					session.setAttribute("type", 1);
+
+					System.out.println("Type: " + 1);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
 					dispatcher.forward(request, response);
 				}

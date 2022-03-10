@@ -25,7 +25,7 @@ import Model.Courses;
  * Servlet implementation class Filter
  */
 @WebServlet("/Filter")
-public class Filter extends HttpServlet {
+public class CourseByType extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
@@ -34,7 +34,7 @@ public class Filter extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Filter() {
+    public CourseByType() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,48 +50,13 @@ public class Filter extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String type = request.getParameter("type");
-		List<Courses> li = new ArrayList<>();
-		switch (type) {
-			case "all": {
-				try {
-					li = userUtil.getAll_Courses();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				break;
-			}
-			case "new": {
-				try {
-					li = courseUtil.getNewCourses();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				break;
-			}
-			case "popular": {
-				try {
-					li = courseUtil.getPopularCourses();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				break;
-			}
-			case "free": {
-				try {
-					li = courseUtil.getFreeCourses();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				break;
-			}
-			default:
-				throw new IllegalArgumentException("Unexpected value: " + type);
-		}
-		request.setAttribute("listCourses", li);
+		List<Courses> li = courseUtil.getCourseByType(type);
+		int pagesNumber = courseUtil.courseNumberPage(li);
+		List<Courses> course = courseUtil.getCoursesByPage(li, 1);
+		request.setAttribute("listCourses", course);
+		request.setAttribute("pagesNumber", pagesNumber);
+		request.setAttribute("type", type);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
 		dispatcher.forward(request, response);	
 	}
