@@ -126,9 +126,9 @@
 								</c:forEach> 
 							</div> <!-- /.row -->
 							<ul class="theme-pagination clearfix">
-								<li><a href="" class="tran3s active">1</a></li>
-								<li><a href="" class="tran3s">2</a></li>
-								<li><a href="" class="tran3s">3</a></li>
+								<c:forEach begin="1" end="${pagesNumber }" var="page">
+									<li><a href="PageCourses?page=${page }&txtSearch=null" class="tran3s">${page }</a></li>
+								</c:forEach>							
 								<li><a href="#" class="tran3s">Next</a></li>
 							</ul> <!-- /.theme-pagination -->
 						</div> <!-- /.popular-course -->
