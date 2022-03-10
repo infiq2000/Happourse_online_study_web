@@ -47,31 +47,33 @@ public class PageCourses extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int page = Integer.parseInt(request.getParameter("page"));
-		String txtSearch = request.getParameter("txtSearch");
+		String search = request.getParameter("txtSearch");
+		int cid = Integer.parseInt(request.getParameter("cid"));
+		String type = request.getParameter("type");
 		List<Courses> li = new ArrayList<>();
-		if (txtSearch.equalsIgnoreCase("null")) {
-			try {
+		try {
+			if (cid != 0) {
+				li = courseUtil.getCourseByCategory(cid);
+			} else if (!type.isBlank()){
+				li = courseUtil.getCourseByType(type);
+			} else if (search.isBlank()) {
 				li = userUtil.getAll_Courses();
-				int maxPages = courseUtil.courseNumberPage(li, 3);
-				List<Courses> course = courseUtil.getCoursesByPage(li, page);
-				request.setAttribute("listCourses", course);
-				request.setAttribute("pagesNumber", maxPages);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
-				dispatcher.forward(request, response);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} else {
+				li = courseUtil.searchCourseByName(search);				
 			}
-		}
-		System.out.println(txtSearch);
-		
-//		try {
-//			li = courseUtil.searchCourseByName(txtSearch);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
+	
+			int maxPages = courseUtil.courseNumberPage(li);
+			List<Courses> course = courseUtil.getCoursesByPage(li, page);
+			request.setAttribute("listCourses", course);
+			request.setAttribute("pagesNumber", maxPages);
+			request.setAttribute("search", search);
+			request.setAttribute("cid", cid);
+			request.setAttribute("type", type);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
+			dispatcher.forward(request, response);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
-
 }
