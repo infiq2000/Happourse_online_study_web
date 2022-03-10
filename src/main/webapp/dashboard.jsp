@@ -153,7 +153,7 @@
 			
 				<div class="slide">
 					<div class="row clearfix">
-					
+						
 						<!-- Course Block -->
 						<div class="course-block col-lg-3 col-md-6 col-sm-12">
 							<div class="inner-box">

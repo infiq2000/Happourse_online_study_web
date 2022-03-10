@@ -113,7 +113,7 @@ public class Login extends HttpServlet {
 					
 					HttpSession session = request.getSession(true);
 					session.setAttribute("name", b);
-					session.setAttribute("uid", ins.getIns_id());
+					session.setAttribute("ins_id", ins.getIns_id());
 					session.setAttribute("aid", ins.getAid());
 					session.setAttribute("type", 1);
 
