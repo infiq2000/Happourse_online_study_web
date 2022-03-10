@@ -92,7 +92,7 @@
 										<ul class="sub-menu">
 											<li><a href="dashboard.jsp">Instructor Dashboard</a></li>
 											<li><a href="#">Manage Courses</a></li>
-											<li><a href="#">Edit Course</a></li>
+											<li><a href="add_course.jsp">Create New Course</a></li>
 											<li><a href="#">Earnings</a></li>
 											<li><a href="#">Instructor Profile</a></li>
 											<li><a href="#">Popular Instructors</a></li>
