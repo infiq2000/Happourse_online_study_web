@@ -24,7 +24,7 @@ import Model.Courses;
 /**
  * Servlet implementation class Filter
  */
-@WebServlet("/Filter")
+@WebServlet("/CourseByType")
 public class CourseByType extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name="jdbc/Happourse")

@@ -48,7 +48,10 @@ public class PageCourses extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int page = Integer.parseInt(request.getParameter("page"));
 		String search = request.getParameter("txtSearch");
-		int cid = Integer.parseInt(request.getParameter("cid"));
+		String temp_cid = request.getParameter("cid");
+		int cid = 0;
+		if (!temp_cid.isBlank()) 
+			cid = Integer.parseInt(temp_cid);
 		String type = request.getParameter("type");
 		List<Courses> li = new ArrayList<>();
 		try {
