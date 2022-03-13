@@ -345,6 +345,7 @@ header.menu-style-one .header-wrapper {
   background: #fff;
   position: relative;
   z-index: 9;
+  border-radius: 7px;
 }
 header.menu-style-one .header-wrapper .logo {
   position: relative;

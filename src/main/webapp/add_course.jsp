@@ -92,84 +92,34 @@
 										<label>Description</label>
 										<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
 										<textarea class="" name="message" placeholder="Shortly describe this course"></textarea>
+
+																		
 									</div>
+									
 									
 									<!-- Form Group -->
 									<div class="form-group">
 										
 										<!-- Accordion Box -->
-										<ul class="accordion-box style-two">
-
-											<!-- Block -->
-											<li class="chapter">
-												<label>Chapter</label>
-												
-												<div class="form-group" style="margin-left: 40px;">
-													<label style="font-size:14px;">Chapter Title</label>
-													<input type="text" name="username" value="" placeholder="Chapter 1" required>
-												</div>
-												
-												<label style="margin-left: 80px;">Content</label>
-												<li class="content" style="margin-left: 120px;">
-													
-													<div class="form-group">
-														<label style="font-size:14px;">Content Title</label>
-														<input type="text" name="username" value="" placeholder="Content 1" required>
-													</div>
-													
-													<div class="form-group">
-														<label style="font-size:14px;">Content Description</label>
-														<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
-														<textarea class="" name="message" placeholder="Shortly describe this content"></textarea>
-													</div>
-													
-													<div class="form-group">
-														<label style="font-size:14px;">Url</label>
-														<input type="text" name="username" value="" placeholder="Url 1">
-													</div>
-													
-													<div class="form-group">
-														<label style="font-size:14px;">Duration</label>
-														
-														<div style="margin: 0 0 20px 40px;">
-															<label style="margin-right: 24px; font-size:14px;">Minute</label>
-															<div style=" width: 80px; display:inline;">
-																<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity1'); var qty = result.value; if( !isNaN(qty) &amp; qty > 1 ) result.value--;return false;" type='button' value='-' />
-																<input style="width: 80px; display:inline; background: white;" id='quantity1' min='0' name='quantity' type='text' value='0' />
-																<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity1'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
-															</div>
-														</div>
-														
-														<div style="margin-left: 40px;">
-															<label style="margin-right: 20px; font-size:14px;">Second</label>
-															<div style=" width: 80px; display:inline;">
-																<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty) &amp; qty > 1 ) result.value--;return false;" type='button' value='-' />
-																<input style="width: 80px; display:inline; background: white;" id='quantity2' min='1' max='59' name='quantity' type='text' value='1' />
-																<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
-															</div>
-														</div>
-													</div>
-													
-													
-													
-													<div class="form-group" style="margin-left: 40px;">
-														<button type="button" class="theme-btn btn-style-two" style="background-color: pink;"><span class="txt">Add Content</span></button>
-														
-														<button type="button" class="theme-btn btn-style-two" style="background-color: pink;"><span class="txt">Delete Content</span></button>
-													</div>
-												</li>
-
+										<label class="chapter">- Chapter</label>
+										<ul class="accordion-box style-two" id="chapter" style="margin-left: 40px;">
+											<li id="chapter1">Chapter 1</li>
+											<li id="chapter1">Chapter 2</li>
+											<li id="chapter1">Chapter 3</li>
+											<li id="chapter1">Chapter 4</li>
+										</ul>
+										
+										<!-- Button Box -->
+										<div class="button-box text-center" style="margin-top: 40px;">
+											<button type="button" class="theme-btn btn-style-one" ><span class="txt">Save Course</span></button>
+											<a href="add_chapter.jsp"><button style="margin-left: 40px;" type="button" class="theme-btn btn-style-two"><span class="txt">Save & Create New Chapter</span></button></a>
 											
-											</ul>
-											</div>
+										</div>
+									</div>
 											
 											
 									
-									<div class="form-group">
-										<button type="button" class="theme-btn btn-style-two"><span class="txt">Add Chapter</span></button>
-										
-										<button type="button" class="theme-btn btn-style-two"><span class="txt">Delete Chapter</span></button>
-									</div>
+									
 									
 								</form>
 							</div>
@@ -224,27 +174,8 @@
 								</div>
 							</div>
 							
-							<br><h6>Video</h6>
 							
-							<!-- Video Box -->
-							<div class="video-boxed" style="background-image: url(images/logo/logo10.jpg)">
-								<a href="https://www.youtube.com/watch?v=-ncIVUXZla8&list=RDMM-ncIVUXZla8&start_radio=1&ab_channel=AviciiOfficialVEVO" class="lightbox-image intro-video-box"><span class="fa fa-play"><i class="ripple"></i></span></a>
-							</div>
-							<!-- End Video Box -->
 							
-							<!-- Url Box -->
-							<div class="url-boxed">
-								<label>URL</label>
-								<input type="text" name="username" value="" placeholder="https://www.youtube.com/Hapourse.com" required>
-								<span class="valid">Enter valid url address</span>
-							</div>
-							<!-- End Url Box -->
-							
-							<!-- Button Box -->
-							<div class="button-box text-center">
-								<button type="button" class="theme-btn btn-style-two"><span class="txt">Delete Course</span></button>
-								<button type="button" class="theme-btn btn-style-one"><span class="txt">Save Changes</span></button>
-							</div>
 							
 						</div>
 					</div>
@@ -299,7 +230,7 @@
 
 </div>
 
-<script src="js/ins/jquery.js"></script><!---->
+<!--<script src="js/ins/jquery.js"></script>-->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
@@ -319,6 +250,7 @@
 
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
+		<script type="text/javascript" src="js/slide.js"></script>
 		<!-- Bootstrap Select JS -->
 		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
@@ -497,6 +429,39 @@
 
 			window.myLine.update();
 		});
+		
+		function add_content(){
+			
+			var qt = document.getElementById("quantity4");
+			for (i = 1; i < qt.value; i++){		
+				var node = document.getElementById("content1").cloneNode(true)
+				var ul = document.getElementById("content");
+				ul.appendChild(node);
+			}
+			
+		}
+		
+		function remove_content(){
+			var parent = document.getElementById("content");
+		    var child = document.getElementById("content1");
+		    parent.removeChild(child);
+		}
+		
+		function add_chapter(){
+			
+			var qt = document.getElementById("quantity3");
+			for (i = 1; i < qt.value; i++){	
+				var node = document.getElementById("chapter1").cloneNode(true)
+				var ul = document.getElementById("chapter");
+				ul.appendChild(node);
+			}
+		}
+		
+		function remove_chapter(){
+			var parent = document.getElementById("chapter");
+		    var child = document.getElementById("chapter1");
+		    parent.removeChild(child);
+		}
 	</script>
 
 </body>
