@@ -25,7 +25,6 @@
 	<link href="css/ins/bootstrap.css" rel="stylesheet">
 	<link href="css/ins/main.css" rel="stylesheet">
 	<link href="css/ins/responsive.css" rel="stylesheet">
-	
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 	
 	<!-- Color Switcher Mockup -->
@@ -53,156 +52,355 @@
     
     
     
-	
-<div class="page-wrapper">
-
-	<!-- Edit Cource Section -->
-    <div class="edit-cource-section">
+<div class="page-wrapper">	
+<!-- Earning Section -->
+    <div class="earning-section">
     	<div class="auto-container">
 			<!-- Sec Title -->
 			<div class="sec-title">
-				<div class="clearfix">
-					<div class="pull-left">
-						<h4>New Courses</h4>
+				<h4>Earnings</h4>
+			</div>
+			
+			<!-- Earning Graph Box -->
+			<div class="earning-graph-box">
+				<div class="inner-graph-box">
+					<div class="row clearfix">
+				
+						<!-- Earning Block -->
+						<div class="earning-block col-lg-4 col-md-6 col-sm-12">
+							<div class="inner-box">
+								<div class="content">
+									<div class="courses">Total Revenue<span>$7, 500.00</span><i>$5.00 this month</i></div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- Earning Block -->
+						<div class="earning-block col-lg-4 col-md-6 col-sm-12">
+							<div class="inner-box">
+								<div class="content">
+									<div class="courses">Total Enrollments<span>13,536</span><i>25 this month</i></div>
+								</div>
+							</div>
+						</div>
+						
 					</div>
-					<!--<div class="pull-right">
-						<a href="enrolled-courses.html" class="see-all">Add Your Course</a>
-					</div>-->
+					
+					<!-- Graph Box -->
+					<div class="graph-box">
+						<!-- Graph -->
+						<canvas id="canvas" style="height: 430px; width: 100%;"></canvas>
+					</div>
+					
 				</div>
 			</div>
+		</div>
+	</div>
+	<!-- End Earning Section -->
+	
+	<!-- Statement Section -->
+    <div class="statement-section">
+    	<div class="auto-container">
+			<!-- Sec Title -->
+			<div class="sec-title">
+				<h4>Statements</h4>
+			</div>
 			<div class="inner-container">
-				<div class="row clearfix">
-					
-					<!-- Left Column -->
-					<div class="left-column col-lg-8 col-md-12 col-sm-12">
-						<div class="inner-column">
-							<h6>Basic Information</h6>
-							
-							<!-- Edit Course Form -->
-							<div class="edit-course-form">
-								<form method="post" action="index.html">
-									
-									<!-- Form Group -->
-									<div class="form-group">
-										<label>Course Title</label>
-										<input type="text" name="username" value="" placeholder="First Name" required>
-									</div>
-									
-									<div class="form-group">
-										<label>Description</label>
-										<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
-										<textarea class="" name="message" placeholder="Shortly describe this course"></textarea>
-
-																		
-									</div>
-									
-									
-									<!-- Form Group -->
-									<div class="form-group">
-										
-										<!-- Accordion Box -->
-										<label class="chapter">- Chapter</label>
-										<ul class="accordion-box style-two" id="chapter" style="margin-left: 40px;">
-											<li id="chapter1">Chapter 1</li>
-											<li id="chapter1">Chapter 2</li>
-											<li id="chapter1">Chapter 3</li>
-											<li id="chapter1">Chapter 4</li>
-										</ul>
-										
-										<!-- Button Box -->
-										<div class="button-box text-center" style="margin-top: 40px;">
-											<button type="button" class="theme-btn btn-style-one" ><span class="txt">Save Course</span></button>
-											<a href="add_chapter.jsp"><button style="margin-left: 40px;" type="button" class="theme-btn btn-style-two"><span class="txt">Save & Create New Chapter</span></button></a>
-											
-										</div>
-									</div>
-											
-											
-									
-									
-									
-								</form>
-							</div>
-							
+				<!-- Title Box -->
+				<div class="title-box">
+					<div class="clearfix">
+						
+						<!-- Title Column -->
+						<div class="title-column">
+							<h6>Courses</h6>
 						</div>
+						
+						<!-- Title Column -->
+						<div class="title-column">
+							<h6>Fees</h6>
+						</div>
+						
+						<!-- Title Column -->
+						<div class="title-column">
+							<h6>Revenue</h6>
+						</div>
+						
 					</div>
-					
-					<!-- Right Column -->
-					<div class="right-column col-lg-4 col-md-12 col-sm-12">
-						<div class="inner-column">
-							
-							
-							<h6>Options</h6>
-							<div class="option-cource-box">
-								<div class="box-inner">
-									
-									<div class="form-group">
-										<label>Category</label>
-										<select class="custom-select-box">
-											<option>UI/UX</option>
-											<option>Category 01</option>
-											<option>Category 02</option>
-										</select>
-										<span class="select-category">Select a category</span>
+				</div>
+				<!-- End Title Box -->
+				
+				<!-- Cource Statement Box -->
+				<div class="cource-statement-box">
+					<div class="box-inner">
+						<div class="clearfix">
+						
+							<!-- Cource Column -->
+							<div class="cource-column">
+								<div class="course-block-two">
+									<div class="cource-inner-box">
+										<div class="cource-image">
+											<a href="#"><img src="images/resource/statement-1.jpg" alt="" /></a>
+										</div>
+										<h5><a href="#">Learn IOS Development</a></h5>
+										<div class="cource-sales">36 Sales</div>
 									</div>
-									
-									<div class="form-group">
-										<label>Language</label>
-										<select class="custom-select-box">
-											<option>English</option>
-											<option>Vietnamese</option>
-										</select>
-										<span class="select-category">Select a language</span>
-									</div>
-									
-									<div class="form-group">
-											<label>Price Range</label>
-											<div class="price-ranger">
-												<div class="ranger-min-max-block">
-													<ul class="clearfix">
-														<li class="float-left">
-															<label class="select-category" for="min">From</label>
-															<input type="text" class="min" readonly style="width:100px;">
-														</li>
-														<li class="float-left">
-															<label class="select-category" for="max">To</label>
-															<input type="text" class="max" readonly style="width:100px;">
-														</li>
-													</ul>
-												</div>
-												<div id="slider-range" style="width:200px;"></div>
-											</div> <!-- /price-ranger -->
-										</div> <!-- /.course-price-filter -->
-									
-									<div class="form-group tags">
-										<label>Tags</label>
-										<a href="#">JavaScript</a>
-										<a href="#">UI/ UX Design</a>
-										<a href="#">Typography</a>
-										<a href="#">Web Design</a>
-										<a href="#">Education</a>
-										<a href="#">Courses</a>
-									</div>
-									
 								</div>
 							</div>
 							
+							<!-- Fees Column -->
+							<div class="fees-column">
+								<div class="cource-fees">$150 USD</div>
+							</div>
 							
-							
+							<!-- Price Column -->
+							<div class="price-column">
+								<div class="cource-price">$15,000 USD</div>
+							</div>
 							
 						</div>
 					</div>
-					
 				</div>
+				<!-- End Cource Statement Box -->
+				
+				<!-- Cource Statement Box -->
+				<div class="cource-statement-box">
+					<div class="box-inner">
+						<div class="clearfix">
+						
+							<!-- Cource Column -->
+							<div class="cource-column">
+								<div class="course-block-two">
+									<div class="cource-inner-box">
+										<div class="cource-image">
+											<a href="#"><img src="images/resource/statement-2.jpg" alt="" /></a>
+										</div>
+										<h5><a href="#">Build Responsive Real world</a></h5>
+										<div class="cource-sales">36 Sales</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Fees Column -->
+							<div class="fees-column">
+								<div class="cource-fees">$150 USD</div>
+							</div>
+							
+							<!-- Price Column -->
+							<div class="price-column">
+								<div class="cource-price">$15,000 USD</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<!-- End Cource Statement Box -->
+				
+				<!-- Cource Statement Box -->
+				<div class="cource-statement-box">
+					<div class="box-inner">
+						<div class="clearfix">
+						
+							<!-- Cource Column -->
+							<div class="cource-column">
+								<div class="course-block-two">
+									<div class="cource-inner-box">
+										<div class="cource-image">
+											<a href="#"><img src="images/resource/statement-3.jpg" alt="" /></a>
+										</div>
+										<h5><a href="#">Master in website design</a></h5>
+										<div class="cource-sales">36 Sales</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Fees Column -->
+							<div class="fees-column">
+								<div class="cource-fees">$150 USD</div>
+							</div>
+							
+							<!-- Price Column -->
+							<div class="price-column">
+								<div class="cource-price">$15,000 USD</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<!-- End Cource Statement Box -->
+				
+				<!-- Cource Statement Box -->
+				<div class="cource-statement-box">
+					<div class="box-inner">
+						<div class="clearfix">
+						
+							<!-- Cource Column -->
+							<div class="cource-column">
+								<div class="course-block-two">
+									<div class="cource-inner-box">
+										<div class="cource-image">
+											<a href="#"><img src="images/resource/statement-4.jpg" alt="" /></a>
+										</div>
+										<h5><a href="#">Learn website design</a></h5>
+										<div class="cource-sales">36 Sales</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Fees Column -->
+							<div class="fees-column">
+								<div class="cource-fees">$150 USD</div>
+							</div>
+							
+							<!-- Price Column -->
+							<div class="price-column">
+								<div class="cource-price">$15,000 USD</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<!-- End Cource Statement Box -->
+				
+				<!-- Cource Statement Box -->
+				<div class="cource-statement-box">
+					<div class="box-inner">
+						<div class="clearfix">
+						
+							<!-- Cource Column -->
+							<div class="cource-column">
+								<div class="course-block-two">
+									<div class="cource-inner-box">
+										<div class="cource-image">
+											<a href="#"><img src="images/resource/statement-5.jpg" alt="" /></a>
+										</div>
+										<h5><a href="#">Learn IOS Development</a></h5>
+										<div class="cource-sales">36 Sales</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Fees Column -->
+							<div class="fees-column">
+								<div class="cource-fees">$150 USD</div>
+							</div>
+							
+							<!-- Price Column -->
+							<div class="price-column">
+								<div class="cource-price">$15,000 USD</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<!-- End Cource Statement Box -->
+				
+				<!-- Cource Statement Box -->
+				<div class="cource-statement-box">
+					<div class="box-inner">
+						<div class="clearfix">
+						
+							<!-- Cource Column -->
+							<div class="cource-column">
+								<div class="course-block-two">
+									<div class="cource-inner-box">
+										<div class="cource-image">
+											<a href="#"><img src="images/resource/statement-6.jpg" alt="" /></a>
+										</div>
+										<h5><a href="#">Learn IOS Development</a></h5>
+										<div class="cource-sales">36 Sales</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Fees Column -->
+							<div class="fees-column">
+								<div class="cource-fees">$150 USD</div>
+							</div>
+							
+							<!-- Price Column -->
+							<div class="price-column">
+								<div class="cource-price">$15,000 USD</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<!-- End Cource Statement Box -->
+				
+				<!-- Cource Statement Box -->
+				<div class="cource-statement-box">
+					<div class="box-inner">
+						<div class="clearfix">
+						
+							<!-- Cource Column -->
+							<div class="cource-column">
+								<div class="course-block-two">
+									<div class="cource-inner-box">
+										<div class="cource-image">
+											<a href="#"><img src="images/resource/statement-7.jpg" alt="" /></a>
+										</div>
+										<h5><a href="#">Build Responsive Real world</a></h5>
+										<div class="cource-sales">36 Sales</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Fees Column -->
+							<div class="fees-column">
+								<div class="cource-fees">$150 USD</div>
+							</div>
+							
+							<!-- Price Column -->
+							<div class="price-column">
+								<div class="cource-price">$15,000 USD</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<!-- End Cource Statement Box -->
+				
+				<!-- Cource Statement Box -->
+				<div class="cource-statement-box">
+					<div class="box-inner">
+						<div class="clearfix">
+						
+							<!-- Cource Column -->
+							<div class="cource-column">
+								<div class="course-block-two">
+									<div class="cource-inner-box">
+										<div class="cource-image">
+											<a href="#"><img src="images/resource/statement-8.jpg" alt="" /></a>
+										</div>
+										<h5><a href="#">Master in website design</a></h5>
+										<div class="cource-sales">36 Sales</div>
+									</div>
+								</div>
+							</div>
+							
+							<!-- Fees Column -->
+							<div class="fees-column">
+								<div class="cource-fees">$150 USD</div>
+							</div>
+							
+							<!-- Price Column -->
+							<div class="price-column">
+								<div class="cource-price">$15,000 USD</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<!-- End Cource Statement Box -->
+				
+				<div class="total-revenue">Total Revenue = $370,905 USD</div>
+				
 			</div>
 			
 		</div>
 	</div>
-	<!-- End Manage Cource Section -->
-	
-	
-	
-</div>
+	<!-- End Statement Section -->
+		</div>
 
 	<!-- Main Footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
@@ -243,7 +441,7 @@
 
 </div>
 
-<script src="js/ins/jquery.js"></script><!---->
+<!--<script src="js/ins/jquery.js"></script>-->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>

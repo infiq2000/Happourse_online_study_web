@@ -197,7 +197,7 @@
   font-weight: 600;
   text-transform: uppercase;
   color: #000000;
-  background: transparent;
+  background: #8fe3d9;
   padding: 0 17px;
   line-height: 80px;
   height: 35px;
@@ -207,7 +207,7 @@
   transition:0.6s ease-in-out;
 }
 .tran5s:focus{
-  width:250px; 
+  width:200px; 
 }
 
 .tran6s {
@@ -789,7 +789,7 @@ header.menu-style-two.fixed .logo {width: 10%;top:0;}
 }
 .bootstrap-select.btn-group .dropdown-toggle .bs-caret:before {
   font-family: 'font-awesome';
-  content: 'v';
+  content: '\f078';
   position: absolute;
   top:0;
   left: 0;
