@@ -25,7 +25,6 @@
 	<link href="css/ins/bootstrap.css" rel="stylesheet">
 	<link href="css/ins/main.css" rel="stylesheet">
 	<link href="css/ins/responsive.css" rel="stylesheet">
-	
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 	
 	<!-- Color Switcher Mockup -->
@@ -53,156 +52,219 @@
     
     
     
-	
-<div class="page-wrapper">
-
-	<!-- Edit Cource Section -->
-    <div class="edit-cource-section">
+<div class="page-wrapper">	
+<!-- Manage Cource Section -->
+    <div class="manage-cource-section">
     	<div class="auto-container">
 			<!-- Sec Title -->
 			<div class="sec-title">
 				<div class="clearfix">
 					<div class="pull-left">
-						<h4>New Courses</h4>
+						<h4>Manage Courses</h4>
 					</div>
-					<!--<div class="pull-right">
-						<a href="enrolled-courses.html" class="see-all">Add Your Course</a>
-					</div>-->
+					<div class="pull-right">
+						<a href="add_course.jsp" class="see-all">Add New Course</a>
+					</div>
 				</div>
 			</div>
 			<div class="inner-container">
-				<div class="row clearfix">
-					
-					<!-- Left Column -->
-					<div class="left-column col-lg-8 col-md-12 col-sm-12">
-						<div class="inner-column">
-							<h6>Basic Information</h6>
-							
-							<!-- Edit Course Form -->
-							<div class="edit-course-form">
-								<form method="post" action="index.html">
-									
-									<!-- Form Group -->
-									<div class="form-group">
-										<label>Course Title</label>
-										<input type="text" name="username" value="" placeholder="First Name" required>
-									</div>
-									
-									<div class="form-group">
-										<label>Description</label>
-										<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
-										<textarea class="" name="message" placeholder="Shortly describe this course"></textarea>
-
-																		
-									</div>
-									
-									
-									<!-- Form Group -->
-									<div class="form-group">
-										
-										<!-- Accordion Box -->
-										<label class="chapter">- Chapter</label>
-										<ul class="accordion-box style-two" id="chapter" style="margin-left: 40px;">
-											<li id="chapter1">Chapter 1</li>
-											<li id="chapter1">Chapter 2</li>
-											<li id="chapter1">Chapter 3</li>
-											<li id="chapter1">Chapter 4</li>
-										</ul>
-										
-										<!-- Button Box -->
-										<div class="button-box text-center" style="margin-top: 40px;">
-											<button type="button" class="theme-btn btn-style-one" ><span class="txt">Save Course</span></button>
-											<a href="add_chapter.jsp"><button style="margin-left: 40px;" type="button" class="theme-btn btn-style-two"><span class="txt">Save & Create New Chapter</span></button></a>
-											
-										</div>
-									</div>
-											
-											
-									
-									
-									
-								</form>
-							</div>
-							
+				<div class="container-content">
+					<!-- Title Box -->
+					<div class="title-box clearfix">
+						<!-- Title Column -->
+						<div class="title-column">
+							<h6>Title</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column">
+							<h6>Publish Date</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column">
+							<h6>Sales</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column">
+							<h6>Category</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column">
+							<h6>Action</h6>
 						</div>
 					</div>
-					
-					<!-- Right Column -->
-					<div class="right-column col-lg-4 col-md-12 col-sm-12">
-						<div class="inner-column">
-							
-							
-							<h6>Options</h6>
-							<div class="option-cource-box">
-								<div class="box-inner">
-									
-									<div class="form-group">
-										<label>Category</label>
-										<select class="custom-select-box">
-											<option>UI/UX</option>
-											<option>Category 01</option>
-											<option>Category 02</option>
-										</select>
-										<span class="select-category">Select a category</span>
-									</div>
-									
-									<div class="form-group">
-										<label>Language</label>
-										<select class="custom-select-box">
-											<option>English</option>
-											<option>Vietnamese</option>
-										</select>
-										<span class="select-category">Select a language</span>
-									</div>
-									
-									<div class="form-group">
-											<label>Price Range</label>
-											<div class="price-ranger">
-												<div class="ranger-min-max-block">
-													<ul class="clearfix">
-														<li class="float-left">
-															<label class="select-category" for="min">From</label>
-															<input type="text" class="min" readonly style="width:100px;">
-														</li>
-														<li class="float-left">
-															<label class="select-category" for="max">To</label>
-															<input type="text" class="max" readonly style="width:100px;">
-														</li>
-													</ul>
-												</div>
-												<div id="slider-range" style="width:200px;"></div>
-											</div> <!-- /price-ranger -->
-										</div> <!-- /.course-price-filter -->
-									
-									<div class="form-group tags">
-										<label>Tags</label>
-										<a href="#">JavaScript</a>
-										<a href="#">UI/ UX Design</a>
-										<a href="#">Typography</a>
-										<a href="#">Web Design</a>
-										<a href="#">Education</a>
-										<a href="#">Courses</a>
-									</div>
-									
-								</div>
-							</div>
-							
-							
-							
-							
-						</div>
-					</div>
-					
+					<table class="table">
+					  <thead>
+						
+					  </thead>
+					  <tbody>
+					  
+						<tr>
+						  <th class="title" scope="col">01. Learn IOS Development</th>
+						  <th class="post-date" scope="col">01 Jan 20</th>
+						  <th class="sales" scope="col">36 Sales</th>
+						  <th class="category" scope="col">Development</th>
+						  <th class="actions" scope="col">
+						  	<a href="#"><i class='fa fa-trash-o'></i></a>
+						  	<a href="#"><i class='fa fa-edit'></i></a>
+						  	<a href="#"><i class='fa fa-check-square'></i></a>
+						  </th>
+						</tr>
+						
+						<tr>
+						  <th class="title" scope="col">02. Build Responsive Real world</th>
+						  <th class="post-date" scope="col">12 Mar 20</th>
+						  <th class="sales" scope="col">36 Sales</th>
+						  <th class="category" scope="col">Development</th>
+						  <th class="actions" scope="col">
+						  	<a href="#"><i class='fa fa-trash-o'></i></a>
+						  	<a href="#"><i class='fa fa-edit'></i></a>
+						  	<a href="#"><i class='fa fa-check-square'></i></a>
+						  </th>
+						</tr>
+						
+						<tr>
+						  <th class="title" scope="col">03. Master in website design</th>
+						  <th class="post-date" scope="col">12 Mar 20</th>
+						  <th class="sales" scope="col">36 Sales</th>
+						  <th class="category" scope="col">Development</th>
+						  <th class="actions" scope="col">
+						  	<a href="#"><i class='fa fa-trash-o'></i></a>
+						  	<a href="#"><i class='fa fa-edit'></i></a>
+						  	<a href="#"><i class='fa fa-check-square'></i></a>
+						  </th>
+						</tr>
+						
+						<tr>
+						  <th class="title" scope="col">04. Learn IOS Development</th>
+						  <th class="post-date" scope="col">01 Jan 20</th>
+						  <th class="sales" scope="col">36 Sales</th>
+						  <th class="category" scope="col">Development</th>
+						  <th class="actions" scope="col">
+						  	<a href="#"><i class='fa fa-trash-o'></i></a>
+						  	<a href="#"><i class='fa fa-edit'></i></a>
+						  	<a href="#"><i class='fa fa-check-square'></i></a>
+						  </th>
+						</tr>
+						
+						<tr>
+						  <th class="title" scope="col">05. Build Responsive Real world</th>
+						  <th class="post-date" scope="col">12 Mar 20</th>
+						  <th class="sales" scope="col">36 Sales</th>
+						  <th class="category" scope="col">Development</th>
+						  <th class="actions" scope="col">
+						  	<a href="#"><i class='fa fa-trash-o'></i></a>
+						  	<a href="#"><i class='fa fa-edit'></i></a>
+						  	<a href="#"><i class='fa fa-check-square'></i></a>
+						  </th>
+						</tr>
+						
+						<tr>
+						  <th class="title" scope="col">06. Master in website design</th>
+						  <th class="post-date" scope="col">12 Mar 20</th>
+						  <th class="sales" scope="col">36 Sales</th>
+						  <th class="category" scope="col">Development</th>
+						  <th class="actions" scope="col">
+						  	<a href="#"><i class='fa fa-trash-o'></i></a>
+						  	<a href="#"><i class='fa fa-edit'></i></a>
+						  	<a href="#"><i class='fa fa-check-square'></i></a>
+						  </th>
+						</tr>
+						
+						<tr>
+						  <th class="title" scope="col">07. Learn IOS Development</th>
+						  <th class="post-date" scope="col">01 Jan 20</th>
+						  <th class="sales" scope="col">36 Sales</th>
+						  <th class="category" scope="col">Development</th>
+						  <th class="actions" scope="col">
+						  	<a href="#"><i class='fa fa-trash-o'></i></a>
+						  	<a href="#"><i class='fa fa-edit'></i></a>
+						  	<a href="#"><i class='fa fa-check-square'></i></a>
+						  </th>
+						</tr>
+						
+						<tr>
+						  <th class="title" scope="col">08. Build Responsive Real world</th>
+						  <th class="post-date" scope="col">12 Mar 20</th>
+						  <th class="sales" scope="col">36 Sales</th>
+						  <th class="category" scope="col">Development</th>
+						  <th class="actions" scope="col">
+						  	<a href="#"><i class='fa fa-trash-o'></i></a>
+						  	<a href="#"><i class='fa fa-edit'></i></a>
+						  	<a href="#"><i class='fa fa-check-square'></i></a>
+						  </th>
+						</tr>
+						
+						<tr>
+						  <th class="title" scope="col">09. Master in website design</th>
+						  <th class="post-date" scope="col">12 Mar 20</th>
+						  <th class="sales" scope="col">36 Sales</th>
+						  <th class="category" scope="col">Development</th>
+						  <th class="actions" scope="col">
+						  	<a href="#"><i class='fa fa-trash-o'></i></a>
+						  	<a href="#"><i class='fa fa-edit'></i></a>
+						  	<a href="#"><i class='fa fa-check-square'></i></a>
+						  </th>
+						</tr>
+						
+						<tr>
+						  <th class="title" scope="col">10. Learn IOS Development</th>
+						  <th class="post-date" scope="col">01 Jan 20</th>
+						  <th class="sales" scope="col">36 Sales</th>
+						  <th class="category" scope="col">Development</th>
+						  <th class="actions" scope="col">
+						  	<a href="#"><i class='fa fa-trash-o'></i></a>
+						  	<a href="#"><i class='fa fa-edit'></i></a>
+						  	<a href="#"><i class='fa fa-check-square'></i></a>
+						  </th>
+						</tr>
+						
+						<tr>
+						  <th class="title" scope="col">11. Build Responsive Real world</th>
+						  <th class="post-date" scope="col">12 Mar 20</th>
+						  <th class="sales" scope="col">36 Sales</th>
+						  <th class="category" scope="col">Development</th>
+						  <th class="actions" scope="col">
+						  	<a href="#"><i class='fa fa-trash-o'></i></a>
+						  	<a href="#"><i class='fa fa-edit'></i></a>
+						  	<a href="#"><i class='fa fa-check-square'></i></a>
+						  </th>
+						</tr>
+						
+						<tr>
+						  <th class="title" scope="col">12. Master in website design</th>
+						  <th class="post-date" scope="col">12 Mar 20</th>
+						  <th class="sales" scope="col">36 Sales</th>
+						  <th class="category" scope="col">Development</th>
+						  <th class="actions" scope="col">
+						  	<a href="#"><i class='fa fa-trash-o'></i></a>
+						  	<a href="#"><i class='fa fa-edit'></i></a>
+						  	<a href="#"><i class='fa fa-check-square'></i></a>
+						  </th>
+						
+					  </tbody>
+					</table>
 				</div>
+			</div>
+			
+			<!-- Post Share Options -->
+			<div class="styled-pagination margin-top text-center">
+				<ul class="clearfix">
+					<li class="arrow"><a href="#"><span class="fa fa-angle-left"></span> </a></li>
+					<li class="prev"><a href="#">Prev</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li class="active"><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li class="next"><a href="#">Next</a></li>
+					<li class="arrow"><a href="#"><span class="fa fa-angle-right"></span> </a></li>
+				</ul>
 			</div>
 			
 		</div>
 	</div>
 	<!-- End Manage Cource Section -->
-	
-	
-	
-</div>
+	</div>
 
 	<!-- Main Footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
@@ -243,7 +305,7 @@
 
 </div>
 
-<script src="js/ins/jquery.js"></script><!---->
+<!--<script src="js/ins/jquery.js"></script>-->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
