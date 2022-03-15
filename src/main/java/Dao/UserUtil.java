@@ -194,4 +194,24 @@ public class UserUtil {
 			myConn.close();
 		}
 	}
+	
+	public float getBalance(int uid) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		float balance = 0;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "select balance from happourse.users where uid=?;";
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setInt(1, uid);			
+			myRS = myStmt.executeQuery();
+			if (myRS.next()) {
+				balance = myRS.getFloat("balance");
+			}
+		}finally {
+			myConn.close();
+		}
+		return balance;
+	}
 }
