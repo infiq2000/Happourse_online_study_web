@@ -54,7 +54,15 @@ public class Enroll extends HttpServlet {
 		int course_id = Integer.parseInt(request.getParameter("course_id"));
 		int uid = (int)request.getSession(false).getAttribute("uid");
 		try {
-			courseUtil.insert(course_id, uid);
+			float balance = userUtil.getBalance(uid);
+			float price = courseUtil.getPrice(course_id);
+			if (balance >= price) {
+				courseUtil.insert(course_id, uid);
+				courseUtil.minusBalance(uid,price);
+			}
+			else {
+				System.out.println("Khum du tien");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

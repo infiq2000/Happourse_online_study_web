@@ -173,7 +173,7 @@ p{
 	margin:0 auto;
 	width:100%;
 	min-width:300px;
-	background-color:#f8f9fd;
+	background-color:#e7eaf3;
 	padding: 200px 50px 0;
 }
 
@@ -8990,10 +8990,14 @@ img{
 .edit-course-form .form-group label{
 	position:relative;
 	color:#71718a;
-	font-size:14px;
+	font-size:18px;
 	font-weight:500;
 	margin-bottom:10px;
 	font-family: 'Roboto', sans-serif;
+}
+
+.label1{
+	font-size:14px;
 }
 
 .edit-course-form .form-group input{
@@ -9214,7 +9218,7 @@ img{
 .option-cource-box{
 	position:relative;
 	padding:25px 25px;
-	background-color:#f5fbff;
+	background-color:#f5ebee;
 }
 
 .option-cource-box .form-group{

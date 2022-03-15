@@ -61,6 +61,7 @@
 	<!-- Dashboard Section -->
     <div class="dashboard-section">
     	<div class="auto-container">
+    		
 			<!-- Sec Title -->
 			<div class="sec-title">
 				<div class="clearfix">
@@ -68,7 +69,7 @@
 						<h4>Instructor Dashboard</h4>
 					</div>
 					<div class="pull-right">
-						<a href="edit-course.html" class="see-all">Create Your Course</a>
+						<a href="add_course.jsp" class="see-all">Create New Course</a>
 					</div>
 				</div>
 			</div>
@@ -126,29 +127,32 @@
 			</div>
 			
 			<!-- Dashboard Graph Section -->
-			<div class="dashboard-graph-section">
-				<!-- Sec Title -->
-				<div class="sec-title">
-					<div class="clearfix">
-						<div class="pull-left">
-							<h4>Latest Course Performance</h4>
-						</div>
-						<div class="pull-right">
-							<a href="earning.html" class="see-all">View Earnings</a>
+
+				<div class="dashboard-graph-section">
+					<!-- Sec Title -->
+					<div class="sec-title">
+						<div class="clearfix">
+							<div class="pull-left">
+								<h4>Latest Course Performance</h4>
+							</div>
+							<div class="pull-right">
+								<a href="earning_course.jsp" class="see-all">View Earnings</a>
+							</div>
 						</div>
 					</div>
+					<!-- Graph Box -->
+					<div class="graph-box">
+						<!-- Graph -->
+						<canvas id="canvas" style="height: 430px; width: 100%;"></canvas>
+					</div>
 				</div>
-				<!-- Graph Box -->
-				<div class="graph-box">
-					<!-- Graph -->
-					<canvas id="canvas" style="height: 430px; width: 100%;"></canvas>
-				</div>
-			</div>
-			<!-- End Dashboard Graph Section -->
+				
+				<!-- End Dashboard Graph Section -->
+
 			
 			<!-- Sec Title -->
 			<div class="sec-title">
-				<h4>Most Viewed Courses</h4>
+				<h4>My Courses</h4>
 			</div>
 			
 			<div class="single-item-carousel owl-carousel owl-theme">

@@ -34,7 +34,7 @@
 											<li><a href="index.jsp">Home version Two</a></li>
 										</ul>
 									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Course</a>
+									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Courses</a>
 										<ul class="sub-menu">
 											<li><a href="course-grid.html">Course grid</a></li>
 											<li><a href="course-list.html">Course List</a></li>
@@ -47,27 +47,7 @@
 											</li>
 										</ul>
 									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Pages</a>
-										<ul class="sub-menu width-half">
-											<li><a href="about-us.html">About Us</a></li>
-											<li><a href="our-teacher.html">Our teacher</a></li>
-											<li><a href="teachers-profile.html">teachers profile</a></li>
-											<li><a href="shop.html">Shop page</a></li>
-											<li><a href="shop-details.html">Shop Details</a></li>
-											<li><a href="portfolio-3-column.html">portfolio 3 column</a></li>
-											<li><a href="portfolio-4-column.html">portfolio 4 column</a></li>
-											<li><a href="pricing-plan.html">Pricing Plan</a></li>
-											<li><a href="faq.html">Faq Page</a></li>
-											<li><a href="404.html">Error Page</a></li>
-											<li><a href="sign-up.html">Registration</a></li>
-											<li class="dropdown-holder"><a href="#">Third Level menu</a>
-												<ul class="second-sub-menu">
-													<li><a href="#">menu one</a></li>
-													<li><a href="#">menu two</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
+									
 									
 									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Blog</a>
 										<ul class="sub-menu">
@@ -91,11 +71,9 @@
 									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Instuctor</a>
 										<ul class="sub-menu">
 											<li><a href="DashBoard">Instructor Dashboard</a></li>
-											<li><a href="#">Manage Courses</a></li>
-											<li><a href="#">Edit Course</a></li>
-											<li><a href="#">Earnings</a></li>
-											<li><a href="#">Instructor Profile</a></li>
-											<li><a href="#">Popular Instructors</a></li>
+											<li><a href="manage_course.jsp">Manage Courses</a></li>
+											<li><a href="add_course.jsp">Create New Course</a></li>
+											<li><a href="earning_course.jsp">Earnings</a></li>
 										</ul>
 									</li>
 									<li><a href="MyLearning">My Learning</a></li>
