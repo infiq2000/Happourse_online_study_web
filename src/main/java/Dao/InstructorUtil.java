@@ -179,6 +179,125 @@ public class InstructorUtil {
 		}
 		return courses;
 	}
+	
+	public List<Courses> getMyCourses(int ins_id) throws SQLException{
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "select * from courses where ins_id = ?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, ins_id);
+		myRS = myStmt.executeQuery();
+		List<Courses> courses = new ArrayList<>();
+		while (myRS.next()) {
+			int courses_id = myRS.getInt("course_id");
+			String name = myRS.getString("name");
+			String skill = myRS.getString("skill");
+			int price = myRS.getInt("price");
+			String language = myRS.getString("language");
+			String description = myRS.getString("description");
+			double star_rate = myRS.getDouble("star_rate");
+			int cid = myRS.getInt("cid");
+			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid));
+		}
+		return courses;
+	}
+	
+	public int getToTalCourses(int ins_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		int total = -1;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "select * from happourse.instructor where ins_id = ?";
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setInt(1, ins_id);
+			myRS = myStmt.executeQuery();
+			
+			
+			while (myRS.next()) {
+				total = myRS.getInt("total_course");
+			}
+			
+		} 
+		finally {
+			myConn.close();
+		}
+		return total;
+	}
+	
+	public int getMyStudent(int ins_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		int total = -1;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "SELECT COUNT(DISTINCT a.uid) FROM user_course a, courses b "
+					+ "WHERE a.course_id = b.course_id AND b.ins_id= ?";
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setInt(1, ins_id);
+			myRS = myStmt.executeQuery();
+			
+			
+			while (myRS.next()) {
+				total = myRS.getInt(1);
+			}
+		} 
+		finally {
+			myConn.close();
+		}
+		return total;
+	}
+	
+	public float getBalance(int ins_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		float balance = -1;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "select balance from happourse.instructor where ins_id = ?";
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setInt(1, ins_id);
+			myRS = myStmt.executeQuery();
+			
+			
+			if (myRS.next()) {
+				balance = myRS.getFloat("balance");
+			}
+		} 
+		finally {
+			myConn.close();
+		}
+		return balance;
+	}
+	
+	public float getTotalSales(int ins_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		float total_sales = -1;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "SELECT SUM(c.price) as total_sales FROM user_course u, courses c WHERE u.course_id = c.course_id AND c.ins_id = ?";
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setInt(1, ins_id);
+			myRS = myStmt.executeQuery();
+			
+			
+			if (myRS.next()) {
+				total_sales = myRS.getFloat("total_sales");
+			}
+			
+		} 
+		finally {
+			myConn.close();
+		}
+		return total_sales;
+	}
 }
 
 	
