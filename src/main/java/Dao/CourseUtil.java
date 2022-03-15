@@ -328,4 +328,38 @@ public class CourseUtil {
 		}
 		return li;
 	}
+
+	public float getPrice(int course_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		float price = 0;
+		myConn = dataSource.getConnection();
+		String sql = "select price from happourse.courses where course_id=?";
+		pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, course_id);
+		myRS = pstmt.executeQuery();
+		if (myRS.next()) {
+			try {
+				price = (float) myRS.getInt("price");
+			}catch (Exception e) {
+				// TODO: handle exception
+			}			
+		}
+		myConn.close();
+		return price;
+	}
+
+	public void minusBalance(int uid, float price) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "update happourse.users set balance=balance-? where uid=?";
+		pstmt = myConn.prepareStatement(sql);
+		pstmt.setFloat(1, price);
+		pstmt.setInt(2, uid);
+		pstmt.executeUpdate();
+		myConn.close();
+	}
 }
