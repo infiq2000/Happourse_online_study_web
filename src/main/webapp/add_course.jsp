@@ -156,22 +156,10 @@
 									</div>
 									
 									<div class="form-group">
-											<label>Price Range</label>
-											<div class="price-ranger">
-												<div class="ranger-min-max-block">
-													<ul class="clearfix">
-														<li class="float-left">
-															<label class="select-category" for="min">From</label>
-															<input type="text" class="min" readonly style="width:100px;">
-														</li>
-														<li class="float-left">
-															<label class="select-category" for="max">To</label>
-															<input type="text" class="max" readonly style="width:100px;">
-														</li>
-													</ul>
+												<label style="margin-right: 20px; font-size:14px;">Price ($)</label>
+												<div style=" width: 50px; display:inline;">
+													<input type="text" name="price" value="" placeholder="$" required>
 												</div>
-												<div id="slider-range" style="width:200px;"></div>
-											</div> <!-- /price-ranger -->
 										</div> <!-- /.course-price-filter -->
 									
 									<div class="form-group tags">
@@ -243,7 +231,7 @@
 
 </div>
 
-<script src="js/ins/jquery.js"></script><!---->
+<!--<script src="js/ins/jquery.js"></script>-->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>

@@ -84,7 +84,7 @@
 						<div class="col-lg-9 col-md-8 col-xs-12 popular-course float-right">
 							<div class="course-style-filter clearfix">
 								<ul class="float-left clearfix">
-									<li><a href="#" class="tran3s active">Đang học</a></li>
+									<li><a href="#" class="tran3s active">Current</a></li>
 								</ul>
 								<ul class="float-right">
 									<li><a href="course-grid.html" class="tran3s"><i class="fa fa-th-large" aria-hidden="true"></i></a></li>
