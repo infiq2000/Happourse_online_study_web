@@ -15,6 +15,10 @@ $(".chapter").click(function () {
  
 });
 
+document.getElementById("s1").onclick = function () {
+            document.getElementsByClassName("ct2")[0].style.display = 'block';
+        };
+
 $("[class=ct1]").click(function () {
  
     $chapter = $(this);
@@ -31,6 +35,10 @@ $("[class=ct1]").click(function () {
     });
  
 });
+
+document.getElementById("s2").onclick = function () {
+            document.getElementsByClassName("ct3")[0].style.display = 'block';
+        };
 
 $("[class=ct2]").click(function () {
  
@@ -49,6 +57,10 @@ $("[class=ct2]").click(function () {
  
 });
 
+document.getElementById("s3").onclick = function () {
+            document.getElementsByClassName("ct4")[0].style.display = 'block';
+        };
+
 $("[class=ct3]").click(function () {
  
     $chapter = $(this);
@@ -65,6 +77,10 @@ $("[class=ct3]").click(function () {
     });
  
 });
+
+document.getElementById("s4").onclick = function () {
+            document.getElementsByClassName("ct5")[0].style.display = 'block';
+        };
 
 $("[class=ct4]").click(function () {
  
@@ -83,6 +99,10 @@ $("[class=ct4]").click(function () {
  
 });
 
+document.getElementById("s5").onclick = function () {
+            document.getElementsByClassName("ct6")[0].style.display = 'block';
+        };
+
 $("[class=ct5]").click(function () {
  
     $chapter = $(this);
@@ -99,6 +119,10 @@ $("[class=ct5]").click(function () {
     });
  
 });
+
+document.getElementById("s6").onclick = function () {
+            document.getElementsByClassName("ct7")[0].style.display = 'block';
+        };
 
 $("[class=ct6]").click(function () {
  
@@ -117,6 +141,10 @@ $("[class=ct6]").click(function () {
  
 });
 
+document.getElementById("s7").onclick = function () {
+            document.getElementsByClassName("ct8")[0].style.display = 'block';
+        };
+
 $("[class=ct7]").click(function () {
  
     $chapter = $(this);
@@ -134,6 +162,10 @@ $("[class=ct7]").click(function () {
  
 });
 
+document.getElementById("s8").onclick = function () {
+            document.getElementsByClassName("ct9")[0].style.display = 'block';
+        };
+
 $("[class=ct8]").click(function () {
  
     $chapter = $(this);
@@ -150,6 +182,10 @@ $("[class=ct8]").click(function () {
     });
  
 });
+
+document.getElementById("s9").onclick = function () {
+            document.getElementsByClassName("ct10")[0].style.display = 'block';
+        };
 
 $("[class=ct9]").click(function () {
  
