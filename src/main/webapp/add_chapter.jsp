@@ -140,13 +140,17 @@
 																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
 																</div>
 															</div>
+															
+															<div class="button-box text-center"  style="margin-top: 40px;">
+																<button id="s1" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+															</div>
 														</div>
 														
 													</li>
 													
 													<li style="margin: 0 0 40px 40px;">
-														<label class="ct2" style="margin: 0 0 20px 40px;">+ Content 2</label>
-														<div class="form-group" id="c2" style="margin-left:40px; display:none;'">
+														<label class="ct2" style="margin: 0 0 20px 40px; display:none;">+ Content 2</label>
+														<div class="form-group" id="c2" style="margin-left:40px; display:none;">
 															<label style="font-size:14px;">Content Title</label>
 															<input type="text" name="username" value="" placeholder="Content 2" required>
 
@@ -176,13 +180,17 @@
 																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
 																</div>
 															</div>
+															
+															<div class="button-box text-center" id="s2" style="margin-top: 40px;">
+																<button style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+															</div>
 														</div>
 														
 													</li>
 													
 													<li style="margin: 0 0 40px 40px;">
-														<label class="ct3" style="margin: 0 0 20px 40px;">+ Content 3</label>
-														<div class="form-group" id="c3" style="margin-left:40px; display:none;'">
+														<label class="ct3" style="margin: 0 0 20px 40px; display:none;">+ Content 3</label>
+														<div class="form-group" id="c3" style="margin-left:40px; display:none;">
 															<label style="font-size:14px;">Content Title</label>
 															<input type="text" name="username" value="" placeholder="Content 3" required>
 
@@ -212,13 +220,16 @@
 																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
 																</div>
 															</div>
+															<div class="button-box text-center" id="s3" style="margin-top: 40px;">
+																<button style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+															</div>
 														</div>
 														
 													</li>
 													
 													<li style="margin: 0 0 40px 40px;">
-														<label class="ct4" style="margin: 0 0 20px 40px;">+ Content 4</label>
-														<div class="form-group" id="c4" style="margin-left:40px; display:none;'">
+														<label class="ct4" style="margin: 0 0 20px 40px; display:none;">+ Content 4</label>
+														<div class="form-group" id="c4" style="margin-left:40px; display:none;">
 															<label style="font-size:14px;">Content Title</label>
 															<input type="text" name="username" value="" placeholder="Content 4" required>
 
@@ -248,13 +259,16 @@
 																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
 																</div>
 															</div>
+															<div class="button-box text-center" id="s4" style="margin-top: 40px;">
+																<button style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+															</div>
 														</div>
 														
 													</li>
 													
 													<li style="margin: 0 0 40px 40px;">
-														<label class="ct5" style="margin: 0 0 20px 40px;">+ Content 5</label>
-														<div class="form-group" id="c5" style="margin-left:40px; display:none;'">
+														<label class="ct5" style="margin: 0 0 20px 40px; display:none;">+ Content 5</label>
+														<div class="form-group" id="c5" style="margin-left:40px; display:none;">
 															<label style="font-size:14px;">Content Title</label>
 															<input type="text" name="username" value="" placeholder="Content 5" required>
 
@@ -284,13 +298,16 @@
 																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
 																</div>
 															</div>
+															<div class="button-box text-center" id="s5" style="margin-top: 40px;">
+																<button style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+															</div>
 														</div>
 														
 													</li>
 													
 													<li style="margin: 0 0 40px 40px;">
-														<label class="ct6" style="margin: 0 0 20px 40px;">+ Content 6</label>
-														<div class="form-group" id="c6" style="margin-left:40px; display:none;'">
+														<label class="ct6" style="margin: 0 0 20px 40px; display:none;">+ Content 6</label>
+														<div class="form-group" id="c6" style="margin-left:40px; display:none;">
 															<label style="font-size:14px;">Content Title</label>
 															<input type="text" name="username" value="" placeholder="Content 6" required>
 
@@ -320,13 +337,16 @@
 																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
 																</div>
 															</div>
+															<div class="button-box text-center" id="s6" style="margin-top: 40px;">
+																<button style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+															</div>
 														</div>
 														
 													</li>
 													
 													<li style="margin: 0 0 40px 40px;">
-														<label class="ct7" style="margin: 0 0 20px 40px;">+ Content 7</label>
-														<div class="form-group" id="c7" style="margin-left:40px; display:none;'">
+														<label class="ct7" style="margin: 0 0 20px 40px; display:none;">+ Content 7</label>
+														<div class="form-group" id="c7" style="margin-left:40px; display:none;">
 															<label style="font-size:14px;">Content Title</label>
 															<input type="text" name="username" value="" placeholder="Content 7" required>
 
@@ -356,13 +376,16 @@
 																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
 																</div>
 															</div>
+															<div class="button-box text-center" id="s7" style="margin-top: 40px;">
+																<button style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+															</div>
 														</div>
 														
 													</li>
 													
 													<li style="margin: 0 0 40px 40px;">
-														<label class="ct8" style="margin: 0 0 20px 40px;">+ Content 8</label>
-														<div class="form-group" id="c8" style="margin-left:40px; display:none;'">
+														<label class="ct8" style="margin: 0 0 20px 40px; display:none;">+ Content 8</label>
+														<div class="form-group" id="c8" style="margin-left:40px; display:none;">
 															<label style="font-size:14px;">Content Title</label>
 															<input type="text" name="username" value="" placeholder="Content 8" required>
 
@@ -392,13 +415,16 @@
 																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
 																</div>
 															</div>
+															<div class="button-box text-center" id="s8" style="margin-top: 40px;">
+																<button style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+															</div>
 														</div>
 														
 													</li>
 													
 													<li style="margin: 0 0 40px 40px;">
-														<label class="ct9" style="margin: 0 0 20px 40px;">+ Content 9</label>
-														<div class="form-group" id="c9" style="margin-left:40px; display:none;'">
+														<label class="ct9" style="margin: 0 0 20px 40px; display:none;">+ Content 9</label>
+														<div class="form-group" id="c9" style="margin-left:40px; display:none;">
 															<label style="font-size:14px;">Content Title</label>
 															<input type="text" name="username" value="" placeholder="Content 9" required>
 
@@ -428,13 +454,16 @@
 																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
 																</div>
 															</div>
+															<div class="button-box text-center" id="s9" style="margin-top: 40px;">
+																<button style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+															</div>
 														</div>
 														
 													</li>
 													
 													<li style="margin: 0 0 40px 40px;">
-														<label class="ct10" style="margin: 0 0 20px 40px;">+ Content 10</label>
-														<div class="form-group" id="c10" style="margin-left:40px; display:none;'">
+														<label class="ct10" style="margin: 0 0 20px 40px; display:none;">+ Content 10</label>
+														<div class="form-group" id="c10" style="margin-left:40px; display:none;">
 															<label style="font-size:14px;">Content Title</label>
 															<input type="text" name="username" value="" placeholder="Content 10" required>
 
@@ -463,6 +492,9 @@
 																	<input style="width: 80px; display:inline; background: white;" id='quantity2' min='1' max='59' name='quantity' type='text' value='1' />
 																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
 																</div>
+															</div>
+															<div class="button-box text-center" id="s10" style="margin-top: 40px;">
+																<button style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
 															</div>
 														</div>
 														
@@ -566,7 +598,7 @@
 
 </div>
 
-<script src="js/ins/jquery.js"></script><!---->
+<!--<script src="js/ins/jquery.js"></script>-->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
@@ -766,38 +798,7 @@
 			window.myLine.update();
 		});
 		
-		function add_content(){
-			
-			var qt = document.getElementById("quantity4");
-			for (i = 1; i < qt.value; i++){		
-				var node = document.getElementById("content1").cloneNode(true)
-				var ul = document.getElementById("content");
-				ul.appendChild(node);
-			}
-			
-		}
 		
-		function remove_content(){
-			var parent = document.getElementById("content");
-		    var child = document.getElementById("content1");
-		    parent.removeChild(child);
-		}
-		
-		function add_chapter(){
-			
-			var qt = document.getElementById("quantity3");
-			for (i = 1; i < qt.value; i++){	
-				var node = document.getElementById("chapter1").cloneNode(true)
-				var ul = document.getElementById("chapter");
-				ul.appendChild(node);
-			}
-		}
-		
-		function remove_chapter(){
-			var parent = document.getElementById("chapter");
-		    var child = document.getElementById("chapter1");
-		    parent.removeChild(child);
-		}
 	</script>
 
 </body>
