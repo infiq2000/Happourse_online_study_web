@@ -58,16 +58,38 @@ public class DashBoard extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int ins_id = (int)request.getSession(false).getAttribute("ins_id");
-		System.out.println("dashboarrd: 1");
 		List<Courses> ls = null;
+		float balance = 2;
+		float total_sales = 0;
+		int total_students = 0;
+		int total_courses = 0;
 		try {
 			ls = insUtil.getMyCourses(ins_id);
-			int temp = insUtil.getMyStudent(ins_id);
+			total_courses = ls.size();
+			total_students = insUtil.getMyStudent(ins_id);
+		// TODO Auto-generated catch block
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			balance = insUtil.getBalance(ins_id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		try { 
+		  total_sales = insUtil.getTotalSales(ins_id);
+		} 
+		catch (SQLException e) {
+		}
+		  // TODO Auto-generated catch block e.printStackTrace(); }
+		 
 		request.setAttribute("listCourses", ls);
+		request.setAttribute("balance", balance);
+		request.setAttribute("total_sales", total_sales);
+		request.setAttribute("total_students", total_students);
+		request.setAttribute("total_courses", total_courses);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/dashboard.jsp");
 		dispatcher.forward(request, response);
 	}

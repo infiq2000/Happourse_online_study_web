@@ -208,6 +208,7 @@ public class InstructorUtil {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
+		int total = -1;
 		try {
 			myConn = dataSource.getConnection();
 			String sql = "select * from happourse.instructor where ins_id = ?";
@@ -215,21 +216,23 @@ public class InstructorUtil {
 			myStmt.setInt(1, ins_id);
 			myRS = myStmt.executeQuery();
 			
-			int total = -1;
+			
 			while (myRS.next()) {
 				total = myRS.getInt("total_course");
 			}
-			return total;
+			
 		} 
 		finally {
 			myConn.close();
 		}
+		return total;
 	}
 	
 	public int getMyStudent(int ins_id) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
+		int total = -1;
 		try {
 			myConn = dataSource.getConnection();
 			String sql = "SELECT COUNT(DISTINCT a.uid) FROM user_course a, courses b "
@@ -238,15 +241,62 @@ public class InstructorUtil {
 			myStmt.setInt(1, ins_id);
 			myRS = myStmt.executeQuery();
 			
-			int total = -1;
+			
 			while (myRS.next()) {
 				total = myRS.getInt(1);
 			}
-			return total;
 		} 
 		finally {
 			myConn.close();
 		}
+		return total;
+	}
+	
+	public float getBalance(int ins_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		float balance = -1;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "select balance from happourse.instructor where ins_id = ?";
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setInt(1, ins_id);
+			myRS = myStmt.executeQuery();
+			
+			
+			if (myRS.next()) {
+				balance = myRS.getFloat("balance");
+			}
+		} 
+		finally {
+			myConn.close();
+		}
+		return balance;
+	}
+	
+	public float getTotalSales(int ins_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		float total_sales = -1;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "SELECT SUM(c.price) as total_sales FROM user_course u, courses c WHERE u.course_id = c.course_id AND c.ins_id = ?";
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setInt(1, ins_id);
+			myRS = myStmt.executeQuery();
+			
+			
+			if (myRS.next()) {
+				total_sales = myRS.getFloat("total_sales");
+			}
+			
+		} 
+		finally {
+			myConn.close();
+		}
+		return total_sales;
 	}
 }
 

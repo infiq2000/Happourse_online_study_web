@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,7 +82,7 @@
 							<!--  <div class="icon-box">
 								<span class="icon flaticon-article"></span>
 							</div>-->
-							<div class="courses">Total Courses<span>150</span></div>
+							<div class="courses">Total Courses<span>${total_courses}</span></div>
 						</div>
 					</div>
 				</div>
@@ -92,7 +94,7 @@
 							<!--<div class="icon-box">
 								<span class="icon flaticon-coding"></span>
 							</div>-->
-							<div class="courses">Total Students<span>3506</span></div>
+							<div class="courses">Total Students<span>${total_students}</span></div>
 						</div>
 					</div>
 				</div>
@@ -104,7 +106,7 @@
 							<!--<div class="icon-box">
 								<span class="icon flaticon-dollar-sign"></span>
 							</div>-->
-							<div class="courses">Total Sales<span>$1.5k</span></div>
+							<div class="courses">Total Sales<span>$${total_sales}</span></div>
 						</div>
 					</div>
 				</div>
@@ -116,7 +118,7 @@
 							<!--<div class="icon-box">
 								<span class="icon flaticon-scholarship"></span>
 							</div>-->
-							<div class="courses">Account Balance<span>$2.5k</span></div>
+							<div class="courses">Account Balance<span>$${balance}</span></div>
 						</div>
 					</div>
 				</div>

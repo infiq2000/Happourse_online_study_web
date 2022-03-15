@@ -96,12 +96,12 @@ public class Login extends HttpServlet {
 					session.setAttribute("uid", user.getUid());
 					session.setAttribute("aid", user.getAid());
 					session.setAttribute("type", 0);
-					System.out.println("Type: " + 0);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
 					dispatcher.forward(request, response);
 				}
 				else {
 					Instructor ins = null;
+					
 					ins = insUtil.getIns(tmp.getAid());
 					List<Courses> courses = userUtil.getAll_Courses();
 					request.setAttribute("listCourses", courses);
@@ -117,7 +117,6 @@ public class Login extends HttpServlet {
 					session.setAttribute("aid", ins.getAid());
 					session.setAttribute("type", 1);
 
-					System.out.println("Type: " + 1);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
 					dispatcher.forward(request, response);
 				}
