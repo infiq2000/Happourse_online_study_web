@@ -185,7 +185,7 @@ public class InstructorUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "select * from courses where ins_id = ?";
+		String sql = "SELECT count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id where ins_id = ? GROUP BY course_id";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, ins_id);
 		myRS = myStmt.executeQuery();
@@ -199,8 +199,11 @@ public class InstructorUtil {
 			String description = myRS.getString("description");
 			double star_rate = myRS.getDouble("star_rate");
 			int cid = myRS.getInt("cid");
-			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid));
+			int countCourses = myRS.getInt("countCourses");
+			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid, countCourses));
 		}
+		
+		myConn.close();
 		return courses;
 	}
 	
