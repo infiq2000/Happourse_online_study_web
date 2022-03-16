@@ -134,6 +134,7 @@
 							
 							<h6>Options</h6>
 							<div class="option-cource-box">
+								<input type="file" name="uploadField" style="margin-bottom: 20px;"/>
 								<div class="box-inner">
 									
 									<div class="form-group">

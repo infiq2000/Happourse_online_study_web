@@ -52,6 +52,7 @@ window.chartColors = {
 			min = min === undefined ? 0 : min;
 			max = max === undefined ? 1 : max;
 			this._seed = (seed * 9301 + 49297) % 233280;
+			/*this._seed = 5000;*/
 			return min + (this._seed / 233280) * (max - min);
 		},
 
@@ -107,6 +108,7 @@ window.chartColors = {
 
 			for (i = 0; i < count; ++i) {
 				value = MONTHS[Math.ceil(i) % 12];
+				/*value = MONTHS[10]*/
 				values.push(value.substring(0, section));
 			}
 

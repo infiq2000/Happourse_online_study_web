@@ -71,31 +71,48 @@
 			============================================== 
 			-->
 			<!-- Instructor Page Section -->
-<div class="page-wrapper">
+<div class="page-wrapper" style="padding-bottom: 50px;">
 <div class="edit-course-form">
-		<img style="min-width: 100px;max-height: 100px;border-radius: 50%;margin-bottom:30px;" src="images/logo/t.JPG" alt=""/>
-		
-	<div class="form-group" style="margin-left:40px; width:500px;">
+		<img id="an" style="width: 120px;margin:0 0 0 470px;" src="images/logo/t.JPG" alt=""/>
+		<div id="displayImg" style="width: 120px;margin:0 0 30px 470px;"></div>
+		<input type="file" name="upload" id="upload" onchange="ImagesFileAsURL()" style="margin: 0 0 20px 470px; display: inline;"/>
+        
+        
+		<!-- <img style="min-width: 120px;max-height: 200px;border-radius: 10%;margin:0 0 30px 470px;" src="images/logo/t.JPG" alt=""/>
+		<input type="file" name="uploadField" style="margin: 0 0 20px 20px; display: inline;"/> -->
+	<div class="form-group" style="margin-left:450px; width:500px;">
 	
 		<label style="font-size:14px;">Username</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Abc" required>
+		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Abc">
 	
 		<label style="font-size:14px;">Full Name</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Nguyen Van A" required>
+		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Nguyen Van A">
 		
 		<label style="font-size:14px;">Gmail</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="abc@gmail.com" required>
+		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="abc@gmail.com" >
 
 		<label style="font-size:14px;">Major</label>
 		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Developer" required>
 		
 		<label style="font-size:14px;">Facebook</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="https://www.facebook.com/" required>
+		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="https://www.facebook.com/">
 
 		<label style="font-size:14px;">About Me</label>
-		<input style="margin-bottom:40px;" type="text" name="username" value="" placeholder="Ahihi">
+		<span class="support"><strong style="font-size:14px;">Markdown supported</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
+		<textarea style="margin-bottom:20px;" class="" name="about" placeholder="Shortly describe about me"></textarea>
 		
+		<label style="font-size:14px;">Old Password</label>
+		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Abc">
 		
+		<label style="font-size:14px;">New Password</label>
+		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Abc">
+		
+		<label style="font-size:14px;">Repeat Password</label>
+		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Abc">
+		
+		<div class="button-box text-center" style="margin-top: 40px;">
+			<a href="Profile"><button type="button" class="theme-btn btn-style-one" ><span class="txt">Save</span></button></a>			
+		</div>
 	</div>
 </div>
 </div>
@@ -162,7 +179,7 @@
 
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
-		<script type="text/javascript" src="js/slide.js"></script>
+		<script type="text/javascript" src="js/update.js"></script>
 		<!-- Bootstrap Select JS -->
 		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
@@ -341,6 +358,9 @@
 
 			window.myLine.update();
 		});
+		
+		
+		
 		
 		
 	</script>

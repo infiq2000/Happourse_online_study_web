@@ -12,7 +12,6 @@
 					<div class="header-wrapper clearfix">
 						<!-- Logo -->
 						<div class="logo float-left tran4s"><a href="UserPage"><img src="images/logo/x.png" alt="Logo"></a></div>
-						<a>Yeeu anh</a>
 
 						<!-- ============================ Theme Menu ========================= -->
 						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">

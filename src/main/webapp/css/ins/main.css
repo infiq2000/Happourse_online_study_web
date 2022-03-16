@@ -3674,6 +3674,7 @@ img{
 .video-box .video-image{
 	position:relative;
 	margin:0px;
+	height:500px;	
 }
 
 .video-box .video-image img{

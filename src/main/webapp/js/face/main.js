@@ -1,4 +1,4 @@
-var eye_ratio_threshold = 0.25
+var eye_ratio_threshold = 0.335
 
 const video = document.getElementById("video");
 /*let predictedAges = [];*/
@@ -12,7 +12,7 @@ Promise.all([
 ]);
 
 function e_dist(p1, p2){
-	return Math.sqrt(Math.pow(p1['x'] - p2['x']) + Math.pow(p1['y'] - p2['y']))
+	return Math.sqrt(Math.pow(p1['x'] - p2['x'],2) + Math.pow(p1['y'] - p2['y'],2))
 }
 
 function e_ratio(p0, p1, p2, p3, p4, p5){
@@ -88,9 +88,12 @@ video.addEventListener("playing", () => {
     var right_ratio = e_ratio(r0,r1,r2,r3,r4,r5);
     var avg_ratio = (left_ratio+ right_ratio)/2
     
-    console.log(avg_ratio);
+    //console.log(Math.pow(l0['x'],2));
     if (avg_ratio < eye_ratio_threshold){
 		console.log("LOW");
+		
+	}else{
+		console.log(avg_ratio);
 	}
 
     
@@ -107,7 +110,7 @@ video.addEventListener("playing", () => {
     };
 
     new faceapi.draw.DrawTextField([`${faceapi.utils.round(interpolatedAge, 0)} years`],bottomRight).draw(canvas);*/
-  }, 100);
+  }, 5000);
 });
 
 /*function interpolateAgePredictions(age) {
