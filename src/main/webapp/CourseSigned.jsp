@@ -52,120 +52,14 @@
 				Theme Header
 			============================================== 
 			-->
-			<header class="theme-menu-wrapper menu-style-one">
-				<div class="container">
-					<div class="header-wrapper clearfix">
-						<!-- Logo -->
-						<div class="logo float-left tran4s"><a href="index.html"><img src="images/logo/logo.png" alt="Logo"></a></div>
-
-						<!-- ============================ Theme Menu ========================= -->
-						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">
-							<!-- Brand and toggle get grouped for better mobile display -->
-						   <div class="navbar-header">
-						     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-						       <span class="sr-only">Toggle navigation</span>
-						       <span class="icon-bar"></span>
-						       <span class="icon-bar"></span>
-						       <span class="icon-bar"></span>
-						     </button>
-						   </div>
-						   <!-- Collect the nav links, forms, and other content for toggling -->
-						   <div class="collapse navbar-collapse" id="navbar-collapse-1">
-								<ul class="nav">
-									<li class="dropdown-holder menu-list"><a href="index.html" class="tran3s">Home</a>
-										<ul class="sub-menu">
-											<li><a href="index.html">Home version one</a></li>
-											<li><a href="index-2.html">Home version Two</a></li>
-										</ul>
-									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Course</a>
-										<ul class="sub-menu">
-											<li><a href="course-grid.html">Course grid</a></li>
-											<li><a href="course-list.html">Course List</a></li>
-											<li><a href="course-details.html">Course Details</a></li>
-											<li class="dropdown-holder"><a href="#">Third Level menu</a>
-												<ul class="second-sub-menu">
-													<li><a href="#">menu one</a></li>
-													<li><a href="#">menu two</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Pages</a>
-										<ul class="sub-menu width-half">
-											<li><a href="about-us.html">About Us</a></li>
-											<li><a href="our-teacher.html">Our teacher</a></li>
-											<li><a href="teachers-profile.html">teachers profile</a></li>
-											<li><a href="shop.html">Shop page</a></li>
-											<li><a href="shop-details.html">Shop Details</a></li>
-											<li><a href="portfolio-3-column.html">portfolio 3 column</a></li>
-											<li><a href="portfolio-4-column.html">portfolio 4 column</a></li>
-											<li><a href="pricing-plan.html">Pricing Plan</a></li>
-											<li><a href="faq.html">Faq Page</a></li>
-											<li><a href="404.html">Error Page</a></li>
-											<li><a href="sign-up.html">Registration</a></li>
-											<li class="dropdown-holder"><a href="#">Third Level menu</a>
-												<ul class="second-sub-menu">
-													<li><a href="#">menu one</a></li>
-													<li><a href="#">menu two</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Event</a>
-										<ul class="sub-menu">
-											<li><a href="event-list.html">Event List</a></li>
-											<li><a href="event-grid.html">Event Grid</a></li>
-											<li><a href="event-details.html">Event Single</a></li>
-										</ul>
-									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Blog</a>
-										<ul class="sub-menu">
-											<li><a href="blog-grid.html">Blog grid</a></li>
-											<li><a href="blog-list.html">Blog List</a></li>
-											<li><a href="blog-details.html">blog Details</a></li>
-										</ul>
-									</li>
-									<li><a href="contact-us.html" class="tran3s">Contact Us</a></li>
-									<li class="dropdown-holder menu-list" ><a class="tran3s"><span class="login">HI ${name}</span></a> 
-										<ul class="sub-menu">
-											<c:url var="link2" value="Profile">
-													<c:param name="uid" value="${user_info.getUid()}"></c:param>  
-	  										</c:url>
-											<li><a href="${link2}">Tài khoản</a></li>
-											<li><a href="update_profile.jsp">Cập nhật thông tin</a></li>
-											<c:url var="tempLink" value="MyLearning">
-													<c:param name="aid_user" value="${aid}"></c:param> --%>
-													<c:param name="uid" value="${uid}"></c:param> --%>
-	  										</c:url>
-											<li><a href="${tempLink} ">Khóa học</a></li>
-											<li><a href="Logout">Đăng xuất</a></li>
-										</ul>
-									</li>
-								</ul>
-						   </div><!-- /.navbar-collapse -->
-						</nav> <!-- /.theme-main-menu -->
-					</div> <!-- /.header-wrapper -->
-				</div>
-			</header> <!-- /.theme-menu-wrapper -->
+			<jsp:include page="Header.jsp"></jsp:include>
 			
 			<!-- 
 			=============================================
 				Theme Inner Banner
 			============================================== 
 			-->
-			<div class="inner-banner">
-				<div class="opacity">
-					<div class="container">
-						<h2>${course_detail.getName()}</h2>
-						<ul>
-							<li><a href="index.html" class="tran3s">Home</a></li>
-							<li>/</li>
-							<li>Courses</li>
-						</ul>
-					</div> <!-- /.container -->
-				</div> <!-- /.opacity -->
-			</div> <!-- /.inner-banner -->
+			<jsp:include page="inner_banner.jsp"></jsp:include>
 
 
 			<!-- 
@@ -212,6 +106,7 @@
 									</div>
 								</div> <!-- /.course-info -->
 								<img src="images/course/35.jpg" alt="">
+								<a href="course_lession.jsp" class="tran3s p-bg-color follow hvr-trim" style="padding: 15px 102px 15px 102px;border-radius: 3px;color: white; display:inline">LEARN NOW</a>
 								<p class="p1">${course_detail.getDesciption()}</p>
 								<div class="learn-list">
 									<h3>What Will I Learn?</h3>
@@ -446,7 +341,7 @@
 									<c:url var="removeCourse" value="RemoveCourse">
 										<c:param name="course_id" value="${course_id}"></c:param> 
 	  								</c:url>
-									<a href="${removeCourse}" class="tran3s p-bg-color follow hvr-trim">Remove this course</a>
+									<a href="${removeCourse}" class="tran3s p-bg-color follow hvr-trim" style="padding: 10px 50px 10px 50px;border-radius: 3px;color: white;background: darkblue;">REMOVE THIS COURSE</a>
 								</div> <!-- /.sidebar-course-information -->
 
 								<div class="sidebar-instructor-info">
@@ -463,7 +358,7 @@
 											</ul>
 										</div> <!-- /.name -->
 										<p>${ins_info.getDescription()}</p>
-										<a href="#" class="tran3s p-bg-color follow hvr-trim">Follow Now</a>
+										<a href="#" class="tran3s p-bg-color follow hvr-trim" style="background: darkblue;">Follow Now</a>
 									</div> <!-- /.wrapper -->
 								</div> <!-- /.sidebar-instructor-info -->
 

@@ -11,7 +11,7 @@
 
 	<input id="cam" name = "checkboxInstructor" type="checkbox" value="run" style="margin: 0 0 20px 20px; width: 18px; height: 18px;">
 	<label for="cam" style="margin-bottom: 20px; font-weight: normal;">Run</label>
-	<video id="video" height="500" width="700" autoplay muted></video>
+	<video id="video" height="700" width="1080" autoplay muted></video>
 
     <script src="js/face/face-api.min.js"></script>
     <script src="js/face/main.js"></script>
