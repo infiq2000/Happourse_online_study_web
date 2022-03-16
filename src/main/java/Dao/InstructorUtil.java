@@ -1,9 +1,12 @@
 package Dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -300,6 +303,35 @@ public class InstructorUtil {
 			myConn.close();
 		}
 		return total_sales;
+	}
+	public List<Courses> getMyCoursesByMonth(int ins_id, int thisMonth, int thisYear) throws SQLException, ParseException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		List<Courses> ls = new ArrayList<>();
+		myConn = dataSource.getConnection();
+		Date start = Date.valueOf(String.join("-",Integer.toString(thisYear),Integer.toString(thisMonth),"1"));  
+		Date stop = Date.valueOf(String.join("-",Integer.toString(thisYear),Integer.toString(thisMonth+1),"1"));  
+		String sql = "SELECT count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id where ins_id = ? and start_date >= ? and start_date < ? GROUP BY course_id";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, ins_id);
+		myStmt.setDate(2, start);
+		myStmt.setDate(3, stop);
+		myRS = myStmt.executeQuery();
+		while (myRS.next()) {
+			int courses_id = myRS.getInt("course_id");
+			String name = myRS.getString("name");
+			String skill = myRS.getString("skill");
+			int price = myRS.getInt("price");
+			String language = myRS.getString("language");
+			String description = myRS.getString("description");
+			double star_rate = myRS.getDouble("star_rate");
+			int cid = myRS.getInt("cid");
+			int countCourses = myRS.getInt("countCourses");
+			ls.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid, countCourses));
+		}
+		myConn.close();
+		return ls;
 	}
 }
 

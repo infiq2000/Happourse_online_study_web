@@ -75,7 +75,7 @@
 						<div class="earning-block col-lg-4 col-md-6 col-sm-12">
 							<div class="inner-box">
 								<div class="content">
-									<div class="courses">Total Revenue<span>$7, 500.00</span><i>$5.00 this month</i></div>
+									<div class="courses">Total Revenue<span>$${totalRevenue }</span><i>$${totalRevenueMonth } this month</i></div>
 								</div>
 							</div>
 						</div>
@@ -84,7 +84,7 @@
 						<div class="earning-block col-lg-4 col-md-6 col-sm-12">
 							<div class="inner-box">
 								<div class="content">
-									<div class="courses">Total Enrollments<span>13,536</span><i>25 this month</i></div>
+									<div class="courses">Total Enrollments<span>${countCourses }</span><i>${countCoursesMonth } this month</i></div>
 								</div>
 							</div>
 						</div>

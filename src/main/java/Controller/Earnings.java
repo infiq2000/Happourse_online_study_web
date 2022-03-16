@@ -2,6 +2,8 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -55,11 +57,36 @@ public class Earnings extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("listCourses", ls);
+		int thisMonth = Calendar.getInstance().get(Calendar.MONTH)+1;
+		int thisYear = Calendar.getInstance().get(Calendar.YEAR);
+		List<Courses> lsMonth = null;
+		try {
+			lsMonth = insUtil.getMyCoursesByMonth(ins_id,thisMonth,thisYear);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		float totalRevenue = 0;
+		float totalRevenueMonth = 0;
+		int countCourses = 0;
+		int countCoursesMonth = 0;
 		for (Courses c : ls) {
 			totalRevenue += c.getCountCourses() * c.getPrice();
+			countCourses += c.getCountCourses();
+		}
+		if (lsMonth.size() != 0) {
+			for (Courses c: lsMonth) {
+				totalRevenueMonth += c.getCountCourses() * c.getPrice();
+				countCoursesMonth += c.getCountCourses();
+			}
 		}
 		request.setAttribute("totalRevenue", totalRevenue);
+		request.setAttribute("countCourses", countCourses);
+		request.setAttribute("totalRevenueMonth", totalRevenueMonth);
+		request.setAttribute("countCoursesMonth", countCoursesMonth);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/earning_course.jsp");
 		dispatcher.forward(request, response);
 	}
