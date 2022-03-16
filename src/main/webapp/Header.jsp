@@ -12,7 +12,6 @@
 					<div class="header-wrapper clearfix">
 						<!-- Logo -->
 						<div class="logo float-left tran4s"><a href="UserPage"><img src="images/logo/x.png" alt="Logo"></a></div>
-						<a>Yeeu anh</a>
 
 						<!-- ============================ Theme Menu ========================= -->
 						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">
@@ -74,7 +73,7 @@
 											<li><a href="DashBoard">Instructor Dashboard</a></li>
 											<li><a href="manage_course.jsp">Manage Courses</a></li>
 											<li><a href="add_course.jsp">Create New Course</a></li>
-											<li><a href="earning_course.jsp">Earnings</a></li>
+											<li><a href="Earnings">Earnings</a></li>
 										</ul>
 									</li>
 									<li><a href="MyLearning">My Learning</a></li>

@@ -12,6 +12,27 @@ public class Courses {
 	private int cid;
 	private String ins_name;
 	private String ins_major;
+	private int countCourses;
+	public int getCountCourses() {
+		return countCourses;
+	}
+	public Courses(int courses_id, String name, String skill, int price, String language, double star_rate,
+			String desciption, int ins_id, int cid, int countCourses) {
+		super();
+		this.courses_id = courses_id;
+		this.name = name;
+		this.skill = skill;
+		this.price = price;
+		this.language = language;
+		this.star_rate = star_rate;
+		this.desciption = desciption;
+		this.ins_id = ins_id;
+		this.cid = cid;
+		this.countCourses = countCourses;
+	}
+	public void setCountCourses(int countCourses) {
+		this.countCourses = countCourses;
+	}
 	public String getIns_major() {
 		return ins_major;
 	}
