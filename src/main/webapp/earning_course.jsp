@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
+<%@ page import="Model.Category" %>
+<%@ page import="Dao.CourseUtil" %>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,7 +75,7 @@
 						<div class="earning-block col-lg-4 col-md-6 col-sm-12">
 							<div class="inner-box">
 								<div class="content">
-									<div class="courses">Total Revenue<span>$7, 500.00</span><i>$5.00 this month</i></div>
+									<div class="courses">Total Revenue<span>$${totalRevenue }</span><i>$${totalRevenueMonth } this month</i></div>
 								</div>
 							</div>
 						</div>
@@ -79,7 +84,7 @@
 						<div class="earning-block col-lg-4 col-md-6 col-sm-12">
 							<div class="inner-box">
 								<div class="content">
-									<div class="courses">Total Enrollments<span>13,536</span><i>25 this month</i></div>
+									<div class="courses">Total Enrollments<span>${countCourses }</span><i>${countCoursesMonth } this month</i></div>
 								</div>
 							</div>
 						</div>
@@ -130,270 +135,41 @@
 				<!-- End Title Box -->
 				
 				<!-- Cource Statement Box -->
-				<div class="cource-statement-box">
-					<div class="box-inner">
-						<div class="clearfix">
-						
-							<!-- Cource Column -->
-							<div class="cource-column">
-								<div class="course-block-two">
-									<div class="cource-inner-box">
-										<div class="cource-image">
-											<a href="#"><img src="images/resource/statement-1.jpg" alt="" /></a>
+				<c:forEach var="tempCourses" items="${listCourses}">
+					<div class="cource-statement-box">
+						<div class="box-inner">
+							<div class="clearfix">
+							
+								<!-- Cource Column -->
+								<div class="cource-column">
+									<div class="course-block-two">
+										<div class="cource-inner-box">
+											<div class="cource-image">
+												<a href="#"><img src="images/resource/statement-1.jpg" alt="" /></a>
+											</div>
+											<h5><a href="#">${tempCourses.getName()}</a></h5>
+											<div class="cource-sales">${tempCourses.getCountCourses() } Sales</div>
 										</div>
-										<h5><a href="#">Learn IOS Development</a></h5>
-										<div class="cource-sales">36 Sales</div>
 									</div>
 								</div>
-							</div>
-							
-							<!-- Fees Column -->
-							<div class="fees-column">
-								<div class="cource-fees">$150 USD</div>
-							</div>
-							
-							<!-- Price Column -->
-							<div class="price-column">
-								<div class="cource-price">$15,000 USD</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-				<!-- End Cource Statement Box -->
-				
-				<!-- Cource Statement Box -->
-				<div class="cource-statement-box">
-					<div class="box-inner">
-						<div class="clearfix">
-						
-							<!-- Cource Column -->
-							<div class="cource-column">
-								<div class="course-block-two">
-									<div class="cource-inner-box">
-										<div class="cource-image">
-											<a href="#"><img src="images/resource/statement-2.jpg" alt="" /></a>
-										</div>
-										<h5><a href="#">Build Responsive Real world</a></h5>
-										<div class="cource-sales">36 Sales</div>
-									</div>
+								
+								<!-- Fees Column -->
+								<div class="fees-column">
+									<div class="cource-fees">$${tempCourses.getPrice() * tempCourses.getCountCourses() * 5 / 100} USD</div>
 								</div>
-							</div>
-							
-							<!-- Fees Column -->
-							<div class="fees-column">
-								<div class="cource-fees">$150 USD</div>
-							</div>
-							
-							<!-- Price Column -->
-							<div class="price-column">
-								<div class="cource-price">$15,000 USD</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-				<!-- End Cource Statement Box -->
-				
-				<!-- Cource Statement Box -->
-				<div class="cource-statement-box">
-					<div class="box-inner">
-						<div class="clearfix">
-						
-							<!-- Cource Column -->
-							<div class="cource-column">
-								<div class="course-block-two">
-									<div class="cource-inner-box">
-										<div class="cource-image">
-											<a href="#"><img src="images/resource/statement-3.jpg" alt="" /></a>
-										</div>
-										<h5><a href="#">Master in website design</a></h5>
-										<div class="cource-sales">36 Sales</div>
-									</div>
+								
+								<!-- Price Column -->
+								<div class="price-column">
+									<div class="cource-price">$${tempCourses.getPrice() * tempCourses.getCountCourses()} USD</div>
 								</div>
+								
 							</div>
-							
-							<!-- Fees Column -->
-							<div class="fees-column">
-								<div class="cource-fees">$150 USD</div>
-							</div>
-							
-							<!-- Price Column -->
-							<div class="price-column">
-								<div class="cource-price">$15,000 USD</div>
-							</div>
-							
 						</div>
 					</div>
-				</div>
+				</c:forEach>
 				<!-- End Cource Statement Box -->
 				
-				<!-- Cource Statement Box -->
-				<div class="cource-statement-box">
-					<div class="box-inner">
-						<div class="clearfix">
-						
-							<!-- Cource Column -->
-							<div class="cource-column">
-								<div class="course-block-two">
-									<div class="cource-inner-box">
-										<div class="cource-image">
-											<a href="#"><img src="images/resource/statement-4.jpg" alt="" /></a>
-										</div>
-										<h5><a href="#">Learn website design</a></h5>
-										<div class="cource-sales">36 Sales</div>
-									</div>
-								</div>
-							</div>
-							
-							<!-- Fees Column -->
-							<div class="fees-column">
-								<div class="cource-fees">$150 USD</div>
-							</div>
-							
-							<!-- Price Column -->
-							<div class="price-column">
-								<div class="cource-price">$15,000 USD</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-				<!-- End Cource Statement Box -->
-				
-				<!-- Cource Statement Box -->
-				<div class="cource-statement-box">
-					<div class="box-inner">
-						<div class="clearfix">
-						
-							<!-- Cource Column -->
-							<div class="cource-column">
-								<div class="course-block-two">
-									<div class="cource-inner-box">
-										<div class="cource-image">
-											<a href="#"><img src="images/resource/statement-5.jpg" alt="" /></a>
-										</div>
-										<h5><a href="#">Learn IOS Development</a></h5>
-										<div class="cource-sales">36 Sales</div>
-									</div>
-								</div>
-							</div>
-							
-							<!-- Fees Column -->
-							<div class="fees-column">
-								<div class="cource-fees">$150 USD</div>
-							</div>
-							
-							<!-- Price Column -->
-							<div class="price-column">
-								<div class="cource-price">$15,000 USD</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-				<!-- End Cource Statement Box -->
-				
-				<!-- Cource Statement Box -->
-				<div class="cource-statement-box">
-					<div class="box-inner">
-						<div class="clearfix">
-						
-							<!-- Cource Column -->
-							<div class="cource-column">
-								<div class="course-block-two">
-									<div class="cource-inner-box">
-										<div class="cource-image">
-											<a href="#"><img src="images/resource/statement-6.jpg" alt="" /></a>
-										</div>
-										<h5><a href="#">Learn IOS Development</a></h5>
-										<div class="cource-sales">36 Sales</div>
-									</div>
-								</div>
-							</div>
-							
-							<!-- Fees Column -->
-							<div class="fees-column">
-								<div class="cource-fees">$150 USD</div>
-							</div>
-							
-							<!-- Price Column -->
-							<div class="price-column">
-								<div class="cource-price">$15,000 USD</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-				<!-- End Cource Statement Box -->
-				
-				<!-- Cource Statement Box -->
-				<div class="cource-statement-box">
-					<div class="box-inner">
-						<div class="clearfix">
-						
-							<!-- Cource Column -->
-							<div class="cource-column">
-								<div class="course-block-two">
-									<div class="cource-inner-box">
-										<div class="cource-image">
-											<a href="#"><img src="images/resource/statement-7.jpg" alt="" /></a>
-										</div>
-										<h5><a href="#">Build Responsive Real world</a></h5>
-										<div class="cource-sales">36 Sales</div>
-									</div>
-								</div>
-							</div>
-							
-							<!-- Fees Column -->
-							<div class="fees-column">
-								<div class="cource-fees">$150 USD</div>
-							</div>
-							
-							<!-- Price Column -->
-							<div class="price-column">
-								<div class="cource-price">$15,000 USD</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-				<!-- End Cource Statement Box -->
-				
-				<!-- Cource Statement Box -->
-				<div class="cource-statement-box">
-					<div class="box-inner">
-						<div class="clearfix">
-						
-							<!-- Cource Column -->
-							<div class="cource-column">
-								<div class="course-block-two">
-									<div class="cource-inner-box">
-										<div class="cource-image">
-											<a href="#"><img src="images/resource/statement-8.jpg" alt="" /></a>
-										</div>
-										<h5><a href="#">Master in website design</a></h5>
-										<div class="cource-sales">36 Sales</div>
-									</div>
-								</div>
-							</div>
-							
-							<!-- Fees Column -->
-							<div class="fees-column">
-								<div class="cource-fees">$150 USD</div>
-							</div>
-							
-							<!-- Price Column -->
-							<div class="price-column">
-								<div class="cource-price">$15,000 USD</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-				<!-- End Cource Statement Box -->
-				
-				<div class="total-revenue">Total Revenue = $370,905 USD</div>
+				<div class="total-revenue">Total Revenue = $${totalRevenue } USD</div>
 				
 			</div>
 			

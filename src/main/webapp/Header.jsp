@@ -73,7 +73,7 @@
 											<li><a href="DashBoard">Instructor Dashboard</a></li>
 											<li><a href="manage_course.jsp">Manage Courses</a></li>
 											<li><a href="add_course.jsp">Create New Course</a></li>
-											<li><a href="earning_course.jsp">Earnings</a></li>
+											<li><a href="Earnings">Earnings</a></li>
 										</ul>
 									</li>
 									<li><a href="MyLearning">My Learning</a></li>

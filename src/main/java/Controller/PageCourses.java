@@ -50,8 +50,11 @@ public class PageCourses extends HttpServlet {
 		String search = request.getParameter("txtSearch");
 		String temp_cid = request.getParameter("cid");
 		int cid = 0;
-		if (!temp_cid.isBlank()) 
+		try {
 			cid = Integer.parseInt(temp_cid);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		String type = request.getParameter("type");
 		List<Courses> li = new ArrayList<>();
 		try {
