@@ -81,8 +81,11 @@
 								</div>
 								<!-- Follow -->
 								<div class="follow"><a href="#">+ Follow</a></div>
+								
 							</div>
+							
 							<div class="pull-right">
+								
 								<ul class="social-box">
 									<li class="share">Share now on</li>
 									<li class="facebook"><a href="#" class="fa fa-facebook"></a></li>
@@ -90,6 +93,12 @@
 									<li class="twitter"><a href="#" class="fa fa-twitter"></a></li>
 								</ul>
 							</div>
+							
+						</div>
+						<div style="margin-top: 20px; background: pink; padding: 20px; border-radius: 5px;">
+							<b style="display:inline; color: red; margin-left: 300px;">Help We Improve Content Quality</b>
+							<a href="mood_detection.jsp" class="tran3s p-bg-color follow hvr-trim" id="on" style="display:inline;padding: 10px 50px 10px 50px;border-radius: 3px;color: white;background: darkgreen;">TURN ON WEBCAM</a>
+							<a href="#" class="tran3s p-bg-color follow hvr-trim" id="off" style="display:inline;padding: 10px 50px 10px 50px;border-radius: 3px;color: white;background: lightgray; display: none;">TURN OFF WEBCAM</a>
 						</div>
 					</div>
 					<!-- End Video Info Boxed -->
@@ -116,7 +125,7 @@
 										<div class="class-detail-content">
 											<h4>25 That Prevent Job Seekers From Overcoming Failure</h4>
 											<div class="text">Phasellus enim magna, varius et commodo ut, ultricies vitae velit. Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel justo. In libero urna, venenatis sit amet ornare non, suscipit nec risus. Sed consequat justo non mauris pretium at tempor justo sodales. Quisque tincidunt.</div>
-											<h6>What you’ll learn?</h6>
+											<h6>What will you learn?</h6>
 											<ul class="list-style-one">
 												<li>Phasellus enim magna, up above the most like varius et commodo ut.</li>
 												<li>Sed consequat justo non profit us mauris pretium at tempor justo.</li>
@@ -643,7 +652,7 @@
 
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
-		<script type="text/javascript" src="js/slide.js"></script>
+		<script type="text/javascript" src="js/update.js"></script>
 		<!-- Bootstrap Select JS -->
 		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 

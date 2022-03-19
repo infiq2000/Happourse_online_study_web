@@ -16,3 +16,7 @@ function ImagesFileAsURL() {
         fileReader.readAsDataURL(fileToLoad);
     }
 }
+
+document.getElementById("on").onclick = function () {
+            document.getElementById("off").style.display = 'block';
+        };

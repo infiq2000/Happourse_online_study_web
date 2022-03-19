@@ -59,18 +59,7 @@
 				Theme Inner Banner
 			============================================== 
 			-->
-			<div class="inner-banner">
-				<div class="opacity">
-					<div class="container">
-						<h2>Our Courses</h2>
-						<ul>
-							<li><a href="index.html" class="tran3s">Home</a></li>
-							<li>/</li>
-							<li>Courses</li>
-						</ul>
-					</div> <!-- /.container -->
-				</div> <!-- /.opacity -->
-			</div> <!-- /.inner-banner -->
+			<jsp:include page="inner_banner.jsp"></jsp:include>
 
 
 			<!-- 
