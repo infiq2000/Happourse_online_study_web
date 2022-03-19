@@ -95,7 +95,7 @@ public class Login extends HttpServlet {
 					session.setAttribute("name", b);
 					session.setAttribute("uid", user.getUid());
 					session.setAttribute("aid", user.getAid());
-					session.setAttribute("type", 0);
+					session.setAttribute("account_type", 0);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
 					dispatcher.forward(request, response);
 				}
@@ -115,7 +115,7 @@ public class Login extends HttpServlet {
 					session.setAttribute("name", b);
 					session.setAttribute("ins_id", ins.getIns_id());
 					session.setAttribute("aid", ins.getAid());
-					session.setAttribute("type", 1);
+					session.setAttribute("account_type", 1);
 
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
 					dispatcher.forward(request, response);
