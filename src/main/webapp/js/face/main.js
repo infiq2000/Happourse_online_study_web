@@ -6,9 +6,6 @@ const video = document.getElementById("video");
 Promise.all([
   faceapi.nets.tinyFaceDetector.loadFromUri("js/face/models"),
   faceapi.nets.faceLandmark68Net.loadFromUri("js/face/models"),
-  faceapi.nets.faceRecognitionNet.loadFromUri("js/face/models"),
-  faceapi.nets.faceExpressionNet.loadFromUri("js/face/models"),
-  faceapi.nets.ageGenderNet.loadFromUri("js/face/models")
 ]);
 
 function e_dist(p1, p2){
@@ -32,7 +29,9 @@ function startVideo() {
   );
 };
 
-document.getElementById('cam').onclick = function(e){
+startVideo();
+
+/*document.getElementById('on').onclick = function(e){
     if (this.checked){
         startVideo();
     }
@@ -48,7 +47,7 @@ document.getElementById('cam').onclick = function(e){
 		// Or stop all like so:
 		tracks[0].stop();
 	}
-};
+};*/
 
 
 video.addEventListener("playing", () => {
@@ -61,6 +60,9 @@ video.addEventListener("playing", () => {
   
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks();
+    if (detections[0] == null){
+		alert("Ngồi vào vị trí");
+	}
       /*.withFaceExpressions()
       .withAgeAndGender();*/
     const resizedDetections = faceapi.resizeResults(detections, displaySize);
@@ -89,12 +91,12 @@ video.addEventListener("playing", () => {
     var avg_ratio = (left_ratio+ right_ratio)/2
     
     //console.log(Math.pow(l0['x'],2));
-    if (avg_ratio < eye_ratio_threshold){
+/*    if (avg_ratio < eye_ratio_threshold){
 		console.log("LOW");
 		
 	}else{
 		console.log(avg_ratio);
-	}
+	}*/
 
     
 
@@ -110,7 +112,7 @@ video.addEventListener("playing", () => {
     };
 
     new faceapi.draw.DrawTextField([`${faceapi.utils.round(interpolatedAge, 0)} years`],bottomRight).draw(canvas);*/
-  }, 5000);
+  }, 1000);
 });
 
 /*function interpolateAgePredictions(age) {

@@ -95,11 +95,19 @@
 							</div>
 							
 						</div>
+						<video style="border:1px solid black;float:right;border-radius: 8px; margin: 40px 150px 20px 0; background: white; display: none;" id="video" height="110" width="160" autoplay></video>
+						<canvas style="border:1px solid black;float:right;border-radius: 8px; margin: 40px 150px 20px 0; background: white; display: none;" id="canvas1" width="600" height="458"></canvas>
+						
 						<div style="margin-top: 20px; background: pink; padding: 20px; border-radius: 5px;">
-							<b style="display:inline; color: red; margin-left: 300px;">Help We Improve Content Quality</b>
-							<a href="mood_detection.jsp" class="tran3s p-bg-color follow hvr-trim" id="on" style="display:inline;padding: 10px 50px 10px 50px;border-radius: 3px;color: white;background: darkgreen;">TURN ON WEBCAM</a>
-							<a href="#" class="tran3s p-bg-color follow hvr-trim" id="off" style="display:inline;padding: 10px 50px 10px 50px;border-radius: 3px;color: white;background: lightgray; display: none;">TURN OFF WEBCAM</a>
+							<b style="color: red; margin-left: 200px; font-size: 18px;">Help We Improve Content Quality</b>
+							<button class="tran3s p-bg-color follow hvr-trim" id="on" style="padding: 10px 50px 10px 50px;border-radius: 3px;color: white;background: darkgreen">TURN ON WEBCAM</button>
+							<button class="tran3s p-bg-color follow hvr-trim" id="off" style="padding: 10px 47px 10px 47px;border-radius: 3px;color: white;background: darkgray; display: none; margin:20px 0 0 537px;">TURN OFF WEBCAM</button>
+							<div id="mood_rate" style="display:none;margin: 20px 0 0 525px;">
+								<b style="margin-left:50px;">Mood</b>
+								<input type="text" disabled="True" id="mood_rate_text" style="color: red;font-size: 16px;padding: 10px 5px 10px 5px; margin-left:20px; width:50px;">
+							</div>
 						</div>
+						
 					</div>
 					<!-- End Video Info Boxed -->
 					
@@ -632,7 +640,7 @@
 
 </div>
 
-<script src="js/ins/jquery.js"></script><!---->
+<!--<script src="js/ins/jquery.js"></script>-->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
@@ -652,7 +660,8 @@
 
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
-		<script type="text/javascript" src="js/update.js"></script>
+		<script type="text/javascript" src="js/lession.js"></script>
+		<script src="js/face/face-api.min.js"></script>
 		<!-- Bootstrap Select JS -->
 		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
@@ -832,38 +841,7 @@
 			window.myLine.update();
 		});
 		
-		function add_content(){
-			
-			var qt = document.getElementById("quantity4");
-			for (i = 1; i < qt.value; i++){		
-				var node = document.getElementById("content1").cloneNode(true)
-				var ul = document.getElementById("content");
-				ul.appendChild(node);
-			}
-			
-		}
 		
-		function remove_content(){
-			var parent = document.getElementById("content");
-		    var child = document.getElementById("content1");
-		    parent.removeChild(child);
-		}
-		
-		function add_chapter(){
-			
-			var qt = document.getElementById("quantity3");
-			for (i = 1; i < qt.value; i++){	
-				var node = document.getElementById("chapter1").cloneNode(true)
-				var ul = document.getElementById("chapter");
-				ul.appendChild(node);
-			}
-		}
-		
-		function remove_chapter(){
-			var parent = document.getElementById("chapter");
-		    var child = document.getElementById("chapter1");
-		    parent.removeChild(child);
-		}
 	</script>
 
 </body>
