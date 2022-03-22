@@ -15,6 +15,7 @@ let camera_button = document.querySelector("#on");
 let video = document.querySelector("#video");
 let camera_stop = document.querySelector("#off");
 let mood_rate = document.querySelector("#mood_rate_text");
+let label = document.querySelector("#mood_rate_label");
 var low = 0
 var high = 0
 
@@ -51,9 +52,10 @@ function stopClock() {
 
 function check_rate(){
 	var total = low + high;
-	console.log('Total: ',total*5/60);
+	console.log('Total: ',total*5);
 	console.log('High Mood: ',high*5/60);
-	return (high/total)*100;
+	var rate = (high/total)*100;
+	return rate.toFixed(2);
 }
 
 camera_button.addEventListener('click', async function() {
@@ -68,6 +70,16 @@ camera_button.addEventListener('click', async function() {
 	   	const mediaStream = video.srcObject;
 		const tracks = mediaStream.getTracks();
 		tracks.forEach(track => track.stop());
+		
+		if(check_rate() >= 50 && check_rate() <75){
+			label.innerHTML = "Good Job!";
+			label.style.color = "yellow";
+		}else{
+			if(check_rate() < 50){
+				label.innerHTML = "Come On!";
+				label.style.color = "red";
+			}
+		}
 		mood_rate.value = String(check_rate())+"%";
 	});
 	
