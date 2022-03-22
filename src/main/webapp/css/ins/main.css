@@ -562,7 +562,7 @@ img{
 .list-style-one li:before{
 	position:absolute;
 	left:0px;
-	content: "\f144";
+	content: "-";
 	color:#0e7bfe;
 	font-size:13px;
 	font-weight:400;
