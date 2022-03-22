@@ -15,14 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import Dao.CourseUtil;
-import Model.Courses;
 import Model.ManagedCourses;
 
 /**
- * Servlet implementation class ManageCourses
+ * Servlet implementation class SortCourseBySalesNumber
  */
-@WebServlet("/ManageCourses")
-public class ManageCourses extends HttpServlet {
+@WebServlet("/SortCourseBySalesNumber")
+public class SortCourseBySalesNumber extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
@@ -30,34 +29,41 @@ public class ManageCourses extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageCourses() {
+    public SortCourseBySalesNumber() {
         super();
         // TODO Auto-generated constructor stub
     }
-    
     public void init(ServletConfig config) throws ServletException {
     	super.init();
     	courseUtil = new Dao.CourseUtil(dataSource);
     }
-    
-
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int ins_id = (int)request.getSession(false).getAttribute("ins_id");
+		String desc = request.getParameter("desc");
 		List<ManagedCourses> ls = null;
 		try {
-			ls = courseUtil.getManagedCourses(ins_id);
+			if (desc.equalsIgnoreCase("")) {
+				ls = courseUtil.getManagedCourses(ins_id);
+				request.setAttribute("desc", "false");
+			}
+			else if (desc.equalsIgnoreCase("false")) {
+				ls = courseUtil.sortCoursesBySalesNumber(ins_id, true);
+				request.setAttribute("desc", "true");
+			} else {
+				ls = courseUtil.sortCoursesBySalesNumber(ins_id, false);
+				request.setAttribute("desc", "");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("desc", "false");
 		request.setAttribute("listCourses", ls);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/manage_course.jsp");
 		dispatcher.forward(request, response);
 	}
+
 }

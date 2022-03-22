@@ -82,7 +82,7 @@ public class Login extends HttpServlet {
 					List<Courses> courses = userUtil.getAll_Courses();
 					
 					int pagesNumber = couUtil.courseNumberPage(courses);
-					List<Courses> li = couUtil.getCoursesByPage(courses, 1);
+					List<Courses> li = couUtil.getCoursesByPage(courses, 3);
 					request.setAttribute("listCourses", li);
 					request.setAttribute("pagesNumber", pagesNumber);
 					

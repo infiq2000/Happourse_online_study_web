@@ -411,4 +411,44 @@ public class CourseUtil {
 		pstmt.execute();
 		myConn.close();
 	}
+
+	public List<ManagedCourses> sortCoursesBySalesNumber(int ins_id, boolean desc) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		List<ManagedCourses> ls = new ArrayList<>();
+		myConn = dataSource.getConnection();
+		String sql = "";
+		if (desc)
+			sql = "SELECT count(u.course_id) as countCourses, c.*, ca.name as categoryName FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid where ins_id = ? GROUP BY course_id ORDER BY countCourses DESC;";
+		else
+			sql = "SELECT count(u.course_id) as countCourses, c.*, ca.name as categoryName FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid where ins_id = ? GROUP BY course_id ORDER BY countCourses ASC;";
+		pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, ins_id);
+		myRS = pstmt.executeQuery();
+		int count = 0;
+		while (myRS.next()) {
+			count += 1;
+			String name = "";
+			if (count < 10) {
+				name = "0" + Integer.toString(count) + ". " + myRS.getString("name");
+			} else {
+				name = Integer.toString(count) + ". " + myRS.getString("name");
+			}
+			int courses_id = myRS.getInt("course_id");
+			
+			int countCourses = myRS.getInt("countCourses");
+			String skill = myRS.getString("skill");
+			int price = myRS.getInt("price");
+			String language = myRS.getString("language");
+			double starRate = myRS.getDouble("star_rate");
+			String description = myRS.getString("description");
+			int cid = myRS.getInt("cid");
+			String category = myRS.getString("categoryName");
+			ls.add(new ManagedCourses(courses_id, name, skill, price, language, starRate,
+					description, ins_id, cid, countCourses, category));
+		}
+		myConn.close();
+		return ls;
+	}
 }
