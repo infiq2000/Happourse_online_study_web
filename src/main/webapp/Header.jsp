@@ -71,7 +71,7 @@
 									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Instuctor</a>
 										<ul class="sub-menu">
 											<li><a href="DashBoard">Instructor Dashboard</a></li>
-											<li><a href="manage_course.jsp">Manage Courses</a></li>
+											<li><a href="ManageCourses">Manage Courses</a></li>
 											<li><a href="add_course.jsp">Create New Course</a></li>
 											<li><a href="Earnings">Earnings</a></li>
 										</ul>

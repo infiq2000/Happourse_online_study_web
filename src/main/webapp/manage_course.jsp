@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
+<%@ page import="Model.Courses" %>
+<%@ page import="Model.ManagedCourses" %>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
+<%@ page import="Dao.CourseUtil" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,150 +103,19 @@
 						
 					  </thead>
 					  <tbody>
-					  
-						<tr>
-						  <th class="title" scope="col">01. Learn IOS Development</th>
-						  <th class="post-date" scope="col">01 Jan 20</th>
-						  <th class="sales" scope="col">36 Sales</th>
-						  <th class="category" scope="col">Development</th>
-						  <th class="actions" scope="col">
-						  	<a href="#"><i class='fa fa-trash-o'></i></a>
-						  	<a href="#"><i class='fa fa-edit'></i></a>
-						  	<a href="#"><i class='fa fa-check-square'></i></a>
-						  </th>
-						</tr>
-						
-						<tr>
-						  <th class="title" scope="col">02. Build Responsive Real world</th>
-						  <th class="post-date" scope="col">12 Mar 20</th>
-						  <th class="sales" scope="col">36 Sales</th>
-						  <th class="category" scope="col">Development</th>
-						  <th class="actions" scope="col">
-						  	<a href="#"><i class='fa fa-trash-o'></i></a>
-						  	<a href="#"><i class='fa fa-edit'></i></a>
-						  	<a href="#"><i class='fa fa-check-square'></i></a>
-						  </th>
-						</tr>
-						
-						<tr>
-						  <th class="title" scope="col">03. Master in website design</th>
-						  <th class="post-date" scope="col">12 Mar 20</th>
-						  <th class="sales" scope="col">36 Sales</th>
-						  <th class="category" scope="col">Development</th>
-						  <th class="actions" scope="col">
-						  	<a href="#"><i class='fa fa-trash-o'></i></a>
-						  	<a href="#"><i class='fa fa-edit'></i></a>
-						  	<a href="#"><i class='fa fa-check-square'></i></a>
-						  </th>
-						</tr>
-						
-						<tr>
-						  <th class="title" scope="col">04. Learn IOS Development</th>
-						  <th class="post-date" scope="col">01 Jan 20</th>
-						  <th class="sales" scope="col">36 Sales</th>
-						  <th class="category" scope="col">Development</th>
-						  <th class="actions" scope="col">
-						  	<a href="#"><i class='fa fa-trash-o'></i></a>
-						  	<a href="#"><i class='fa fa-edit'></i></a>
-						  	<a href="#"><i class='fa fa-check-square'></i></a>
-						  </th>
-						</tr>
-						
-						<tr>
-						  <th class="title" scope="col">05. Build Responsive Real world</th>
-						  <th class="post-date" scope="col">12 Mar 20</th>
-						  <th class="sales" scope="col">36 Sales</th>
-						  <th class="category" scope="col">Development</th>
-						  <th class="actions" scope="col">
-						  	<a href="#"><i class='fa fa-trash-o'></i></a>
-						  	<a href="#"><i class='fa fa-edit'></i></a>
-						  	<a href="#"><i class='fa fa-check-square'></i></a>
-						  </th>
-						</tr>
-						
-						<tr>
-						  <th class="title" scope="col">06. Master in website design</th>
-						  <th class="post-date" scope="col">12 Mar 20</th>
-						  <th class="sales" scope="col">36 Sales</th>
-						  <th class="category" scope="col">Development</th>
-						  <th class="actions" scope="col">
-						  	<a href="#"><i class='fa fa-trash-o'></i></a>
-						  	<a href="#"><i class='fa fa-edit'></i></a>
-						  	<a href="#"><i class='fa fa-check-square'></i></a>
-						  </th>
-						</tr>
-						
-						<tr>
-						  <th class="title" scope="col">07. Learn IOS Development</th>
-						  <th class="post-date" scope="col">01 Jan 20</th>
-						  <th class="sales" scope="col">36 Sales</th>
-						  <th class="category" scope="col">Development</th>
-						  <th class="actions" scope="col">
-						  	<a href="#"><i class='fa fa-trash-o'></i></a>
-						  	<a href="#"><i class='fa fa-edit'></i></a>
-						  	<a href="#"><i class='fa fa-check-square'></i></a>
-						  </th>
-						</tr>
-						
-						<tr>
-						  <th class="title" scope="col">08. Build Responsive Real world</th>
-						  <th class="post-date" scope="col">12 Mar 20</th>
-						  <th class="sales" scope="col">36 Sales</th>
-						  <th class="category" scope="col">Development</th>
-						  <th class="actions" scope="col">
-						  	<a href="#"><i class='fa fa-trash-o'></i></a>
-						  	<a href="#"><i class='fa fa-edit'></i></a>
-						  	<a href="#"><i class='fa fa-check-square'></i></a>
-						  </th>
-						</tr>
-						
-						<tr>
-						  <th class="title" scope="col">09. Master in website design</th>
-						  <th class="post-date" scope="col">12 Mar 20</th>
-						  <th class="sales" scope="col">36 Sales</th>
-						  <th class="category" scope="col">Development</th>
-						  <th class="actions" scope="col">
-						  	<a href="#"><i class='fa fa-trash-o'></i></a>
-						  	<a href="#"><i class='fa fa-edit'></i></a>
-						  	<a href="#"><i class='fa fa-check-square'></i></a>
-						  </th>
-						</tr>
-						
-						<tr>
-						  <th class="title" scope="col">10. Learn IOS Development</th>
-						  <th class="post-date" scope="col">01 Jan 20</th>
-						  <th class="sales" scope="col">36 Sales</th>
-						  <th class="category" scope="col">Development</th>
-						  <th class="actions" scope="col">
-						  	<a href="#"><i class='fa fa-trash-o'></i></a>
-						  	<a href="#"><i class='fa fa-edit'></i></a>
-						  	<a href="#"><i class='fa fa-check-square'></i></a>
-						  </th>
-						</tr>
-						
-						<tr>
-						  <th class="title" scope="col">11. Build Responsive Real world</th>
-						  <th class="post-date" scope="col">12 Mar 20</th>
-						  <th class="sales" scope="col">36 Sales</th>
-						  <th class="category" scope="col">Development</th>
-						  <th class="actions" scope="col">
-						  	<a href="#"><i class='fa fa-trash-o'></i></a>
-						  	<a href="#"><i class='fa fa-edit'></i></a>
-						  	<a href="#"><i class='fa fa-check-square'></i></a>
-						  </th>
-						</tr>
-						
-						<tr>
-						  <th class="title" scope="col">12. Master in website design</th>
-						  <th class="post-date" scope="col">12 Mar 20</th>
-						  <th class="sales" scope="col">36 Sales</th>
-						  <th class="category" scope="col">Development</th>
-						  <th class="actions" scope="col">
-						  	<a href="#"><i class='fa fa-trash-o'></i></a>
-						  	<a href="#"><i class='fa fa-edit'></i></a>
-						  	<a href="#"><i class='fa fa-check-square'></i></a>
-						  </th>
-						
+					  	<c:forEach var="tempCourses" items="${listCourses}">
+							<tr>
+							  <th class="title" scope="col">${tempCourses.getName()}</th>
+							  <th class="post-date" scope="col">01 Jan 20</th>
+							  <th class="sales" scope="col">${tempCourses.getCountCourses()} Sales</th>
+							  <th class="category" scope="col">${tempCourses.getCategory()}</th>
+							  <th class="actions" scope="col">
+							  	<a href="#"><i class='fa fa-trash-o'></i></a>
+							  	<a href="#"><i class='fa fa-edit'></i></a>
+							  	<a href="#"><i class='fa fa-check-square'></i></a>
+							  </th>
+							</tr>
+						</c:forEach>
 					  </tbody>
 					</table>
 				</div>
