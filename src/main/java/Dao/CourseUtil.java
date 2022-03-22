@@ -355,7 +355,6 @@ public class CourseUtil {
 	public void minusBalance(int uid, float price) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement pstmt = null;
-		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
 		String sql = "update happourse.users set balance=balance-? where uid=?";
 		pstmt = myConn.prepareStatement(sql);
@@ -399,5 +398,17 @@ public class CourseUtil {
 		}
 		myConn.close();
 		return ls;
+	}
+
+	public void deleteCourseByCourseID(int course_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "DELETE FROM courses WHERE course_id=?;";
+		pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, course_id);
+		pstmt.execute();
+		myConn.close();
 	}
 }
