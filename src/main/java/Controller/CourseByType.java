@@ -52,7 +52,7 @@ public class CourseByType extends HttpServlet {
 		String type = request.getParameter("type");
 		List<Courses> li = courseUtil.getCourseByType(type);
 		int pagesNumber = courseUtil.courseNumberPage(li);
-		List<Courses> course = courseUtil.getCoursesByPage(li, 3);
+		List<Courses> course = courseUtil.getCoursesByPage(li, 1);
 		request.setAttribute("listCourses", course);
 		request.setAttribute("pagesNumber", pagesNumber);
 		request.setAttribute("type", type);

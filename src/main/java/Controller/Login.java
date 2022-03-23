@@ -82,7 +82,7 @@ public class Login extends HttpServlet {
 					List<Courses> courses = userUtil.getAll_Courses();
 					
 					int pagesNumber = couUtil.courseNumberPage(courses);
-					List<Courses> li = couUtil.getCoursesByPage(courses, 3);
+					List<Courses> li = couUtil.getCoursesByPage(courses, 1);
 					request.setAttribute("listCourses", li);
 					request.setAttribute("pagesNumber", pagesNumber);
 					
@@ -104,7 +104,11 @@ public class Login extends HttpServlet {
 					
 					ins = insUtil.getIns(tmp.getAid());
 					List<Courses> courses = userUtil.getAll_Courses();
-					request.setAttribute("listCourses", courses);
+					
+					int pagesNumber = couUtil.courseNumberPage(courses);
+					List<Courses> li = couUtil.getCoursesByPage(courses, 1);
+					request.setAttribute("listCourses", li);
+					request.setAttribute("pagesNumber", pagesNumber);
 					
 					request.setAttribute("user_info",ins);
 					String[] a = ins.getIns_name().split(" ");

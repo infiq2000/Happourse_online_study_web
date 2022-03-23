@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import Dao.AccountUtil;
+import Dao.CourseUtil;
 import Dao.InstructorUtil;
 import Dao.UserUtil;
 import Model.Courses;
@@ -31,6 +32,7 @@ public class UserPage extends HttpServlet {
 	AccountUtil accUtil; 
     UserUtil userUtil;
     InstructorUtil insUtil;
+    CourseUtil couUtil;
 	   
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,6 +47,7 @@ public class UserPage extends HttpServlet {
 		accUtil = new AccountUtil(dataSource);
 		userUtil = new UserUtil(dataSource);
 		insUtil = new InstructorUtil(dataSource);
+		couUtil = new CourseUtil(dataSource);
     }
 
 	/**
@@ -65,7 +68,12 @@ public class UserPage extends HttpServlet {
 		List<Courses> courses;
 		try {
 			courses = userUtil.getAll_Courses();
-			request.setAttribute("listCourses", courses);
+			
+			int pagesNumber = couUtil.courseNumberPage(courses);
+			List<Courses> li = couUtil.getCoursesByPage(courses, 1);
+			request.setAttribute("listCourses", li);
+			request.setAttribute("pagesNumber", pagesNumber);
+			
 			request.setAttribute("user_info",user);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
 			dispatcher.forward(request, response);

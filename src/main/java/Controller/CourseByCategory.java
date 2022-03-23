@@ -61,7 +61,7 @@ public class CourseByCategory extends HttpServlet {
 		try {
 			List<Courses> courses = couUtil.getCourseByCategory(cid);
 			int pagesNumber = couUtil.courseNumberPage(courses);
-			List<Courses> course = couUtil.getCoursesByPage(courses, 3);
+			List<Courses> course = couUtil.getCoursesByPage(courses, 1);
 			request.setAttribute("pagesNumber", pagesNumber);
 			request.setAttribute("listCourses", course);
 			request.setAttribute("cid", cid);
