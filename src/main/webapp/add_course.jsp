@@ -134,10 +134,12 @@
 							
 							<h6>Options</h6>
 							<div class="option-cource-box">
-								<input type="file" name="uploadField" style="margin-bottom: 20px;"/>
+								
 								<div class="box-inner">
 									
 									<div class="form-group">
+										<label>Course Image</label>
+										<input type="file" name="uploadField" style="margin-bottom: 20px;"/>
 										<label>Category</label>
 										<select class="custom-select-box">
 											<option>UI/UX</option>
@@ -252,7 +254,7 @@
 
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
-		<script type="text/javascript" src="js/slide.js"></script>
+		<!-- <script type="text/javascript" src="js/slide.js"></script> -->
 		<!-- Bootstrap Select JS -->
 		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 

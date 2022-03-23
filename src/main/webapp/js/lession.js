@@ -10,6 +10,8 @@ document.getElementById("on").onclick = function () {
             document.getElementById("mood_rate").style.display = 'none';
         };        
         
+/*let ocr = document.querySelector(".video-box");*/
+const screenshotTarget = document.body;
 
 let camera_button = document.querySelector("#on");
 let video = document.querySelector("#video");
@@ -66,7 +68,12 @@ camera_button.addEventListener('click', async function() {
 	var intervalID = setInterval(capture, 5000);
 	
 	camera_stop.addEventListener('click', async function() {
-		setTimeout(() => { clearInterval(intervalID); alert('Thank you for your contribution!'); }, 100);
+		setTimeout(() => { 
+			clearInterval(intervalID); 
+			alert('Thank you for your contribution!'); 
+			location.reload();
+			}, 100);
+			
 	   	const mediaStream = video.srcObject;
 		const tracks = mediaStream.getTracks();
 		tracks.forEach(track => track.stop());
@@ -85,3 +92,34 @@ camera_button.addEventListener('click', async function() {
 	
 });
 
+function screen(){
+	html2canvas(screenshotTarget).then((canvas) => {
+	    var base64image = canvas.toDataURL("image/jpeg").replace(/^data:image\/jpeg;base64,/, "");
+	    /*console.log(base64image);*/
+	    return base64image;
+	});
+}
+
+
+
+var checkCtrl=false;
+$('*').keydown(function(e){
+    if(e.keyCode=='17'){
+        checkCtrl=true;
+    }
+}).keyup(function(ev){
+    if(ev.keyCode=='17'){
+        checkCtrl=false;
+    }
+}).keydown(function(event){
+    if(checkCtrl){
+        if(event.keyCode=='90'){
+			var img_url = screen();
+			localStorage.setItem("ocr_img", img_url);
+			console.log(localStorage);
+			var win = window.open('ocr.jsp', '_blank');
+  			win.focus();
+            checkCtrl=false;
+        }
+    }
+})
