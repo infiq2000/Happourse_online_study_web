@@ -106,7 +106,7 @@
 					  	<c:forEach var="tempCourses" items="${listCourses}">
 							<tr>
 							  <th class="title" scope="col">${tempCourses.getName()}</th>
-							  <th class="post-date" scope="col">01 Jan 20</th>
+							  <th class="post-date" scope="col">${tempCourses.getPublishDate() }</th>
 							  <th class="sales" scope="col">${tempCourses.getCountCourses()} Sales</th>
 							  <th class="category" scope="col">${tempCourses.getCategory()}</th>
 							  <th class="actions" scope="col">

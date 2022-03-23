@@ -1,6 +1,7 @@
 package Dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -222,7 +223,7 @@ public class CourseUtil {
 		ResultSet myRS = null;
 		List<Courses> li = new ArrayList<>();
 		myConn = dataSource.getConnection();
-		String sql = "SELECT * FROM happourse.courses c, Happourse.instructor i WHERE (c.ins_id = i.ins_id) ORDER BY posted DESC;";
+		String sql = "SELECT * FROM happourse.courses c, Happourse.instructor i WHERE (c.ins_id = i.ins_id) ORDER BY publish_date DESC;";
 		pstmt = myConn.prepareStatement(sql);
 		myRS = pstmt.executeQuery();
 		while (myRS.next()) {
@@ -269,7 +270,7 @@ public class CourseUtil {
 	}
 	
 	public int courseNumberPage(List<Courses> courses) {
-		int coursePage = 1;
+		int coursePage = 3;
 		int coursesNumber = courses.size();
 		int pagesNumber = (int) (coursesNumber / coursePage);
 		if (coursesNumber % coursePage != 0) pagesNumber++;
@@ -279,7 +280,7 @@ public class CourseUtil {
 		
 	public List<Courses> getCoursesByPage(List<Courses> li, int page) {
 		List<Courses> course = new ArrayList<>();
-		for (int i = (page-1)*1; i <= page*1-1; i++) {
+		for (int i = (page-1)*3; i <= page*3-1; i++) {
 			if (i == li.size()) break;
 			course.add(li.get(i));
 		}
@@ -393,8 +394,9 @@ public class CourseUtil {
 			String description = myRS.getString("description");
 			int cid = myRS.getInt("cid");
 			String category = myRS.getString("categoryName");
+			Date publishDate = myRS.getDate("publish_date");
 			ls.add(new ManagedCourses(courses_id, name, skill, price, language, starRate,
-					description, ins_id, cid, countCourses, category));
+					description, ins_id, cid, countCourses, category, publishDate));
 		}
 		myConn.close();
 		return ls;
@@ -445,8 +447,9 @@ public class CourseUtil {
 			String description = myRS.getString("description");
 			int cid = myRS.getInt("cid");
 			String category = myRS.getString("categoryName");
+			Date publishDate = myRS.getDate("publish_date");
 			ls.add(new ManagedCourses(courses_id, name, skill, price, language, starRate,
-					description, ins_id, cid, countCourses, category));
+					description, ins_id, cid, countCourses, category, publishDate));
 		}
 		myConn.close();
 		return ls;
