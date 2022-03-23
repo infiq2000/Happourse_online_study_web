@@ -8,12 +8,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-<<<<<<< HEAD
-=======
-	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 9.0_Tomcat/lib/annotations-api.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 9.0_Tomcat/lib/jsp-api.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 9.0_Tomcat/lib/servlet-api.jar"/>
->>>>>>> 97296f9da1d2f5a1be946e8695f4078a09271cc2
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 9.0/lib/annotations-api.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 9.0/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 9.0/lib/servlet-api.jar"/>
