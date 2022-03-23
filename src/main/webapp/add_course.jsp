@@ -100,20 +100,7 @@
 
 									</div>
 									
-									
-									<!-- Form Group -->
-									<div class="form-group">
-										
-										<!-- Accordion Box -->
-										<label class="chapter">- Chapter</label>
-										<ul class="accordion-box style-two" id="chapter" style="margin-left: 40px;">
-											<li id="chapter1">Chapter 1</li>
-											<li id="chapter1">Chapter 2</li>
-											<li id="chapter1">Chapter 3</li>
-											<li id="chapter1">Chapter 4</li>
-										</ul>
-										<!--  xxxxx-->
-									</div>
+								
 							
 							</div>
 							
@@ -129,6 +116,13 @@
 							<div class="option-cource-box">
 								
 								<div class="box-inner">
+									
+									<div class="form-group">
+										<label>Image</label>
+										<img id="an" style="width: 250px; height: 120px;border-radius:5px;" src="images/logo/logo10.jpg" alt=""/>
+										<div id="displayImg" style="width: 120px; border-radius:5px;"></div>
+										<input type="file" name="upload" id="upload" onchange="ImagesFileAsURL()" style="display: inline; margin-top: 15px;"/>
+									</div>
 									
 									<div class="form-group">
 
@@ -190,7 +184,7 @@
 										<!-- Button Box -->
 	
 					<div class="button-box text-center" style="margin-top: 40px;">
-						<button type="submit" class="theme-btn btn-style-one" ><span class="txt">Save Course</span></button>
+						<button type="submit" class="theme-btn btn-style-one" style="margin-left: 40px;"><span class="txt">Save Course</span></button>
 						<button style="margin-left: 40px;" type="button" class="theme-btn btn-style-two"><span class="txt">Save & Create New Chapter</span></button>
 					</div>
 				</div>
@@ -264,7 +258,7 @@
 
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
-		<!-- <script type="text/javascript" src="js/slide.js"></script> -->
+		<script type="text/javascript" src="js/update.js"></script>
 		<!-- Bootstrap Select JS -->
 		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
