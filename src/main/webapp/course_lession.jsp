@@ -10,7 +10,7 @@
 	<!-- For Resposive Device -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<title>Hapourse - Online Study Website </title>
+	<title>Hapourse - Online Study Website</title>
 	
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
@@ -69,12 +69,13 @@
 						<figure class="video-image">
 							<img src="images/logo/logo10.jpg" alt="">
 						</figure>
-						<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image overlay-box"><span class="flaticon-media-play-symbol"><i class='fa fa-play'></i></span></a>
+						<a href="https://youtu.be/7m8ek8D9me0" class="lightbox-image overlay-box"><span class="flaticon-media-play-symbol"><i class='fa fa-play'></i></span></a>
 					</div>
 					<!-- Video Info Boxed -->
 					<div class="video-info-boxed">
 						<div class="clearfix">
 							<div class="pull-left">
+								
 								<h6>Learn IOS development, Website design, Freelancing</h6>
 								<div class="author">
 									<div class="user-image"><img src="images/resource/author-10.jpg" alt="" /></div>Kerry Oaky
@@ -659,6 +660,9 @@
 
 <!-- Js File_________________________________ -->
 
+		 <script type="text/javascript" src="js/html2canvas.js"></script>		
+		
+		
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
 		<script type="text/javascript" src="js/lession.js"></script>

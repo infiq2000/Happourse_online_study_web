@@ -127,10 +127,11 @@
 							
 							<h6>Options</h6>
 							<div class="option-cource-box">
-								<input type="file" name="uploadField" style="margin-bottom: 20px;"/>
+								
 								<div class="box-inner">
 									
 									<div class="form-group">
+
 										<%
 										  	InitialContext ctx;
 										  	DataSource ds;
@@ -141,6 +142,7 @@
 									    	request.setAttribute("cate", cate);
 									    	
 										%>
+
 										<label>Category</label>
 										<select class="custom-select-box" name ="chon">
 											 <c:forEach var="categoryName" items="${cate }">
@@ -262,7 +264,7 @@
 
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
-		<script type="text/javascript" src="js/slide.js"></script>
+		<!-- <script type="text/javascript" src="js/slide.js"></script> -->
 		<!-- Bootstrap Select JS -->
 		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
