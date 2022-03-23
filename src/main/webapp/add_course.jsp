@@ -1,5 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
+<%@ page import="Model.Category" %>
+<%@ page import="Dao.CourseUtil" %>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,6 +75,7 @@
 					</div>-->
 				</div>
 			</div>
+			<form action="AddNewCourse" method="get">
 			<div class="inner-container">
 				<div class="row clearfix">
 					
@@ -80,8 +86,7 @@
 							
 							<!-- Edit Course Form -->
 							<div class="edit-course-form">
-								<form method="post" action="index.html">
-									
+								
 									<!-- Form Group -->
 									<div class="form-group">
 										<label>Course Title</label>
@@ -93,7 +98,6 @@
 										<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
 										<textarea class="" name="message" placeholder="Shortly describe this course"></textarea>
 
-																		
 									</div>
 									
 									
@@ -108,20 +112,9 @@
 											<li id="chapter1">Chapter 3</li>
 											<li id="chapter1">Chapter 4</li>
 										</ul>
-										
-										<!-- Button Box -->
-										<div class="button-box text-center" style="margin-top: 40px;">
-											<button type="button" class="theme-btn btn-style-one" ><span class="txt">Save Course</span></button>
-											<a href="add_chapter.jsp"><button style="margin-left: 40px;" type="button" class="theme-btn btn-style-two"><span class="txt">Save & Create New Chapter</span></button></a>
-											
-										</div>
+										<!--  xxxxx-->
 									</div>
-											
-											
-									
-									
-									
-								</form>
+							
 							</div>
 							
 						</div>
@@ -138,11 +131,21 @@
 								<div class="box-inner">
 									
 									<div class="form-group">
+										<%
+										  	InitialContext ctx;
+										  	DataSource ds;
+										 	ctx = new InitialContext();
+									    	ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Happourse");
+									    	CourseUtil couUtil = new CourseUtil(ds);
+									    	List<Category> cate = couUtil.getCategories();
+									    	request.setAttribute("cate", cate);
+									    	
+										%>
 										<label>Category</label>
-										<select class="custom-select-box">
-											<option>UI/UX</option>
-											<option>Category 01</option>
-											<option>Category 02</option>
+										<select class="custom-select-box" name ="chon">
+											 <c:forEach var="categoryName" items="${cate }">
+											 	<option value = "${categoryName.getCid()}">  ${categoryName.getName() }</option>
+											 </c:forEach>	
 										</select>
 										<span class="select-category">Select a category</span>
 									</div>
@@ -182,8 +185,15 @@
 						</div>
 					</div>
 					
+										<!-- Button Box -->
+	
+					<div class="button-box text-center" style="margin-top: 40px;">
+						<button type="submit" class="theme-btn btn-style-one" ><span class="txt">Save Course</span></button>
+						<button style="margin-left: 40px;" type="button" class="theme-btn btn-style-two"><span class="txt">Save & Create New Chapter</span></button>
+					</div>
 				</div>
 			</div>
+		</form>
 			
 		</div>
 	</div>

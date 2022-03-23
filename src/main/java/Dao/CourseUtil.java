@@ -451,4 +451,71 @@ public class CourseUtil {
 		myConn.close();
 		return ls;
 	}
+	public int getIndexOfCourse() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "SELECT course_id FROM happourse.courses;";
+			myStmt = myConn.prepareStatement(sql);
+			myRS = myStmt.executeQuery();
+			List<String> lstIndex = new ArrayList<String>();
+			while (myRS.next()) {
+				String idx = myRS.getString("course_id");
+				lstIndex.add(idx);
+			}
+			int i = 1;
+			while(true) {
+				if(lstIndex.contains(Integer.toString(i))) {
+					i++;
+				} else {
+					return i;
+				}
+			}
+		} 
+		finally {
+			myConn.close();
+		}
+	}
+
+	public void insertNewCourse(String course_name, String description, int cid, int price, String language,
+			float star_rate, float duration, int ins_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		// create SQL update statement;
+		System.out.println("sql1");
+		try {
+			myConn = dataSource.getConnection();
+			
+			// create SQL update statement
+			//course_id, name, skill, price, language, star_rate, description, duration, ins_id, cid
+			String sql = "insert into happourse.courses (course_id, name, skill, price, language, star_rate, description, ins_id, cid)" + "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			// prepare statement
+			myStmt = myConn.prepareStatement(sql);
+			int course_id = getIndexOfCourse();
+			String skill = "Dang fix cung";
+			// set params
+			myStmt.setInt(1, course_id);
+			myStmt.setString(2, course_name);
+			myStmt.setString(3, skill);
+			myStmt.setInt(4, price);
+			myStmt.setString(5, language);
+			myStmt.setFloat(6, star_rate);
+			myStmt.setString(7, description);
+			myStmt.setInt(8, ins_id);
+			myStmt.setInt(9, cid);
+			System.out.println("sql2");
+			
+			// execute SQL statement
+			myStmt.execute();
+			System.out.println("them thanh cong");
+		}
+		finally {
+			myConn.close();
+		}
+		
+	}
 }
