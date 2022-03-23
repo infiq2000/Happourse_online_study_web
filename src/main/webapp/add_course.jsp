@@ -100,20 +100,7 @@
 
 									</div>
 									
-									
-									<!-- Form Group -->
-									<div class="form-group">
-										
-										<!-- Accordion Box -->
-										<label class="chapter">- Chapter</label>
-										<ul class="accordion-box style-two" id="chapter" style="margin-left: 40px;">
-											<li id="chapter1">Chapter 1</li>
-											<li id="chapter1">Chapter 2</li>
-											<li id="chapter1">Chapter 3</li>
-											<li id="chapter1">Chapter 4</li>
-										</ul>
-										<!--  xxxxx-->
-									</div>
+								
 							
 							</div>
 							
@@ -197,7 +184,7 @@
 										<!-- Button Box -->
 	
 					<div class="button-box text-center" style="margin-top: 40px;">
-						<button type="submit" class="theme-btn btn-style-one" ><span class="txt">Save Course</span></button>
+						<button type="submit" class="theme-btn btn-style-one" style="margin-left: 40px;"><span class="txt">Save Course</span></button>
 						<button style="margin-left: 40px;" type="button" class="theme-btn btn-style-two"><span class="txt">Save & Create New Chapter</span></button>
 					</div>
 				</div>
