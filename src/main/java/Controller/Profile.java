@@ -18,6 +18,7 @@ import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
 import Model.User;
+import Model.UserProfile;
 
 /**
  * Servlet implementation class Profile
@@ -59,10 +60,11 @@ public class Profile extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int uid = (int)request.getSession(false).getAttribute("uid");
-		System.out.println("hello"  + uid);
-		User user = null;
+		UserProfile user = null;
+		int countCourses = 0;
 		try {
-			user = userUtil.getUserbyID(uid);
+			user = userUtil.getUserProfileByID(uid);
+			countCourses = courseUtil.countCourseByUID(uid);
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -70,6 +72,7 @@ public class Profile extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		request.setAttribute("myCourses", countCourses);
 		request.setAttribute("user_info",user);
 		String[] a = user.getFull_name().split(" ");
 		

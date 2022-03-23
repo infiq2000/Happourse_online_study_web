@@ -1,6 +1,7 @@
 package Dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ import javax.sql.DataSource;
 
 import Model.Courses;
 import Model.User;
+import Model.UserProfile;
 import Dao.AccountUtil; 
 public class UserUtil {
 	private DataSource dataSource;
@@ -213,5 +215,35 @@ public class UserUtil {
 			myConn.close();
 		}
 		return balance;
+	}
+
+	public UserProfile getUserProfileByID(int uid) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT uid, full_name, major, aid, birth, phone_number, email, address, u.describe, experiment, balance, u.country_ID, country_name FROM users u, countries c WHERE u.country_ID = c.country_ID AND uid=?;";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, uid);
+		myRS = myStmt.executeQuery();
+		UserProfile up = null;
+		if (myRS.next()) {
+			String full_name = myRS.getString("full_name");
+			String major = myRS.getString("major");
+			int aid = myRS.getInt("aid");
+			Date birth = myRS.getDate("birth");
+			String phoneNumber = myRS.getString("phone_number");
+			String email = myRS.getString("email");
+			String address = myRS.getString("address");
+			String describe = myRS.getString("describe");
+			String experiment = myRS.getString("experiment");
+			double balance = myRS.getDouble("balance");
+			String countryID = myRS.getString("country_ID");
+			String countryName = myRS.getString("country_name");
+			up = new UserProfile(uid, full_name, major, aid, birth, phoneNumber, email,
+					address, describe, experiment, balance, countryID, countryName);
+		}
+		myConn.close();
+		return up;
 	}
 }

@@ -1,0 +1,61 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 12/09/2017 08:29
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: inherit;
+font-style: normal;
+color: inherit;
+}
+
+.flaticon-phone-call:before { content: "\f100"; }
+.flaticon-envelope-back-view-outline:before { content: "\f101"; }
+.flaticon-user:before { content: "\f102"; }
+.flaticon-envelope:before { content: "\f103"; }
+.flaticon-clock:before { content: "\f104"; }
+.flaticon-like:before { content: "\f105"; }
+.flaticon-star:before { content: "\f106"; }
+.flaticon-bookmark:before { content: "\f107"; }
+.flaticon-time:before { content: "\f108"; }
+.flaticon-high-voltage:before { content: "\f109"; }
+.flaticon-tick:before { content: "\f10a"; }
+.flaticon-placeholder:before { content: "\f10b"; }
+.flaticon-delete:before { content: "\f10c"; }
+.flaticon-computer:before { content: "\f10d"; }
+.flaticon-light-bulb:before { content: "\f10e"; }
+.flaticon-arrows:before { content: "\f10f"; }
+.flaticon-quotes:before { content: "\f110"; }
+.flaticon-online-shopping-cart:before { content: "\f111"; }
+.flaticon-heart:before { content: "\f112"; }
+.flaticon-comments:before { content: "\f113"; }
+.flaticon-people:before { content: "\f114"; }
+.flaticon-coding:before { content: "\f115"; }
+.flaticon-compose:before { content: "\f116"; }
+.flaticon-briefcase:before { content: "\f117"; }
+.flaticon-photo-camera:before { content: "\f118"; }
+.flaticon-connection:before { content: "\f119"; }
+.flaticon-diamond:before { content: "\f11a"; }
+.flaticon-search:before { content: "\f11b"; }
+.flaticon-lock:before { content: "\f11c"; }
+.flaticon-down-arrow:before { content: "\f11d"; }
