@@ -102,7 +102,7 @@
 										<div class="inner">
 											<h5 class="counter-title">My Courses</h5>
 											<div class="count-outer count-box">
-												<span class="count-text" data-speed="2500" data-stop="10">0</span>k
+												<span class="count-text" data-speed="2000" data-stop="${myCourses}"></span>
 											</div>
 										</div>
 									</div>
@@ -122,7 +122,7 @@
 										<div class="inner">
 											<h5 class="counter-title">Certificates</h5>
 											<div class="count-outer count-box">
-												<span class="count-text" data-speed="3000" data-stop="4">0</span>
+												<span class="count-text" data-speed="2000" data-stop="4">0</span>
 											</div>
 										</div>
 									</div>
@@ -132,7 +132,7 @@
 										<div class="inner">
 											<h5 class="counter-title">Balance</h5>
 											<div class="count-outer count-box">
-												<span class="count-text" data-speed="3000" data-stop="15">0</span>K
+												$<span class="count-text" data-speed="2000" data-stop="${user_info.getBalance()}"></span>
 											</div>
 										</div>
 									</div>
@@ -146,7 +146,7 @@
 					<!-- Right Column -->
 					<div class="right-column col-lg-3 col-md-12 col-sm-12">
 						<div class="buttons-box">
-							<a href="UpdateTest" class="theme-btn btn-style-one">Edit Profile</a>
+							<a href="UpdateInfo" class="theme-btn btn-style-one">Edit Profile</a>
 						</div>
 					</div>
 					
@@ -170,7 +170,13 @@
 								<div class="content">
 									<h6>About Me</h6>
 									<div class="text">
-										<p>ahihi</p>
+										<p>Birthday: ${user_info.getBirth()}</p>
+										<p>Phone number: ${user_info.getPhoneNumber()}</p>
+										<p>Email: ${user_info.getEmail()}</p>
+										<p>Addess: ${user_info.getAddress()}, ${user_info.getCountryName()}</p>
+										<p>Experiment: ${user_info.getExperiment()}</p>
+										<h5>Describe:</h5>
+										<p>${user_info.getDescribe()}</p>
 									</div>
 								</div>
 							</div>
