@@ -131,6 +131,13 @@
 								<div class="box-inner">
 									
 									<div class="form-group">
+										<label>Image</label>
+										<img id="an" style="width: 250px; height: 120px;border-radius:5px;" src="images/logo/logo10.jpg" alt=""/>
+										<div id="displayImg" style="width: 120px; border-radius:5px;"></div>
+										<input type="file" name="upload" id="upload" onchange="ImagesFileAsURL()" style="display: inline; margin-top: 15px;"/>
+									</div>
+									
+									<div class="form-group">
 
 										<%
 										  	InitialContext ctx;
@@ -264,7 +271,7 @@
 
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
-		<!-- <script type="text/javascript" src="js/slide.js"></script> -->
+		<script type="text/javascript" src="js/update.js"></script>
 		<!-- Bootstrap Select JS -->
 		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
