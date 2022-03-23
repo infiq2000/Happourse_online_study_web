@@ -15,6 +15,23 @@ $(".chapter").click(function () {
  
 });
 
+$(".chapter-s").click(function () {
+ 
+    $chapter = $(this);
+    //getting the next element
+    $chapter1 = $("[id=chapter-s1]");
+    //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+    $chapter1.slideToggle(500, function () {
+        //execute this after slideToggle is done
+        //change text of header based on visibility of content div
+        $chapter.text(function () {
+            //change text based on condition
+            return $chapter1.is(":visible") ? "- Chapter" : "+ Chapter";
+        });
+    });
+ 
+});
+
 document.getElementById("s1").onclick = function () {
             document.getElementsByClassName("ct2")[0].style.display = 'block';
         };

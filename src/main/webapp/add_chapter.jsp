@@ -525,8 +525,7 @@
 					<!-- Right Column -->
 					<div class="right-column col-lg-4 col-md-12 col-sm-12">
 						<div class="inner-column">
-							
-							
+						
 							<h6>Video</h6>
 							
 							<!-- Video Box -->
@@ -545,8 +544,23 @@
 								<span class="valid">Enter valid url address</span>
 							</div>
 							<!-- End Url Box -->
-							
-							
+							<div class="option-cource-box">
+								
+								<div class="box-inner">
+									<div class="form-group">
+										
+										<!-- Accordion Box -->
+										<label class="chapter-s">- Chapter</label>
+										<ul class="accordion-box style-two" id="chapter" style="margin-left: 40px;">
+											<li id="chapter-s1">Chapter 1</li>
+											<li id="chapter-s1">Chapter 2</li>
+											<li id="chapter-s1">Chapter 3</li>
+											<li id="chapter-s1">Chapter 4</li>
+										</ul>
+										<!--  xxxxx-->
+									</div>
+								</div>
+							</div>
 							
 						</div>
 					</div>
