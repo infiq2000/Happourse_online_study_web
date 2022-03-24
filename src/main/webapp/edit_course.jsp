@@ -65,9 +65,6 @@
 					<div class="pull-left">
 						<h4>Edit Courses</h4>
 					</div>
-					<!--<div class="pull-right">
-						<a href="enrolled-courses.html" class="see-all">Add Your Course</a>
-					</div>-->
 				</div>
 			</div>
 			<div class="inner-container">
@@ -80,148 +77,17 @@
 							
 							<!-- Edit Course Form -->
 							<div class="edit-course-form">
-								<form method="post" action="index.html">
-									
-									<!-- Form Group -->
-									<div class="form-group">
-										<label>Course Title</label>
-										<input type="text" name="username" value="" placeholder="First Name" required>
-									</div>
-									
-									<div class="form-group">
-										<label>Description</label>
-										<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
-										<textarea class="" name="message" placeholder="Shortly describe this course"></textarea>
-									</div>
-									
-									<!-- Form Group -->
-									<div class="form-group">
-										<label>Chapters</label>
-										<!-- Accordion Box -->
-										<ul class="accordion-box style-two">
-
-											<!-- Block -->
-											<li class="accordion block">
-												<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div>Course overview</div>
-												<div class="acc-content">
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="#" class="text-link">Content 1</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">15 min 36 sec</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="#" class="text-link">Content 2</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">27 min 36 sec</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="#" class="text-link">Content 3</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">27 min 36 sec</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>
-
-											<!-- Block -->
-											<li class="accordion block">
-												<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div>Chapter 2</div>
-												<div class="acc-content">
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="#" class="text-link">Content 1</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">15 min 36 sec</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="#" class="text-link">Content 2</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">27 min 36 sec</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="#" class="text-link">Content 3</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">27 min 36 sec</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>
-											
-											<!-- Block -->
-											<li class="accordion block">
-												<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div>Chapter 3</div>
-												<div class="acc-content">
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="#" class="text-link">Content 1</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">15 min 36 sec</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="#" class="text-link">Content 2</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">27 min 36 sec</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="#" class="text-link">Content 3</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">27 min 36 sec</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>
-											
-										</ul>
-										
-									</div>
-									
-									<div class="form-group">
-										<button type="button" class="theme-btn btn-style-two"><span class="txt">Add Chapter</span></button>
-										
-										<button type="button" class="theme-btn btn-style-two"><span class="txt">Delete Chapter</span></button>
-									</div>
-									
-								</form>
+								<!-- Form Group -->
+								<div class="form-group">
+									<label>Course Title</label>
+									<input type="text" name="username" value="Course Name" required>
+								</div>
+								
+								<div class="form-group">
+									<label>Description</label>
+									<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
+									<textarea class="" name="message"></textarea>
+								</div>
 							</div>
 							
 						</div>
@@ -235,7 +101,12 @@
 							<h6>Options</h6>
 							<div class="option-cource-box">
 								<div class="box-inner">
-									
+									<div class="form-group">
+										<label>Image</label>
+										<img id="an" style="width: 250px; height: 120px;border-radius:5px;" src="images/logo/logo10.jpg" alt=""/>
+										<div id="displayImg" style="width: 120px; border-radius:5px;"></div>
+										<input type="file" name="upload" id="upload" onchange="ImagesFileAsURL()" style="display: inline; margin-top: 15px;"/>
+									</div>
 									<div class="form-group">
 										<label>Category</label>
 										<select class="custom-select-box">
@@ -247,9 +118,10 @@
 									</div>
 									
 									<div class="form-group">
-										<span class="price">price</span>
-										<div class="item-quantity"><input class="quantity-spinner" type="text" value="2" name="quantity"></div>
-										<div class="total-price">Price is between $20- $60</div>
+											<label style="margin-right: 20px; font-size:14px;">Price ($)</label>
+											<div style=" width: 50px; display:inline;">
+												<input type="text" name="price" value="" placeholder="$" required>
+											</div>
 									</div>
 									
 									<div class="form-group tags">
@@ -264,41 +136,136 @@
 									
 								</div>
 							</div>
-							
-							<br><h6>Video</h6>
-							
-							<!-- Video Box -->
-							<div class="video-boxed" style="background-image: url(images/logo/logo10.jpg)">
-								<a href="https://www.youtube.com/watch?v=-ncIVUXZla8&list=RDMM-ncIVUXZla8&start_radio=1&ab_channel=AviciiOfficialVEVO" class="lightbox-image intro-video-box"><span class="fa fa-play"><i class="ripple"></i></span></a>
-							</div>
-							<!-- End Video Box -->
-							
-							<!-- Url Box -->
-							<div class="url-boxed">
-								<label>URL</label>
-								<input type="text" name="username" value="" placeholder="https://www.youtube.com/Hapourse.com" required>
-								<span class="valid">Enter valid url address</span>
-							</div>
-							<!-- End Url Box -->
-							
-							<!-- Button Box -->
-							<div class="button-box text-center">
-								<button type="button" class="theme-btn btn-style-two"><span class="txt">Delete Course</span></button>
-								<button type="button" class="theme-btn btn-style-one"><span class="txt">Save Changes</span></button>
-							</div>
-							
 						</div>
 					</div>
 					
+					<div class="left-column col-lg-4 col-md-12 col-sm-12">
+							<div class="inner-column">
+								<!-- Edit Course Form -->
+								<div class="edit-course-form">
+									<div class="form-group" style="width:680px; margin-top:0px;">
+										<!-- Accordion Box -->
+										<label class="chapter-s">- Chapter</label>										
+											<table class="table">
+											  <thead>
+												<th>Chapter</th>
+												<th>Duration</th>										  
+											  </thead>
+											  <tbody>
+												<tr>
+													<td>
+														Chapter 1
+														<ul style="margin: 20px 0 0 40px;">
+														  <li><i>Content 1</i></li>
+														  <li><i>Content 2</i></li>
+														  <li><i>Content 3</i></li>
+														</ul>
+													</td>
+													<td>10 m</td>
+												</tr>
+												
+												<tr>
+													<td>
+														Chapter 2
+														<ul style="margin: 20px 0 0 40px;">
+														  <li><i>Content 1</i></li>
+														  <li><i>Content 2</i></li>
+														  <li><i>Content 3</i></li>
+														</ul>
+													</td>
+													<td>10 m</td>
+												</tr>
+												
+												<tr>
+													<td>
+														Chapter 3
+														<ul style="margin: 20px 0 0 40px;">
+														  <li><i>Content 1</i></li>
+														  <li><i>Content 2</i></li>
+														  <li><i>Content 3</i></li>
+														</ul>
+													</td>
+													<td>10 m</td>
+												</tr>
+											  </tbody>
+											</table>
+										</div>
+								</div>
+							</div>
+						</div>
+					
+					<div class="right-column col-lg-4 col-md-12 col-sm-12" style="margin-left:268px;">
+						<div class="inner-column">
+							<!-- Edit Course Form -->
+							<div class="edit-course-form">
+								<h6 style="margin-top: 0px;">Update</h6>
+								<div class="option-cource-box" style="width: 600px;">
+									<div class="box-inner">
+									
+										<div class="edit_chapter">
+											<div class="form-group" style="margin-left: 10px;">
+												<label style="font-size:14px;">Chapter Title</label>
+												<input type="text" name="username" value="" placeholder="Chapter 1" required>
+											</div>
+											
+											<div class="button-box text-center"  style="margin-top: 40px;">
+												<button id="s1" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+											</div>
+										</div>
+										
+										<div class="edit_content" style="display:block;">
+											<!-- Content -->
+											<div class="form-group" id="c1" style="margin-left:10px;">
+												<label style="font-size:14px;">Content Title</label>
+												<input type="text" name="username" value="" placeholder="Content 1" required>
+
+												<label style="font-size:14px; margin-top:20px;">Content Description</label>
+												<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
+												<textarea class="" name="message" placeholder="Shortly describe this content"></textarea>
+
+												<label style="font-size:14px; margin-top:20px;">Url</label>
+												<input type="text" name="username" value="" placeholder="Url 1">
+
+												<label style="font-size:14px; margin-top:20px;">Duration</label>
+												
+												<div style="margin: 0 0 10px 40px;">
+													<label style="margin-right: 24px; font-size:14px;">Minute</label>
+													<div style=" width: 80px; display:inline;">
+														<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity1'); var qty = result.value; if( !isNaN(qty) &amp; qty > 1 ) result.value--;return false;" type='button' value='-' />
+														<input style="width: 80px; display:inline; background: white;" id='quantity1' min='0' name='quantity' type='text' value='0' />
+														<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity1'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
+													</div>
+												</div>
+												
+												<div style="margin-left: 40px;">
+													<label style="margin-right: 20px; font-size:14px;">Second</label>
+													<div style=" width: 80px; display:inline;">
+														<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty) &amp; qty > 1 ) result.value--;return false;" type='button' value='-' />
+														<input style="width: 80px; display:inline; background: white;" id='quantity2' min='1' max='59' name='quantity' type='text' value='1' />
+														<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
+													</div>
+												</div>
+												
+												<div class="button-box text-center"  style="margin-top: 40px;">
+													<button id="s1" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+												</div>
+											</div>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="button-box text-center" style="margin-top: 40px;">
+					<a href="manage_course.jsp"><button type="button" class="theme-btn btn-style-one" ><span class="txt">Save Course</span></button></a>
+					<a href="add_chapter.jsp"><button style="margin-left: 40px;" type="button" class="theme-btn btn-style-two"><span class="txt">Add New Chapter</span></button></a>
 				</div>
 			</div>
-			
 		</div>
 	</div>
-	<!-- End Manage Cource Section -->
-	
-	
-	
+	<!-- End Manage Cource Section -->	
 </div>
 
 	<!-- Main Footer -->
@@ -313,34 +280,9 @@
 
 
 
-<!-- Color Palate / Color Switcher -->
-<div class="color-palate">
-    <div class="color-trigger">
-        <i class="fa fa-gear"></i>
-    </div>
-    <div class="color-palate-head">
-        <h6>Choose Your Color</h6>
-    </div>
-    <div class="various-color clearfix">
-        <div class="colors-list">
-            <span class="palate color-one active" data-theme-file="css/ins/color-themes/theme-one.css"></span>
-            <span class="palate color-two" data-theme-file="css/ins/color-themes/theme-two.css"></span>
-            <span class="palate color-three" data-theme-file="css/ins/color-themes/theme-three.css"></span>
-            <span class="palate color-four" data-theme-file="css/ins/color-themes/theme-four.css"></span>
-            <span class="palate color-five" data-theme-file="css/ins/color-themes/theme-five.css"></span>
-            <span class="palate color-six" data-theme-file="css/ins/color-themes/theme-six.css"></span>
-            <span class="palate color-seven" data-theme-file="css/ins/color-themes/theme-seven.css"></span>
-            <span class="palate color-eight" data-theme-file="css/ins/color-themes/theme-eight.css"></span>
-			<span class="palate color-nine" data-theme-file="css/ins/color-themes/theme-nine.css"></span>
-			<span class="palate color-ten" data-theme-file="css/ins/color-themes/theme-ten.css"></span>
-			<span class="palate color-eleven" data-theme-file="css/ins/color-themes/theme-eleven.css"></span>
-			<span class="palate color-twelve" data-theme-file="css/ins/color-themes/theme-twelve.css"></span>
-        </div>
-    </div>
 
-</div>
 
-<script src="js/ins/jquery.js"></script><!---->
+<!--<script src="js/ins/jquery.js"></script>-->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
@@ -357,6 +299,8 @@
 <script src="js/ins/charts-script.js"></script>
 
 <!-- Js File_________________________________ -->
+
+		<script type="text/javascript" src="js/edit_course.js"></script>
 
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>

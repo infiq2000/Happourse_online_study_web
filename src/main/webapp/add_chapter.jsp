@@ -99,8 +99,6 @@
 												<div class="form-group" style="margin-left: 40px;">
 													<label style="font-size:14px;">Chapter Title</label>
 													<input type="text" name="username" value="" placeholder="Chapter 1" required>
-
-													
 												</div>
 												
 												
