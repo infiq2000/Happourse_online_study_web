@@ -56,22 +56,40 @@ public class UpdateInfo extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int uid = Integer.parseInt(request.getParameter("uid"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		int aid = Integer.parseInt(request.getParameter("aid"));
-		String fullname = request.getParameter("FirstName");
-		
-		String major = request.getParameter("LastName");
-		
-		User user = new User(uid, fullname, major, aid);
-		// creat a new student object
-		// perform update on database
-		try {
-			userUtil.updateStudent(user);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		int accountType = (int)request.getSession(false).getAttribute("account_type");
+		if (accountType == 0) {
+			String fullname = request.getParameter("FirstName");
+			
+			String major = request.getParameter("LastName");
+			
+			User user = new User(id, fullname, major, aid);
+			// creat a new student object
+			// perform update on database
+			try {
+				userUtil.updateStudent(user);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// send them back to the list student page
+		} else {
+String fullname = request.getParameter("FirstName");
+			
+			String major = request.getParameter("LastName");
+			
+			User user = new User(id, fullname, major, aid);
+			// creat a new student object
+			// perform update on database
+			try {
+				userUtil.updateStudent(user);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// send them back to the list student page
 		}
-		// send them back to the list student page
 	}
 
 }

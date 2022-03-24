@@ -11,11 +11,10 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-
-
+import Controller.Profile;
 import Model.Courses;
 import Model.User;
-import Model.UserProfile;
+import Model.Profiles;
 import Dao.AccountUtil; 
 public class UserUtil {
 	private DataSource dataSource;
@@ -217,7 +216,7 @@ public class UserUtil {
 		return balance;
 	}
 
-	public UserProfile getUserProfileByID(int uid) throws SQLException {
+	public Profiles getUserProfileByID(int uid) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
@@ -226,22 +225,19 @@ public class UserUtil {
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, uid);
 		myRS = myStmt.executeQuery();
-		UserProfile up = null;
+		Profiles up = null;
 		if (myRS.next()) {
-			String full_name = myRS.getString("full_name");
+			int id = uid;
+			String name = myRS.getString("full_name");
 			String major = myRS.getString("major");
-			int aid = myRS.getInt("aid");
-			Date birth = myRS.getDate("birth");
-			String phoneNumber = myRS.getString("phone_number");
-			String email = myRS.getString("email");
-			String address = myRS.getString("address");
-			String describe = myRS.getString("describe");
-			String experiment = myRS.getString("experiment");
+			String birth = "<p>Birthday: " + myRS.getDate("birth").toString() + "</p>";
+			String email = "<p>Email: " + myRS.getString("email") + "</p>";
+			String describe = "<h5>Description:</h5><p>" + myRS.getString("describe") + "</p>";
+			String experiment = "<p>Experiment: " + myRS.getString("experiment") + "</p>";
 			double balance = myRS.getDouble("balance");
-			String countryID = myRS.getString("country_ID");
-			String countryName = myRS.getString("country_name");
-			up = new UserProfile(uid, full_name, major, aid, birth, phoneNumber, email,
-					address, describe, experiment, balance, countryID, countryName);
+			String countryName = "<p>Country: " + myRS.getString("country_name") + "</p>";
+			String description = email + birth + countryName + describe;
+			up = new Profiles(id, name, major, balance, description);
 		}
 		myConn.close();
 		return up;

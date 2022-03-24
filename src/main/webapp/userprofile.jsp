@@ -85,7 +85,7 @@
 							<div class="author-image">
 								<img src="images/logo/t.JPG" alt="" />
 							</div>
-							<h4>${user_info.getFull_name() }</h4>
+							<h4>${user_info.getName() }</h4>
 							<div class="designation">${user_info.getMajor()}</div>
 							<ul class="social-box">
 								<li class="facebook"><a href="#" class="fa fa-facebook"></a></li>
@@ -146,7 +146,7 @@
 					<!-- Right Column -->
 					<div class="right-column col-lg-3 col-md-12 col-sm-12">
 						<div class="buttons-box">
-							<a href="UpdateInfo" class="theme-btn btn-style-one">Edit Profile</a>
+							<a href="UpdateInfo&id=${user_info.getId()}" class="theme-btn btn-style-one">Edit Profile</a>
 						</div>
 					</div>
 					
@@ -170,13 +170,7 @@
 								<div class="content">
 									<h6>About Me</h6>
 									<div class="text">
-										<p>Birthday: ${user_info.getBirth()}</p>
-										<p>Phone number: ${user_info.getPhoneNumber()}</p>
-										<p>Email: ${user_info.getEmail()}</p>
-										<p>Addess: ${user_info.getAddress()}, ${user_info.getCountryName()}</p>
-										<p>Experiment: ${user_info.getExperiment()}</p>
-										<h5>Describe:</h5>
-										<p>${user_info.getDescribe()}</p>
+										<p>${user_info.getDescription()}</p>
 									</div>
 								</div>
 							</div>
