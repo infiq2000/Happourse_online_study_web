@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 
 import Model.Courses;
 import Model.Instructor;
+import Model.Profiles;
 import Model.User;
 
 public class InstructorUtil {
@@ -332,6 +333,31 @@ public class InstructorUtil {
 		}
 		myConn.close();
 		return ls;
+	}
+	public Profiles getInstructorProfileByID(int ins_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT ins_name, major, description, birth, email, balance, country_name FROM instructor i, countries c WHERE ins_id = ? AND i.country_ID=c.country_ID";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, ins_id);
+		myRS = myStmt.executeQuery();
+		Profiles up = null;
+		if (myRS.next()) {
+			int id = ins_id;
+			String name = myRS.getString("ins_name");
+			String major = myRS.getString("major");
+			String birth = "<p>Birthday: " + myRS.getDate("birth").toString() + "</p>";
+			String email = "<p>Email: " + myRS.getString("email") + "</p>";
+			String describe = "<h5>Description:</h5><p>" + myRS.getString("description") + "</p>";
+			double balance = myRS.getDouble("balance");
+			String countryName = "<p>Country: " + myRS.getString("country_name") + "</p>";
+			String description = email + birth + countryName + describe;
+			up = new Profiles(id, name, major, balance, description);
+		}
+		myConn.close();
+		return up;
 	}
 }
 

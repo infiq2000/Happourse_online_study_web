@@ -85,7 +85,7 @@
 							<div class="author-image">
 								<img src="images/logo/t.JPG" alt="" />
 							</div>
-							<h4>${user_info.getFull_name() }</h4>
+							<h4>${user_info.getName() }</h4>
 							<div class="designation">${user_info.getMajor()}</div>
 							<ul class="social-box">
 								<li class="facebook"><a href="#" class="fa fa-facebook"></a></li>
@@ -102,7 +102,7 @@
 										<div class="inner">
 											<h5 class="counter-title">My Courses</h5>
 											<div class="count-outer count-box">
-												<span class="count-text" data-speed="2500" data-stop="10">0</span>k
+												<span class="count-text" data-speed="2000" data-stop="${myCourses}"></span>
 											</div>
 										</div>
 									</div>
@@ -122,7 +122,7 @@
 										<div class="inner">
 											<h5 class="counter-title">Certificates</h5>
 											<div class="count-outer count-box">
-												<span class="count-text" data-speed="3000" data-stop="4">0</span>
+												<span class="count-text" data-speed="2000" data-stop="4">0</span>
 											</div>
 										</div>
 									</div>
@@ -132,7 +132,7 @@
 										<div class="inner">
 											<h5 class="counter-title">Balance</h5>
 											<div class="count-outer count-box">
-												<span class="count-text" data-speed="3000" data-stop="15">0</span>K
+												$<span class="count-text" data-speed="2000" data-stop="${user_info.getBalance()}"></span>
 											</div>
 										</div>
 									</div>
@@ -146,7 +146,7 @@
 					<!-- Right Column -->
 					<div class="right-column col-lg-3 col-md-12 col-sm-12">
 						<div class="buttons-box">
-							<a href="UpdateTest" class="theme-btn btn-style-one">Edit Profile</a>
+							<a href="UpdateInfo&id=${user_info.getId()}" class="theme-btn btn-style-one">Edit Profile</a>
 						</div>
 					</div>
 					
@@ -170,7 +170,7 @@
 								<div class="content">
 									<h6>About Me</h6>
 									<div class="text">
-										<p>ahihi</p>
+										<p>${user_info.getDescription()}</p>
 									</div>
 								</div>
 							</div>

@@ -17,6 +17,7 @@ import Dao.AccountUtil;
 import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
+import Model.Profiles;
 import Model.User;
 
 /**
@@ -58,20 +59,35 @@ public class Profile extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int uid = (int)request.getSession(false).getAttribute("uid");
-		System.out.println("hello"  + uid);
-		User user = null;
-		try {
-			user = userUtil.getUserbyID(uid);
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		int accountType = (int)request.getSession(false).getAttribute("account_type");
+		Profiles user = null;
+		int countCourses = 0;
+		if (accountType == 0) {
+			int uid = (int)request.getSession(false).getAttribute("uid");			
+			try {
+				user = userUtil.getUserProfileByID(uid);
+				countCourses = courseUtil.countCourseByUID(uid);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		} else {
+			int ins_id = (int)request.getSession(false).getAttribute("ins_id");
+			try {
+				user = insUtil.getInstructorProfileByID(ins_id);
+				countCourses = insUtil.getToTalCourses(ins_id);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
 		}
+		request.setAttribute("myCourses", countCourses);
 		request.setAttribute("user_info",user);
-		String[] a = user.getFull_name().split(" ");
+		String[] a = user.getName().split(" ");
 		
 		String b = a[a.length - 1];
 		request.setAttribute("name", b);

@@ -84,7 +84,7 @@
 									<li class="dropdown-holder menu-list" ><a class="tran3s"><span class="login">HI <%=name %></span></a> 
 										<ul class="sub-menu">
 											<li><a href="Profile">My Profile</a></li>
-											<li><a href="UpdateTest">Update Profile</a></li>
+											<li><a href="UpdateInfo">Update Profile</a></li>
 											
 											<li><a href="Logout">Log out</a></li>
 										</ul>

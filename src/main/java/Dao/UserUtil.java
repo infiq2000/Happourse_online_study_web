@@ -1,6 +1,7 @@
 package Dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,10 +11,10 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-
-
+import Controller.Profile;
 import Model.Courses;
 import Model.User;
+import Model.Profiles;
 import Dao.AccountUtil; 
 public class UserUtil {
 	private DataSource dataSource;
@@ -213,5 +214,32 @@ public class UserUtil {
 			myConn.close();
 		}
 		return balance;
+	}
+
+	public Profiles getUserProfileByID(int uid) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT uid, full_name, major, aid, birth, phone_number, email, address, u.describe, experiment, balance, u.country_ID, country_name FROM users u, countries c WHERE u.country_ID = c.country_ID AND uid=?;";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, uid);
+		myRS = myStmt.executeQuery();
+		Profiles up = null;
+		if (myRS.next()) {
+			int id = uid;
+			String name = myRS.getString("full_name");
+			String major = myRS.getString("major");
+			String birth = "<p>Birthday: " + myRS.getDate("birth").toString() + "</p>";
+			String email = "<p>Email: " + myRS.getString("email") + "</p>";
+			String describe = "<h5>Description:</h5><p>" + myRS.getString("describe") + "</p>";
+			String experiment = "<p>Experiment: " + myRS.getString("experiment") + "</p>";
+			double balance = myRS.getDouble("balance");
+			String countryName = "<p>Country: " + myRS.getString("country_name") + "</p>";
+			String description = email + birth + countryName + describe;
+			up = new Profiles(id, name, major, balance, description);
+		}
+		myConn.close();
+		return up;
 	}
 }
