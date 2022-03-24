@@ -81,10 +81,10 @@
 						<div class="col-lg-9 col-md-8 col-xs-12 popular-course float-right">
 							<div class="course-style-filter clearfix">
 								<ul class="float-left clearfix">
-									<li><a href="CourseByType?type=all" class="tran3s active">All</a></li>
-									<li><a href="CourseByType?type=new" class="tran3s">New</a></li>
-									<li><a href="CourseByType?type=popular" class="tran3s">Popular</a></li>
-									<li><a href="CourseByType?type=free" class="tran3s">Free</a></li>
+									<li><a href="CourseByType?type=all" class="tran3s" id="type1">All</a></li>
+									<li><a href="CourseByType?type=new" class="tran3s" id="type2">New</a></li>
+									<li><a href="CourseByType?type=popular" class="tran3s" id="type3">Popular</a></li>
+									<li><a href="CourseByType?type=free" class="tran3s" id="type4">Free</a></li>
 								</ul>
 								<ul class="float-right">
 									<li><a href="#" class="tran3s active"><i class="fa fa-th-large" aria-hidden="true"></i></a></li>
@@ -97,7 +97,7 @@
 										<div class="single-course">
 											<div class="image-box"><img src="images/course/33.jpg" alt=""></div>
 											<div class="text">
-												<div class="image"><img src="images/course/34.jpg" alt=""></div>
+												<div class="image"><img src="images/logo/logo10.jpg" alt=""></div>
 												<div class="name clearfix">
 													<h6 class="float-left">${tempCourse.getIns_name() }</h6>
 													<span class="p-bg-color float-right">${tempCourse.getPrice()} $</span>
@@ -229,6 +229,7 @@
 
 		<!-- Theme js -->
 		<script type="text/javascript" src="js/theme.js"></script>
+		<script type="text/javascript" src="js/usepage.js"></script>
 
 		</div> <!-- /.main-page-wrapper -->
 	</body>

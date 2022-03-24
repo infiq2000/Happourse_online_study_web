@@ -12,7 +12,7 @@
 		<!-- For Resposive Device -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Eskul - Responsive Bootstrap  Education HTML5 Template</title>
+		<title>Hapourse - Online Study Website</title>
 
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
@@ -85,7 +85,7 @@
 									<div class="image-box float-left"><img src="images/course/33.jpg" alt=""></div>
 									<div class="text float-left">
 										<div class="name clearfix">
-											<div class="image"><img src="images/course/34.jpg" alt=""></div>
+											<div class="image"><img src="images/logo/logo10.jpg" alt=""></div>
 											<div class="float-left">
 												<h6> ${tempCourse.getIns_name()}</h6>
 												<i>${tempCourse.getIns_major()}</i>

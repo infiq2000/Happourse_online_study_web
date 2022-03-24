@@ -981,6 +981,7 @@ header.menu-style-two.fixed .logo {width: 10%;top:0;}
   border-top: none;
   padding: 28px 30px 0 30px;
   position: relative;
+  height: 270px;
 }
 .popular-course .single-course .text .name h6 {
   color: rgba(0,0,0,0.9);
