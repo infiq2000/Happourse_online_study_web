@@ -1,6 +1,6 @@
 document.getElementById("upload").onclick = function () {
-            document.getElementById("an").style.display = 'none';
-        };
+    document.getElementById("an").style.display = 'none';
+};
 		
 function ImagesFileAsURL() {
     var fileSelected = document.getElementById('upload').files;

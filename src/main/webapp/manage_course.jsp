@@ -105,7 +105,7 @@
 					  <tbody>
 					  	<c:forEach var="tempCourses" items="${listCourses}">
 							<tr>
-							  <th class="title" scope="col">${tempCourses.getName()}</th>
+							  <th class="title" scope="col"><a href="edit_course.jsp">${tempCourses.getName()}</a></th>
 							  <th class="post-date" scope="col">${tempCourses.getPublishDate() }</th>
 							  <th class="sales" scope="col">${tempCourses.getCountCourses()} Sales</th>
 							  <th class="category" scope="col">${tempCourses.getCategory()}</th>

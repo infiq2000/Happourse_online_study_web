@@ -258,7 +258,7 @@ public class CourseUtil {
 		ResultSet myRS = null;
 		List<Courses> li = new ArrayList<>();
 		myConn = dataSource.getConnection();
-		String sql = "SELECT c.course_id, name, skill, price, language, c.description, star_rate, i.ins_id, cid, ins_name, major, COUNT(c.course_id) as dem FROM user_course u, courses c, instructor i WHERE (i.ins_id = c.ins_id) AND (u.course_id = c.course_id) GROUP BY c.course_id,name, skill, price, language, c.description, star_rate, i.ins_id, cid, ins_name, major ORDER BY dem DESC ;";
+		String sql = "SELECT c.course_id, name, skill, price, language, c.description, star_rate, i.ins_id, cid, ins_name, major, COUNT(u.course_id) as dem FROM courses c LEFT JOIN user_course u ON u.course_id = c.course_id RIGHT JOIN instructor i ON i.ins_id = c.ins_id GROUP BY c.course_id ORDER BY dem DESC ;";
 		pstmt = myConn.prepareStatement(sql);
 		myRS = pstmt.executeQuery();
 		while (myRS.next()) {
@@ -519,7 +519,6 @@ public class CourseUtil {
 		return course_id;
 		
 	}
-
 	public int getIndexOfChapter() throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -560,5 +559,21 @@ public class CourseUtil {
         pstmt.setInt(3, course_id);
         pstmt.execute();
 		myConn.close();
+	}
+	public int countCourseByUID(int uid) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT count(uid) as dem FROM happourse.user_course WHERE uid=?;";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, uid);
+		myRS = myStmt.executeQuery();
+		int countCourses = 0;
+		if (myRS.next()) {
+			countCourses = myRS.getInt("dem");
+		}
+		myConn.close();
+		return countCourses;
 	}
 }

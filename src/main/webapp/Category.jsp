@@ -114,56 +114,7 @@
 											</div> <!-- /price-ranger -->
 										</div> <!-- /.course-price-filter -->
 
-										<div class="course-work-level">
-											<h5>Work level</h5>
-											<ul class="clearfix">
-												<li>
-													<input type="checkbox" id="starting">
-													<label for="starting">Starting</label>
-												</li>
-												<li>
-													<input type="checkbox" id="begainer">
-													<label for="begainer">Begainer</label>
-												</li>
-												<li>
-													<input type="checkbox" id="expert" checked>
-													<label for="expert">Expert</label>
-												</li>
-												<li>
-													<input type="checkbox" id="intermediate">
-													<label for="intermediate">Intermediate</label>
-												</li>
-												<li>
-													<input type="checkbox" id="advance">
-													<label for="advance">Advance</label>
-												</li>
-											</ul>
-										</div> <!-- /.course-work-level -->
-
-										<div class="course-location">
-											<h5>Location</h5>
-											<div class="form-group">
-										      <div>
-										        <select id="loaction" class="selectpicker show-tick form-control" data-live-search="true">
-										          <option>Dhaka</option>
-										          <option>Bab Ezzouar</option>
-										          <option>Baguio</option>
-										          <option>London</option>
-										          <option>Paris</option>
-										          <option>Dubai</option>
-										          <option>New York</option>
-										          <option>Singapore</option>
-										          <option>Kuala Lumpur</option>
-										          <option>Istanbul</option>
-										          <option>Tokyo</option>
-										          <option>Seoul</option>
-										          <option>Amsterdam</option>
-										          <option>Osaka</option>
-										          <option>Vienna</option>
-										        </select>
-										      </div>
-										    </div>
-										</div> <!-- /.course-location -->
+										
 
 										<div class="button-wrapper"><input type="submit" value="Apply filters" class="p-bg-color tran3s"></div>
 									</form> <!-- /.main-wrapper -->

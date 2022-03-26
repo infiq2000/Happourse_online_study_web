@@ -113,8 +113,6 @@
 												<div class="form-group" style="margin-left: 40px;">
 													<label style="font-size:14px;">Chapter Title</label>
 													<input id = "nameChapter" type="text" name="username" value="" placeholder="Chapter 1" required>
-
-													
 												</div>
 												
 												<div class="button-box text-center"  style="margin-top: 40px;">
