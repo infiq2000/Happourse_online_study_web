@@ -482,13 +482,12 @@ public class CourseUtil {
 		}
 	}
 
-	public void insertNewCourse(String course_name, String description, int cid, int price, String language,
+	public int insertNewCourse(String course_name, String description, int cid, int price, String language,
 			float star_rate, float duration, int ins_id) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
-		
+		int course_id = 0;
 		// create SQL update statement;
-		System.out.println("sql1");
 		try {
 			myConn = dataSource.getConnection();
 			
@@ -498,7 +497,7 @@ public class CourseUtil {
 			
 			// prepare statement
 			myStmt = myConn.prepareStatement(sql);
-			int course_id = getIndexOfCourse();
+			course_id = getIndexOfCourse();
 			String skill = "Dang fix cung";
 			// set params
 			myStmt.setInt(1, course_id);
@@ -510,18 +509,57 @@ public class CourseUtil {
 			myStmt.setString(7, description);
 			myStmt.setInt(8, ins_id);
 			myStmt.setInt(9, cid);
-			System.out.println("sql2");
-			
 			// execute SQL statement
 			myStmt.execute();
-			System.out.println("them thanh cong");
+			
 		}
 		finally {
 			myConn.close();
 		}
+		return course_id;
 		
 	}
+	public int getIndexOfChapter() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "SELECT chap_id FROM happourse.chapter;";
+			myStmt = myConn.prepareStatement(sql);
+			myRS = myStmt.executeQuery();
+			List<String> lstIndex = new ArrayList<String>();
+			while (myRS.next()) {
+				String idx = myRS.getString("chap_id");
+				lstIndex.add(idx);
+			}
+			int i = 1;
+			while(true) {
+				if(lstIndex.contains(Integer.toString(i))) {
+					i++;
+				} else {
+					return i;
+				}
+			}
+		} 
+		finally {
+			myConn.close();
+		}
+	}
 
+	public void addChapter(int chapter_id, int course_id, String name) throws SQLException {
+		// TODO Auto-generated method stub
+		Connection myConn = null;
+		myConn = dataSource.getConnection();
+		String sql = "INSERT INTO chapter(chap_id,name,course_id)" 
+	            + "VALUES(?,?,?)";
+		PreparedStatement pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, chapter_id);
+		pstmt.setString(2, name);
+        pstmt.setInt(3, course_id);
+        pstmt.execute();
+		myConn.close();
+	}
 	public int countCourseByUID(int uid) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -537,5 +575,48 @@ public class CourseUtil {
 		}
 		myConn.close();
 		return countCourses;
+	}
+
+	public int getIndexOfContent() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "SELECT lc_id FROM happourse.lecturer_content;";
+			myStmt = myConn.prepareStatement(sql);
+			myRS = myStmt.executeQuery();
+			List<Integer> lstIndex = new ArrayList<Integer>();
+			while (myRS.next()) {
+				int idx = myRS.getInt("lc_id");
+				lstIndex.add(idx);
+			}
+			int i = 1;
+			while(true) {
+				if(lstIndex.contains(i)) {
+					i++;
+				} else {
+					return i;
+				}
+			}
+		} 
+		finally {
+			myConn.close();
+		}
+	}
+
+	public void addContent(int lc_id, String nameContent, String desription, int chapter_id, String url) throws SQLException {
+		Connection myConn = null;
+		myConn = dataSource.getConnection();
+		String sql = "INSERT INTO lecturer_content(lc_id,name,type, link,chap_id)" 
+	            + "VALUES(?, ?,0,?,?)";
+		PreparedStatement pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, lc_id);
+		pstmt.setString(2,nameContent);
+        pstmt.setString(3, url);
+        pstmt.setInt(4, chapter_id);
+        System.out.println("thanh cong");
+        pstmt.execute();
+		myConn.close();
 	}
 }
