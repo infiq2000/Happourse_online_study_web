@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.annotation.Resource;
@@ -19,12 +20,11 @@ import Dao.LectureUtil;
 import Dao.UserUtil;
 
 /**
- * Servlet implementation class AddNewCourse
+ * Servlet implementation class AddChapter
  */
-@WebServlet("/AddNewCourse")
-public class AddNewCourse extends HttpServlet {
+@WebServlet(name = "AddChapter", urlPatterns = {"/AddChapter"})
+public class AddChapter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
 	Dao.CourseUtil courseUtil; 
@@ -32,8 +32,9 @@ public class AddNewCourse extends HttpServlet {
     UserUtil userUtil;
     InstructorUtil insUtil;
     LectureUtil lecUtil;
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
@@ -44,40 +45,32 @@ public class AddNewCourse extends HttpServlet {
 		insUtil = new InstructorUtil(dataSource);
 		lecUtil = new LectureUtil(dataSource);
 	} 
-    public AddNewCourse() {
+    public AddChapter() {
+        super();
         // TODO Auto-generated constructor stub
-    	super();
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletResquest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cmd = request.getParameter("cmd");
-		String course_name = request.getParameter("username");
-		String description = request.getParameter("message");
-		int cid = Integer.parseInt(request.getParameter("chon"));
-		int price = Integer.parseInt(request.getParameter("price"));
-		String langguage = "English";
-		float star_rate = 4.0f;
-		float duration = 0;
-		int ins_id = (int)request.getSession(false).getAttribute("ins_id");
-		int course_id = 0;
+		int course_id = Integer.parseInt(request.getParameter("course_id"));
+		String name = request.getParameter("txtName");
+		int chapter_id = -1;
 		try {
-			course_id = courseUtil.insertNewCourse(course_name,description,cid,price,langguage,star_rate,duration,ins_id);
+			chapter_id = courseUtil.getIndexOfChapter();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (cmd.equals("save")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("ManageCourses");
-			dispatcher.forward(request, response);
+		try {
+			courseUtil.addChapter(chapter_id, course_id, name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		else {
-			request.setAttribute("course_id", course_id);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("add_chapter.jsp");
-			dispatcher.forward(request, response);
-		}
+		PrintWriter out = response.getWriter();
+		out.print("<p>Done </p>");
 
 	}
 

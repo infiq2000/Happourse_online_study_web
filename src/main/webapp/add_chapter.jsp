@@ -1,5 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
+<%@ page import="Model.Category" %>
+<%@ page import="Dao.CourseUtil" %>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,10 +45,13 @@
 
 </head>
 
-<body class="">
+<body data-customvalueone="${course_id}" class="">
 
-
- 	
+	<%
+		int course_id = (int)request.getAttribute("course_id");
+		//int chapter_id = (int)request.getAttribute("chapter_id");
+	%>
+	
     <!-- Preloader -->
     <div class="preloader"></div>
  	
@@ -57,13 +65,19 @@
 <div class="page-wrapper">
 
 	<!-- Edit Cource Section -->
-    <div class="edit-cource-section">
+    <div id="all" class="edit-cource-section">
     	<div class="auto-container">
 			<!-- Sec Title -->
 			<div class="sec-title">
 				<div class="clearfix">
 					<div class="pull-left">
 						<h4>New Chapter</h4>
+						<font color = "red">
+							<li>
+								<p> Course ID: <%=course_id %> </p>
+
+							</li>
+						</font>
 					</div>
 					<!--<div class="pull-right">
 						<a href="enrolled-courses.html" class="see-all">Add Your Course</a>
@@ -98,12 +112,17 @@
 											<li id="chapter1">																								
 												<div class="form-group" style="margin-left: 40px;">
 													<label style="font-size:14px;">Chapter Title</label>
-													<input type="text" name="username" value="" placeholder="Chapter 1" required>
+													<input id = "nameChapter" type="text" name="username" value="" placeholder="Chapter 1" required>
 
 													
 												</div>
 												
+												<div class="button-box text-center"  style="margin-top: 40px;">
+													<button  id="s1" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+												</div>
+												<div id = "msg">
 												
+												</div>
 												
 												<!-- Content -->
 												<label  style="margin: 0 0 20px 40px;">Content</label>
@@ -662,7 +681,10 @@
 
 		<!-- Theme js -->
 		<script type="text/javascript" src="js/theme.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/add_chapter.js"></script>
 <script>
+		
 		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		var config = {
 			type: 'line',
