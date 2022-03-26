@@ -576,4 +576,47 @@ public class CourseUtil {
 		myConn.close();
 		return countCourses;
 	}
+
+	public int getIndexOfContent() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "SELECT lc_id FROM happourse.lecturer_content;";
+			myStmt = myConn.prepareStatement(sql);
+			myRS = myStmt.executeQuery();
+			List<Integer> lstIndex = new ArrayList<Integer>();
+			while (myRS.next()) {
+				int idx = myRS.getInt("lc_id");
+				lstIndex.add(idx);
+			}
+			int i = 1;
+			while(true) {
+				if(lstIndex.contains(i)) {
+					i++;
+				} else {
+					return i;
+				}
+			}
+		} 
+		finally {
+			myConn.close();
+		}
+	}
+
+	public void addContent(int lc_id, String nameContent, String desription, int chapter_id, String url) throws SQLException {
+		Connection myConn = null;
+		myConn = dataSource.getConnection();
+		String sql = "INSERT INTO lecturer_content(lc_id,name,type, link,chap_id)" 
+	            + "VALUES(?, ?,0,?,?)";
+		PreparedStatement pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, lc_id);
+		pstmt.setString(2,nameContent);
+        pstmt.setString(3, url);
+        pstmt.setInt(4, chapter_id);
+        System.out.println("thanh cong");
+        pstmt.execute();
+		myConn.close();
+	}
 }

@@ -1,6 +1,8 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletConfig;
@@ -9,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import Dao.AccountUtil;
@@ -52,12 +55,32 @@ public class AddContent extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+//    nameContent : nameContent,
+//	course_id: course_id,
+//	chapter_id: chapter_id,
+//	desription : desription,
+//	url:url
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response. setContentType ("text/html;charset=UTF-8");
 		int course_id = Integer.parseInt(request.getParameter("course_id"));
-		int chap_id =Integer.parseInt( request.getParameter("chap_id"));
-		
-		courseUtil.insertContent();
+		String nameContent = request.getParameter("nameContent");
+		String desription = request.getParameter("desription");
+		int chapter_id = Integer.parseInt(request.getParameter("chapter_id"));
+		String url = request.getParameter("url");
+		int content = -1;
+		try {
+			content = courseUtil.getIndexOfContent();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			courseUtil.addContent(content,nameContent, desription,chapter_id,url);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		PrintWriter out = response.getWriter();
+		out.print("<p>Done </p>");
 	}
 
 }

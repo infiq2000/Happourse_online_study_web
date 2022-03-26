@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import Dao.AccountUtil;
@@ -69,6 +70,8 @@ public class AddChapter extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		HttpSession session = request.getSession(true);
+		session.setAttribute("chapter_id",chapter_id);
 		PrintWriter out = response.getWriter();
 		out.print("<p>Done </p>");
 
