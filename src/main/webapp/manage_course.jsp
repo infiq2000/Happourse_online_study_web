@@ -114,7 +114,7 @@
 							  <td class="category" scope="col" style="text-align:center;">${tempCourses.getCategory()}</td>
 							  <td class="actions" scope="col" style="text-align:center;">
 							  	<a href="DeleteCourse?course_id=${tempCourses.getCourses_id()}" onclick="if (!(confirm('Ban muon xoa khoa hoc?'))) return false"><i class='fa fa-trash-o'></i></a>
-							  	<a href="edit_course.jsp"><i class='fa fa-edit'></i></a>
+							  	<a href="EditCourse?courseID=${tempCourses.getCourses_id()}"><i class='fa fa-edit'></i></a>
 							  	<a href="#"><i class='fa fa-check-square'></i></a>
 							  </td>
 							  <td style="text-align:center;">OK</td>
