@@ -66,39 +66,31 @@
 			<div class="sec-title">
 				<div class="clearfix">
 					<div class="pull-left">
-						<h4>Manage Courses</h4>
+						<h4>Manage Contents</h4>
 					</div>
 					<div class="pull-right">
-						<a href="add_course.jsp" class="see-all">Add New Course</a>
+						<a href="add_chapter.jsp" class="see-all">Add New Content</a>
 					</div>
 				</div>
 			</div>
 			<div class="inner-container">
-				<div class="container-content">
+				<div class="container-content" style="width:80%; margin-left:150px;">
 					<!-- Title Box -->
 					<div class="title-box clearfix">
 						<!-- Title Column -->
-						<div class="title-column" style="width:600px;">
+						<div class="title-column" style="width:345px;">
 							<h6 >Title</h6>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:130px;">
-							<h6 >Publish Date</h6>
+						<div class="title-column" style="width:270px; text-align: center;">
+							<h6>Duration</h6>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:150px;">
-							<a href="SortCourseBySalesNumber?desc=${desc}"><h6 >Sales</h6></a>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:200px;">
-							<h6>Category</h6>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:180px;">
+						<div class="title-column" style="width:300px;">
 							<h6>Action</h6>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:70px;">
+						<div class="title-column" style="width:150px;">
 							<h6>Mood</h6>
 						</div>
 					</div>
@@ -106,16 +98,13 @@
 					  <thead>
 					  </thead>
 					  <tbody>
-					  	<c:forEach var="tempCourses" items="${listCourses}">
-							<tr>
-							  <td class="title" scope="col"><a href="manage_chapter.jsp">${tempCourses.getName()}</a></td>
-							  <td class="post-date" scope="col" style="text-align:center;">${tempCourses.getPublishDate() }</td>
-							  <td class="sales" scope="col" style="text-align:center;">${tempCourses.getCountCourses()} Sales</td>
-							  <td class="category" scope="col" style="text-align:center;">${tempCourses.getCategory()}</td>
+					  	<c:forEach var="i" begin="1" end="5">
+							<tr> 
+							  <td class="title" scope="col"><a href="manage_content.jsp" >${i }. content ${i} </a></td>
+							  <td class="duration" scope="col" style="text-align:center;">3 minutes</td>
 							  <td class="actions" scope="col" style="text-align:center;">
-							  	<a href="DeleteCourse?course_id=${tempCourses.getCourses_id()}" onclick="if (!(confirm('Ban muon xoa khoa hoc?'))) return false"><i class='fa fa-trash-o'></i></a>
+							  	<a href="#"><i class='fa fa-trash-o'></i></a>
 							  	<a href="edit_course.jsp"><i class='fa fa-edit'></i></a>
-							  	<a href="#"><i class='fa fa-check-square'></i></a>
 							  </td>
 							  <td style="text-align:center;">OK</td>
 							</tr>
