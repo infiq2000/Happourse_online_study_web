@@ -184,8 +184,8 @@
 										<!-- Button Box -->
 	
 					<div class="button-box text-center" style="margin-top: 40px;">
-						<button type="submit" class="theme-btn btn-style-one" style="margin-left: 40px;"><span class="txt">Save Course</span></button>
-						<button style="margin-left: 40px;" type="button" class="theme-btn btn-style-two"><span class="txt">Save & Create New Chapter</span></button>
+						<button type="submit" name="cmd" value = "save" class="theme-btn btn-style-one" style="margin-left: 40px;"><span class="txt">Save Course</span></button>
+						<button name = "cmd" value ="save_create" style="margin-left: 40px;" type="submit" class="theme-btn btn-style-two"><span class="txt">Save & Create New Chapter</span></button>
 					</div>
 				</div>
 			</div>

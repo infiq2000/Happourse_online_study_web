@@ -1,30 +1,31 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.annotation.Resource;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import Dao.AccountUtil;
+import Dao.CourseUtil;
 import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
 
 /**
- * Servlet implementation class AddNewCourse
+ * Servlet implementation class AddContent
  */
-@WebServlet("/AddNewCourse")
-public class AddNewCourse extends HttpServlet {
+@WebServlet("/AddContent")
+public class AddContent extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
 	Dao.CourseUtil courseUtil; 
@@ -32,9 +33,7 @@ public class AddNewCourse extends HttpServlet {
     UserUtil userUtil;
     InstructorUtil insUtil;
     LectureUtil lecUtil;
-    /**
-     * Default constructor. 
-     */
+    
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 		super.init();
@@ -44,41 +43,44 @@ public class AddNewCourse extends HttpServlet {
 		insUtil = new InstructorUtil(dataSource);
 		lecUtil = new LectureUtil(dataSource);
 	} 
-    public AddNewCourse() {
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public AddContent() {
+        super();
         // TODO Auto-generated constructor stub
-    	super();
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletResquest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+//    nameContent : nameContent,
+//	course_id: course_id,
+//	chapter_id: chapter_id,
+//	desription : desription,
+//	url:url
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String cmd = request.getParameter("cmd");
-		String course_name = request.getParameter("username");
-		String description = request.getParameter("message");
-		int cid = Integer.parseInt(request.getParameter("chon"));
-		int price = Integer.parseInt(request.getParameter("price"));
-		String langguage = "English";
-		float star_rate = 4.0f;
-		float duration = 0;
-		int ins_id = (int)request.getSession(false).getAttribute("ins_id");
-		int course_id = 0;
+		int course_id = Integer.parseInt(request.getParameter("course_id"));
+		String nameContent = request.getParameter("nameContent");
+		String desription = request.getParameter("desription");
+		int chapter_id = Integer.parseInt(request.getParameter("chapter_id"));
+		String url = request.getParameter("url");
+		int content = -1;
 		try {
-			course_id = courseUtil.insertNewCourse(course_name,description,cid,price,langguage,star_rate,duration,ins_id);
+			content = courseUtil.getIndexOfContent();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if (cmd.equals("save")) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("ManageCourses");
-			dispatcher.forward(request, response);
+		try {
+			courseUtil.addContent(content,nameContent, desription,chapter_id,url);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		else {
-			request.setAttribute("course_id", course_id);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("add_chapter.jsp");
-			dispatcher.forward(request, response);
-		}
-
+		PrintWriter out = response.getWriter();
+		out.print("<p>Done </p>");
 	}
 
 }

@@ -1,5 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
+<%@ page import="Model.Category" %>
+<%@ page import="Dao.CourseUtil" %>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,11 +44,20 @@
 	<!--[if lt IE 9]><script src="js/ins/respond.js"></script><![endif]-->
 
 </head>
+<%
+	int chapter_id = 0;
+	if (session.getAttribute("chapter_id") != null){
+		chapter_id = (int)request.getSession(false).getAttribute("chapter_id");
+	
+	}
+%>
+<body data-customvalueone="${course_id}" data-customvaluetwo="<%=chapter_id %>" class="">
 
-<body class="">
-
-
- 	
+	<%
+		int course_id = (int)request.getAttribute("course_id");
+		//int chapter_id = (int)request.getAttribute("chapter_id");
+	%>
+	
     <!-- Preloader -->
     <div class="preloader"></div>
  	
@@ -57,13 +71,19 @@
 <div class="page-wrapper">
 
 	<!-- Edit Cource Section -->
-    <div class="edit-cource-section">
+    <div id="all" class="edit-cource-section">
     	<div class="auto-container">
 			<!-- Sec Title -->
 			<div class="sec-title">
 				<div class="clearfix">
 					<div class="pull-left">
 						<h4>New Chapter</h4>
+						<font color = "red">
+							<li>
+								<p> Course ID: <%=course_id %> </p>
+
+							</li>
+						</font>
 					</div>
 					<!--<div class="pull-right">
 						<a href="enrolled-courses.html" class="see-all">Add Your Course</a>
@@ -91,33 +111,38 @@
 									<div class="form-group">
 										
 										<!-- Accordion Box -->
-										<label class="chapter">- Chapter</label>
+
+										<label class="chapter">- Chapter <%=chapter_id %> </label>
 										<ul class="option-cource-box" id="chapter">
 
 											<!-- Chapter -->
 											<li id="chapter1">																								
 												<div class="form-group" style="margin-left: 40px;">
 													<label style="font-size:14px;">Chapter Title</label>
-													<input type="text" name="username" value="" placeholder="Chapter 1" required>
+													<input id = "nameChapter" type="text" name="username" value="" placeholder="Chapter 1" required>
 												</div>
 												
+												<div class="button-box text-center"  style="margin-top: 40px;">
+													<button  id="s1" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+												</div>
+												<div id = "msg">
 												
+												</div>
 												
 												<!-- Content -->
 												<label  style="margin: 0 0 20px 40px;">Content</label>
 												<ul id="content">
-													<li style="margin: 0 0 40px 40px;">
+													<li id="content1" style="margin: 0 0 40px 40px;">
 														<label class="ct1" style="margin: 0 0 20px 40px;">- Content 1</label>
 														<div class="form-group" id="c1" style="margin-left:40px;">
 															<label style="font-size:14px;">Content Title</label>
-															<input type="text" name="username" value="" placeholder="Content 1" required>
+															<input id = "nameContent" type="text" name="username" value="" placeholder="Content 1" required>
 
 															<label style="font-size:14px;">Content Description</label>
 															<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
-															<textarea class="" name="message" placeholder="Shortly describe this content"></textarea>
-
+															<textarea id = "desription" class="" name="message" placeholder="Shortly describe this content"></textarea>
 															<label style="font-size:14px;">Url</label>
-															<input type="text" name="username" value="" placeholder="Url 1">
+															<input id = "url" type="text" name="username" value="" placeholder="Url 1">
 
 															<label style="font-size:14px;">Duration</label>
 															
@@ -140,7 +165,7 @@
 															</div>
 															
 															<div class="button-box text-center"  style="margin-top: 40px;">
-																<button id="s1" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+																<button id="s2" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
 															</div>
 														</div>
 														
@@ -660,7 +685,11 @@
 
 		<!-- Theme js -->
 		<script type="text/javascript" src="js/theme.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript" src="js/add_chapter.js"></script>
+		<script type="text/javascript" src="js/add_content.js"></script>
 <script>
+		
 		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		var config = {
 			type: 'line',
