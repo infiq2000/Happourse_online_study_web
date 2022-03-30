@@ -16,7 +16,7 @@ document.getElementById("s2").onclick = function (){
 				  },
 				  success: function(data) {
 				   	var row = document.getElementById ("content1") ; 
-					row.innerHTML = data;
+					row.innerHTML += data;
 				  },
 				  error: function(xhr) {
 				    //Do Something to handle error
