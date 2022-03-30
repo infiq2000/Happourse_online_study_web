@@ -105,13 +105,13 @@
 					  <tbody>
 					  	<c:forEach var="tempCourses" items="${listCourses}">
 							<tr>
-							  <th class="title" scope="col"><a href="edit_course.jsp">${tempCourses.getName()}</a></th>
+							  <th class="title" scope="col"><a href="#">${tempCourses.getName()}</a></th>
 							  <th class="post-date" scope="col">${tempCourses.getPublishDate() }</th>
 							  <th class="sales" scope="col">${tempCourses.getCountCourses()} Sales</th>
 							  <th class="category" scope="col">${tempCourses.getCategory()}</th>
 							  <th class="actions" scope="col">
 							  	<a href="DeleteCourse?course_id=${tempCourses.getCourses_id()}" onclick="if (!(confirm('Ban muon xoa khoa hoc?'))) return false"><i class='fa fa-trash-o'></i></a>
-							  	<a href="edit_course.jsp"><i class='fa fa-edit'></i></a>
+							  	<a href="EditCourse?courseID=${tempCourses.getCourses_id()}"><i class='fa fa-edit'></i></a>
 							  	<a href="#"><i class='fa fa-check-square'></i></a>
 							  </th>
 							</tr>

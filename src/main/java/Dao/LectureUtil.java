@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 
 import Model.Chapter;
 import Model.Courses;
+import Model.Content;
 
 public class LectureUtil {
 	private DataSource dataSource;
@@ -38,5 +39,29 @@ public class LectureUtil {
 		}
 		System.out.println(dem);
 		return chapter;
+	}
+	
+	public List<Content> getContents(int chap_id) throws SQLException{
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "select * from  happourse.lecturer_content where chap_id = ? ";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, chap_id);
+		myRS = myStmt.executeQuery();
+		
+		List<Content> contents = new ArrayList<>();
+		int count = 0;
+		while (myRS.next()) {
+			count++;
+			int lc_id = myRS.getInt("lc_id");
+			String name = myRS.getString("name");
+			String type = myRS.getString("type");
+			String link = myRS.getString("link");
+			contents.add(new Content(lc_id,name,type, link, chap_id));
+		}
+		System.out.println(count);
+		return contents;
 	}
 }
