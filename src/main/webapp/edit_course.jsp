@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
+<%@ page import="Model.Courses" %>
+<%@ page import="Model.ManagedCourses" %>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
+<%@ page import="Dao.CourseUtil" %>
+<%@ page import="Model.Chapter" %>
+<%@ page import="Model.Content" %>
+<%@ page import="Dao.LectureUtil" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -80,13 +89,13 @@
 								<!-- Form Group -->
 								<div class="form-group">
 									<label>Course Title</label>
-									<input type="text" name="username" value="Course Name" required>
+									<input type="text" name="username" value = "${course_name}" required>
 								</div>
 								
 								<div class="form-group">
 									<label>Description</label>
 									<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
-									<textarea class="" name="message"></textarea>
+									<textarea class="" name="message" placeholder = "${course_description}"></textarea>
 								</div>
 							</div>
 							
@@ -145,48 +154,42 @@
 								<div class="edit-course-form">
 									<div class="form-group" style="width:680px; margin-top:0px;">
 										<!-- Accordion Box -->
-										<label class="chapter-s">- Chapter</label>										
+										<label class="chapter-s">- Chapter</label>
+																					
 											<table class="table">
 											  <thead>
 												<th>Chapter</th>
 												<th>Duration</th>										  
 											  </thead>
 											  <tbody>
-												<tr>
-													<td>
-														Chapter 1
-														<ul style="margin: 20px 0 0 40px;">
-														  <li><i>Content 1</i></li>
-														  <li><i>Content 2</i></li>
-														  <li><i>Content 3</i></li>
-														</ul>
-													</td>
-													<td>10 m</td>
-												</tr>
-												
-												<tr>
-													<td>
-														Chapter 2
-														<ul style="margin: 20px 0 0 40px;">
-														  <li><i>Content 1</i></li>
-														  <li><i>Content 2</i></li>
-														  <li><i>Content 3</i></li>
-														</ul>
-													</td>
-													<td>10 m</td>
-												</tr>
-												
-												<tr>
-													<td>
-														Chapter 3
-														<ul style="margin: 20px 0 0 40px;">
-														  <li><i>Content 1</i></li>
-														  <li><i>Content 2</i></li>
-														  <li><i>Content 3</i></li>
-														</ul>
-													</td>
-													<td>10 m</td>
-												</tr>
+											  <%
+											  	List<Chapter> list_chapter = (List<Chapter>)request.getAttribute("list_chapter");
+											  	int n = list_chapter.size();
+											  %>
+											  
+											  <c:forEach var = "i" begin="1" end = "<%=n %>" >
+													<tr>
+														<td>
+														<%	
+															InitialContext ctx;
+														  	DataSource ds;
+														 	ctx = new InitialContext();
+													    	ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Happourse");
+															int i = (int)pageContext.getAttribute("i");
+															Chapter chap = list_chapter.get(i-1);
+															LectureUtil lecUtil =  new LectureUtil(ds);
+															List<Content> list_content = lecUtil.getContents(chap.getChap_id());
+														%>														
+															Chapter ${i}
+															<ul style="margin: 20px 0 0 40px;">
+															<c:forEach var="tmp" items="<%=list_content %>">				
+																  <li><i>${tmp.getName()}</i></li>														
+															</c:forEach>
+															</ul>
+														</td>
+														<td>10 m</td>
+													</tr>
+												</c:forEach>
 											  </tbody>
 											</table>
 										</div>
