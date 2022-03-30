@@ -146,7 +146,7 @@
 					<!-- Right Column -->
 					<div class="right-column col-lg-3 col-md-12 col-sm-12">
 						<div class="buttons-box">
-							<a href="UpdateInfo&id=${user_info.getId()}" class="theme-btn btn-style-one">Edit Profile</a>
+							<a href="UpdateInfo?id=${user_info.getId()}" class="theme-btn btn-style-one">Edit Profile</a>
 						</div>
 					</div>
 					

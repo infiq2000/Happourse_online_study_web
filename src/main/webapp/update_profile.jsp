@@ -83,23 +83,35 @@
 	<div class="form-group" style="margin-left:450px; width:500px;">
 	
 		<label style="font-size:14px;">Username</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Abc">
+		<input style="margin-bottom:20px;" type="text" name="username" value="${userInfo.getUsername()}" placeholder="Abc">
 	
-		<label style="font-size:14px;">Full Name</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Nguyen Van A">
+		<label style="font-size:14px;">Full name</label>
+		<input style="margin-bottom:20px;" type="text" name="fullName" value="${userInfo.getFullName()}" placeholder="Nguyen Van A">
 		
-		<label style="font-size:14px;">Gmail</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="abc@gmail.com" >
+		<label style="font-size:14px;">Email</label>
+		<input style="margin-bottom:20px;" type="text" name="email" value="${userInfo.getEmail()}" placeholder="abc@gmail.com" >
 
 		<label style="font-size:14px;">Major</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Developer" required>
+		<input style="margin-bottom:20px;" type="text" name="major" value="${userInfo.getMajor()}" placeholder="Developer" required>
 		
-		<label style="font-size:14px;">Facebook</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="https://www.facebook.com/">
+		<label style="font-size:14px;">Experiment</label>
+		<input style="margin-bottom:20px;" type="text" name="experiment" value="${userInfo.getExperiment()}" placeholder="High School">
+		
+		<label style="font-size:14px;">Birthday</label>
+		<input style="margin-bottom:20px;" type="text" name="birth" value="${userInfo.getBirth()}" placeholder="19-05-2000">
+		
+		<label style="font-size:14px;">Address</label>
+		<input style="margin-bottom:20px;" type="text" name="address" value="${userInfo.getAddress()}" placeholder="None">
+		
+		<label style="font-size:14px;">Country</label>
+		<input style="margin-bottom:20px;" type="text" name="country" value="${userInfo.getCountryName()}" placeholder="Việt Nam">
+		
+		<label style="font-size:14px;">Phone number</label>
+		<input style="margin-bottom:20px;" type="text" name="phoneNumber" value="${userInfo.getPhoneNumber()}" placeholder="0874523621">
 
 		<label style="font-size:14px;">About Me</label>
 		<span class="support"><strong style="font-size:14px;">Markdown supported</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
-		<textarea style="margin-bottom:20px;" class="" name="about" placeholder="Shortly describe about me"></textarea>
+		<textarea style="margin-bottom:20px;" class="" name="about" placeholder="Shortly describe about me">${userInfo.getDescribe()}</textarea>
 		
 		<label style="font-size:14px;">Old Password</label>
 		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Abc">
