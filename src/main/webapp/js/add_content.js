@@ -15,8 +15,8 @@ document.getElementById("s2").onclick = function (){
 						url:url
 				  },
 				  success: function(data) {
-				   	var row = document.getElementById ("content1") ; 
-					row.innerHTML += data;
+				   	var row = document.getElementById ("msg") ; 
+					row.innerHTML = data;
 				  },
 				  error: function(xhr) {
 				    //Do Something to handle error
