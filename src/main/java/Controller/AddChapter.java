@@ -70,10 +70,11 @@ public class AddChapter extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("chapter_id gen: "+chapter_id);
 		HttpSession session = request.getSession(true);
 		session.setAttribute("chapter_id",chapter_id);
 		PrintWriter out = response.getWriter();
-		out.print("<p>Done </p>");
+		out.print("<p>Done "+chapter_id+"</p>");
 
 	}
 

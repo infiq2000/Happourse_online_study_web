@@ -278,33 +278,6 @@
 										</div> <!-- /.text -->
 									</div> <!-- /.single-review -->
 								</div> <!-- /.course-feedback -->
-
-								<div class="submit-review-form">
-									<h3>Submit a Review</h3>
-									<p>Your Ratings</p>
-									<ul>
-										<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-										<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-										<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-										<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-										<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-									</ul>
-									<form action="#">
-										<div class="row">
-											<div class="col-sm-6">
-												<label>Your Full Name</label>
-												<input type="text" placeholder="Your Name">
-											</div>
-											<div class="col-sm-6">
-												<label>E-mail</label>
-												<input type="email" placeholder="sample@email.com">
-											</div>
-										</div>
-										<label>Your Message</label>
-										<textarea placeholder="Write Commnent..."></textarea>
-										<input type="submit" value="Submit Review" class="s-bg-color">
-									</form>
-								</div> <!-- /.submit-review-form -->
 							</div> <!-- /.details-wrapper -->
 						</div> <!-- /.col- -->
 

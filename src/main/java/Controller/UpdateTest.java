@@ -1,6 +1,8 @@
 package Controller;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLException;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -10,7 +12,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+
+import com.mysql.cj.Session;
 
 import Dao.AccountUtil;
 import Dao.InstructorUtil;
@@ -53,14 +58,44 @@ public class UpdateTest extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		int uid = (int)request.getSession(false).getAttribute("uid");
 		int aid = (int)request.getSession(false).getAttribute("aid");
-		request.setAttribute("uid", uid);
-		request.setAttribute("aid", aid);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/update_profile.jsp");
-		dispatcher.forward(request, response);
+		String username = (String) request.getParameter("username");
+		String fullName = (String) request.getParameter("fullName");
+		String major = (String) request.getParameter("major");
+		Date birth = Date.valueOf((String) request.getParameter("birth"));
+		String phoneNumber = (String) request.getParameter("phoneNumber");
+		String email = (String) request.getParameter("email");
+		String address = (String) request.getParameter("address");
+		String describe = (String) request.getParameter("about");
+		String experiment = (String) request.getParameter("experiment");
+		String countryName = (String) request.getParameter("country");
+		int accountType = (int)request.getSession().getAttribute("account_type");
 		
+		if (accountType == 0) {
+			try {
+				userUtil.updateUser(aid, username, fullName, major, birth, phoneNumber,
+						email, address, describe, experiment, countryName);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			try {
+				insUtil.updateInstructor(aid, username, fullName, major, birth, 
+						email, address, describe, experiment, countryName);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		String[] a = fullName.split(" ");
+		String b = a[a.length - 1];	
+		
+		HttpSession session = request.getSession(true);
+		session.setAttribute("name", b);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Profile");
+		dispatcher.forward(request, response);
 	}
 
 }
