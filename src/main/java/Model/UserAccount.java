@@ -15,6 +15,12 @@ public class UserAccount {
 	private String address;
 	private String describe;
 	private String experiment;
+	public String getExperiment() {
+		return experiment;
+	}
+	public void setExperiment(String experiment) {
+		this.experiment = experiment;
+	}
 	private String countryName;
 	public int getAid() {
 		return aid;
@@ -76,12 +82,6 @@ public class UserAccount {
 	public void setDescribe(String describe) {
 		this.describe = describe;
 	}
-	public String getExperiment() {
-		return experiment;
-	}
-	public void setExperiment(String experiment) {
-		this.experiment = experiment;
-	}
 	public String getCountryName() {
 		return countryName;
 	}
@@ -94,6 +94,7 @@ public class UserAccount {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	
 	public UserAccount(int aid, String username, String password, int uid, String fullName, String major, Date birth,
 			String phoneNumber, String email, String address, String describe, String experiment, String countryName) {
 		super();

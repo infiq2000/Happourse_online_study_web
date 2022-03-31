@@ -273,4 +273,31 @@ public class UserUtil {
 		myConn.close();
 		return ua;
 	}
+
+	public void updateUser(int aid, String username, String fullName, String major, Date birth, String phoneNumber,
+			String email, String address, String describe, String experiment, String countryName) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "UPDATE account SET username=? WHERE aid=?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, username);
+		myStmt.setInt(2, aid);
+		myStmt.executeUpdate();
+		sql = "UPDATE users SET full_name=?, major=?, birth=?, phone_number=?, email=?, address=?, users.describe=?, experiment=?, country_ID=(SELECT country_ID FROM countries WHERE country_name=?) WHERE aid=?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, fullName);
+		myStmt.setString(2, major);
+		myStmt.setDate(3, birth);
+		myStmt.setString(4, phoneNumber);
+		myStmt.setString(5, email);
+		myStmt.setString(6, address);
+		myStmt.setString(7, describe);
+		myStmt.setString(8, experiment);
+		myStmt.setString(9, countryName);
+		myStmt.setInt(10, aid);
+		myStmt.executeUpdate();
+		myConn.close();
+	}
 }
