@@ -108,10 +108,13 @@
 			<label style="font-size:14px;">Country</label>
 			<input style="margin-bottom:20px;" type="text" name="country" value="${userInfo.getCountryName()}" placeholder="Việt Nam">
 			
-			<c:if test="${account_type == '0'}">
-				<label style="font-size:14px;">Phone number</label>
+			<%
+				int account_type = (int) session.getAttribute("account_type");			
+			%>
+			<% if (account_type == 0) { %>
+         		<label style="font-size:14px;">Phone number</label>
 				<input style="margin-bottom:20px;" type="text" name="phoneNumber" value="${userInfo.getPhoneNumber()}" placeholder="0874523621">
-			</c:if>
+      		<% } %>
 			
 			<label style="font-size:14px;">About Me</label>
 			<span class="support"><strong style="font-size:14px;">Markdown supported</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
