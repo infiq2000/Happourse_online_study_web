@@ -16,6 +16,7 @@ import Controller.ManageCourses;
 import Model.Category;
 import Model.Courses;
 import Model.ManagedCourses;
+import Model.Hashtag;
 
 
 public class CourseUtil {
@@ -145,6 +146,24 @@ public class CourseUtil {
 		myConn.close();
 		return ls;
   }
+	
+	public List<Hashtag> getAllHashtags() throws SQLException{
+		Connection myConn = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT * FROM hashtag;";
+		PreparedStatement pstmt = myConn.prepareStatement(sql);
+		myRS = pstmt.executeQuery();
+		List<Hashtag> ls = new ArrayList<>();
+		while (myRS.next()) {			
+			int id = myRS.getInt("hashid");
+			String name = myRS.getString("hashtag_name");
+			Hashtag temp = new Hashtag(id, name);
+			ls.add(temp);
+		}
+		myConn.close();
+		return ls;
+	}
 
 	public List<Courses> getCourseByCategory(int cid) throws SQLException {
 		Connection myConn = null;
@@ -608,8 +627,7 @@ public class CourseUtil {
 	public void addContent(int lc_id, String nameContent, String desription, int chapter_id, String url) throws SQLException {
 		Connection myConn = null;
 		myConn = dataSource.getConnection();
-		String sql = "INSERT INTO lecturer_content(lc_id,name,type, link,chap_id)" 
-	            + "VALUES(?, ?,0,?,?)";
+		String sql = "INSERT INTO lecturer_content(lc_id,name, link,chap_id) VALUES(?, ?,?,?);";
 		PreparedStatement pstmt = myConn.prepareStatement(sql);
 		pstmt.setInt(1, lc_id);
 		pstmt.setString(2,nameContent);
@@ -617,6 +635,7 @@ public class CourseUtil {
         pstmt.setInt(4, chapter_id);
         System.out.println("thanh cong");
         pstmt.execute();
+        System.out.println("thanh cong2");
 		myConn.close();
 	}
 }

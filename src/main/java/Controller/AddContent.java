@@ -61,10 +61,11 @@ public class AddContent extends HttpServlet {
 //	desription : desription,
 //	url:url
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int course_id = Integer.parseInt(request.getParameter("course_id"));
+		//int course_id = Integer.parseInt(request.getParameter("course_id"));
 		String nameContent = request.getParameter("nameContent");
 		String desription = request.getParameter("desription");
-		int chapter_id = Integer.parseInt(request.getParameter("chapter_id"));
+		int chapter_id = (int)request.getSession(false).getAttribute("chapter_id");
+		System.out.println("chapter_id: " + chapter_id);
 		String url = request.getParameter("url");
 		int content = -1;
 		try {
@@ -80,7 +81,7 @@ public class AddContent extends HttpServlet {
 			e.printStackTrace();
 		}
 		PrintWriter out = response.getWriter();
-		out.print("<p>Done </p>");
+		out.print("<p>Done "+content +" </p>");
 	}
 
 }
