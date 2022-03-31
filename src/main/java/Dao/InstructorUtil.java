@@ -16,6 +16,7 @@ import Model.Courses;
 import Model.Instructor;
 import Model.Profiles;
 import Model.User;
+import Model.UserAccount;
 
 public class InstructorUtil {
 	private DataSource dataSource;
@@ -358,6 +359,34 @@ public class InstructorUtil {
 		}
 		myConn.close();
 		return up;
+	}
+	public UserAccount getInstructorInformationByID(int id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT i.aid,username,password,i.ins_id,ins_name,major,birth,email,address,description,education,country_name FROM account a, instructor i, countries c WHERE a.aid=i.aid AND i.country_ID=c.country_ID AND ins_id=?;";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, id);
+		myRS = myStmt.executeQuery();
+		UserAccount ua = null;
+		if (myRS.next()) {
+			int aid = myRS.getInt("aid");
+			String username = myRS.getString("username");
+			String password = myRS.getString("password");
+			String fullName = myRS.getString("ins_name");
+			String major = myRS.getString("major");
+			Date birth = myRS.getDate("birth");
+			String email = myRS.getString("email");
+			String address = myRS.getString("address");
+			String describe = myRS.getString("description");
+			String experiment = myRS.getString("education");
+			String countryName = myRS.getString("country_name");
+			ua = new UserAccount(aid,username,password,id,fullName,major,birth,"",email,
+					address,describe,experiment,countryName);
+		}
+		myConn.close();
+		return ua;
 	}
 }
 

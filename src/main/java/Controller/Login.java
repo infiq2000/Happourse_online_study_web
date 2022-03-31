@@ -94,6 +94,7 @@ public class Login extends HttpServlet {
 					HttpSession session = request.getSession(true);
 					session.setAttribute("name", b);
 					session.setAttribute("uid", user.getUid());
+					session.setAttribute("id", user.getUid());
 					session.setAttribute("aid", user.getAid());
 					session.setAttribute("account_type", 0);
 					RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
@@ -118,6 +119,7 @@ public class Login extends HttpServlet {
 					HttpSession session = request.getSession(true);
 					session.setAttribute("name", b);
 					session.setAttribute("ins_id", ins.getIns_id());
+					session.setAttribute("id", ins.getIns_id());
 					session.setAttribute("aid", ins.getAid());
 					session.setAttribute("account_type", 1);
 
