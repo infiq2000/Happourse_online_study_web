@@ -615,8 +615,29 @@ public class CourseUtil {
 		pstmt.setString(2,nameContent);
         pstmt.setString(3, url);
         pstmt.setInt(4, chapter_id);
-        System.out.println("thanh cong");
         pstmt.execute();
 		myConn.close();
+	}
+	
+	public String getCategory(int cid) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "SELECT name FROM happourse.category WHERE cid = ?;";
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setInt(1, cid);
+			myRS = myStmt.executeQuery();
+			String name = null;
+			if (myRS.next()) {
+				name = myRS.getString("name");
+			}
+			myConn.close();
+			return name;
+		} 
+		finally {
+			myConn.close();
+		}
 	}
 }

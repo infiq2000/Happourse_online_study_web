@@ -211,6 +211,35 @@ public class InstructorUtil {
 		return courses;
 	}
 	
+	public List<Courses> getMyCourses1(int ins_id) throws SQLException{
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT *, d.name as category, e.ins_name FROM courses c, category d , instructor e where c.ins_id = ? and c.cid = d.cid and e.ins_id = c.ins_id";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, ins_id);
+		myRS = myStmt.executeQuery();
+		List<Courses> courses = new ArrayList<>();
+		while (myRS.next()) {
+			System.out.println("241");
+			int courses_id = myRS.getInt("course_id");
+			String name = myRS.getString("name");
+			String skill = myRS.getString("skill");
+			int price = myRS.getInt("price");
+			String language = myRS.getString("language");
+			String description = myRS.getString("description");
+			double star_rate = myRS.getDouble("star_rate");
+			String category = myRS.getString("category");
+			String major = myRS.getString("major");
+			String ins_name = myRS.getString("ins_name");
+			courses.add(new Courses(courses_id, name, skill, price, language, star_rate, description, ins_id, ins_name, major, category));
+		}
+		
+		myConn.close();
+		return courses;
+	}
+	
 	public int getToTalCourses(int ins_id) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;

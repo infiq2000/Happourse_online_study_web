@@ -19,6 +19,7 @@ import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
 import Model.Courses;
+import Model.Instructor;
 
 /**
  * Servlet implementation class DashBoard
@@ -64,7 +65,7 @@ public class DashBoard extends HttpServlet {
 		int total_students = 0;
 		int total_courses = 0;
 		try {
-			ls = insUtil.getMyCourses(ins_id);
+			ls = insUtil.getMyCourses1(ins_id);
 			total_courses = ls.size();
 			total_students = insUtil.getMyStudent(ins_id);
 		// TODO Auto-generated catch block

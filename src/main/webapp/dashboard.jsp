@@ -2,6 +2,13 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.*" %>
+<%@ page import="Model.Courses" %>
+<%@ page import="Model.ManagedCourses" %>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
+<%@ page import="Dao.CourseUtil" %>
+<%@ page import="Model.Chapter" %>
+<%@ page import="Model.Content" %>
+<%@ page import="Dao.LectureUtil" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -156,324 +163,62 @@
 			</div>
 			
 			<div class="single-item-carousel owl-carousel owl-theme">
-			
-				<div class="slide">
-					<div class="row clearfix">
-						
-						<!-- Course Block -->
-						<div class="course-block col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<div class="image">
-									<a href="course-lesson.html"><img src="images/resource/course-10.jpg" alt="" /></a>
-									<div class="time">03 hours</div>
-								</div>
-								<div class="lower-content">
-									<h6><a href="course-lesson.html">Learn IOS development, Website design, Freelancing</a></h6>
-									<ul class="post-meta">
-										<li>Development</li>
-										<li>JavaScript</li>
-									</ul>
-									<div class="clearfix">
-										<div class="pull-left">
-											<div class="author">By: <span>Juan Annatoo</span></div>
-										</div>
-										<div class="pull-right">
-											<div class="price">$15</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Course Block -->
-						<div class="course-block col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<div class="image">
-									<a href="course-lesson.html"><img src="images/resource/course-11.jpg" alt="" /></a>
-									<div class="time">15 hours</div>
-								</div>
-								<div class="lower-content">
-									<h6><a href="course-lesson.html">Complete Python Bootcamp: Go from zero to hero in Python 3</a></h6>
-									<ul class="post-meta">
-										<li>Development</li>
-										<li>JavaScript</li>
-									</ul>
-									<div class="clearfix">
-										<div class="pull-left">
-											<div class="author">By: <span>Hap E. Birthday</span></div>
-										</div>
-										<div class="pull-right">
-											<div class="price">$15</div>
+			<%
+				List<Courses> listCourses = (List<Courses>)request.getAttribute("listCourses");
+				int page_number = (int)listCourses.size()/4;
+				if (listCourses.size()%4 != 0){
+					page_number += 1;
+				}
+			%>
+				<c:forEach begin = "1" end = "<%=page_number %>" var="i">
+					<div class="slide">
+						<div class="row clearfix">
+						 <%
+						 	int i = (int)pageContext.getAttribute("i");
+						 	int start = 4*(i-1);
+						 	int end = 4*i-1;
+						 %>
+							<c:forEach begin = "<%=start%>" end = "<%=end%>" var="y">
+								<%
+								int y = (int)pageContext.getAttribute("y");
+								Courses temp = null;
+								if (y < listCourses.size()){
+									temp = listCourses.get(y);
+								}
+								
+								%>
+						<% if (temp != null) { %>
+				         <div class="course-block col-lg-3 col-md-6 col-sm-12">
+								<div class="inner-box">
+									<div class="image">
+										<a href="#"><img src="images/resource/course-10.jpg" alt="" /></a>
+										<div class="time">03 hours</div>
+									</div>								
+									<div class="lower-content">
+										<h6><a href="#"><%=temp.getName()%></a></h6>
+										<ul class="post-meta">
+											<li><%=temp.getCategory_name()%></li>
+										</ul>
+										<div class="clearfix">
+											<div class="pull-left">
+												<div class="author">By: <span><%=temp.getIns_name()%> </span></div>
+											</div>
+											<div class="pull-right">
+												<div class="price"><%=temp.getPrice()%></div>
+											</div>
 										</div>
 									</div>
+
 								</div>
 							</div>
+				      <% } else { %>
+				         
+				      <% } %>
+							</c:forEach>		
 						</div>
-						
-						<!-- Course Block -->
-						<div class="course-block col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<div class="image">
-									<a href="course-lesson.html"><img src="images/resource/course-12.jpg" alt="" /></a>
-									<div class="time">07 hours</div>
-								</div>
-								<div class="lower-content">
-									<h6><a href="course-lesson.html">The Web Developer Bootcamp and Learning</a></h6>
-									<ul class="post-meta">
-										<li>Development</li>
-										<li>JavaScript</li>
-									</ul>
-									<div class="clearfix">
-										<div class="pull-left">
-											<div class="author">By: <span>Curt N. Call</span></div>
-										</div>
-										<div class="pull-right">
-											<div class="price">$79</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Course Block -->
-						<div class="course-block col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<div class="image">
-									<a href="course-lesson.html"><img src="images/resource/course-13.jpg" alt="" /></a>
-									<div class="time">13 hours</div>
-								</div>
-								<div class="lower-content">
-									<h6><a href="course-lesson.html">Machine Learning A-Z™: Hands-On Python & R In Data Science</a></h6>
-									<ul class="post-meta">
-										<li>Development</li>
-										<li>JavaScript</li>
-									</ul>
-									<div class="clearfix">
-										<div class="pull-left">
-											<div class="author">By: <span>Marvin Gardens</span></div>
-										</div>
-										<div class="pull-right">
-											<div class="price">$45</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
 					</div>
-				</div>
-				
-				<div class="slide">
-					<div class="row clearfix">
-					
-						<!-- Course Block -->
-						<div class="course-block col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<div class="image">
-									<a href="course-lesson.html"><img src="images/resource/course-10.jpg" alt="" /></a>
-									<div class="time">03 hours</div>
-								</div>
-								<div class="lower-content">
-									<h6><a href="course-lesson.html">Learn IOS development, Website design, Freelancing</a></h6>
-									<ul class="post-meta">
-										<li>Development</li>
-										<li>JavaScript</li>
-									</ul>
-									<div class="clearfix">
-										<div class="pull-left">
-											<div class="author">By: <span>Juan Annatoo</span></div>
-										</div>
-										<div class="pull-right">
-											<div class="price">$15</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Course Block -->
-						<div class="course-block col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<div class="image">
-									<a href="course-lesson.html"><img src="images/resource/course-11.jpg" alt="" /></a>
-									<div class="time">15 hours</div>
-								</div>
-								<div class="lower-content">
-									<h6><a href="course-lesson.html">Complete Python Bootcamp: Go from zero to hero in Python 3</a></h6>
-									<ul class="post-meta">
-										<li>Development</li>
-										<li>JavaScript</li>
-									</ul>
-									<div class="clearfix">
-										<div class="pull-left">
-											<div class="author">By: <span>Hap E. Birthday</span></div>
-										</div>
-										<div class="pull-right">
-											<div class="price">$15</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Course Block -->
-						<div class="course-block col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<div class="image">
-									<a href="course-lesson.html"><img src="images/resource/course-12.jpg" alt="" /></a>
-									<div class="time">07 hours</div>
-								</div>
-								<div class="lower-content">
-									<h6><a href="course-lesson.html">The Web Developer Bootcamp and Learning</a></h6>
-									<ul class="post-meta">
-										<li>Development</li>
-										<li>JavaScript</li>
-									</ul>
-									<div class="clearfix">
-										<div class="pull-left">
-											<div class="author">By: <span>Curt N. Call</span></div>
-										</div>
-										<div class="pull-right">
-											<div class="price">$79</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Course Block -->
-						<div class="course-block col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<div class="image">
-									<a href="course-lesson.html"><img src="images/resource/course-13.jpg" alt="" /></a>
-									<div class="time">13 hours</div>
-								</div>
-								<div class="lower-content">
-									<h6><a href="course-lesson.html">Machine Learning A-Z™: Hands-On Python & R In Data Science</a></h6>
-									<ul class="post-meta">
-										<li>Development</li>
-										<li>JavaScript</li>
-									</ul>
-									<div class="clearfix">
-										<div class="pull-left">
-											<div class="author">By: <span>Marvin Gardens</span></div>
-										</div>
-										<div class="pull-right">
-											<div class="price">$45</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-			
-				<div class="slide">
-					<div class="row clearfix">
-						
-						<!-- Course Block -->
-						<div class="course-block col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<div class="image">
-									<a href="course-lesson.html"><img src="images/resource/course-10.jpg" alt="" /></a>
-									<div class="time">03 hours</div>
-								</div>
-								<div class="lower-content">
-									<h6><a href="course-lesson.html">Learn IOS development, Website design, Freelancing</a></h6>
-									<ul class="post-meta">
-										<li>Development</li>
-										<li>JavaScript</li>
-									</ul>
-									<div class="clearfix">
-										<div class="pull-left">
-											<div class="author">By: <span>Juan Annatoo</span></div>
-										</div>
-										<div class="pull-right">
-											<div class="price">$15</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Course Block -->
-						<div class="course-block col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<div class="image">
-									<a href="course-lesson.html"><img src="images/resource/course-11.jpg" alt="" /></a>
-									<div class="time">15 hours</div>
-								</div>
-								<div class="lower-content">
-									<h6><a href="course-lesson.html">Complete Python Bootcamp: Go from zero to hero in Python 3</a></h6>
-									<ul class="post-meta">
-										<li>Development</li>
-										<li>JavaScript</li>
-									</ul>
-									<div class="clearfix">
-										<div class="pull-left">
-											<div class="author">By: <span>Hap E. Birthday</span></div>
-										</div>
-										<div class="pull-right">
-											<div class="price">$15</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Course Block -->
-						<div class="course-block col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<div class="image">
-									<a href="course-lesson.html"><img src="images/resource/course-12.jpg" alt="" /></a>
-									<div class="time">07 hours</div>
-								</div>
-								<div class="lower-content">
-									<h6><a href="course-lesson.html">The Web Developer Bootcamp and Learning</a></h6>
-									<ul class="post-meta">
-										<li>Development</li>
-										<li>JavaScript</li>
-									</ul>
-									<div class="clearfix">
-										<div class="pull-left">
-											<div class="author">By: <span>Curt N. Call</span></div>
-										</div>
-										<div class="pull-right">
-											<div class="price">$79</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-						<!-- Course Block -->
-						<div class="course-block col-lg-3 col-md-6 col-sm-12">
-							<div class="inner-box">
-								<div class="image">
-									<a href="course-lesson.html"><img src="images/resource/course-13.jpg" alt="" /></a>
-									<div class="time">13 hours</div>
-								</div>
-								<div class="lower-content">
-									<h6><a href="course-lesson.html">Machine Learning A-Z™: Hands-On Python & R In Data Science</a></h6>
-									<ul class="post-meta">
-										<li>Development</li>
-										<li>JavaScript</li>
-									</ul>
-									<div class="clearfix">
-										<div class="pull-left">
-											<div class="author">By: <span>Marvin Gardens</span></div>
-										</div>
-										<div class="pull-right">
-											<div class="price">$45</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-					</div>
-				</div>
+				</c:forEach>
+
 			</div>
 			
 		</div>
