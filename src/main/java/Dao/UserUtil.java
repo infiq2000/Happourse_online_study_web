@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import Controller.Profile;
 import Model.Courses;
 import Model.User;
+import Model.UserAccount;
 import Model.Profiles;
 import Dao.AccountUtil; 
 public class UserUtil {
@@ -241,5 +242,62 @@ public class UserUtil {
 		}
 		myConn.close();
 		return up;
+	}
+
+	public UserAccount getUserInformationByID(int id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT u.aid,username,password,u.uid,full_name,major,birth,phone_number,email,address,u.describe,experiment,country_name FROM account a, users u, countries c WHERE a.aid=u.aid AND u.country_ID=c.country_ID AND uid=?;";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, id);
+		myRS = myStmt.executeQuery();
+		UserAccount ua = null;
+		if (myRS.next()) {
+			int aid = myRS.getInt("aid");
+			String username = myRS.getString("username");
+			String password = myRS.getString("password");
+			String fullName = myRS.getString("full_name");
+			String major = myRS.getString("major");
+			Date birth = myRS.getDate("birth");
+			String phoneNumber = myRS.getString("phone_number");
+			String email = myRS.getString("email");
+			String address = myRS.getString("address");
+			String describe = myRS.getString("describe");
+			String experiment = myRS.getString("experiment");
+			String countryName = myRS.getString("country_name");
+			ua = new UserAccount(aid,username,password,id,fullName,major,birth,phoneNumber,email,
+					address,describe,experiment,countryName);
+		}
+		myConn.close();
+		return ua;
+	}
+
+	public void updateUser(int aid, String username, String fullName, String major, Date birth, String phoneNumber,
+			String email, String address, String describe, String experiment, String countryName) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "UPDATE account SET username=? WHERE aid=?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, username);
+		myStmt.setInt(2, aid);
+		myStmt.executeUpdate();
+		sql = "UPDATE users SET full_name=?, major=?, birth=?, phone_number=?, email=?, address=?, users.describe=?, experiment=?, country_ID=(SELECT country_ID FROM countries WHERE country_name=?) WHERE aid=?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, fullName);
+		myStmt.setString(2, major);
+		myStmt.setDate(3, birth);
+		myStmt.setString(4, phoneNumber);
+		myStmt.setString(5, email);
+		myStmt.setString(6, address);
+		myStmt.setString(7, describe);
+		myStmt.setString(8, experiment);
+		myStmt.setString(9, countryName);
+		myStmt.setInt(10, aid);
+		myStmt.executeUpdate();
+		myConn.close();
 	}
 }

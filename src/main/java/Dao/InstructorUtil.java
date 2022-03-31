@@ -16,6 +16,7 @@ import Model.Courses;
 import Model.Instructor;
 import Model.Profiles;
 import Model.User;
+import Model.UserAccount;
 
 public class InstructorUtil {
 	private DataSource dataSource;
@@ -358,6 +359,60 @@ public class InstructorUtil {
 		}
 		myConn.close();
 		return up;
+	}
+	public UserAccount getInstructorInformationByID(int id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT i.aid,username,password,i.ins_id,ins_name,major,birth,email,address,description,education,country_name FROM account a, instructor i, countries c WHERE a.aid=i.aid AND i.country_ID=c.country_ID AND ins_id=?;";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, id);
+		myRS = myStmt.executeQuery();
+		UserAccount ua = null;
+		if (myRS.next()) {
+			int aid = myRS.getInt("aid");
+			String username = myRS.getString("username");
+			String password = myRS.getString("password");
+			String fullName = myRS.getString("ins_name");
+			String major = myRS.getString("major");
+			Date birth = myRS.getDate("birth");
+			String email = myRS.getString("email");
+			String address = myRS.getString("address");
+			String describe = myRS.getString("description");
+			String experiment = myRS.getString("education");
+			String countryName = myRS.getString("country_name");
+			ua = new UserAccount(aid,username,password,id,fullName,major,birth,"",email,
+					address,describe,experiment,countryName);
+		}
+		myConn.close();
+		return ua;
+	}
+	
+	public void updateInstructor(int aid, String username, String fullName, String major, Date birth, String email,
+			String address, String describe, String experiment, String countryName) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "UPDATE account SET username=? WHERE aid=?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, username);
+		myStmt.setInt(2, aid);
+		myStmt.executeUpdate();
+		sql = "UPDATE instructor SET ins_name=?, major=?, birth=?, email=?, address=?, instructor.description=?, education=?, country_ID=(SELECT country_ID FROM countries WHERE country_name=?) WHERE aid=?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, fullName);
+		myStmt.setString(2, major);
+		myStmt.setDate(3, birth);
+		myStmt.setString(4, email);
+		myStmt.setString(5, address);
+		myStmt.setString(6, describe);
+		myStmt.setString(7, experiment);
+		myStmt.setString(8, countryName);
+		myStmt.setInt(9, aid);
+		myStmt.executeUpdate();
+		myConn.close();
 	}
 }
 

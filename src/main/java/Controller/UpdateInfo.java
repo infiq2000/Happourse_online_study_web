@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +18,7 @@ import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
 import Model.User;
+import Model.UserAccount;
 
 
 /**
@@ -55,41 +57,28 @@ public class UpdateInfo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		int id = Integer.parseInt(request.getParameter("id"));
-		int aid = Integer.parseInt(request.getParameter("aid"));
 		int accountType = (int)request.getSession(false).getAttribute("account_type");
+		UserAccount ua = new UserAccount();
 		if (accountType == 0) {
-			String fullname = request.getParameter("FirstName");
-			
-			String major = request.getParameter("LastName");
-			
-			User user = new User(id, fullname, major, aid);
-			// creat a new student object
-			// perform update on database
 			try {
-				userUtil.updateStudent(user);
+				ua = userUtil.getUserInformationByID(id);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			// send them back to the list student page
+			request.setAttribute("exper", "Experiment");
 		} else {
-String fullname = request.getParameter("FirstName");
-			
-			String major = request.getParameter("LastName");
-			
-			User user = new User(id, fullname, major, aid);
-			// creat a new student object
-			// perform update on database
 			try {
-				userUtil.updateStudent(user);
+				ua = insUtil.getInstructorInformationByID(id);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			// send them back to the list student page
+			request.setAttribute("exper", "Education");
 		}
+		request.setAttribute("userInfo",ua);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/update_profile.jsp");;	
+		dispatcher.forward(request, response);
 	}
 
 }

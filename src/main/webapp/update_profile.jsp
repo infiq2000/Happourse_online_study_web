@@ -80,40 +80,63 @@
         
 		<!-- <img style="min-width: 120px;max-height: 200px;border-radius: 10%;margin:0 0 30px 470px;" src="images/logo/t.JPG" alt=""/>
 		<input type="file" name="uploadField" style="margin: 0 0 20px 20px; display: inline;"/> -->
-	<div class="form-group" style="margin-left:450px; width:500px;">
+	<form action="UpdateTest" method="get">
+		<div class="form-group" style="margin-left:450px; width:500px;">
+			<h2>Change Information</h2>
+		
+			<label style="font-size:14px;">Username</label>
+			<input style="margin-bottom:20px;" type="text" name="username" value="${userInfo.getUsername()}" placeholder="abc">
+		
+			<label style="font-size:14px;">Full name</label>
+			<input style="margin-bottom:20px;" type="text" name="fullName" value="${userInfo.getFullName()}" placeholder="Nguyen Van A">
+			
+			<label style="font-size:14px;">Email</label>
+			<input style="margin-bottom:20px;" type="email" name="email" value="${userInfo.getEmail()}" placeholder="abc@gmail.com" >
 	
-		<label style="font-size:14px;">Username</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Abc">
-	
-		<label style="font-size:14px;">Full Name</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Nguyen Van A">
-		
-		<label style="font-size:14px;">Gmail</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="abc@gmail.com" >
-
-		<label style="font-size:14px;">Major</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Developer" required>
-		
-		<label style="font-size:14px;">Facebook</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="https://www.facebook.com/">
-
-		<label style="font-size:14px;">About Me</label>
-		<span class="support"><strong style="font-size:14px;">Markdown supported</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
-		<textarea style="margin-bottom:20px;" class="" name="about" placeholder="Shortly describe about me"></textarea>
-		
-		<label style="font-size:14px;">Old Password</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Abc">
-		
-		<label style="font-size:14px;">New Password</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Abc">
-		
-		<label style="font-size:14px;">Repeat Password</label>
-		<input style="margin-bottom:20px;" type="text" name="username" value="" placeholder="Abc">
-		
-		<div class="button-box text-center" style="margin-top: 40px;">
-			<a href="Profile"><button type="button" class="theme-btn btn-style-one" ><span class="txt">Save</span></button></a>			
+			<label style="font-size:14px;">Major</label>
+			<input style="margin-bottom:20px;" type="text" name="major" value="${userInfo.getMajor()}" placeholder="Developer" required>
+			
+			<label style="font-size:14px;">${exper}</label>
+			<input style="margin-bottom:20px;" type="text" name="experiment" value="${userInfo.getExperiment()}" placeholder="High School">
+			
+			<label style="font-size:14px;">Birthday</label>
+			<input style="margin-bottom:20px;" type="text" name="birth" value="${userInfo.getBirth()}" placeholder="19-05-2000">
+			
+			<label style="font-size:14px;">Address</label>
+			<input style="margin-bottom:20px;" type="text" name="address" value="${userInfo.getAddress()}" placeholder="None">
+			
+			<label style="font-size:14px;">Country</label>
+			<input style="margin-bottom:20px;" type="text" name="country" value="${userInfo.getCountryName()}" placeholder="Việt Nam">
+			
+			<c:if test="${account_type == '0'}">
+				<label style="font-size:14px;">Phone number</label>
+				<input style="margin-bottom:20px;" type="text" name="phoneNumber" value="${userInfo.getPhoneNumber()}" placeholder="0874523621">
+			</c:if>
+			
+			<label style="font-size:14px;">About Me</label>
+			<span class="support"><strong style="font-size:14px;">Markdown supported</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
+			<textarea style="margin-bottom:20px;" class="" name="about" placeholder="Shortly describe about me">${userInfo.getDescribe()}</textarea>
+			
+			<button type="submit" class="button-box text-center theme-btn btn-style-one" style="margin-top: 40px;">Save Information</button>
 		</div>
-	</div>
+	</form>
+	
+	<form action="UpdatePassword" method="post">
+		<div class="form-group" style="margin-left:450px; width:500px;">
+			<h2>Change Password</h2>
+			<label style="font-size:14px;">Old password</label>
+			<input style="margin-bottom:20px;" type="password" name="oldPassword" value="">
+			
+			<label style="font-size:14px;">New password</label>
+			<input style="margin-bottom:20px;" type="password" name="newPassword" value="">
+			
+			<label style="font-size:14px;">Repeat new password</label>
+			<input style="margin-bottom:20px;" type="password" name="repeatNewPassword" value="">
+			
+			<button class="button-box text-center theme-btn btn-style-one" style="margin-top: 40px;">Save Password</button>
+		</div>
+	</form>	
+	
 </div>
 </div>
 	<!-- End Instructor Page Section -->
