@@ -79,7 +79,15 @@ public class UpdateTest extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}		
+		} else {
+			try {
+				insUtil.updateInstructor(aid, username, fullName, major, birth, 
+						email, address, describe, experiment, countryName);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		String[] a = fullName.split(" ");
 		String b = a[a.length - 1];	
 		
