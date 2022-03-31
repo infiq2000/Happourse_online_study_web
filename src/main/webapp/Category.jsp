@@ -61,7 +61,7 @@
 											<h5>Tag</h5>
 											<ul class="clearfix">
 												<li>
-													<input type="checkbox" id="book" checked>
+													<input type="checkbox" id="book">
 													<label for="book">Book</label>
 												</li>
 												<li>
@@ -69,15 +69,15 @@
 													<label for="linux">Linux</label>
 												</li>
 												<li>
-													<input type="checkbox" id="design" checked>
+													<input type="checkbox" id="design">
 													<label for="design">Design</label>
 												</li>
 												<li>
-													<input type="checkbox" id="development" checked>
+													<input type="checkbox" id="development">
 													<label for="development">Development</label>
 												</li>
 												<li>
-													<input type="checkbox" id="art" checked>
+													<input type="checkbox" id="art" >
 													<label for="art">Art</label>
 												</li>
 												<li>
@@ -89,7 +89,7 @@
 													<label for="software">Softwear</label>
 												</li>
 												<li>
-													<input type="checkbox" id="php" checked>
+													<input type="checkbox" id="php">
 													<label for="php">PHP</label>
 												</li>
 											</ul>

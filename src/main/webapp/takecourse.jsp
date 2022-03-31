@@ -52,118 +52,14 @@
 				Theme Header
 			============================================== 
 			-->
-			<header class="theme-menu-wrapper menu-style-one">
-				<div class="container">
-					<div class="header-wrapper clearfix">
-						<!-- Logo -->
-						<div class="logo float-left tran4s"><a href="index.html"><img src="images/logo/logo.png" alt="Logo"></a></div>
-
-						<!-- ============================ Theme Menu ========================= -->
-						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">
-							<!-- Brand and toggle get grouped for better mobile display -->
-						   <div class="navbar-header">
-						     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-						       <span class="sr-only">Toggle navigation</span>
-						       <span class="icon-bar"></span>
-						       <span class="icon-bar"></span>
-						       <span class="icon-bar"></span>
-						     </button>
-						   </div>
-						   <!-- Collect the nav links, forms, and other content for toggling -->
-						   <div class="collapse navbar-collapse" id="navbar-collapse-1">
-								<ul class="nav">
-									<li class="dropdown-holder menu-list"><a href="index.html" class="tran3s">Home</a>
-										<ul class="sub-menu">
-											<li><a href="index.html">Home version one</a></li>
-											<li><a href="index-2.html">Home version Two</a></li>
-										</ul>
-									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Course</a>
-										<ul class="sub-menu">
-											<li><a href="course-grid.html">Course grid</a></li>
-											<li><a href="course-list.html">Course List</a></li>
-											<li><a href="course-details.html">Course Details</a></li>
-											<li class="dropdown-holder"><a href="#">Third Level menu</a>
-												<ul class="second-sub-menu">
-													<li><a href="#">menu one</a></li>
-													<li><a href="#">menu two</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Pages</a>
-										<ul class="sub-menu width-half">
-											<li><a href="about-us.html">About Us</a></li>
-											<li><a href="our-teacher.html">Our teacher</a></li>
-											<li><a href="teachers-profile.html">teachers profile</a></li>
-											<li><a href="shop.html">Shop page</a></li>
-											<li><a href="shop-details.html">Shop Details</a></li>
-											<li><a href="portfolio-3-column.html">portfolio 3 column</a></li>
-											<li><a href="portfolio-4-column.html">portfolio 4 column</a></li>
-											<li><a href="pricing-plan.html">Pricing Plan</a></li>
-											<li><a href="faq.html">Faq Page</a></li>
-											<li><a href="404.html">Error Page</a></li>
-											<li><a href="sign-up.html">Registration</a></li>
-											<li class="dropdown-holder"><a href="#">Third Level menu</a>
-												<ul class="second-sub-menu">
-													<li><a href="#">menu one</a></li>
-													<li><a href="#">menu two</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Event</a>
-										<ul class="sub-menu">
-											<li><a href="event-list.html">Event List</a></li>
-											<li><a href="event-grid.html">Event Grid</a></li>
-											<li><a href="event-details.html">Event Single</a></li>
-										</ul>
-									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Blog</a>
-										<ul class="sub-menu">
-											<li><a href="blog-grid.html">Blog grid</a></li>
-											<li><a href="blog-list.html">Blog List</a></li>
-											<li><a href="blog-details.html">blog Details</a></li>
-										</ul>
-									</li>
-									<li><a href="contact-us.html" class="tran3s">Contact Us</a></li>
-									<li class="dropdown-holder menu-list" ><a class="tran3s"><span class="login">HI ${name}</span></a> 
-										<ul class="sub-menu">
-											<c:url var="link2" value="Profile">
-													<c:param name="uid" value="${user_info.getUid()}"></c:param>  
-	  										</c:url>
-											<li><a href="${link2}">Tài khoản</a></li>
-											<li><a href="update_profile.jsp">Cập nhật thông tin</a></li>
-											<c:url var="tempLink" value="MyLearning">
-													<c:param name="aid_user" value="${aid}"></c:param> --%>
-													<c:param name="uid" value="${uid}"></c:param> --%>
-	  										</c:url>
-											<li><a href="${tempLink} ">Khóa học</a></li>
-											<li><a href="Logout">Đăng xuất</a></li>
-										</ul>
-									</li>
-								</ul>
-						   </div><!-- /.navbar-collapse -->
-						</nav> <!-- /.theme-main-menu -->
-					</div> <!-- /.header-wrapper -->
-				</div>
-			</header> <!-- /.theme-menu-wrapper -->
+			<jsp:include page="Header.jsp"></jsp:include>
 			
 			<!-- 
 			=============================================
 				Theme Inner Banner
 			============================================== 
 			-->
-			<div class="inner-banner">
-				<div class="opacity">
-					<div class="container">
-						<h2>Thêm khóa học</h2>
-						<ul>
-							<li><a href="index.jsp" class="tran3s">Home</a></li>
-						</ul>
-					</div> <!-- /.container -->
-				</div> <!-- /.opacity -->
-			</div> <!-- /.inner-banner -->
+			<jsp:include page="inner_banner.jsp"></jsp:include>
 
 
 			<!-- 
@@ -174,19 +70,14 @@
 			<div class="shop-page">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-9 col-md-8 col-xs-12 all-product-wrapper shop-details float-right">
+						<div class="col-lg-12 col-md-8 col-xs-12 all-product-wrapper shop-details">
 							<div class="single-product-details clearfix row">
 								<div class="image col-lg-5 col-xs-12">
-									<img src="images/shop/34.jpg" alt="">
-									<ul>
-										<li><img src="images/shop/34.jpg" alt=""></li>
-										<li><img src="images/shop/34.jpg" alt=""></li>
-										<li><img src="images/shop/34.jpg" alt=""></li>
-									</ul>
+									<img src="images/course/35.jpg" alt="">
 								</div> <!-- /.image -->
 								<div class="info col-lg-7 col-xs-12">
 									<h3>${course_detail.getName()}</h3>
-									<strong>$${course_detail.getPrice()}</strong>
+									<strong style="background:red;padding:10px;border-radius:5px;color:white;">$${course_detail.getPrice()}</strong>
 									<ul class="rating">
 										<li><i class="fa fa-star" aria-hidden="true"></i></li>
 										<li><i class="fa fa-star" aria-hidden="true"></i></li>
@@ -207,7 +98,7 @@
 									<c:url var="Link4" value="Enroll">
 										<c:param name="course_id" value="${course_id}"></c:param> 
 									</c:url>
-									<a href="${Link4}" class="add-cart tran3s" onclick="if (!(confirm('Ban da muon dang ki khoa hoc?'))) return false">Enroll</a>
+									<a href="${Link4}" class="add-cart tran3s" onclick="if (!(confirm('Ban da muon dang ki khoa hoc?'))) return false" style="background:red; color:white;">Enroll</a>
 									<a href="#" class="wishlist tran3s">ADD TO WISHLIST</a>
 								</div> <!-- /.info -->
 							</div> <!-- /.single-product-details -->
@@ -247,7 +138,7 @@
 														<li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
 													</ul>
 												</div>
-												<a href="shop-details.html" class="tran3s cart">ADD TO CART</a>
+												<a href="#" class="tran3s cart" style="color:red;">ADD TO WISHLIST</a>
 											</div> <!-- /.single-item -->
 										</div> <!-- /.col- -->
 										<div class="item">
@@ -264,7 +155,7 @@
 														<li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
 													</ul>
 												</div>
-												<a href="shop-details.html" class="tran3s cart">ADD TO CART</a>
+												<a href="#" class="tran3s cart" style="color:red;">ADD TO WISHLIST</a>
 											</div> <!-- /.single-item -->
 										</div> <!-- /.col- -->
 										<div class="item">
@@ -281,7 +172,7 @@
 														<li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
 													</ul>
 												</div>
-												<a href="shop-details.html" class="tran3s cart">ADD TO CART</a>
+												<a href="#" class="tran3s cart" style="color:red;">ADD TO WISHLIST</a>
 											</div> <!-- /.single-item -->
 										</div> <!-- /.col- -->
 										<div class="item">
@@ -298,86 +189,14 @@
 														<li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
 													</ul>
 												</div>
-												<a href="shop-details.html" class="tran3s cart">ADD TO CART</a>
+												<a href="#" class="tran3s cart" style="color:red;">ADD TO WISHLIST</a>
 											</div> <!-- /.single-item -->
 										</div> <!-- /.col- -->
 									</div> <!-- /.related-product-slider -->
 								</div> <!-- /.row -->
 							</div> <!-- /.related-product -->
 						</div> <!-- /.shop-large-side -->
-						<!-- =========================== SHOP SIDEBAR ============================= -->
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 shop-sidebar course-sidebar">
-							<div class="shop-sidebar-list">
-								<h4>Categories</h4>
-								<ul>
-									<li><a href="" class="tran3s">Computers <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
-									<li><a href="" class="tran3s">Monitors <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
-									<li><a href="" class="tran3s">Projectors <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
-									<li><a href="" class="tran3s">Cloths <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
-									<li><a href="" class="tran3s">Controllers <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
-									<li><a href="" class="tran3s">Shoes <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
-									<li><a href="" class="tran3s">Others <i class="fa fa-angle-down" aria-hidden="true"></i></a></li>
-								</ul>
-							</div> <!-- /.shop-sidebar-list -->
-
-							<div class="sidebar-popular-product">
-								<h4>Populer Products</h4>
-
-								<div class="single-popular-product clearfix">
-									<img src="images/shop/1.jpg" alt="image" class="float-left">
-									<div class="product float-left">
-										<h6><a href="" class="tran3s">Audio Speaker</a></h6>
-										<strong>$289</strong>
-										<ul>
-											<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											<li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
-										</ul>
-									</div> <!-- /.product -->
-								</div> <!-- /.single-popular-product -->
-								<div class="single-popular-product clearfix">
-									<img src="images/shop/2.jpg" alt="image" class="float-left">
-									<div class="product float-left">
-										<h6><a href="" class="tran3s">Wooden Chari</a></h6>
-										<strong>$89</strong>
-										<ul>
-											<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											<li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
-										</ul>
-									</div> <!-- /.product -->
-								</div> <!-- /.single-popular-product -->
-								<div class="single-popular-product clearfix">
-									<img src="images/shop/3.jpg" alt="image" class="float-left">
-									<div class="product float-left">
-										<h6><a href="" class="tran3s">Trimmer Machine</a></h6>
-										<strong>$28</strong>
-										<ul>
-											<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											<li><i class="fa fa-star" aria-hidden="true"></i></li>
-											<li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
-										</ul>
-									</div> <!-- /.product -->
-								</div> <!-- /.single-popular-product -->
-							</div> <!-- /.sidebar-popular-product -->
-
-							<div class="product-tag">
-								<h4>Product Tag</h4>
-								<ul class="clearfix">
-									<li class="float-left"><a href="" class="tran3s">Sony</a></li>
-									<li class="float-left"><a href="" class="tran3s">Apple</a></li>
-									<li class="float-left"><a href="" class="tran3s">Machine</a></li>
-									<li class="float-left"><a href="" class="tran3s">Furniture</a></li>
-									<li class="float-left"><a href="" class="tran3s">Book</a></li>
-								</ul>
-							</div> <!-- /.product-tag -->
-						</div> <!-- /.shop-sidebar -->
+						
 					</div> <!-- /.row -->
 				</div> <!-- /.container -->
 			</div> <!-- /.shop-page -->
@@ -390,108 +209,10 @@
 				Footer
 			============================================== 
 			-->
-			<footer>
-				<div class="container">
-					<div class="row">
-						<div class="col-md-3 col-sm-6">
-							<div class="footer-logo">
-								<a href="index.html"><img src="images/logo/logo2.png" alt="Logo"></a>
-								<p>It was some time before he obtained any answer, and the reply, when made, was unpropitious.</p>
-								<ul>
-									<li><a href="" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-									<li><a href="" class="tran3s"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-									<li><a href="" class="tran3s"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-									<li><a href="" class="tran3s"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-2 col-sm-3 footer-list">
-							<h6>Company</h6>
-							<ul>
-								<li><a href="about-us.html" class="tran3s">About Us</a></li>
-								<li><a href="blog-grid.html" class="tran3s">Blog</a></li>
-								<li><a href="#" class="tran3s">Become a Teacher</a></li>
-								<li><a href="contact-us.html" class="tran3s">Contact</a></li>
-								<li><a href="faq.html" class="tran3s">Faq &amp; Plicy</a></li>
-							</ul>
-						</div>
-						<div class="col-md-2 col-sm-3 footer-list">
-							<h6>Product</h6>
-							<ul>
-								<li><a href="#" class="tran3s">Education Pack</a></li>
-								<li><a href="#" class="tran3s">Eucation Starter</a></li>
-								<li><a href="#" class="tran3s">Features &amp; Skills</a></li>
-								<li><a href="#" class="tran3s">Pricing</a></li>
-								<li><a href="#" class="tran3s">Sell Your Products</a></li>
-							</ul>
-						</div>
-						<div class="col-md-2 col-sm-6 footer-list">
-							<h6>About us</h6>
-							<ul>
-								<li><a href="blog-list.html" class="tran3s">Blog</a></li>
-								<li><a href="#" class="tran3s">Toll Free Number</a></li>
-								<li><a href="#" class="tran3s">Press Releases</a></li>
-								<li><a href="#" class="tran3s">Jobs</a></li>
-								<li><a href="#" class="tran3s">Feedback</a></li>
-							</ul>
-						</div>
-						<div class="col-md-3 col-sm-6 col-xs-12 footer-subscribe">
-							<h6>Subscribe Us</h6>
-							<p>This sounded a very good reason, and Alice was quite pleased.</p>
-							<form action="#">
-								<input type="text" placeholder="Your Email">
-								<button class="tran3s p-bg-color"><i class="flaticon-envelope-back-view-outline"></i></button>
-							</form>
-						</div>
-					</div> <!-- /.row -->
-				</div> <!-- /.container -->
-
-				<div class="bottom-footer">
-					<div class="container">
-						<ul class="float-right">
-							<li><h3><span class="counter p-color">8,997</span> Products</h3></li>
-							<li><h3><span class="counter p-color">53,701</span> Members</h3></li>
-							<li><h3><span class="counter p-color">1,119</span> Shops</h3></li>
-						</ul>
-						<p class="float-left">&copy; 2019 <a href="#" class="tran3s p-color">heloshape</a>. All rights reserved</p>		
-					</div>
-				</div> <!-- /.bottom-footer -->
-			</footer>
+			<jsp:include page="footer.jsp"></jsp:include>
 
 
-			<!-- Sign-in Modal -->
-			<div class="modal fade signInModal theme-modal-box" role="dialog">
-				<div class="modal-dialog">
-				    <!-- Modal content-->
-				    <div class="modal-content">
-					    <div class="modal-body">
-					        <h3>Login with Social Networks</h3>
-					        <ul class="clearfix">
-					        	<li class="float-left"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> facebook</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i> Google</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
-					        </ul>
-					        <form action="#">
-					        	<h3>Login with Site Account</h3>
-					        	<div class="wrapper">
-					        		<input type="text" placeholder="Username or Email">
-					        		<input type="password" placeholder="Password">
-					        		<ul class="clearfix">
-										<li class="float-left">
-											<input type="checkbox" id="remember">
-											<label for="remember">Remember Me</label>
-										</li>
-										<li class="float-right"><a href="#" class="s-color">Lost Your Password?</a></li>
-									</ul>
-									<button class="p-bg-color hvr-trim">Login</button>
-					        	</div>
-					        </form>
-					        <div><a href="sign-up.html" class="p-color tran3s">Not an account?? Sign Up</a></div>
-					    </div> <!-- /.modal-body -->
-				    </div> <!-- /.modal-content -->
-				</div> <!-- /.modal-dialog -->
-			</div> <!-- /.signInModal -->
+		
 
 	        
 

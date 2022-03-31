@@ -76,19 +76,7 @@
 											<li><a href="index-2.html">Home version Two</a></li>
 										</ul>
 									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Course</a>
-										<ul class="sub-menu">
-											<li><a href="course-grid.html">Course grid</a></li>
-											<li><a href="course-list.html">Course List</a></li>
-											<li><a href="course-details.html">Course Details</a></li>
-											<li class="dropdown-holder"><a href="#">Third Level menu</a>
-												<ul class="second-sub-menu">
-													<li><a href="#">menu one</a></li>
-													<li><a href="#">menu two</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
+									
 									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Pages</a>
 										<ul class="sub-menu width-half">
 											<li><a href="about-us.html">About Us</a></li>
@@ -777,10 +765,10 @@
 					    <div class="modal-body">
 					        <h3>Login with Social Networks</h3>
 					        <ul class="clearfix">
-					        	<li class="float-left"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> facebook</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i> Google</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
+					        	<li class="float-left"><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i> facebook</a></li>
+					        	<li class="float-left"><a href="https://www.google.com/"><i class="fa fa-google-plus" aria-hidden="true"></i> Google</a></li>
+					        	<li class="float-left"><a href="https://twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+					        	<li class="float-left"><a href="https://www.linkedin.com/"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
 					        </ul>
 					        <form action="Login" method="Post">
 					        	<h3>Login with Site Account</h3>
@@ -798,7 +786,7 @@
 									<button class="p-bg-color hvr-trim">Login</button>
 					        	</div>
 					        </form>
-					        <div><a href="sign-up.html" class="p-color tran3s">Not an account?? Sign Up</a></div>
+					        <div><a href="sign-up.html" class="p-color tran3s">Not an account?  Sign Up</a></div>
 					    </div> <!-- /.modal-body -->
 				    </div> <!-- /.modal-content -->
 				</div> <!-- /.modal-dialog -->

@@ -105,7 +105,10 @@
 							<button class="tran3s p-bg-color follow hvr-trim" id="off" style="padding: 10px 47px 10px 47px;border-radius: 3px;color: white;background: darkgray; display: none; margin:20px 0 0 537px;">TURN OFF WEBCAM</button>
 							<div id="mood_rate" style="display:none;margin: 20px 0 0 525px;">
 								<b style="margin-left:50px;">Mood</b>
-								<input type="text" disabled="True" id="mood_rate_text" style="color: red;font-size: 16px;padding: 10px 5px 10px 5px; margin-left:20px; width:80px;">
+								<input type="text" disabled="True" id="mood_rate_text_1" style="color: red;font-size: 16px;padding: 10px 5px 10px 5px; margin-left:20px; width:80px; display:none;">
+								<input type="text" disabled="True" id="mood_rate_text_2" style="color: red;font-size: 16px;padding: 10px 5px 10px 5px; margin-left:20px; width:80px; display:none;">
+								<input type="text" disabled="True" id="mood_rate_text_3" style="color: red;font-size: 16px;padding: 10px 5px 10px 5px; margin-left:20px; width:80px; display:none;">
+								<input type="text" disabled="True" id="mood_rate_text_total" style="color: red;font-size: 16px;padding: 10px 5px 10px 5px; margin-left:20px; width:80px;">
 								<i><b id="mood_rate_label" style="margin-left:50px; color:green; font-size: 20px;">Excellent!</b></i>
 							</div>
 						</div>
@@ -642,7 +645,7 @@
 
 </div>
 
-<script src="js/ins/jquery.js"></script><!---->
+<!--<script src="js/ins/jquery.js"></script>-->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>

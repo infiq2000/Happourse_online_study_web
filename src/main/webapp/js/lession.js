@@ -16,8 +16,12 @@ const screenshotTarget = document.body;
 let camera_button = document.querySelector("#on");
 let video = document.querySelector("#video");
 let camera_stop = document.querySelector("#off");
-let mood_rate = document.querySelector("#mood_rate_text");
+let mood_rate_total = document.querySelector("#mood_rate_text_total");
+let mood_rate_1 = document.querySelector("#mood_rate_text_1");
+let mood_rate_2 = document.querySelector("#mood_rate_text_2");
+let mood_rate_3 = document.querySelector("#mood_rate_text_3");
 let label = document.querySelector("#mood_rate_label");
+const mood = [];
 var low = 0
 var high = 0
 
@@ -41,9 +45,9 @@ function capture(){
 	})
 	  .then(function(data){
 		if(data == 0){
-			low = low + 1;
+			mood.push(0);
 		}else{
-			high = high +1;
+			mood.push(1);
 		}
 	})
 }
@@ -53,7 +57,8 @@ function stopClock() {
 }
 
 function check_rate(){
-	var total = low + high;
+	var total = mood.length;
+	var doan = int(total/3);
 	console.log('Total: ',total*5);
 	console.log('High Mood: ',high*5/60);
 	var rate = (high/total)*100;
@@ -87,7 +92,7 @@ camera_button.addEventListener('click', async function() {
 				label.style.color = "red";
 			}
 		}
-		mood_rate.value = String(check_rate())+"%";
+		mood_rate_total.value = String(check_rate())+"%";
 	});
 	
 });
