@@ -388,6 +388,32 @@ public class InstructorUtil {
 		myConn.close();
 		return ua;
 	}
+	
+	public void updateInstructor(int aid, String username, String fullName, String major, Date birth, String email,
+			String address, String describe, String experiment, String countryName) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "UPDATE account SET username=? WHERE aid=?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, username);
+		myStmt.setInt(2, aid);
+		myStmt.executeUpdate();
+		sql = "UPDATE instructor SET ins_name=?, major=?, birth=?, email=?, address=?, instructor.description=?, education=?, country_ID=(SELECT country_ID FROM countries WHERE country_name=?) WHERE aid=?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, fullName);
+		myStmt.setString(2, major);
+		myStmt.setDate(3, birth);
+		myStmt.setString(4, email);
+		myStmt.setString(5, address);
+		myStmt.setString(6, describe);
+		myStmt.setString(7, experiment);
+		myStmt.setString(8, countryName);
+		myStmt.setInt(9, aid);
+		myStmt.executeUpdate();
+		myConn.close();
+	}
 }
 
 	
