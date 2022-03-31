@@ -145,12 +145,12 @@
 					    <div class="modal-body">
 					        <h3>Login with Social Networks</h3>
 					        <ul class="clearfix">
-					        	<li class="float-left"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> facebook</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i> Google</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
-					        	<li class="float-left"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
+					        	<li class="float-left"><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i> facebook</a></li>
+					        	<li class="float-left"><a href="https://www.google.com/"><i class="fa fa-google-plus" aria-hidden="true"></i> Google</a></li>
+					        	<li class="float-left"><a href="https://twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
+					        	<li class="float-left"><a href="https://www.linkedin.com/"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
 					        </ul>
-					        <p style="color: red;">${errorString}, vui lòng nhập lại</p>
+					        <p style="color: red;">${errorString}</p>
 					        <form action="Login" method="post">
 					        	<h3>Login with Site Account</h3>
 					        	<div class="wrapper">
@@ -167,7 +167,7 @@
 									<button class="p-bg-color hvr-trim">Login</button>
 					        	</div>
 					        </form>
-					        <div><a href="sign-up.html" class="p-color tran3s">Not an account?? Sign Up</a></div>
+					        <div><a href="sign-up.html" class="p-color tran3s">Not an account? Sign Up</a></div>
 					    </div> <!-- /.modal-body -->
 				    </div> <!-- /.modal-content -->
 				</div> <!-- /.modal-dialog -->

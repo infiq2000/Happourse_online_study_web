@@ -64,12 +64,14 @@
 										<div class="tag-option">
 											<h5>Tag</h5>
 											<ul class="clearfix">
+
 												<c:forEach var="hashtag" items="${list_hashtag}">
 													<li>
 														<input type="checkbox" id="${hashtag.getHashtag_name()}" >
 														<label for="book">${hashtag.getHashtag_name()}</label>
 													</li>
 												</c:forEach>	
+
 											</ul>
 										</div> <!-- /.tag-option -->
 

@@ -83,34 +83,21 @@
 								<c:forEach var="tempCourse" items="${listCourses}">
 									<div class="single-course clearfix trending">
 									<div class="image-box float-left"><img src="images/course/33.jpg" alt=""></div>
-									<div class="text float-left">
+									<div class="text float-left" style="border:0px;">
 										<div class="name clearfix">
 											<div class="image"><img src="images/logo/logo10.jpg" alt=""></div>
 											<div class="float-left">
 												<h6> ${tempCourse.getIns_name()}</h6>
 												<i>${tempCourse.getIns_major()}</i>
 											</div>
-											<strong class="s-color float-right"><del>159. <sup>99</sup></del>$${tempCourse.getPrice()}<sup>.99</sup></strong>
+											<strong class="s-color float-right"><del>$${tempCourse.getPrice() + 19}<sup>.99</sup></del>$${tempCourse.getPrice()}<sup>.99</sup></strong>
 										</div>
 										<c:url var="tempLink2" value="CourseDetail">
 													<c:param name="course_id" value="${tempCourse.getCourses_id()}"></c:param>
 	  									</c:url>
 										<h5><a href="${tempLink2}" class="tran3s">${tempCourse.getName()}</a></h5>
 										<p>${tempCourse.getDesciption()}</p>
-										<ul class="clearfix">
-											<li class="float-left">
-												<i class="flaticon-people"></i>
-												<a href="#" class="tran3s">2,680</a>
-											</li>
-											<li class="float-left">
-												<i class="flaticon-comments"></i>
-												<a href="#" class="tran3s">13</a>
-											</li>
-											<li class="float-right">
-												<i class="flaticon-heart"></i>
-												<a href="#" class="tran3s">3</a>
-											</li>
-										</ul>
+										
 									</div>
 								</div> <!-- /.single-course -->
 								</c:forEach>

@@ -34,20 +34,6 @@
 											<li><a href="index.jsp">Home version Two</a></li>
 										</ul>
 									</li>
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Courses</a>
-										<ul class="sub-menu">
-											<li><a href="course-grid.html">Course grid</a></li>
-											<li><a href="course-list.html">Course List</a></li>
-											<li><a href="course-details.html">Course Details</a></li>
-											<li class="dropdown-holder"><a href="#">Third Level menu</a>
-												<ul class="second-sub-menu">
-													<li><a href="#">menu one</a></li>
-													<li><a href="#">menu two</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
-									
 									
 									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Blog</a>
 										<ul class="sub-menu">

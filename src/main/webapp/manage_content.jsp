@@ -106,7 +106,13 @@
 							  	<a href="#"><i class='fa fa-trash-o'></i></a>
 							  	<a href="edit_course.jsp"><i class='fa fa-edit'></i></a>
 							  </td>
-							  <td style="text-align:center;">OK</td>
+							  <td style="text-align:center;">
+							  	<ul>
+							  		<li>1m-3m: 100%</li>
+							  		<li>3m-6m: 100%</li>
+							  		<li>6m-10m: 100%</li>
+							  	</ul>
+							  </td>
 							</tr>
 						</c:forEach>
 					  </tbody>
