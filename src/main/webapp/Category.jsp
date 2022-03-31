@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.*" %>
 <%@ page import="Model.Category" %>
+<%@ page import="Model.Hashtag" %>
 <%@ page import="Dao.CourseUtil" %>
 <%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
 <!DOCTYPE html>
@@ -21,7 +22,10 @@
 					    	List<Category> cate = couUtil.getCategories();
 					    	request.setAttribute("cate", cate);
 					    	
+					    	List<Hashtag> ls_hashtag = couUtil.getAllHashtags();
+					    	request.setAttribute("list_hashtag", ls_hashtag);					    	
 						%>
+						
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
 							<div class="course-sidebar">
 								<div class="sidebar-categories">
@@ -53,45 +57,21 @@
 								</div> <!-- /.sidebar-categories -->
 			
 								<!-- "Filter" -->
-			
+								
 								<div class="course-filter">
 									<h4>Search By Filters</h4>
 									<form action="" class="main-wrapper">
 										<div class="tag-option">
 											<h5>Tag</h5>
 											<ul class="clearfix">
-												<li>
-													<input type="checkbox" id="book">
-													<label for="book">Book</label>
-												</li>
-												<li>
-													<input type="checkbox" id="linux">
-													<label for="linux">Linux</label>
-												</li>
-												<li>
-													<input type="checkbox" id="design">
-													<label for="design">Design</label>
-												</li>
-												<li>
-													<input type="checkbox" id="development">
-													<label for="development">Development</label>
-												</li>
-												<li>
-													<input type="checkbox" id="art" >
-													<label for="art">Art</label>
-												</li>
-												<li>
-													<input type="checkbox" id="web">
-													<label for="web">Design</label>
-												</li>
-												<li>
-													<input type="checkbox" id="software">
-													<label for="software">Softwear</label>
-												</li>
-												<li>
-													<input type="checkbox" id="php">
-													<label for="php">PHP</label>
-												</li>
+
+												<c:forEach var="hashtag" items="${list_hashtag}">
+													<li>
+														<input type="checkbox" id="${hashtag.getHashtag_name()}" >
+														<label for="book">${hashtag.getHashtag_name()}</label>
+													</li>
+												</c:forEach>	
+
 											</ul>
 										</div> <!-- /.tag-option -->
 

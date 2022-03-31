@@ -60,23 +60,25 @@ public class UpdateInfo extends HttpServlet {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		int accountType = (int)request.getSession(false).getAttribute("account_type");
+		UserAccount ua = new UserAccount();
 		if (accountType == 0) {
-			UserAccount ua = new UserAccount();
 			try {
 				ua = userUtil.getUserInformationByID(id);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-//			String[] a = ua.getFullName().split(" ");			
-//			String b = a[a.length - 1];
-//			request.setAttribute("name", b);
-			request.setAttribute("userInfo",ua);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/update_profile.jsp");;	
-			dispatcher.forward(request, response);
+			request.setAttribute("exper", "Experiment");
 		} else {
-			System.out.println("OK");
+			try {
+				ua = insUtil.getInstructorInformationByID(id);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("exper", "Education");
 		}
+		request.setAttribute("userInfo",ua);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/update_profile.jsp");;	
+		dispatcher.forward(request, response);
 	}
 
 }

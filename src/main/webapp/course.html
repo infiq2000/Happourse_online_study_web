@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="course-block col-lg-3 col-md-6 col-sm-12">
+								<div class="inner-box">
+									<div class="image">
+										<a href="#"><img src="images/resource/course-10.jpg" alt="" /></a>
+										<div class="time">03 hours</div>
+									</div>								
+									<div class="lower-content">
+										<h6><a href="#"><%=temp.getName()%></a></h6>
+										<ul class="post-meta">
+											<li><%=temp.getCategory_name()%></li>
+										</ul>
+										<div class="clearfix">
+											<div class="pull-left">
+												<div class="author">By: <span><%=temp.getIns_name()%> </span></div>
+											</div>
+											<div class="pull-right">
+												<div class="price"><%=temp.getPrice()%></div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+</body>
+</html>

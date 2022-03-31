@@ -172,46 +172,6 @@
 													</li>
 													
 													<li style="margin: 0 0 40px 40px;">
-														<label class="ct2" style="margin: 0 0 20px 40px; display:none;">+ Content 2</label>
-														<div class="form-group" id="c2" style="margin-left:40px; display:none;">
-															<label style="font-size:14px;">Content Title</label>
-															<input type="text" name="username" value="" placeholder="Content 2" required>
-
-															<label style="font-size:14px;">Content Description</label>
-															<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
-															<textarea class="" name="message" placeholder="Shortly describe this content"></textarea>
-
-															<label style="font-size:14px;">Url</label>
-															<input type="text" name="username" value="" placeholder="Url 2">
-
-															<label style="font-size:14px;">Duration</label>
-															
-															<div style="margin: 0 0 20px 40px;">
-																<label style="margin-right: 24px; font-size:14px;">Minute</label>
-																<div style=" width: 80px; display:inline;">
-																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity1'); var qty = result.value; if( !isNaN(qty) &amp; qty > 1 ) result.value--;return false;" type='button' value='-' />
-																	<input style="width: 80px; display:inline; background: white;" id='quantity1' min='0' name='quantity' type='text' value='0' />
-																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity1'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
-																</div>
-															</div>
-															
-															<div style="margin-left: 40px;">
-																<label style="margin-right: 20px; font-size:14px;">Second</label>
-																<div style=" width: 80px; display:inline;">
-																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty) &amp; qty > 1 ) result.value--;return false;" type='button' value='-' />
-																	<input style="width: 80px; display:inline; background: white;" id='quantity2' min='1' max='59' name='quantity' type='text' value='1' />
-																	<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
-																</div>
-															</div>
-															
-															<div class="button-box text-center" id="s2" style="margin-top: 40px;">
-																<button style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
-															</div>
-														</div>
-														
-													</li>
-													
-													<li style="margin: 0 0 40px 40px;">
 														<label class="ct3" style="margin: 0 0 20px 40px; display:none;">+ Content 3</label>
 														<div class="form-group" id="c3" style="margin-left:40px; display:none;">
 															<label style="font-size:14px;">Content Title</label>

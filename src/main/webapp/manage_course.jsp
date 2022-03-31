@@ -108,7 +108,7 @@
 					  <tbody>
 					  	<c:forEach var="tempCourses" items="${listCourses}">
 							<tr>
-							  <td class="title" scope="col"><a href="manage_chapter.jsp">${tempCourses.getName()}</a></td>
+							  <td class="title" scope="col"><a href="ManageChapters?course_id=${tempCourses.getCourses_id()}">${tempCourses.getName()}</a></td>
 							  <td class="post-date" scope="col" style="text-align:center;">${tempCourses.getPublishDate() }</td>
 							  <td class="sales" scope="col" style="text-align:center;">${tempCourses.getCountCourses()} Sales</td>
 							  <td class="category" scope="col" style="text-align:center;">${tempCourses.getCategory()}</td>
@@ -117,7 +117,7 @@
 							  	<a href="EditCourse?courseID=${tempCourses.getCourses_id()}"><i class='fa fa-edit'></i></a>
 							  	<a href="#"><i class='fa fa-check-square'></i></a>
 							  </td>
-							  <td style="text-align:center;">OK</td>
+							  <td style="text-align:center; color:${tempCourses.getColor()}">${tempCourses.getMood()}</td>
 							</tr>
 						</c:forEach>
 					  </tbody>
