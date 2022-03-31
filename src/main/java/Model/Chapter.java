@@ -1,9 +1,14 @@
 package Model;
 
+import java.sql.Time;
+
 public class Chapter {
 	private int chap_id;
 	private String name;
 	private int course_id;
+	private Time duration;
+	private String mood;
+	private String color;
 	public Chapter(int chap_id, String name, int course_id) {
 		super();
 		this.chap_id = chap_id;
@@ -27,5 +32,33 @@ public class Chapter {
 	}
 	public void setCourse_id(int course_id) {
 		this.course_id = course_id;
+	}
+	public Time getDuration() {
+		return duration;
+	}
+	public void setDuration(Time duration) {
+		this.duration = duration;
+	}
+	public String getMood() {
+		return mood;
+	}
+	public void setMood(String mood) {
+		this.mood = mood;
+	}
+	
+	public String getColor() {
+		return color;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public Chapter(int chap_id, String name, int course_id, Time duration, String mood, String color) {
+		super();
+		this.chap_id = chap_id;
+		this.name = name;
+		this.course_id = course_id;
+		this.duration = duration;
+		this.mood = mood;
+		this.color = color;
 	}
 }

@@ -414,8 +414,17 @@ public class CourseUtil {
 			int cid = myRS.getInt("cid");
 			String category = myRS.getString("categoryName");
 			Date publishDate = myRS.getDate("publish_date");
+			int temp = myRS.getInt("mood");
+			String mood, color;
+			if (temp == 1) {
+				mood = "HIGH";
+				color = "green";
+			} else {
+				mood = "LOW";
+				color = "red";
+			}
 			ls.add(new ManagedCourses(courses_id, name, skill, price, language, starRate,
-					description, ins_id, cid, countCourses, category, publishDate));
+					description, ins_id, cid, countCourses, category, publishDate, mood, color));
 		}
 		myConn.close();
 		return ls;
@@ -467,8 +476,17 @@ public class CourseUtil {
 			int cid = myRS.getInt("cid");
 			String category = myRS.getString("categoryName");
 			Date publishDate = myRS.getDate("publish_date");
+			int temp = myRS.getInt("mood");
+			String mood, color;
+			if (temp == 1) {
+				mood = "HIGH";
+				color = "green";
+			} else {
+				mood = "LOW";
+				color = "red";
+			}
 			ls.add(new ManagedCourses(courses_id, name, skill, price, language, starRate,
-					description, ins_id, cid, countCourses, category, publishDate));
+					description, ins_id, cid, countCourses, category, publishDate, mood, color));
 		}
 		myConn.close();
 		return ls;
