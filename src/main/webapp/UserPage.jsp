@@ -81,10 +81,10 @@
 						<div class="col-lg-9 col-md-8 col-xs-12 popular-course float-right">
 							<div class="course-style-filter clearfix">
 								<ul class="float-left clearfix">
-									<li><a href="CourseByType?type=all" class="tran3s" id="type1">All</a></li>
-									<li><a href="CourseByType?type=new" class="tran3s" id="type2">New</a></li>
-									<li><a href="CourseByType?type=popular" class="tran3s" id="type3">Popular</a></li>
-									<li><a href="CourseByType?type=free" class="tran3s" id="type4">Free</a></li>
+									<li><a href="CourseByType?type=all" class="tran3s ${allActive }" id="type1">All</a></li>
+									<li><a href="CourseByType?type=new" class="tran3s ${newActive }" id="type2">New</a></li>
+									<li><a href="CourseByType?type=popular" class="tran3s ${popularActive }" id="type3">Popular</a></li>
+									<li><a href="CourseByType?type=free" class="tran3s ${freeActive }" id="type4">Free</a></li>
 								</ul>
 								<ul class="float-right">
 									<li><a href="#" class="tran3s active"><i class="fa fa-th-large" aria-hidden="true"></i></a></li>

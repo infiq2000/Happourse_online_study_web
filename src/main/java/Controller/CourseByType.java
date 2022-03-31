@@ -50,6 +50,15 @@ public class CourseByType extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String type = request.getParameter("type");
+		if (type.equals("all")) {
+			request.setAttribute("allActive", "active");
+		} else if (type.equals("new")) {
+			request.setAttribute("newActive", "active");
+		} else if (type.equals("popular")) {
+			request.setAttribute("popularActive", "active");
+		} else {
+			request.setAttribute("freeActive", "active");
+		}
 		List<Courses> li = courseUtil.getCourseByType(type);
 		int pagesNumber = courseUtil.courseNumberPage(li);
 		List<Courses> course = courseUtil.getCoursesByPage(li, 1);

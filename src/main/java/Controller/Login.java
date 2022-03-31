@@ -90,7 +90,7 @@ public class Login extends HttpServlet {
 					String[] a = user.getFull_name().split(" ");
 					String b = a[a.length - 1];
 					
-					
+					request.setAttribute("allActive", "active");
 					HttpSession session = request.getSession(true);
 					session.setAttribute("name", b);
 					session.setAttribute("uid", user.getUid());
@@ -115,7 +115,7 @@ public class Login extends HttpServlet {
 					String[] a = ins.getIns_name().split(" ");
 					String b = a[a.length - 1];
 					
-					
+					request.setAttribute("allActive", "active");
 					HttpSession session = request.getSession(true);
 					session.setAttribute("name", b);
 					session.setAttribute("ins_id", ins.getIns_id());
