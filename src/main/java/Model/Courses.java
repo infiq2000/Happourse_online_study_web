@@ -13,6 +13,50 @@ public class Courses {
 	private String ins_name;
 	private String ins_major;
 	private int countCourses;
+	private String category_name;
+	public Courses(int courses_id, String name, String skill, int price, String language, double star_rate,
+			String desciption, int ins_id, int cid, String ins_name, String ins_major, int countCourses,
+			String category_name) {
+		super();
+		this.courses_id = courses_id;
+		this.name = name;
+		this.skill = skill;
+		this.price = price;
+		this.language = language;
+		this.star_rate = star_rate;
+		this.desciption = desciption;
+		this.ins_id = ins_id;
+		this.cid = cid;
+		this.ins_name = ins_name;
+		this.ins_major = ins_major;
+		this.countCourses = countCourses;
+		this.category_name = category_name;
+	}
+	
+	
+	public Courses(int courses_id, String name, String skill, int price, String language, double star_rate,
+			String desciption, int ins_id, String ins_name, String ins_major, String category_name) {
+		super();
+		this.courses_id = courses_id;
+		this.name = name;
+		this.skill = skill;
+		this.price = price;
+		this.language = language;
+		this.star_rate = star_rate;
+		this.desciption = desciption;
+		this.ins_id = ins_id;
+		this.ins_name = ins_name;
+		this.ins_major = ins_major;
+		this.category_name = category_name;
+	}
+
+
+	public String getCategory_name() {
+		return category_name;
+	}
+	public void setCategory_name(String category_name) {
+		this.category_name = category_name;
+	}
 	public int getCountCourses() {
 		return countCourses;
 	}
