@@ -169,46 +169,60 @@
 																						<!-- Block -->
 											<%
 												List<Chapter> chapter_list = (List<Chapter>)request.getAttribute("list_chapter");
-												int chapter_number = chapter_list.size();
-												Chapter ch1 = chapter_list.get(0);
+												int chapter_number = 0;
+												Chapter ch1 = null;
+												if (chapter_list.size()!=0){
+													chapter_number = chapter_list.size();
+													ch1 = chapter_list.get(0);
+												}
+												int flag = -1;
+												if (chapter_number < 2){
+													flag = 0;
+												}
+												
 											%>
-											<li class="accordion block">
-												<div class="acc-btn active"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%=ch1.getName() %></div>
-												<div class="acc-content current">
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
+											<% if (ch1 != null) { %>
+												<li class="accordion block">
+													<div class="acc-btn active"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%=ch1.getName() %></div>
+													<div class="acc-content current">
+														<div class="content">
+															<div class="clearfix">
+																<div class="pull-left">
+																	<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
+																</div>
+																<div class="pull-right">
+																	<div class="minutes">35 Minutes</div>
+																</div>
 															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
+														</div>
+														<div class="content">
+															<div class="clearfix">
+																<div class="pull-left">
+																	<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"><i class="ripple"></i></span>What is UI/ UX Design?</a>
+																</div>
+																<div class="pull-right">
+																	<div class="minutes">35 Minutes</div>
+																</div>
+															</div>
+														</div>
+														<div class="content">
+															<div class="clearfix">
+																<div class="pull-left">
+																	<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
+																</div>
+																<div class="pull-right">
+																	<div class="minutes">35 Minutes</div>
+																</div>
 															</div>
 														</div>
 													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"><i class="ripple"></i></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>	
-											<c:forEach begin="1" end="<%= chapter_number-1 %>" var="i">
-																							<!-- Block -->
+												</li>	
+										      <% } else { %>
+										         	<p> no chapter</p>
+										      <% } %>
+										      <% if (flag != 0) { %>
+													<c:forEach begin="1" end="<%= chapter_number-1 %>" var="i">
+											<!-- Block -->
 											<%
 												int i = (int)pageContext.getAttribute("i");
 											%>
@@ -248,6 +262,11 @@
 												</div>
 											</li>	
 											</c:forEach>
+										      <% } else { %>
+										         
+										      <% } %>
+											
+											
 																					
 										</ul>
 										

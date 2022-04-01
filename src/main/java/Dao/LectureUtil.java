@@ -37,7 +37,6 @@ public class LectureUtil {
 			String name = myRS.getString("name");
 			chapter.add(new Chapter(chap_id,name,course_id));
 		}
-		System.out.println(dem);
 		return chapter;
 	}
 	
