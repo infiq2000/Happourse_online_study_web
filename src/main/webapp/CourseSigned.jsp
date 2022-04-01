@@ -106,7 +106,7 @@
 									</div>
 								</div> <!-- /.course-info -->
 								<img src="images/course/35.jpg" alt="">
-								<a href="course_lession.jsp" class="tran3s p-bg-color follow hvr-trim" style="padding: 15px 102px 15px 102px;border-radius: 3px;color: white; display:inline">LEARN NOW</a>
+								<a href="CourseLesson?course_id=${course_id}" class="tran3s p-bg-color follow hvr-trim" style="padding: 15px 102px 15px 102px;border-radius: 3px;color: white; display:inline">LEARN NOW</a>
 								<p class="p1">${course_detail.getDesciption()}</p>
 								<div class="learn-list">
 									<h3>What Will I Learn?</h3>
