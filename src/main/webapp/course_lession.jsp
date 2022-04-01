@@ -1,3 +1,4 @@
+<%@page import="Dao.LectureUtil"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="Dao.UserUtil"%>
@@ -9,6 +10,8 @@
 <%@ page import="Model.User" %>
 <%@ page import="Dao.UserUtil" %>
 <%@ page import="Model.Chapter" %>
+<%@ page import="Dao.LectureUtil" %>
+<%@ page import="Model.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -159,6 +162,14 @@
 										</div>
 									</div>
 								</div>
+								<%
+								InitialContext ctx;
+							  	DataSource ds;
+							 	ctx = new InitialContext();
+						    	ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Happourse");
+								List<Chapter> chapter_list = (List<Chapter>)request.getAttribute("list_chapter");
+								LectureUtil lecUtil = new LectureUtil(ds);
+								%>
 								
 								<!-- Tab -->
 								<div class="tab" id="prod-curriculum">
@@ -168,7 +179,7 @@
 										<ul class="accordion-box">
 																						<!-- Block -->
 											<%
-												List<Chapter> chapter_list = (List<Chapter>)request.getAttribute("list_chapter");
+											  	
 												int chapter_number = 0;
 												Chapter ch1 = null;
 												if (chapter_list.size()!=0){
@@ -182,39 +193,25 @@
 												
 											%>
 											<% if (ch1 != null) { %>
+												<%
+											    	
+											    	List<Content> list_of_content1 = lecUtil.getContents(ch1.getChap_id());
+												%>
 												<li class="accordion block">
 													<div class="acc-btn active"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%=ch1.getName() %></div>
 													<div class="acc-content current">
-														<div class="content">
-															<div class="clearfix">
-																<div class="pull-left">
-																	<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-																</div>
-																<div class="pull-right">
-																	<div class="minutes">35 Minutes</div>
-																</div>
-															</div>
-														</div>
-														<div class="content">
-															<div class="clearfix">
-																<div class="pull-left">
-																	<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"><i class="ripple"></i></span>What is UI/ UX Design?</a>
-																</div>
-																<div class="pull-right">
-																	<div class="minutes">35 Minutes</div>
+														<c:forEach items="<%=list_of_content1%>" var="ct">
+															<div class="content">
+																<div class="clearfix">
+																	<div class="pull-left">
+																		<a href="${ct.getLink()}" class="lightbox-image play-icon"><span class="fa fa-play"></span>${ct.getName()}</a>
+																	</div>
+																	<div class="pull-right">
+																		<div class="minutes">35 Minutes</div>
+																	</div>
 																</div>
 															</div>
-														</div>
-														<div class="content">
-															<div class="clearfix">
-																<div class="pull-left">
-																	<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-																</div>
-																<div class="pull-right">
-																	<div class="minutes">35 Minutes</div>
-																</div>
-															</div>
-														</div>
+														</c:forEach>
 													</div>
 												</li>	
 										      <% } else { %>
@@ -226,41 +223,26 @@
 											<%
 												int i = (int)pageContext.getAttribute("i");
 											%>
-											<li class="accordion block">
-												<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%= chapter_list.get(i).getName() %></div>
-												<div class="acc-content ">
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
+																							<%
+											    	List<Content> list_of_content2 = lecUtil.getContents(chapter_list.get(i).getChap_id());
+												%>
+												<li class="accordion block">
+													<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%=chapter_list.get(i).getName() %></div>
+													<div class="acc-content">
+														<c:forEach items="<%=list_of_content2%>" var="ct">
+															<div class="content">
+																<div class="clearfix">
+																	<div class="pull-left">
+																		<a href="${ct.getLink()}" class="lightbox-image play-icon"><span class="fa fa-play"></span>${ct.getName()}</a>
+																	</div>
+																	<div class="pull-right">
+																		<div class="minutes">35 Minutes</div>
+																	</div>
+																</div>
 															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
+														</c:forEach>
 													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"><i class="ripple"></i></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>	
+												</li>
 											</c:forEach>
 										      <% } else { %>
 										         

@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Hashtable;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -19,6 +20,7 @@ import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
 import Model.Chapter;
+import Model.Content;
 import Model.Courses;
 import Model.Instructor;
 
