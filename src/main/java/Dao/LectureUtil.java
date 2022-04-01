@@ -60,7 +60,7 @@ public class LectureUtil {
 			String link = myRS.getString("link");
 			contents.add(new Content(lc_id,name,type, link, chap_id));
 		}
-		System.out.println(count);
 		return contents;
 	}
+	
 }
