@@ -53,16 +53,24 @@
 											</form>
 										</div>
 									</li>
+									<%
+										int account_type = (int) session.getAttribute("account_type");			
+									%>
+									<% if (account_type != 0) { %>
+										<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Instuctor</a>
+											<ul class="sub-menu">
+												<li><a href="DashBoard">Instructor Dashboard</a></li>
+												<li><a href="ManageCourses">Manage Courses</a></li>
+												<li><a href="add_course.jsp">Create New Course</a></li>
+												<li><a href="Earnings">Earnings</a></li>
+											</ul>
+										</li>
+							      	<% } else { %>
+							         	<li><a href="MyLearning">My Learning</a></li>
+							      	<% } %>
 									
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Instuctor</a>
-										<ul class="sub-menu">
-											<li><a href="DashBoard">Instructor Dashboard</a></li>
-											<li><a href="ManageCourses">Manage Courses</a></li>
-											<li><a href="add_course.jsp">Create New Course</a></li>
-											<li><a href="Earnings">Earnings</a></li>
-										</ul>
-									</li>
-									<li><a href="MyLearning">My Learning</a></li>
+
+									
 									<%
 										String name = (String)session.getAttribute("name");
 									%>

@@ -1,5 +1,17 @@
+<%@page import="Dao.LectureUtil"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="Dao.UserUtil"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
+<%@ page import="Model.Category" %>
+<%@ page import="Dao.CourseUtil" %>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
+<%@ page import="Model.User" %>
+<%@ page import="Dao.UserUtil" %>
+<%@ page import="Model.Chapter" %>
+<%@ page import="Dao.LectureUtil" %>
+<%@ page import="Model.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,7 +74,7 @@
                 <div class="content-side middle-sidebar col-lg-6 col-md-12 col-sm-12">
 					<!-- Sec Title -->
                 	<div class="sec-title">
-						<h4>Learn IOS development</h4>
+						<h4>${course_detail.getName() }</h4>
 					</div>
 					<!-- Video Box -->
 					<div class="video-box">
@@ -76,9 +88,9 @@
 						<div class="clearfix">
 							<div class="pull-left">
 								
-								<h6>Learn IOS development, Website design, Freelancing</h6>
+								<h6>${course_detail.getDesciption() }</h6>
 								<div class="author">
-									<div class="user-image"><img src="images/resource/author-10.jpg" alt="" /></div>Kerry Oaky
+									<div class="user-image"><img src="images/resource/author-10.jpg" alt="" /></div>${ins_info.getIns_name()}
 								</div>
 								<!-- Follow -->
 								<div class="follow"><a href="#">+ Follow</a></div>
@@ -138,7 +150,7 @@
 										<div class="class-detail-content">
 											<h4>25 That Prevent Job Seekers From Overcoming Failure</h4>
 											<div class="text">Phasellus enim magna, varius et commodo ut, ultricies vitae velit. Ut nulla tellus, eleifend euismod pellentesque vel, sagittis vel justo. In libero urna, venenatis sit amet ornare non, suscipit nec risus. Sed consequat justo non mauris pretium at tempor justo sodales. Quisque tincidunt.</div>
-											<h6>What will you learn?</h6>
+											<h6>What you’ll learn?</h6>
 											<ul class="list-style-one">
 												<li>Phasellus enim magna, up above the most like varius et commodo ut.</li>
 												<li>Sed consequat justo non profit us mauris pretium at tempor justo.</li>
@@ -150,6 +162,14 @@
 										</div>
 									</div>
 								</div>
+								<%
+								InitialContext ctx;
+							  	DataSource ds;
+							 	ctx = new InitialContext();
+						    	ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Happourse");
+								List<Chapter> chapter_list = (List<Chapter>)request.getAttribute("list_chapter");
+								LectureUtil lecUtil = new LectureUtil(ds);
+								%>
 								
 								<!-- Tab -->
 								<div class="tab" id="prod-curriculum">
@@ -157,229 +177,79 @@
 										
 										<!-- Accordion Box -->
 										<ul class="accordion-box">
-
+																						<!-- Block -->
+											<%
+											  	
+												int chapter_number = 0;
+												Chapter ch1 = null;
+												if (chapter_list.size()!=0){
+													chapter_number = chapter_list.size();
+													ch1 = chapter_list.get(0);
+												}
+												int flag = -1;
+												if (chapter_number < 2){
+													flag = 0;
+												}
+												
+											%>
+											<% if (ch1 != null) { %>
+												<%
+											    	
+											    	List<Content> list_of_content1 = lecUtil.getContents(ch1.getChap_id());
+												%>
+												<li class="accordion block">
+													<div class="acc-btn active"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%=ch1.getName() %></div>
+													<div class="acc-content current">
+														<c:forEach items="<%=list_of_content1%>" var="ct">
+															<div class="content">
+																<div class="clearfix">
+																	<div class="pull-left">
+																		<a href="${ct.getLink()}" class="lightbox-image play-icon"><span class="fa fa-play"></span>${ct.getName()}</a>
+																	</div>
+																	<div class="pull-right">
+																		<div class="minutes">35 Minutes</div>
+																	</div>
+																</div>
+															</div>
+														</c:forEach>
+													</div>
+												</li>	
+										      <% } else { %>
+										         	<p> no chapter</p>
+										      <% } %>
+										      <% if (flag != 0) { %>
+													<c:forEach begin="1" end="<%= chapter_number-1 %>" var="i">
 											<!-- Block -->
-											<li class="accordion block">
-												<div class="acc-btn active"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div>1. UI/ UX Introduction</div>
-												<div class="acc-content current">
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
+											<%
+												int i = (int)pageContext.getAttribute("i");
+											%>
+																							<%
+											    	List<Content> list_of_content2 = lecUtil.getContents(chapter_list.get(i).getChap_id());
+												%>
+												<li class="accordion block">
+													<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%=chapter_list.get(i).getName() %></div>
+													<div class="acc-content">
+														<c:forEach items="<%=list_of_content2%>" var="ct">
+															<div class="content">
+																<div class="clearfix">
+																	<div class="pull-left">
+																		<a href="${ct.getLink()}" class="lightbox-image play-icon"><span class="fa fa-play"></span>${ct.getName()}</a>
+																	</div>
+																	<div class="pull-right">
+																		<div class="minutes">35 Minutes</div>
+																	</div>
+																</div>
 															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
+														</c:forEach>
 													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"><i class="ripple"></i></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>
-
-											<!-- Block -->
-											<li class="accordion block">
-												<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div>2. UI/ UX Introduction</div>
-												<div class="acc-content">
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"><i class="ripple"></i></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>
+												</li>
+											</c:forEach>
+										      <% } else { %>
+										         
+										      <% } %>
 											
-											<!-- Block -->
-											<li class="accordion block">
-												<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div>3. UI/ UX Introduction</div>
-												<div class="acc-content">
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"><i class="ripple"></i></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>
 											
-											<!-- Block -->
-											<li class="accordion block">
-												<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div>4. UI/ UX Introduction</div>
-												<div class="acc-content">
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"><i class="ripple"></i></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>
-											
-											<!-- Block -->
-											<li class="accordion block">
-												<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div>5. UI/ UX Introduction</div>
-												<div class="acc-content">
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"><i class="ripple"></i></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>
-											
-											<!-- Block -->
-											<li class="accordion block">
-												<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div>6. UI/ UX Introduction</div>
-												<div class="acc-content">
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"><i class="ripple"></i></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-													<div class="content">
-														<div class="clearfix">
-															<div class="pull-left">
-																<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon"><span class="fa fa-play"></span>What is UI/ UX Design?</a>
-															</div>
-															<div class="pull-right">
-																<div class="minutes">35 Minutes</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</li>
-											
+																					
 										</ul>
 										
 									</div>
@@ -645,7 +515,7 @@
 
 </div>
 
-<!--<script src="js/ins/jquery.js"></script>-->
+<script src="js/ins/jquery.js"></script>
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
