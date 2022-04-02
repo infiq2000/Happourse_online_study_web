@@ -73,17 +73,19 @@
 			<!-- Instructor Page Section -->
 <div class="page-wrapper" style="padding-bottom: 50px;">
 <div class="edit-course-form">
-		<img id="an" style="width: 120px;margin:0 0 0 470px;" src="images/logo/t.JPG" alt=""/>
-		<div id="displayImg" style="width: 120px;margin:0 0 30px 470px;"></div>
-		<input type="file" name="upload" id="upload" onchange="ImagesFileAsURL()" style="margin: 0 0 20px 470px; display: inline;"/>
+	
         
         
 		<!-- <img style="min-width: 120px;max-height: 200px;border-radius: 10%;margin:0 0 30px 470px;" src="images/logo/t.JPG" alt=""/>
 		<input type="file" name="uploadField" style="margin: 0 0 20px 20px; display: inline;"/> -->
-	<form action="UpdateTest" method="get">
+	<form action="UpdateTest" method="get" >
 		<div class="form-group" style="margin-left:450px; width:500px;">
 			<h2>Change Information</h2>
-		
+			<img id="an" style="width: 120px;margin:0 0 0 470px;" src="images/logo/t.JPG" alt=""/>
+			<div id="displayImg" style="width: 120px;margin:0 0 30px 470px;"></div>
+			<input type="file" name="image" id="upload" onchange="ImagesFileAsURL()" style="margin: 0 0 20px 470px; display: inline;"/>
+
+			
 			<label style="font-size:14px;">Username</label>
 			<input style="margin-bottom:20px;" type="text" name="username" value="${userInfo.getUsername()}" placeholder="abc">
 		

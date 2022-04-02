@@ -85,6 +85,14 @@
 							<div class="author-image">
 								<img src="images/logo/t.JPG" alt="" />
 							</div>
+<%-- 										<%
+								String imagePath = (String)request.getSession(false).getAttribute("imagename"); 
+							%>
+							<% if (imagePath != null) { %>
+								     <h1> imagename: <%=imagePath %></h1>   
+							<% } else { %>
+								         
+							<% } %> --%>
 							<h4>${user_info.getName() }</h4>
 							<div class="designation">${user_info.getMajor()}</div>
 							<ul class="social-box">

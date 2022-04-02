@@ -37,6 +37,7 @@ public class LectureUtil {
 			String name = myRS.getString("name");
 			chapter.add(new Chapter(chap_id,name,course_id));
 		}
+		myConn.close();
 		return chapter;
 	}
 	
@@ -60,6 +61,7 @@ public class LectureUtil {
 			String link = myRS.getString("link");
 			contents.add(new Content(lc_id,name,type, link, chap_id));
 		}
+		myConn.close();
 		return contents;
 	}
 	

@@ -134,7 +134,7 @@
 									 <div class="panel">
 									    <div class="panel-heading">
 									      <h5 class="panel-title">
-									        <a data-toggle="collapse" data-parent="#accordionTwo" href="#collapse62" class="clearfix">
+									        <a data-toggle="collapse" data-parent="#accordionTwo" href="#" class="clearfix">
 									        	<h6 class="float-left">
 										        	<span>Lecture 1. ${myIndex.index}</span>
 										        	${tempChapter.getName()}
@@ -142,29 +142,6 @@
 										        <p class="float-right">26:19min</p>
 									        </a>
 									      </h5>
-									    </div>
-									 
-									    <div id="collapse62" class="panel-collapse collapse">
-									      <div class="panel-body">
-									      	<ul>
-									      		<li class="clearfix">
-									      			<span class="float-left"><a href="#" class="tran3s"><i class="fa fa-file-text-o" aria-hidden="true"></i> A Note On Asking For Help</a></span>
-									      			<span class="float-right">75kb</span>
-									      		</li>
-									      		<li class="clearfix">
-									      			<span class="float-left"><a href="#" class="tran3s"><i class="fa fa-file-text-o" aria-hidden="true"></i> Note about the Form Exercise solution </a></span>
-									      			<span class="float-right">55kb</span>
-									      		</li>
-									      		<li class="clearfix">
-									      			<span class="float-left"><i class="fa fa-play-circle" aria-hidden="true"></i> Note about the Form Exercise solution <a data-fancybox href="https://www.youtube.com/watch?v=ewwTwZYyfRs&ab_channel=T%E1%BA%A5nHu%E1%BB%B3nh" class="tran3s preview p-bg-color">Preview </a></span>
-									      			<span class="float-right">10:23min</span>
-									      		</li>
-									      		<li class="clearfix">
-									      			<span class="float-left"><i class="fa fa-play-circle" aria-hidden="true"></i> Recreate Webpage Assignment: SOLUTION <a data-fancybox href="https://www.youtube.com/embed/r-AuLm7S3XE?rel=0&amp;showinfo=0" class="tran3s preview p-bg-color">Preview </a></span>
-									      			<span class="float-right">5:17min</span>
-									      		</li>
-									      	</ul>
-									      </div>
 									    </div>
 									  </div> <!-- /panel 6 -->
 									</c:forEach>
