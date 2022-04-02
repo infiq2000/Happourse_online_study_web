@@ -100,7 +100,7 @@
 					  <tbody>
 					  	<c:forEach var="listChapters" items="${chapter}">
 							<tr> 
-							  <td class="title" scope="col"><a href="ManageContent?chap_id=${listChapters.getChap_id()}">${listChapters.getName()}</a></td>
+							  <td class="title" scope="col"><a href="ManageLectures?chap_id=${listChapters.getChap_id()}">${listChapters.getName()}</a></td>
 							  <td class="duration" scope="col" style="text-align:center;">${listChapters.getDuration()}</td>
 							  <td class="actions" scope="col" style="text-align:center;">
 							  	<a href="#"><i class='fa fa-trash-o'></i></a>
