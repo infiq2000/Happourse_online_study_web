@@ -98,15 +98,15 @@
 					  <thead>
 					  </thead>
 					  <tbody>
-					  	<c:forEach var="i" begin="1" end="5">
+					  	<c:forEach var="listChapters" items="${chapter}">
 							<tr> 
-							  <td class="title" scope="col"><a href="manage_content.jsp" >${i }. chapter ${i} </a></td>
-							  <td class="duration" scope="col" style="text-align:center;">3 hours</td>
+							  <td class="title" scope="col"><a href="ManageContent?chap_id=${listChapters.getChap_id()}">${listChapters.getName()}</a></td>
+							  <td class="duration" scope="col" style="text-align:center;">${listChapters.getDuration()}</td>
 							  <td class="actions" scope="col" style="text-align:center;">
 							  	<a href="#"><i class='fa fa-trash-o'></i></a>
 							  	<a href="edit_course.jsp"><i class='fa fa-edit'></i></a>
 							  </td>
-							  <td style="text-align:center;">OK</td>
+							  <td style="text-align:center; color=${listChapters.getColor()}">${listChapters.getMood()}</td>
 							</tr>
 						</c:forEach>
 					  </tbody>
