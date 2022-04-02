@@ -21,7 +21,7 @@ public class ChapterUtil {
 		this.dataSource = dataSource;
 	}
 	
-	public List<Chapter> getAllChapter(int courseID) throws SQLException {
+	public List<Chapter> getChaptersByCourse(int courseID) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement pstmt = null;
 		ResultSet myRS = null;
