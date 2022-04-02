@@ -48,7 +48,7 @@ public class ManageChapters extends HttpServlet {
 		int course_id = Integer.parseInt(courseID);
 		List<Chapter> ls = null;
 		try {
-			ls = chapterUtil.getAllChapter(course_id);		
+			ls = chapterUtil.getChaptersByCourse(course_id);		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
