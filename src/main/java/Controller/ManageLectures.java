@@ -2,7 +2,6 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -16,45 +15,46 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import Dao.ChapterUtil;
-import Model.Chapter;
+import Dao.LectureUtil;
+import Model.Lecture;
 
 /**
- * Servlet implementation class ManageChapters
+ * Servlet implementation class ManageLectures
  */
-@WebServlet("/ManageChapters")
-public class ManageChapters extends HttpServlet {
+@WebServlet("/ManageLectures")
+public class ManageLectures extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
-	ChapterUtil chapterUtil;
+	LectureUtil lecUtil;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageChapters() {
+    public ManageLectures() {
         super();
         // TODO Auto-generated constructor stub
     }
     
     public void init(ServletConfig config) throws ServletException {
     	super.init();
-    	chapterUtil = new ChapterUtil(dataSource);
+    	lecUtil = new LectureUtil(dataSource);
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String courseID = request.getParameter("course_id");
-		int course_id = Integer.parseInt(courseID);
-		List<Chapter> ls = null;
+		String chapterID = request.getParameter("chap_id");
+		int chap_id = Integer.parseInt(chapterID);
+		List<Lecture> ls = null;
 		try {
-			ls = chapterUtil.getChaptersByCourse(course_id);		
+			ls = lecUtil.getLecturesByChapter(chap_id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("chapter", ls);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/manage_chapter.jsp");
+		request.setAttribute("lecture", ls);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/manage_content.jsp");
 		dispatcher.forward(request, response);
 	}
 

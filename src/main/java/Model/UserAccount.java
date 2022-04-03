@@ -15,6 +15,33 @@ public class UserAccount {
 	private String address;
 	private String describe;
 	private String experiment;
+	private String img_path;
+	
+	public UserAccount(int aid, String username, String password, int uid, String fullName, String major, Date birth,
+			String phoneNumber, String email, String address, String describe, String experiment, String img_path,
+			String countryName) {
+		super();
+		this.aid = aid;
+		this.username = username;
+		this.password = password;
+		this.uid = uid;
+		this.fullName = fullName;
+		this.major = major;
+		this.birth = birth;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.address = address;
+		this.describe = describe;
+		this.experiment = experiment;
+		this.img_path = img_path;
+		this.countryName = countryName;
+	}
+	public String getImg_path() {
+		return img_path;
+	}
+	public void setImg_path(String img_path) {
+		this.img_path = img_path;
+	}
 	public String getExperiment() {
 		return experiment;
 	}

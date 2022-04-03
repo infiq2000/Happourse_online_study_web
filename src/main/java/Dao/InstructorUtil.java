@@ -369,7 +369,7 @@ public class InstructorUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "SELECT ins_name, major, description, birth, email, balance, country_name FROM instructor i, countries c WHERE ins_id = ? AND i.country_ID=c.country_ID";
+		String sql = "SELECT ins_name, major, description, birth, email, balance, country_name,img_path FROM instructor i, countries c WHERE ins_id = ? AND i.country_ID=c.country_ID";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, ins_id);
 		myRS = myStmt.executeQuery();
@@ -384,7 +384,8 @@ public class InstructorUtil {
 			double balance = myRS.getDouble("balance");
 			String countryName = "<p>Country: " + myRS.getString("country_name") + "</p>";
 			String description = email + birth + countryName + describe;
-			up = new Profiles(id, name, major, balance, description);
+			String img_path = myRS.getString("img_path");
+			up = new Profiles(id, name, major, balance, description, img_path);
 		}
 		myConn.close();
 		return up;
@@ -394,7 +395,7 @@ public class InstructorUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "SELECT i.aid,username,password,i.ins_id,ins_name,major,birth,email,address,description,education,country_name FROM account a, instructor i, countries c WHERE a.aid=i.aid AND i.country_ID=c.country_ID AND ins_id=?;";
+		String sql = "SELECT i.aid,username,password,i.ins_id,ins_name,major,birth,email,address,description,education,country_name, img_path FROM account a, instructor i, countries c WHERE a.aid=i.aid AND i.country_ID=c.country_ID AND ins_id=?;";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, id);
 		myRS = myStmt.executeQuery();
@@ -411,25 +412,25 @@ public class InstructorUtil {
 			String describe = myRS.getString("description");
 			String experiment = myRS.getString("education");
 			String countryName = myRS.getString("country_name");
+			String img_path = myRS.getString("img_path");
 			ua = new UserAccount(aid,username,password,id,fullName,major,birth,"",email,
-					address,describe,experiment,countryName);
+					address,describe,experiment,img_path,countryName);
 		}
 		myConn.close();
 		return ua;
 	}
 	
 	public void updateInstructor(int aid, String username, String fullName, String major, Date birth, String email,
-			String address, String describe, String experiment, String countryName) throws SQLException {
+			String address, String describe, String experiment, String countryName, String filename) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
-		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
 		String sql = "UPDATE account SET username=? WHERE aid=?";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setString(1, username);
 		myStmt.setInt(2, aid);
 		myStmt.executeUpdate();
-		sql = "UPDATE instructor SET ins_name=?, major=?, birth=?, email=?, address=?, instructor.description=?, education=?, country_ID=(SELECT country_ID FROM countries WHERE country_name=?) WHERE aid=?";
+		sql = "UPDATE instructor SET ins_name=?, major=?, birth=?, email=?, address=?, instructor.description=?, education=?,img_path = ?, country_ID=(SELECT country_ID FROM countries WHERE country_name=?) WHERE aid=?";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setString(1, fullName);
 		myStmt.setString(2, major);
@@ -438,8 +439,10 @@ public class InstructorUtil {
 		myStmt.setString(5, address);
 		myStmt.setString(6, describe);
 		myStmt.setString(7, experiment);
-		myStmt.setString(8, countryName);
-		myStmt.setInt(9, aid);
+		myStmt.setString(8, filename);
+		myStmt.setString(9, countryName);
+		myStmt.setInt(10, aid);
+		
 		myStmt.executeUpdate();
 		myConn.close();
 	}

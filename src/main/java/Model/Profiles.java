@@ -6,6 +6,23 @@ public class Profiles {
 	private String major;
 	private double balance;
 	private String description;
+	private String img_path;
+	
+	public Profiles(int id, String name, String major, double balance, String description, String img_path) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.major = major;
+		this.balance = balance;
+		this.description = description;
+		this.img_path = img_path;
+	}
+	public String getImg_path() {
+		return img_path;
+	}
+	public void setImg_path(String img_path) {
+		this.img_path = img_path;
+	}
 	public int getId() {
 		return id;
 	}

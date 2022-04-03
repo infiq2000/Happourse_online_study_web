@@ -80,19 +80,6 @@ public class UpdateTest extends HttpServlet {
 		String experiment = (String) request.getParameter("experiment");
 		String countryName = (String) request.getParameter("country");
 		
-		/*
-		 * Part part = request.getPart("image"); String realPath =
-		 * request.getServletContext().getRealPath("/images/avatar"); String filename =
-		 * Path.of(part.getSubmittedFileName()).getFileName().toString();
-		 */
-		
-//		if (!Files.exists(Path.of(realPath))) {
-//		    Files.createDirectory(Path.of(realPath));
-//		}
-//		part.write(realPath + "/" + filename);
-//		
-//		HttpSession session = request.getSession(true);
-//		session.setAttribute("imagename", "/images/avatar" + "/" + filename);
 		int accountType = (int)request.getSession().getAttribute("account_type");
 		
 		if (accountType == 0) {
