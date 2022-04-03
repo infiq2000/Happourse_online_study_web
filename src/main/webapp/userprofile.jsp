@@ -83,8 +83,20 @@
 						<div class="content">
 							<!-- Author Image -->
 							<div class="author-image">
-								<img src="images/logo/t.JPG" alt="" />
+<%-- 							\images\avatar\unicornAe5pR.jpg
+							${user_info.getImg_path()} 
+							images/avatar/unicornpG5vb.jpg
+--%>
+								<img src="${user_info.getImg_path()}" alt="" />
 							</div>
+<%-- 										<%
+								String imagePath = (String)request.getSession(false).getAttribute("imagename"); 
+							%>
+							<% if (imagePath != null) { %>
+								     <h1> imagename: <%=imagePath %></h1>   
+							<% } else { %>
+								         
+							<% } %> --%>
 							<h4>${user_info.getName() }</h4>
 							<div class="designation">${user_info.getMajor()}</div>
 							<ul class="social-box">

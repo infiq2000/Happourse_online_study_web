@@ -63,7 +63,8 @@ public class Profile extends HttpServlet {
 		Profiles user = null;
 		int countCourses = 0;
 		if (accountType == 0) {
-			int uid = (int)request.getSession(false).getAttribute("uid");			
+			int uid = (int)request.getSession(false).getAttribute("uid");	
+			System.out.println("uid: " + uid);
 			try {
 				user = userUtil.getUserProfileByID(uid);
 				countCourses = courseUtil.countCourseByUID(uid);
@@ -85,6 +86,7 @@ public class Profile extends HttpServlet {
 				e.printStackTrace();
 			}			
 		}
+		System.out.println("check ten: " + user.getImg_path());
 		request.setAttribute("myCourses", countCourses);
 		request.setAttribute("user_info",user);
 		String[] a = user.getName().split(" ");
@@ -94,6 +96,9 @@ public class Profile extends HttpServlet {
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/userprofile.jsp");
 		dispatcher.forward(request, response);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+		doGet(request,response);
 	}
 
 }
