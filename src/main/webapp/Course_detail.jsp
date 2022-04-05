@@ -125,7 +125,7 @@
 									<div class="clearfix">
 										<h3 class="float-left">Curriculum</h3>
 										<ul class="float-right">
-											<li><span>6 </span> Lectures</li>
+											<li><span>${chapter.size()}</span> Lectures</li>
 											<li><span>40 : 30</span></li>
 										</ul>
 									</div>
