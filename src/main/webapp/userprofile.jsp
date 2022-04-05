@@ -87,7 +87,7 @@
 							${user_info.getImg_path()} 
 							images/avatar/unicornpG5vb.jpg
 --%>
-								<img src="${user_info.getImg_path()}" alt="" />
+								<img src="${user_info.getImg_path() }" alt="" />
 							</div>
 <%-- 										<%
 								String imagePath = (String)request.getSession(false).getAttribute("imagename"); 
