@@ -1,6 +1,8 @@
 package Controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.Date;
 import java.sql.SQLException;
 
@@ -8,12 +10,18 @@ import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import javax.sql.DataSource;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+import java.util.*;
 
 import com.mysql.cj.Session;
 
@@ -25,6 +33,7 @@ import Dao.UserUtil;
 /**
  * Servlet implementation class UpdateTest
  */
+@MultipartConfig
 @WebServlet("/UpdateTest")
 public class UpdateTest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -55,8 +64,9 @@ public class UpdateTest extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int aid = (int)request.getSession(false).getAttribute("aid");
 		String username = (String) request.getParameter("username");
@@ -69,6 +79,7 @@ public class UpdateTest extends HttpServlet {
 		String describe = (String) request.getParameter("about");
 		String experiment = (String) request.getParameter("experiment");
 		String countryName = (String) request.getParameter("country");
+		
 		int accountType = (int)request.getSession().getAttribute("account_type");
 		
 		if (accountType == 0) {
@@ -90,7 +101,6 @@ public class UpdateTest extends HttpServlet {
 		}
 		String[] a = fullName.split(" ");
 		String b = a[a.length - 1];	
-		
 		HttpSession session = request.getSession(true);
 		session.setAttribute("name", b);
 		

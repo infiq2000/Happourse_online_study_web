@@ -98,10 +98,10 @@
 					  <thead>
 					  </thead>
 					  <tbody>
-					  	<c:forEach var="i" begin="1" end="5">
+					  	<c:forEach var="listLectures" items="${lecture}">
 							<tr> 
-							  <td class="title" scope="col"><a href="manage_content.jsp" >${i }. content ${i} </a></td>
-							  <td class="duration" scope="col" style="text-align:center;">3 minutes</td>
+							  <td class="title" scope="col"><a href="manage_content.jsp" >${listLectures.getName()} </a></td>
+							  <td class="duration" scope="col" style="text-align:center;">${listLectures.getDuration()}</td>
 							  <td class="actions" scope="col" style="text-align:center;">
 							  	<a href="#"><i class='fa fa-trash-o'></i></a>
 							  	<a href="edit_course.jsp"><i class='fa fa-edit'></i></a>

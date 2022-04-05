@@ -74,47 +74,65 @@
 <div class="page-wrapper" style="padding-bottom: 50px;">
 
 <div class="edit-course-form">
-		<img id="an" style="width: 120px;margin:0 0 0 470px;" src="images/logo/t.JPG" alt=""/>
-		<div id="displayImg" style="width: 120px;margin:0 0 30px 470px;"></div>
-		<input type="file" name="upload" id="upload" onchange="ImagesFileAsURL()" style="margin: 0 0 20px 470px; display: inline;"/>
+	
         
         
 		<!-- <img style="min-width: 120px;max-height: 200px;border-radius: 10%;margin:0 0 30px 470px;" src="images/logo/t.JPG" alt=""/>
 		<input type="file" name="uploadField" style="margin: 0 0 20px 20px; display: inline;"/> -->
-	<form action="UpdateTest" method="get">
+	<form action="UpdateTest2" method="POST" enctype="multipart/form-data" >
 		<div class="form-group" style="margin-left:450px; width:500px;">
 			<h2>Change Information</h2>
-		
-			<label style="font-size:14px;">Username</label>
-			<input style="margin-bottom:20px;" type="text" name="username" value="${userInfo.getUsername()}" placeholder="abc">
-		
-			<label style="font-size:14px;">Full name</label>
-			<input style="margin-bottom:20px;" type="text" name="fullName" value="${userInfo.getFullName()}" placeholder="Nguyen Van A">
+			<div>
+				<img id="an" style="width: 120px;margin:0 0 0 470px;" src="${userInfo.getImg_path()}" alt=""/>
+				<div id="displayImg" style="width: 120px;margin:0 0 30px 470px;"></div>
+				<input type="file" name="image" id="upload" onchange="ImagesFileAsURL()" style="margin: 0 0 20px 470px; display: inline;"/>
+			</div>
 			
-			<label style="font-size:14px;">Email</label>
-			<input style="margin-bottom:20px;" type="email" name="email" value="${userInfo.getEmail()}" placeholder="abc@gmail.com" >
-	
-			<label style="font-size:14px;">Major</label>
-			<input style="margin-bottom:20px;" type="text" name="major" value="${userInfo.getMajor()}" placeholder="Developer" required>
+			<div>		
+				<label style="font-size:14px;">Username</label>
+				<input style="margin-bottom:20px;" type="text" name="username" value="${userInfo.getUsername()}" placeholder="${userInfo.getUsername()}">
+			</div>	
 			
-			<label style="font-size:14px;">${exper}</label>
-			<input style="margin-bottom:20px;" type="text" name="experiment" value="${userInfo.getExperiment()}" placeholder="High School">
+			<div>
+				<label style="font-size:14px;">Full name</label>
+				<input style="margin-bottom:20px;" type="text" name="fullName" value="${userInfo.getFullName()}" placeholder="${userInfo.getFullName()}A">
+			</div>
 			
-			<label style="font-size:14px;">Birthday</label>
-			<input style="margin-bottom:20px;" type="text" name="birth" value="${userInfo.getBirth()}" placeholder="19-05-2000">
+			<div>
+				<label style="font-size:14px;">Email</label>
+				<input style="margin-bottom:20px;" type="email" name="email" value="${userInfo.getEmail()}" placeholder="${userInfo.getEmail()}m" >
+			</div>
 			
-			<label style="font-size:14px;">Address</label>
-			<input style="margin-bottom:20px;" type="text" name="address" value="${userInfo.getAddress()}" placeholder="None">
+			<div>
+				<label style="font-size:14px;">Major</label>
+				<input style="margin-bottom:20px;" type="text" name="major" value="${userInfo.getMajor()}" placeholder="${userInfo.getMajor()}" required>
+			</div>
 			
-			<label style="font-size:14px;">Country</label>
-			<input style="margin-bottom:20px;" type="text" name="country" value="${userInfo.getCountryName()}" placeholder="Việt Nam">
+			<div>
+				<label style="font-size:14px;">${exper}</label>
+				<input style="margin-bottom:20px;" type="text" name="experiment" value="${userInfo.getExperiment()}" placeholder="${userInfo.getExperiment()}">
+			</div>
 			
+			<div>
+				<label style="font-size:14px;">Birthday</label>
+				<input style="margin-bottom:20px;" type="text" name="birth" value="${userInfo.getBirth()}" placeholder="${userInfo.getBirth()}">
+			</div>
+			
+			<div>
+				<label style="font-size:14px;">Address</label>
+				<input style="margin-bottom:20px;" type="text" name="address" value="${userInfo.getAddress()}" placeholder="${userInfo.getAddress()}">
+			</div>
+			
+			<div>
+				<label style="font-size:14px;">Country</label>
+				<input style="margin-bottom:20px;" type="text" name="country" value="${userInfo.getCountryName()}" placeholder="${userInfo.getCountryName()}">
+			</div>
 			<%
 				int account_type = (int) session.getAttribute("account_type");			
 			%>
 			<% if (account_type == 0) { %>
          		<label style="font-size:14px;">Phone number</label>
-				<input style="margin-bottom:20px;" type="text" name="phoneNumber" value="${userInfo.getPhoneNumber()}" placeholder="0874523621">
+				<input style="margin-bottom:20px;" type="text" name="phoneNumber" value="${userInfo.getPhoneNumber()}" placeholder="${userInfo.getPhoneNumber()}">
       		<% } %>
 			
 			<label style="font-size:14px;">About Me</label>

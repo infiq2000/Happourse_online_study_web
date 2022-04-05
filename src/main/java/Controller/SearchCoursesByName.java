@@ -58,7 +58,7 @@ public class SearchCoursesByName extends HttpServlet {
 			System.out.println(e);
 		} 
 		int pagesNumber = couUtil.courseNumberPage(courses);
-		List<Courses> li = couUtil.getCoursesByPage(courses, 3);
+		List<Courses> li = couUtil.getCoursesByPage(courses, 1);
 		request.setAttribute("listCourses", li);
 		request.setAttribute("pagesNumber", pagesNumber);
 		request.setAttribute("search", txtSearch);

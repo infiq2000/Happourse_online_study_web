@@ -8,12 +8,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
 import javax.sql.DataSource;
 
 import Controller.ManageCourses;
 import Model.Category;
+import Model.Content;
 import Model.Courses;
 import Model.ManagedCourses;
 import Model.Hashtag;
@@ -677,4 +679,5 @@ public class CourseUtil {
 			myConn.close();
 		}
 	}
+
 }
