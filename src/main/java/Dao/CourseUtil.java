@@ -522,7 +522,7 @@ public class CourseUtil {
 	}
 
 	public int insertNewCourse(String course_name, String description, int cid, int price, String language,
-			float star_rate, float duration, int ins_id) throws SQLException {
+			float star_rate, float duration, int ins_id, String img_path) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		int course_id = 0;
@@ -532,7 +532,7 @@ public class CourseUtil {
 			
 			// create SQL update statement
 			//course_id, name, skill, price, language, star_rate, description, duration, ins_id, cid
-			String sql = "insert into happourse.courses (course_id, name, skill, price, language, star_rate, description, ins_id, cid)" + "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into happourse.courses (course_id, name, skill, price, language, star_rate, description, ins_id, cid, img_path)" + "values(?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 			
 			// prepare statement
 			myStmt = myConn.prepareStatement(sql);
@@ -548,9 +548,9 @@ public class CourseUtil {
 			myStmt.setString(7, description);
 			myStmt.setInt(8, ins_id);
 			myStmt.setInt(9, cid);
+			myStmt.setString(10, img_path);
 			// execute SQL statement
 			myStmt.execute();
-			
 		}
 		finally {
 			myConn.close();
