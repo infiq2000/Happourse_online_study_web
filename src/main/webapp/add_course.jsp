@@ -75,7 +75,7 @@
 					</div>-->
 				</div>
 			</div>
-			<form action="AddNewCourse" method="get">
+			<form action="AddNewCourse2" method="POST" enctype="multipart/form-data">
 				<div class="inner-container">
 					<div class="row clearfix">
 						
