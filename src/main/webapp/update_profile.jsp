@@ -73,93 +73,135 @@
 			<!-- Instructor Page Section -->
 <div class="page-wrapper" style="padding-bottom: 50px;">
 
-<div class="edit-course-form">
+	<div class="edit-course-form">
+		<div class="inner-container">
+			<div class="row clearfix"><!-- Left Column -->
+				
+	        
+	        
+			<!-- <img style="min-width: 120px;max-height: 200px;border-radius: 10%;margin:0 0 30px 470px;" src="images/logo/t.JPG" alt=""/>
+			<input type="file" name="uploadField" style="margin: 0 0 20px 20px; display: inline;"/> -->
+						<form action="UpdateTest2" method="POST" enctype="multipart/form-data" style="background: #f5e5e8;padding: 20px; border-radius: 5px;">
+							<div class="left-column col-lg-4 col-md-12 col-sm-12">
+								<div class="inner-column">
+									<div class="form-group" style="margin-left:150px; width:500px;">
+										<h2>Change Information</h2>
+										<div>
+											<img id="an" style="width: 120px;margin:0 0 0 20px;" src="${userInfo.getImg_path()}" alt=""/>
+											<div id="displayImg" style="width: 120px;margin-bottom:30px;"></div>
+											<input type="file" name="image" id="upload" onchange="ImagesFileAsURL()" style="margin-bottom:20px; display: inline; height: 55px;"/>
+										</div>
+										
+										<div>		
+											<label style="font-size:14px;">Username</label>
+											<input style="margin-bottom:20px;" type="text" name="username" value="${userInfo.getUsername()}" placeholder="${userInfo.getUsername()}">
+										</div>	
+										
+										<div>
+											<label style="font-size:14px;">Full name</label>
+											<input style="margin-bottom:20px;" type="text" name="fullName" value="${userInfo.getFullName()}" placeholder="${userInfo.getFullName()}A">
+										</div>
+										
+										<div>
+											<label style="font-size:14px;">Email</label>
+											<input style="margin-bottom:20px;" type="email" name="email" value="${userInfo.getEmail()}" placeholder="${userInfo.getEmail()}m" >
+										</div>
+										
+										<div>
+											<label style="font-size:14px;">Major</label>
+											<input style="margin-bottom:20px;" type="text" name="major" value="${userInfo.getMajor()}" placeholder="${userInfo.getMajor()}" required>
+										</div>
+										
+										<div>
+											<label style="font-size:14px;">${exper}</label>
+											<input style="margin-bottom:20px;" type="text" name="experiment" value="${userInfo.getExperiment()}" placeholder="${userInfo.getExperiment()}">
+										</div>
+										
+										<div>
+											<label style="font-size:14px;">Birthday</label>
+											<input style="margin-bottom:20px;" type="text" name="birth" value="${userInfo.getBirth()}" placeholder="${userInfo.getBirth()}">
+										</div>
+										
+									</div>
+								</div>
+							</div>
+							<div class="right-column col-lg-4 col-md-12 col-sm-12">
+								<div class="inner-column">
+									
+									<div class="form-group" style="margin-left:300px; width:500px;">
+										<div>
+											<label style="font-size:14px;">Address</label>
+											<input style="margin-bottom:20px;" type="text" name="address" value="${userInfo.getAddress()}" placeholder="${userInfo.getAddress()}">
+										</div>
+										
+										<div>
+											<label style="font-size:14px;">Country</label>
+											<input style="margin-bottom:20px;" type="text" name="country" value="${userInfo.getCountryName()}" placeholder="${userInfo.getCountryName()}">
+										</div>
+										
+										<%
+											int account_type = (int) session.getAttribute("account_type");			
+										%>
+										<% if (account_type == 0) { %>
+							         		<label style="font-size:14px;">Phone number</label>
+											<input style="margin-bottom:20px;" type="text" name="phoneNumber" value="${userInfo.getPhoneNumber()}" placeholder="${userInfo.getPhoneNumber()}">
+							      		<% } %>
+										
+										<label style="font-size:14px;">About Me</label>
+										<span class="support"><strong style="font-size:14px;">Markdown supported</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
+										<textarea style="margin-bottom:20px;" class="" name="about" placeholder="Shortly describe about me">${userInfo.getDescribe()}</textarea>
+									
+										
+									</div>
+									
+									<div class="option-cource-box" style="margin-left:300px; width:500px; background: #f5e5e8; padding:0px;">
+										<div class="box-inner">
+											<label style="font-size:14px; font-weight: 500; font-family: 'Roboto', sans-serif;">Hashtags</label>
+											<div class="form-group tags">
+												<input type="checkbox" id="tag1" name="tag1" value="tag">
+  												<label for="tag1"> JavaScript</label><br>
+												<input type="checkbox" id="tag1" name="tag1" value="tag">
+  												<label for="tag1"> JavaScript</label><br>
+  												<input type="checkbox" id="tag1" name="tag1" value="tag">
+  												<label for="tag1"> JavaScript</label><br>
+  												<input type="checkbox" id="tag1" name="tag1" value="tag">
+  												<label for="tag1"> JavaScript</label><br>
+  												<input type="checkbox" id="tag1" name="tag1" value="tag">
+  												<label for="tag1"> JavaScript</label><br>
+											</div>
+										</div>
+									</div>
+									
+									<div class="form-group" style="margin-left:300px; width:500px;">
+										<button type="submit" class="button-box text-center theme-btn btn-style-one" style="margin-top: 40px;">Save Information</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					
 	
-        
-        
-		<!-- <img style="min-width: 120px;max-height: 200px;border-radius: 10%;margin:0 0 30px 470px;" src="images/logo/t.JPG" alt=""/>
-		<input type="file" name="uploadField" style="margin: 0 0 20px 20px; display: inline;"/> -->
-	<form action="UpdateTest2" method="POST" enctype="multipart/form-data" >
-		<div class="form-group" style="margin-left:450px; width:500px;">
-			<h2>Change Information</h2>
-			<div>
-				<img id="an" style="width: 120px;margin:0 0 0 470px;" src="${userInfo.getImg_path()}" alt=""/>
-				<div id="displayImg" style="width: 120px;margin:0 0 30px 470px;"></div>
-				<input type="file" name="image" id="upload" onchange="ImagesFileAsURL()" style="margin: 0 0 20px 470px; display: inline;"/>
+				<div class="right-column col-lg-4 col-md-12 col-sm-12" style="margin-top: 40px;">
+					<div class="inner-column">
+						<form action="UpdatePassword" method="post">
+							<div class="form-group" style="margin-left:150px; width:500px;">
+								<h2>Change Password</h2>
+								<label style="font-size:14px;">Old password</label>
+								<input style="margin-bottom:20px;" type="password" name="oldPassword" value="">
+								
+								<label style="font-size:14px;">New password</label>
+								<input style="margin-bottom:20px;" type="password" name="newPassword" value="">
+								
+								<label style="font-size:14px;">Repeat new password</label>
+								<input style="margin-bottom:20px;" type="password" name="repeatNewPassword" value="">
+								
+								<button class="button-box text-center theme-btn btn-style-one" style="margin-top: 40px;">Save Password</button>
+							</div>
+						</form>	
+					</div>
+				</div>
 			</div>
-			
-			<div>		
-				<label style="font-size:14px;">Username</label>
-				<input style="margin-bottom:20px;" type="text" name="username" value="${userInfo.getUsername()}" placeholder="${userInfo.getUsername()}">
-			</div>	
-			
-			<div>
-				<label style="font-size:14px;">Full name</label>
-				<input style="margin-bottom:20px;" type="text" name="fullName" value="${userInfo.getFullName()}" placeholder="${userInfo.getFullName()}A">
-			</div>
-			
-			<div>
-				<label style="font-size:14px;">Email</label>
-				<input style="margin-bottom:20px;" type="email" name="email" value="${userInfo.getEmail()}" placeholder="${userInfo.getEmail()}m" >
-			</div>
-			
-			<div>
-				<label style="font-size:14px;">Major</label>
-				<input style="margin-bottom:20px;" type="text" name="major" value="${userInfo.getMajor()}" placeholder="${userInfo.getMajor()}" required>
-			</div>
-			
-			<div>
-				<label style="font-size:14px;">${exper}</label>
-				<input style="margin-bottom:20px;" type="text" name="experiment" value="${userInfo.getExperiment()}" placeholder="${userInfo.getExperiment()}">
-			</div>
-			
-			<div>
-				<label style="font-size:14px;">Birthday</label>
-				<input style="margin-bottom:20px;" type="text" name="birth" value="${userInfo.getBirth()}" placeholder="${userInfo.getBirth()}">
-			</div>
-			
-			<div>
-				<label style="font-size:14px;">Address</label>
-				<input style="margin-bottom:20px;" type="text" name="address" value="${userInfo.getAddress()}" placeholder="${userInfo.getAddress()}">
-			</div>
-			
-			<div>
-				<label style="font-size:14px;">Country</label>
-				<input style="margin-bottom:20px;" type="text" name="country" value="${userInfo.getCountryName()}" placeholder="${userInfo.getCountryName()}">
-			</div>
-			<%
-				int account_type = (int) session.getAttribute("account_type");			
-			%>
-			<% if (account_type == 0) { %>
-         		<label style="font-size:14px;">Phone number</label>
-				<input style="margin-bottom:20px;" type="text" name="phoneNumber" value="${userInfo.getPhoneNumber()}" placeholder="${userInfo.getPhoneNumber()}">
-      		<% } %>
-			
-			<label style="font-size:14px;">About Me</label>
-			<span class="support"><strong style="font-size:14px;">Markdown supported</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
-			<textarea style="margin-bottom:20px;" class="" name="about" placeholder="Shortly describe about me">${userInfo.getDescribe()}</textarea>
-			
-			<button type="submit" class="button-box text-center theme-btn btn-style-one" style="margin-top: 40px;">Save Information</button>
 		</div>
-	</form>
-	
-	<form action="UpdatePassword" method="post">
-		<div class="form-group" style="margin-left:450px; width:500px;">
-			<h2>Change Password</h2>
-			<label style="font-size:14px;">Old password</label>
-			<input style="margin-bottom:20px;" type="password" name="oldPassword" value="">
-			
-			<label style="font-size:14px;">New password</label>
-			<input style="margin-bottom:20px;" type="password" name="newPassword" value="">
-			
-			<label style="font-size:14px;">Repeat new password</label>
-			<input style="margin-bottom:20px;" type="password" name="repeatNewPassword" value="">
-			
-			<button class="button-box text-center theme-btn btn-style-one" style="margin-top: 40px;">Save Password</button>
-		</div>
-	</form>	
-	
-</div>
+	</div>
 </div>
 	<!-- End Instructor Page Section -->
 	
