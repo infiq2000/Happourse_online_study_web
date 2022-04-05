@@ -41,7 +41,9 @@ import Dao.UserUtil;
 @WebServlet("/UpdateTest2")
 public class UpdateTest2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final String UPLOAD_DIRECTORY = "D:\\Code\\DATN\\Happourse_online_study_web\\src\\main\\webapp\\images\\avatar";
+
+	private final String UPLOAD_DIRECTORY = "D:\\ANSON\\java\\Hapourse\\Happourse_online_study_web\\src\\main\\webapp\\images\\avatar";
+
 	@Resource(name = "jdbc/Happourse")
 	private DataSource dataSource;
 	Dao.CourseUtil courseUtil;
@@ -107,14 +109,14 @@ public class UpdateTest2 extends HttpServlet {
 		if (ServletFileUpload.isMultipartContent(request)) {
 			try {
 				List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
-
+				String abc = getAlphaNumericString(5);
 				for (FileItem item : multiparts) {
 					if (!item.isFormField()) {
 						String name = new File(item.getName()).getName();
 						String realPath = request.getServletContext().getRealPath("/images/avatar");
 
 						try {
-							String abc = getAlphaNumericString(5);
+							
 							String[] tmp = name.split("[.]");
 							item.write(new File(UPLOAD_DIRECTORY + File.separator + tmp[0] + abc + "." + tmp[1]));
 							filename = "images/avatar" + "/" + tmp[0] + abc + "." + tmp[1];
