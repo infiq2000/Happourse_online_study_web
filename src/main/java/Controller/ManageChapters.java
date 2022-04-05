@@ -53,6 +53,7 @@ public class ManageChapters extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		request.setAttribute("course_id", courseID);
 		request.setAttribute("chapter", ls);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/manage_chapter.jsp");
 		dispatcher.forward(request, response);

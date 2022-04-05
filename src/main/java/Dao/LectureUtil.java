@@ -8,6 +8,7 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -89,7 +90,7 @@ public class LectureUtil {
 			name += myRS.getString("name");
 			String type = myRS.getString("type");
 			String link = myRS.getString("link");
-			String duration = format.format(myRS.getTime("duration"));
+			String duration = format.format(myRS.getTime("duration", Calendar.getInstance()));
 			int chapterID = myRS.getInt("chap_id");
 			int courseID = myRS.getInt("course_id");
 			ls.add(new Lecture(lectureID, name, type, link, duration, chapterID, courseID));
@@ -114,5 +115,31 @@ public class LectureUtil {
 			timeFormat += "s";
 		}
 		return timeFormat;
+	}
+	public void deleteLectureByLectureID(int lectureID) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		myConn = dataSource.getConnection();
+		String sql = "DELETE FROM lecturer_content WHERE lc_id=?;";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, lectureID);
+		myStmt.executeUpdate();
+		myConn.close();
+	}
+	public int getChapIDByLectureID(int lectureID) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT chap_id FROM lecturer_content WHERE lc_id=?;";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, lectureID);
+		myRS = myStmt.executeQuery();
+		int chapID = 0;
+		if (myRS.next()) {
+			chapID = myRS.getInt("chap_id");
+		}
+		myConn.close();
+		return chapID;
 	}
 }

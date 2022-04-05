@@ -57,7 +57,6 @@
     <!--End Main Header -->
     
     
-    
 <div class="page-wrapper">	
 <!-- Manage Cource Section -->
     <div class="manage-cource-section">
@@ -69,7 +68,7 @@
 						<h4>Manage Chapters</h4>
 					</div>
 					<div class="pull-right">
-						<a href="add_chapter.jsp" class="see-all">Add New Chapter</a>
+						<a href="add_chapter.jsp?course_id=${course_id }" class="see-all">Add New Chapter</a>
 					</div>
 				</div>
 			</div>
@@ -103,8 +102,8 @@
 							  <td class="title" scope="col"><a href="ManageLectures?chap_id=${listChapters.getChap_id()}">${listChapters.getName()}</a></td>
 							  <td class="duration" scope="col" style="text-align:center;">${listChapters.getDuration()}</td>
 							  <td class="actions" scope="col" style="text-align:center;">
-							  	<a href="#"><i class='fa fa-trash-o'></i></a>
-							  	<a href="edit_course.jsp"><i class='fa fa-edit'></i></a>
+							  	<a href="DeleteChapter?chap_id=${listChapters.getChap_id()}"><i class='fa fa-trash-o'></i></a>
+							  	<a href="EditCourse?courseID=${listChapters.getCourse_id() }"><i class='fa fa-edit'></i></a>
 							  </td>
 							  <td style="text-align:center; color=${listChapters.getColor()}">${listChapters.getMood()}</td>
 							</tr>

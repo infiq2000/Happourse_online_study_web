@@ -2,7 +2,6 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -14,24 +13,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import Dao.ChapterUtil;
 import Dao.LectureUtil;
-import Model.Lecture;
 
 /**
- * Servlet implementation class ManageLectures
+ * Servlet implementation class DeleteLecture
  */
-@WebServlet("/ManageLectures")
-public class ManageLectures extends HttpServlet {
+@WebServlet("/DeleteLecture")
+public class DeleteLecture extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
 	LectureUtil lecUtil;
-	ChapterUtil chapUtil;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageLectures() {
+    public DeleteLecture() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,32 +35,28 @@ public class ManageLectures extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
     	super.init();
     	lecUtil = new LectureUtil(dataSource);
-    	chapUtil = new ChapterUtil(dataSource);
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String chapterID = request.getParameter("chap_id");
-		int chap_id = Integer.parseInt(chapterID);
-		List<Lecture> ls = null;
+		int lectureID = Integer.parseInt(request.getParameter("lecture_id"));
+		int chapID = 0;
 		try {
-			ls = lecUtil.getLecturesByChapter(chap_id);
+			chapID = lecUtil.getChapIDByLectureID(lectureID);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
+			lecUtil.deleteLectureByLectureID(lectureID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		int courseID = 0;
-		try {
-			courseID = chapUtil.getCourseIDByChapID(chap_id);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		request.setAttribute("course_id", courseID);
-		request.setAttribute("lecture", ls);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/manage_content.jsp");
+		request.setAttribute("chap_id", chapID);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("ManageLectures");
 		dispatcher.forward(request, response);
 	}
 
