@@ -72,6 +72,7 @@
 			-->
 			<!-- Instructor Page Section -->
 <div class="page-wrapper" style="padding-bottom: 50px;">
+
 <div class="edit-course-form">
 		<img id="an" style="width: 120px;margin:0 0 0 470px;" src="images/logo/t.JPG" alt=""/>
 		<div id="displayImg" style="width: 120px;margin:0 0 30px 470px;"></div>
