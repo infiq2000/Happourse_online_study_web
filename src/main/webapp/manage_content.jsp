@@ -69,7 +69,7 @@
 						<h4>Manage Contents</h4>
 					</div>
 					<div class="pull-right">
-						<a href="add_chapter.jsp" class="see-all">Add New Content</a>
+						<a href="add_chapter.jsp?course_id=${course_id }" class="see-all">Add New Content</a>
 					</div>
 				</div>
 			</div>
@@ -78,19 +78,19 @@
 					<!-- Title Box -->
 					<div class="title-box clearfix">
 						<!-- Title Column -->
-						<div class="title-column" style="width:345px;">
+						<div class="title-column" style="width:300px;">
 							<h6 >Title</h6>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:270px; text-align: center;">
+						<div class="title-column" style="width:220px; text-align: center;">
 							<h6>Duration</h6>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:300px;">
+						<div class="title-column" style="width:230px;">
 							<h6>Action</h6>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:150px;">
+						<div class="title-column" style="width:300px;">
 							<h6>Mood</h6>
 						</div>
 					</div>

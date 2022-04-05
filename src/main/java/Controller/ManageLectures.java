@@ -27,6 +27,7 @@ public class ManageLectures extends HttpServlet {
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
 	LectureUtil lecUtil;
+	ChapterUtil chapUtil;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -38,6 +39,7 @@ public class ManageLectures extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
     	super.init();
     	lecUtil = new LectureUtil(dataSource);
+    	chapUtil = new ChapterUtil(dataSource);
     }
 
 	/**
@@ -53,6 +55,14 @@ public class ManageLectures extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		int courseID = 0;
+		try {
+			courseID = chapUtil.getCourseIDByChapID(chap_id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("course_id", courseID);
 		request.setAttribute("lecture", ls);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/manage_content.jsp");
 		dispatcher.forward(request, response);

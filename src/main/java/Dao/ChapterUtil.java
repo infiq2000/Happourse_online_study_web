@@ -74,5 +74,20 @@ public class ChapterUtil {
 		}
 		return timeFormat;
 	}
+
+	public int getCourseIDByChapID(int chap_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT course_id FROM chapter WHERE chap_id=?;";
+		pstmt = myConn.prepareStatement(sql);
+		myRS = pstmt.executeQuery();
+		int course_id = 0;
+		if (myRS.next()) {
+			course_id = myRS.getInt("course_id");
+		}
+		return course_id;
+	}
 	
 }

@@ -8,6 +8,7 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -89,7 +90,7 @@ public class LectureUtil {
 			name += myRS.getString("name");
 			String type = myRS.getString("type");
 			String link = myRS.getString("link");
-			String duration = format.format(myRS.getTime("duration"));
+			String duration = format.format(myRS.getTime("duration", Calendar.getInstance()));
 			int chapterID = myRS.getInt("chap_id");
 			int courseID = myRS.getInt("course_id");
 			ls.add(new Lecture(lectureID, name, type, link, duration, chapterID, courseID));
