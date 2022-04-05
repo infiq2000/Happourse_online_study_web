@@ -116,4 +116,30 @@ public class LectureUtil {
 		}
 		return timeFormat;
 	}
+	public void deleteLectureByLectureID(int lectureID) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		myConn = dataSource.getConnection();
+		String sql = "DELETE FROM lecturer_content WHERE lc_id=?;";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, lectureID);
+		myStmt.executeUpdate();
+		myConn.close();
+	}
+	public int getChapIDByLectureID(int lectureID) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT chap_id FROM lecturer_content WHERE lc_id=?;";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, lectureID);
+		myRS = myStmt.executeQuery();
+		int chapID = 0;
+		if (myRS.next()) {
+			chapID = myRS.getInt("chap_id");
+		}
+		myConn.close();
+		return chapID;
+	}
 }
