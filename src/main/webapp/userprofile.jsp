@@ -100,9 +100,9 @@
 							<h4>${user_info.getName() }</h4>
 							<div class="designation">${user_info.getMajor()}</div>
 							<ul class="social-box">
-								<li class="facebook"><a href="#" class="fa fa-facebook"></a></li>
-								<li class="google"><a href="#" class="fa fa-google"></a></li>
-								<li class="twitter"><a href="#" class="fa fa-twitter"></a></li>
+								<li class="facebook"><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
+								<li class="google"><a href="https://www.google.com/" class="fa fa-google"></a></li>
+								<li class="twitter"><a href="https://twitter.com/" class="fa fa-twitter"></a></li>
 							</ul>
 							
 							<!-- Fact Counter -->
