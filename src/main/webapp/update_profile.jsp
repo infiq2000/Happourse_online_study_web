@@ -72,6 +72,7 @@
 			-->
 			<!-- Instructor Page Section -->
 <div class="page-wrapper" style="padding-bottom: 50px;">
+
 <div class="edit-course-form">
 	
         
