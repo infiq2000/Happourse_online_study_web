@@ -195,7 +195,7 @@
 										<div class="time">03 hours</div>
 									</div>								
 									<div class="lower-content">
-										<h6><a href="#"><%=temp.getName()%></a></h6>
+										<h6><a href="ManageChapters?course_id=<%=temp.getCourses_id() %>"><%=temp.getName()%></a></h6>
 										<ul class="post-meta">
 											<li><%=temp.getCategory_name()%></li>
 										</ul>
