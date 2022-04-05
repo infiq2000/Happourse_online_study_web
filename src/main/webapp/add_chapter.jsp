@@ -54,7 +54,12 @@
 <body data-customvalueone="${course_id}" data-customvaluetwo="<%=chapter_id %>" class="">
 
 	<%
-		int course_id = (int)request.getAttribute("course_id");
+		int course_id = 0;
+		try {
+			course_id = (int)request.getAttribute("course_id");
+		} catch (Exception e) {
+			course_id = Integer.parseInt(request.getParameter("course_id"));
+		}
 		//int chapter_id = (int)request.getAttribute("chapter_id");
 	%>
 	
