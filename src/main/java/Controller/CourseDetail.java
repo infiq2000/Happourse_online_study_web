@@ -87,10 +87,15 @@ public class CourseDetail extends HttpServlet {
 			Instructor ins_info = insUtil.getIns_Info(detailC.getIns_id());
 			request.setAttribute("ins_info", ins_info);
 			
+			int num_students = courseUtil.getStudentOfCourse(course_id);
+			request.setAttribute("num_students", num_students);
+			
 			List<Chapter> list_chapter = lecUtil.getChapterOfCourse(detailC.getCourses_id());
 			request.setAttribute("chapter", list_chapter);
 			
-			
+			String hashtagOfCourse = courseUtil.getHashtagOfCourse(course_id);
+			request.setAttribute("hashtagOfCourse", hashtagOfCourse);
+			System.out.println(hashtagOfCourse.toString());
 			RequestDispatcher dispatcher;
 			if (courseUtil.checkSignedCourse(course_id, uid) == null) {
 				dispatcher = request.getRequestDispatcher("/Course_detail.jsp");
