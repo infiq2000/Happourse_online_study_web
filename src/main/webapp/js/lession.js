@@ -22,8 +22,6 @@ let mood_rate_2 = document.querySelector("#mood_rate_text_2");
 let mood_rate_3 = document.querySelector("#mood_rate_text_3");
 let label = document.querySelector("#mood_rate_label");
 const mood = [];
-var low = 0
-var high = 0
 
 
 function capture(){
@@ -50,6 +48,8 @@ function capture(){
 			mood.push(1);
 		}
 	})
+	
+	console.log(mood);
 }
 
 function stopClock() {
@@ -57,12 +57,39 @@ function stopClock() {
 }
 
 function check_rate(){
-	var total = mood.length;
-	var doan = int(total/3);
-	console.log('Total: ',total*5);
-	console.log('High Mood: ',high*5/60);
-	var rate = (high/total)*100;
-	return rate.toFixed(2);
+	var total = mood.length - 1 ;
+	var doan = parseInt(total/3);
+	console.log('doan: ',doan);
+	var rate_1 = 0
+	var rate_2 = 0
+	var rate_3 = 0
+	var rate_t = 0
+	
+	for (let i = 0; i < doan; i++) {
+		if (mood[i] == 1){
+			rate_1 = rate_1 + 1;
+		}
+	}
+	
+	for (let j = doan; j < doan*2; j++) {
+		if (mood[j] == 1){
+			rate_2 = rate_2 + 1;
+		}
+	}
+	
+	for (let k = doan*2; k < total; k++) {
+		if (mood[k] == 1){
+			rate_3 = rate_3 + 1;
+		}
+	}
+	
+	console.log('Total: ',total);
+	console.log('rate1: ', rate_1);
+	console.log('rate2: ', rate_2);
+	console.log('rate3: ', rate_3);
+	
+	var rate_t = (rate_1 + rate_2 + rate_3)/total*100;
+	return [rate_t.toFixed(2), rate_1/doan, rate_2/doan, rate_3/(total-doan*2)];
 }
 
 camera_button.addEventListener('click', async function() {
@@ -70,7 +97,7 @@ camera_button.addEventListener('click', async function() {
    	let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
 	video.srcObject = stream;
 	
-	var intervalID = setInterval(capture, 5000);
+	var intervalID = setInterval(capture, 3000);
 	
 	camera_stop.addEventListener('click', async function() {
 		setTimeout(() => { 
@@ -83,16 +110,21 @@ camera_button.addEventListener('click', async function() {
 		const tracks = mediaStream.getTracks();
 		tracks.forEach(track => track.stop());
 		
-		if(check_rate() >= 50 && check_rate() <75){
+		let rate = check_rate();
+		
+		if(rate[0] >= 50 && rate[0] <75){
 			label.innerHTML = "Good Job!";
 			label.style.color = "yellow";
 		}else{
-			if(check_rate() < 50){
+			if(rate[0] < 50){
 				label.innerHTML = "Come On!";
 				label.style.color = "red";
 			}
 		}
-		mood_rate_total.value = String(check_rate())+"%";
+		mood_rate_total.value = String(rate[0])+"%";
+		mood_rate_1.value = rate[1];
+		mood_rate_2.value = rate[2];
+		mood_rate_3.value = rate[3];
 	});
 	
 });
@@ -100,7 +132,7 @@ camera_button.addEventListener('click', async function() {
 function screen(){
 	html2canvas(screenshotTarget).then((canvas) => {
 	    var base64image = canvas.toDataURL("image/jpeg").replace(/^data:image\/jpeg;base64,/, "");
-	    /*console.log(base64image);*/
+	    console.log(base64image);
 	    return base64image;
 	});
 }
