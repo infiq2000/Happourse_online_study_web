@@ -75,120 +75,111 @@
 					</div>-->
 				</div>
 			</div>
-			<form action="AddNewCourse" method="get">
-			<div class="inner-container">
-				<div class="row clearfix">
-					
-					<!-- Left Column -->
-					<div class="left-column col-lg-8 col-md-12 col-sm-12">
-						<div class="inner-column">
-							<h6>Basic Information</h6>
-							
-							<!-- Edit Course Form -->
-							<div class="edit-course-form">
+			<form action="AddNewCourse2" method="POST" enctype="multipart/form-data">
+				<div class="inner-container">
+					<div class="row clearfix">
+						
+						<!-- Left Column -->
+						<div class="left-column col-lg-8 col-md-12 col-sm-12">
+							<div class="inner-column">
+								<h6>Basic Information</h6>
 								
-									<!-- Form Group -->
-									<div class="form-group">
-										<label>Course Title</label>
-										<input type="text" name="username" value="" placeholder="First Name" required>
-									</div>
+								<!-- Edit Course Form -->
+								<div class="edit-course-form">
 									
-									<div class="form-group">
-										<label>Description</label>
-										<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
-										<textarea class="" name="message" placeholder="Shortly describe this course"></textarea>
-
-									</div>
-									
+										<!-- Form Group -->
+										<div class="form-group">
+											<label>Course Title</label>
+											<input type="text" name="username" value="" placeholder="First Name" required>
+										</div>
+										
+										<div class="form-group">
+											<label>Description</label>
+											<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
+											<textarea class="" name="message" placeholder="Shortly describe this course"></textarea>
+	
+										</div>
+								</div>
 								
-							
 							</div>
-							
 						</div>
-					</div>
-					
-					<!-- Right Column -->
-					<div class="right-column col-lg-4 col-md-12 col-sm-12">
-						<div class="inner-column">
-							
-							
-							<h6>Options</h6>
-							<div class="option-cource-box">
+						
+						<!-- Right Column -->
+						<div class="right-column col-lg-4 col-md-12 col-sm-12">
+							<div class="inner-column">
 								
-								<div class="box-inner">
+								
+								<h6>Options</h6>
+								<div class="option-cource-box">
 									
-									<div class="form-group">
-										<label>Image</label>
-										<img id="an" style="width: 250px; height: 120px;border-radius:5px;" src="images/logo/logo10.jpg" alt=""/>
-										<div id="displayImg" style="width: 120px; border-radius:5px;"></div>
-										<input type="file" name="upload" id="upload" onchange="ImagesFileAsURL()" style="display: inline; margin-top: 15px;"/>
+									<div class="box-inner">
+										
+										<div class="form-group">
+											<label>Image</label>
+											<img id="an" style="width: 250px; height: 120px;border-radius:5px;" src="images/logo/logo10.jpg" alt=""/>
+											<div id="displayImg" style="width: 120px; border-radius:5px;"></div>
+											<input type="file" name="upload" id="upload" onchange="ImagesFileAsURL()" style="display: inline; margin-top: 15px;"/>
+										</div>
+										
+										<div class="form-group">
+	
+											<%
+											  	InitialContext ctx;
+											  	DataSource ds;
+											 	ctx = new InitialContext();
+										    	ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Happourse");
+										    	CourseUtil couUtil = new CourseUtil(ds);
+										    	List<Category> cate = couUtil.getCategories();
+										    	request.setAttribute("cate", cate);
+										    	
+											%>
+	
+											<label>Category</label>
+											<select class="custom-select-box" name ="chon">
+												 <c:forEach var="categoryName" items="${cate }">
+												 	<option value = "${categoryName.getCid()}">  ${categoryName.getName() }</option>
+												 </c:forEach>	
+											</select>
+											<span class="select-category">Select a category</span>
+										</div>
+										
+										<div class="form-group">
+											<label>Language</label>
+											<select class="custom-select-box">
+												<option>English</option>
+												<option>Vietnamese</option>
+											</select>
+											<span class="select-category">Select a language</span>
+										</div>
+										
+										<div class="form-group">
+													<label style="margin-right: 20px; font-size:14px;">Price ($)</label>
+													<div style=" width: 50px; display:inline;">
+														<input type="text" name="price" value="" placeholder="$" required>
+													</div>
+											</div> <!-- /.course-price-filter -->
+										
+										<div class="form-group tags">
+											<label>Tags</label>
+											<a href="#">JavaScript</a>
+											<a href="#">UI/ UX Design</a>
+											<a href="#">Typography</a>
+											<a href="#">Web Design</a>
+											<a href="#">Education</a>
+											<a href="#">Courses</a>
+										</div>
 									</div>
-									
-									<div class="form-group">
-
-										<%
-										  	InitialContext ctx;
-										  	DataSource ds;
-										 	ctx = new InitialContext();
-									    	ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Happourse");
-									    	CourseUtil couUtil = new CourseUtil(ds);
-									    	List<Category> cate = couUtil.getCategories();
-									    	request.setAttribute("cate", cate);
-									    	
-										%>
-
-										<label>Category</label>
-										<select class="custom-select-box" name ="chon">
-											 <c:forEach var="categoryName" items="${cate }">
-											 	<option value = "${categoryName.getCid()}">  ${categoryName.getName() }</option>
-											 </c:forEach>	
-										</select>
-										<span class="select-category">Select a category</span>
-									</div>
-									
-									<div class="form-group">
-										<label>Language</label>
-										<select class="custom-select-box">
-											<option>English</option>
-											<option>Vietnamese</option>
-										</select>
-										<span class="select-category">Select a language</span>
-									</div>
-									
-									<div class="form-group">
-												<label style="margin-right: 20px; font-size:14px;">Price ($)</label>
-												<div style=" width: 50px; display:inline;">
-													<input type="text" name="price" value="" placeholder="$" required>
-												</div>
-										</div> <!-- /.course-price-filter -->
-									
-									<div class="form-group tags">
-										<label>Tags</label>
-										<a href="#">JavaScript</a>
-										<a href="#">UI/ UX Design</a>
-										<a href="#">Typography</a>
-										<a href="#">Web Design</a>
-										<a href="#">Education</a>
-										<a href="#">Courses</a>
-									</div>
-									
 								</div>
 							</div>
-							
-							
-							
-							
+						</div>
+						<!-- Button Box -->
+		
+						<div class="button-box text-center" style="margin-top: 40px;">
+							<button type="submit" name="cmd" value = "save" class="theme-btn btn-style-one" style="margin-left: 40px;"><span class="txt">Save Course</span></button>
+							<button name = "cmd" value ="save_create" style="margin-left: 40px;" type="submit" class="theme-btn btn-style-two"><span class="txt">Save & Create New Chapter</span></button>
 						</div>
 					</div>
-					
-										<!-- Button Box -->
-	
-					<div class="button-box text-center" style="margin-top: 40px;">
-						<button type="submit" name="cmd" value = "save" class="theme-btn btn-style-one" style="margin-left: 40px;"><span class="txt">Save Course</span></button>
-						<button name = "cmd" value ="save_create" style="margin-left: 40px;" type="submit" class="theme-btn btn-style-two"><span class="txt">Save & Create New Chapter</span></button>
-					</div>
 				</div>
-			</div>
 		</form>
 			
 		</div>

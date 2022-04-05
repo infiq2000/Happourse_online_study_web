@@ -14,6 +14,7 @@ public class Courses {
 	private String ins_major;
 	private int countCourses;
 	private String category_name;
+	private String img_path;
 	public Courses(int courses_id, String name, String skill, int price, String language, double star_rate,
 			String desciption, int ins_id, int cid, String ins_name, String ins_major, int countCourses,
 			String category_name) {

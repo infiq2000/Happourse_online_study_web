@@ -29,13 +29,12 @@ import Dao.LectureUtil;
 import Dao.UserUtil;
 
 /**
- * Servlet implementation class AddNewCourse
+ * Servlet implementation class AddNewCourse2
  */
-@WebServlet("/AddNewCourse")
-public class AddNewCourse extends HttpServlet {
+@WebServlet("/AddNewCourse2")
+public class AddNewCourse2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final String UPLOAD_DIRECTORY = "C:\\Users\\Tan Dat\\git\\Happourse\\src\\main\\webapp\\images\\avatar";
-	
+	private final String UPLOAD_DIRECTORY = "C:\\Users\\Tan Dat\\git\\Happourse\\src\\main\\webapp\\images\\course";
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
 	Dao.CourseUtil courseUtil; 
@@ -80,15 +79,20 @@ public class AddNewCourse extends HttpServlet {
 		insUtil = new InstructorUtil(dataSource);
 		lecUtil = new LectureUtil(dataSource);
 	} 
-    public AddNewCourse() {
-        // TODO Auto-generated constructor stub
-    	super();
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public AddNewCourse2() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletResquest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doget(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String filename = null;
 		HashMap<String, String> fields = new HashMap<String, String>();
 		if (ServletFileUpload.isMultipartContent(request)) {
@@ -129,27 +133,26 @@ public class AddNewCourse extends HttpServlet {
 		} else {
 			request.setAttribute("message", "Sorry this Servlet only handles file upload request");
 		}
-		String cmd = "savesss";
-//		String cmd = fields.get("cmd");
-//		String course_name = fields.get("username");
-//		String description = fields.get("message");
-//		int cid = Integer.parseInt(fields.get("chon"));
-//		int price = Integer.parseInt(fields.get("price"));
-//		String langguage = "English";
-//		float star_rate = 4.0f;
-//		float duration = 0;
+		String cmd = fields.get("cmd");
+		String course_name = fields.get("username");
+		String description = fields.get("message");
+		int cid = Integer.parseInt(fields.get("chon"));
+		int price = Integer.parseInt(fields.get("price"));
+		int ins_id = (int)request.getSession(false).getAttribute("ins_id");
+		String langguage = "English";
+		float star_rate = 4.0f;
+		float duration = 0;
 		int course_id = 0;
-//		try {
-//			course_id = courseUtil.insertNewCourse(course_name,description,cid,price,langguage,star_rate,duration,ins_id,filename);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			course_id = courseUtil.insertNewCourse(course_name,description,cid,price,langguage,star_rate,duration,ins_id,filename);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if (cmd.equals("save")) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("ManageCourses");
 			dispatcher.forward(request, response);
-		}
-		else {
+		} else {
 			request.setAttribute("course_id", course_id);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("add_chapter.jsp");
 			dispatcher.forward(request, response);
