@@ -105,20 +105,12 @@
 										</div>
 									</div>
 								</div> <!-- /.course-info -->
-								<img src="images/course/35.jpg" alt="">
 								<a href="CourseLesson?course_id=${course_id}" class="tran3s p-bg-color follow hvr-trim" style="padding: 15px 102px 15px 102px;border-radius: 3px;color: white; display:inline">LEARN NOW</a>
-								<p class="p1">${course_detail.getDesciption()}</p>
+								<p class="p1"> </p>
 								<div class="learn-list">
 									<h3>What Will I Learn?</h3>
 									<ul class="row">
-										<li class="col-sm-6 col-xs-12"><span>Create static HTML and CSS portfolio sites and landing pages</span></li>
-										<li class="col-sm-6 col-xs-12"><span>Think like a developer. Become an expert at Googling code questions!</span></li>
-										<li class="col-sm-6 col-xs-12"><span>Write complex web apps with multiple models and data associations</span></li>
-										<li class="col-sm-6 col-xs-12"><span>Use Express and MongoDB to create full-stack JS applications</span></li>
-										<li class="col-sm-6 col-xs-12"><span>Use common JS data structures like Arrays and Objects</span></li>
-										<li class="col-sm-6 col-xs-12"><span>Create a blog application from scratch using Express, MongoDB, and Semantic UI</span></li>
-										<li class="col-sm-6 col-xs-12"><span>Use Bootstrap to create good-looking responsive layout</span></li>
-										<li class="col-sm-6 col-xs-12"><span>Create a beautiful, responsive landing page for a startup</span></li>
+										<li class="col-sm-12 col-xs-12"><span>${course_detail.getDesciption()}</span></li>
 									</ul>
 								</div>
 
@@ -126,7 +118,7 @@
 									<div class="clearfix">
 										<h3 class="float-left">Curriculum</h3>
 										<ul class="float-right">
-											<li><span>6 </span> Lectures</li>
+											<li><span>${chapter.size()}</span> Lectures</li>
 											<li><span>40 : 30</span></li>
 										</ul>
 									</div>
@@ -291,13 +283,13 @@
 							<div class="course-sidebar">
 								<div class="sidebar-course-information">
 									<ul class="price clearfix">
-										<li class="float-left"><strong class="s-color"><del>${course_detail.getPrice() + 19}<sup>.99</sup></del>${course_detail.getPrice()}<sup>.99</sup></strong></li>
+										<li class="float-left"><strong class="s-color"><del>${course_detail.getPrice() + 19}$<sup>.99</sup></del>${course_detail.getPrice()}$<sup></sup></strong></li>
 										<li class="float-right"><a href="#" class="tran3s"><i class="flaticon-like"></i></a></li>
 									</ul>
 									<ul class="info-list row">
-										<li class="col-xs-6"><b>Lectures :</b> 9</li>
-										<li class="col-xs-6"><b>Skill :</b>${course_detail.getSkill()}</li>
-										<li class="col-xs-6"><b>Language :</b> English</li>
+										<li class="col-xs-6"><b>Lectures :</b> ${chapter.size()}</li>
+										<li class="col-xs-6"><b>Tags :</b>${hashtagOfCourse}</li>
+										<li class="col-xs-6"><b>Language :</b> ${course_detail.getLanguage()}</li>
 										<li class="col-xs-6"><b>Duration :</b> 40:23</li>
 									</ul>
 									<div>
@@ -313,7 +305,7 @@
 												</div>
 											</li>
 										</ul>
-										<p><b>1,625</b> Students Enrolled</p>
+										<p><b>${num_students }</b> Students Enrolled</p>
 									</div>
 									<c:url var="removeCourse" value="RemoveCourse">
 										<c:param name="course_id" value="${course_id}"></c:param> 

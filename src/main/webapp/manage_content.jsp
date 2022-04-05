@@ -103,8 +103,8 @@
 							  <td class="title" scope="col"><a href="manage_content.jsp" >${listLectures.getName()} </a></td>
 							  <td class="duration" scope="col" style="text-align:center;">${listLectures.getDuration()}</td>
 							  <td class="actions" scope="col" style="text-align:center;">
-							  	<a href="#"><i class='fa fa-trash-o'></i></a>
-							  	<a href="edit_course.jsp"><i class='fa fa-edit'></i></a>
+							  	<a href="DeleteLecture?lecture_id=${listLectures.getLectureID()}" onclick="if (!(confirm('Ban muon xoa bai hoc?'))) return false"><i class='fa fa-trash-o'></i></a>
+							  	<a href="EditCourse?courseID=${listLectures.getCourseID()}"><i class='fa fa-edit'></i></a>
 							  </td>
 							  <td style="text-align:center;">
 							  	<ul>

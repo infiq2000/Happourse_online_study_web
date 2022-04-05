@@ -679,5 +679,53 @@ public class CourseUtil {
 			myConn.close();
 		}
 	}
+	
+	public int getStudentOfCourse(int cid) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "SELECT COUNT(uid) students FROM user_course WHERE course_id = ?";
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setInt(1, cid);
+			myRS = myStmt.executeQuery();
+			int students = 0;
+			if (myRS.next()) {
+				students = myRS.getInt("students");
+			}
+			myConn.close();
+			return students;
+		} 
+		finally {
+			myConn.close();
+		}
+	}
+	
+	public String getHashtagOfCourse(int cid) throws SQLException{
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		try {
+			myConn = dataSource.getConnection();
+			String sql = "SELECT hashtag_name FROM happourse.course_hashtag c, hashtag h WHERE c.hashid=h.hashid AND course_id= ?;";
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setInt(1, cid);
+			myRS = myStmt.executeQuery();
+			int students = 0;
+			String rs = "";
+			while (myRS.next()) {				
+				rs = rs + myRS.getString("hashtag_name");
+				if (!myRS.isLast()) {
+					rs += ", ";
+				}
+			}
+			myConn.close();
+			return rs;
+		} 
+		finally {
+			myConn.close();
+		}
+	}
 
 }

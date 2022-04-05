@@ -489,34 +489,9 @@
 
 
 
-<!-- Color Palate / Color Switcher -->
-<div class="color-palate">
-    <div class="color-trigger">
-        <i class="fa fa-gear"></i>
-    </div>
-    <div class="color-palate-head">
-        <h6>Choose Your Color</h6>
-    </div>
-    <div class="various-color clearfix">
-        <div class="colors-list">
-            <span class="palate color-one active" data-theme-file="css/ins/color-themes/theme-one.css"></span>
-            <span class="palate color-two" data-theme-file="css/ins/color-themes/theme-two.css"></span>
-            <span class="palate color-three" data-theme-file="css/ins/color-themes/theme-three.css"></span>
-            <span class="palate color-four" data-theme-file="css/ins/color-themes/theme-four.css"></span>
-            <span class="palate color-five" data-theme-file="css/ins/color-themes/theme-five.css"></span>
-            <span class="palate color-six" data-theme-file="css/ins/color-themes/theme-six.css"></span>
-            <span class="palate color-seven" data-theme-file="css/ins/color-themes/theme-seven.css"></span>
-            <span class="palate color-eight" data-theme-file="css/ins/color-themes/theme-eight.css"></span>
-			<span class="palate color-nine" data-theme-file="css/ins/color-themes/theme-nine.css"></span>
-			<span class="palate color-ten" data-theme-file="css/ins/color-themes/theme-ten.css"></span>
-			<span class="palate color-eleven" data-theme-file="css/ins/color-themes/theme-eleven.css"></span>
-			<span class="palate color-twelve" data-theme-file="css/ins/color-themes/theme-twelve.css"></span>
-        </div>
-    </div>
 
-</div>
 
-<script src="js/ins/jquery.js"></script>
+<!-- <script src="js/ins/jquery.js"></script> -->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
