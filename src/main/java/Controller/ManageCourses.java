@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -48,7 +49,7 @@ public class ManageCourses extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int ins_id = (int)request.getSession(false).getAttribute("ins_id");
-		List<ManagedCourses> ls = null;
+		List<ManagedCourses> ls = new ArrayList<>();
 		try {
 			ls = courseUtil.getManagedCourses(ins_id);
 		} catch (SQLException e) {

@@ -46,7 +46,7 @@ public class ManageChapters extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String courseID = request.getParameter("course_id");
 		int course_id = Integer.parseInt(courseID);
-		List<Chapter> ls = null;
+		List<Chapter> ls = new ArrayList<>();
 		try {
 			ls = chapterUtil.getChaptersByCourse(course_id);		
 		} catch (SQLException e) {
