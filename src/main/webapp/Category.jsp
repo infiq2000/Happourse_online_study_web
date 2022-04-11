@@ -60,17 +60,16 @@
 								
 								<div class="course-filter">
 									<h4>Search By Filters</h4>
-									<form action="" class="main-wrapper">
+									<form action="CourseByHashtag" class="main-wrapper">
 										<div class="tag-option">
 											<h5>Tag</h5>
-											<ul class="clearfix">
-
-												<c:forEach var="hashtag" items="${list_hashtag}">
-													<li>
-														<input type="checkbox" id="${hashtag.getHashtag_name()}" >
-														<label for="book">${hashtag.getHashtag_name()}</label>
-													</li>
-												</c:forEach>	
+											<ul class="clearfix">													
+												
+												<select class="custom-select-box" name ="choosen">
+													 <c:forEach var="hashtag" items="${list_hashtag }">
+													 	<option value = "${hashtag.getHashid()}">  ${hashtag.getHashtag_name() }</option>
+													 </c:forEach>	
+												</select>
 
 											</ul>
 										</div> <!-- /.tag-option -->

@@ -27,9 +27,10 @@ public class ChapterUtil {
 		ResultSet myRS = null;
 		List<Chapter> ls = new ArrayList<>();
 		myConn = dataSource.getConnection();
-		String sql = "SELECT c.chap_id, c.name, course_id, sum(l.duration) as duration, c.mood FROM chapter c, lecturer_content l WHERE c.chap_id=l.chap_id AND course_id = ?;";
+		String sql = "select chap_id, chapter.name, course_id, (select sum(l.duration) from lecturer_content l, chapter c where l.chap_id = c.chap_id and course_id = ?) as duration from chapter where course_id = ?;";
 		pstmt = myConn.prepareStatement(sql);
 		pstmt.setInt(1, courseID);
+		pstmt.setInt(2, courseID);
 		myRS = pstmt.executeQuery();
 		int count = 0;
 		while (myRS.next()) {
@@ -41,7 +42,13 @@ public class ChapterUtil {
 			} else {
 				name = "0" + Integer.toString(count) + ". " + myRS.getString("name");
 			}
-			String time = convertDoubleToTime(myRS.getDouble("duration"));
+			String time = "";
+			try {
+				Double duration = myRS.getDouble("duration");
+				time = convertDoubleToTime(duration);
+			} catch (Exception e) {
+				time = "0";
+			}
 			int moodCheck = myRS.getInt("mood");
 			String mood, color;
 			if (moodCheck == 1) {

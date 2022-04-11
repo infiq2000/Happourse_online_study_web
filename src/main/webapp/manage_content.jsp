@@ -108,9 +108,9 @@
 							  </td>
 							  <td style="text-align:center;">
 							  	<ul>
-							  		<li>1m-3m: 100%</li>
-							  		<li>3m-6m: 100%</li>
-							  		<li>6m-10m: 100%</li>
+							  		<li style="color:${listLectures.getColor1()};">${listLectures.getDuration1() }: ${listLectures.getMood1() }</li>
+							  		<li style="color:${listLectures.getColor2()};">${listLectures.getDuration2() }: ${listLectures.getMood2() }</li>
+							  		<li style="color:${listLectures.getColor3()};">${listLectures.getDuration3() }: ${listLectures.getMood3() }</li>
 							  	</ul>
 							  </td>
 							</tr>

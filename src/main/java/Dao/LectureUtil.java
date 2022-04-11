@@ -16,6 +16,7 @@ import javax.sql.DataSource;
 import Model.Chapter;
 import Model.Courses;
 import Model.Lecture;
+import Model.ManagedLecture;
 import Model.Content;
 
 public class LectureUtil {
@@ -70,7 +71,7 @@ public class LectureUtil {
 		myConn.close();
 		return contents;
 	}
-	public List<Lecture> getLecturesByChapter(int chap_id) throws SQLException {
+	public List<ManagedLecture> getLecturesByChapter(int chap_id) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
@@ -79,7 +80,7 @@ public class LectureUtil {
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, chap_id);
 		myRS = myStmt.executeQuery();
-		List<Lecture> ls = new ArrayList<>();
+		List<ManagedLecture> ls = new ArrayList<>();
 		int count = 0;
 		while (myRS.next()) {
 			count += 1;
@@ -90,10 +91,44 @@ public class LectureUtil {
 			name += myRS.getString("name");
 			String type = myRS.getString("type");
 			String link = myRS.getString("link");
-			String duration = format.format(myRS.getTime("duration", Calendar.getInstance()));
+			String duration = "";
+			try {
+				duration = format.format(myRS.getTime("duration", Calendar.getInstance()));
+			} catch (Exception e) {
+				duration = "00:00:00";
+			}
 			int chapterID = myRS.getInt("chap_id");
 			int courseID = myRS.getInt("course_id");
-			ls.add(new Lecture(lectureID, name, type, link, duration, chapterID, courseID));
+			Time durationTime = myRS.getTime("duration", Calendar.getInstance());
+			double time = durationTime.getHours() * 3600 + durationTime.getMinutes() * 60 + durationTime.getSeconds();
+			double distance = time/3;
+			String duration1 = "00:00:00" + " - " +convertDoubleToTime(distance);
+			String duration2 = convertDoubleToTime(distance) + " - " + convertDoubleToTime(distance*2);
+			String duration3 = convertDoubleToTime(distance*2) + " - " + duration;
+			String color1 = "green", color2 = "green", color3 = "green";
+			float mood1 = 1, mood2 = 1, mood3 = 1, mood_1 = 1, mood_2 = 1, mood_3 = 1;
+			sql = "select lc_id, mood_1, mood_2, mood_3 from user_content where lc_id = ?";
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setInt(1, lectureID);
+			ResultSet myRS2 = myStmt.executeQuery();
+			while (myRS2.next()) {
+				mood_1 = myRS2.getFloat("mood_1");
+				mood_2 = myRS2.getFloat("mood_2");
+				mood_3 = myRS2.getFloat("mood_3");
+				if (mood_1 < mood1) {
+					mood1 = mood_1;
+				}
+				if (mood_2 < mood2) {
+					mood2 = mood_2;
+				}
+				if (mood_3 < mood3) {
+					mood3 = mood_3;
+				}			
+			}
+			if (mood1 < 0.5) color1 = "red";
+			if (mood2 < 0.5) color2 = "red";
+			if (mood3 < 0.5) color3 = "red";
+			ls.add(new ManagedLecture(lectureID, name, type, link, duration, chapterID, courseID, duration1, duration2, duration3, mood1, mood2, mood3, color1, color2, color3));
 		}
 		myConn.close();
 		return ls;

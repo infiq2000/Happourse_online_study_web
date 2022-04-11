@@ -8327,6 +8327,20 @@ img{
 	margin-top:8px;
 }
 
+#checked{
+	
+    background: lightcoral;
+   	color: white;
+}
+
+.btn_hash{
+	width: 150px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 7px;
+    background: lightblue;
+    color: #6c757d;
+}
 /***
 
 ==================================================================
