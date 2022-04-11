@@ -17,6 +17,7 @@ import javax.sql.DataSource;
 import Dao.ChapterUtil;
 import Dao.LectureUtil;
 import Model.Lecture;
+import Model.ManagedLecture;
 
 /**
  * Servlet implementation class ManageLectures
@@ -48,7 +49,7 @@ public class ManageLectures extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String chapterID = request.getParameter("chap_id");
 		int chap_id = Integer.parseInt(chapterID);
-		List<Lecture> ls = null;
+		List<ManagedLecture> ls = null;
 		try {
 			ls = lecUtil.getLecturesByChapter(chap_id);
 		} catch (SQLException e) {
