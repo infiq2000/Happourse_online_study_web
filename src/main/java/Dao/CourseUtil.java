@@ -17,6 +17,7 @@ import Controller.ManageCourses;
 import Model.Category;
 import Model.Content;
 import Model.Courses;
+import Model.Courses_Intructors;
 import Model.ManagedCourses;
 import Model.Hashtag;
 
@@ -726,6 +727,33 @@ public class CourseUtil {
 		finally {
 			myConn.close();
 		}
+	}
+	
+	public List<Courses> getCoursesByHashtag(int hash_id) throws SQLException{
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		List<Courses> ls = new ArrayList<>();
+		myConn = dataSource.getConnection();
+		String sql = "select * from courses, course_hashtag where courses.course_id = course_hashtag.course_id and course_hashtag.hashid = ?";
+		pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, hash_id);
+		myRS = pstmt.executeQuery();
+		while (myRS.next()) {
+			int courses_id = myRS.getInt("course_id");
+			String name = myRS.getString("name");
+			String skill = myRS.getString("skill");
+			int price = myRS.getInt("price");
+			String language = myRS.getString("language");
+			String description = myRS.getString("description");
+			double star_rate = myRS.getDouble("star_rate");
+			int  ins_id = myRS.getInt("ins_id");
+			int cid = myRS.getInt("cid");
+			Courses course = new Courses_Intructors(courses_id, name, skill, price, language, star_rate, description, ins_id, cid);
+			ls.add(course); 
+		}
+		myConn.close();
+		return ls;
 	}
 
 }
