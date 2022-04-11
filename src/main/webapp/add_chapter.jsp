@@ -5,6 +5,7 @@
 <%@ page import="Model.Category" %>
 <%@ page import="Dao.CourseUtil" %>
 <%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
+<%@ page import="Model.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,7 +86,7 @@
 						<h4>New Chapter</h4>
 						<font color = "red">
 							<li>
-								<p> Course ID: <%=course_id %> </p>
+								<p> Course ID: <%=course_id %></p>
 
 							</li>
 						</font>
@@ -131,7 +132,7 @@
 													<button  id="s1" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
 												</div>
 												<div id = "msg">
-												
+
 												</div>
 												
 												<!-- Content -->
@@ -172,8 +173,11 @@
 															<div class="button-box text-center"  style="margin-top: 40px;">
 																<button id="s2" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
 															</div>
+
 														</div>
-														
+														<div id = "msg2">
+												
+														</div>
 													</li>
 													
 													<li style="margin: 0 0 40px 40px;">
@@ -539,6 +543,14 @@
 										
 										<!-- Accordion Box -->
 										<label class="chapter-s">- Chapter</label>
+																							<%
+														List<Chapter> list_chapter = (List<Chapter>)request.getAttribute("list_chapter");
+														int n = 0;
+														if (list_chapter != null){
+															n = list_chapter.size();
+														}
+													%>
+													<p>Hiện ra không: <%=n %></p>
 										<ul class="accordion-box style-two" id="chapter" style="margin-left: 40px;">
 											<li id="chapter-s1">Chapter 1</li>
 											<li id="chapter-s1">Chapter 2</li>

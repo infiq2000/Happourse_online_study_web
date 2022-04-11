@@ -15,6 +15,17 @@ public class Courses {
 	private int countCourses;
 	private String category_name;
 	private String img_path;
+	
+	public String getImg_path() {
+		return img_path;
+	}
+
+
+	public void setImg_path(String img_path) {
+		this.img_path = img_path;
+	}
+
+
 	public Courses(int courses_id, String name, String skill, int price, String language, double star_rate,
 			String desciption, int ins_id, int cid, String ins_name, String ins_major, int countCourses,
 			String category_name) {

@@ -19,6 +19,7 @@ import Dao.CourseUtil;
 import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
+import Model.Chapter;
 
 /**
  * Servlet implementation class AddContent

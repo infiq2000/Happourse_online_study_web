@@ -10,7 +10,7 @@ document.getElementById("s1").onclick = function (){
 				  },
 				  success: function(data) {
 				   	var row = document.getElementById ("msg") ; 
-					row.innerHTML = data;
+					row.innerHTML += data;
 				  },
 				  error: function(xhr) {
 				    //Do Something to handle error
