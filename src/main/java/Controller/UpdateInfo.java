@@ -2,6 +2,8 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -19,6 +21,7 @@ import Dao.LectureUtil;
 import Dao.UserUtil;
 import Model.User;
 import Model.UserAccount;
+import Model.Hashtag;
 
 
 /**
@@ -64,6 +67,12 @@ public class UpdateInfo extends HttpServlet {
 		if (accountType == 0) {
 			try {
 				ua = userUtil.getUserInformationByID(id);
+				
+				List<Hashtag> user_hashtags = userUtil.getMyHashTags(id);
+				request.setAttribute("user_hashtags", user_hashtags);
+				
+				List<Hashtag> allHashtags = userUtil.getAllHashtags();
+				request.setAttribute("all_hashtags", allHashtags);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
