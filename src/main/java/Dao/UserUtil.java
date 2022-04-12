@@ -243,7 +243,7 @@ public class UserUtil {
 			String description = email + birth + countryName + describe;
 			up = new Profiles(id, name, major, balance, description,img_path);
 		}
-		System.out.println("up" + up.getName());
+		System.out.println("up: " + up.getBalance());
 		myConn.close();
 		return up;
 	}

@@ -3,6 +3,8 @@ package Controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -19,6 +21,7 @@ import Dao.AccountUtil;
 import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
+import Model.Chapter;
 
 /**
  * Servlet implementation class AddChapter
@@ -72,10 +75,20 @@ public class AddChapter extends HttpServlet {
 		}
 		System.out.println("chapter_id gen: "+chapter_id);
 		HttpSession session = request.getSession(true);
+		List<Chapter> list_chapter = new ArrayList<Chapter>();
+		try {
+			list_chapter = lecUtil.getChapterOfCourse(course_id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("list_chapter", list_chapter);
 		session.setAttribute("chapter_id",chapter_id);
 		PrintWriter out = response.getWriter();
-		out.print("<p>Done "+chapter_id+"</p>");
-
+		for(int i=0;i< list_chapter.size();i++) {
+			out.print("<li id=\"chapter-s1\">Chapter "+i+" : "+list_chapter.get(i).getName()+"</li>");
+		}
+		
 	}
 
 }
