@@ -125,29 +125,34 @@ public class LectureUtil {
 			Time durationTime = myRS.getTime("duration", Calendar.getInstance());
 			double time = durationTime.getHours() * 3600 + durationTime.getMinutes() * 60 + durationTime.getSeconds();
 			double distance = time/3;
-			String duration1 = "00:00:00" + " - " +convertDoubleToTime(distance);
+			String duration1 = convertDoubleToTime(distance);
+			if (distance >= 3600/3) duration1 = "00:00:00 - " + duration1;
+			else if (distance >= 60/3) duration1 = "00:00 - " + duration1;
+			else duration1 = "0s - " + duration;
 			String duration2 = convertDoubleToTime(distance) + " - " + convertDoubleToTime(distance*2);
-			String duration3 = convertDoubleToTime(distance*2) + " - " + duration;
+			String duration3 = convertDoubleToTime(distance*2) + " - " + convertDoubleToTime(distance*3);
 			String color1 = "green", color2 = "green", color3 = "green";
-			float mood1 = 1, mood2 = 1, mood3 = 1, mood_1 = 1, mood_2 = 1, mood_3 = 1;
+			float mood1 = 0, mood2 = 0, mood3 = 0;
+			int count_mood = 0;
 			sql = "select lc_id, mood_1, mood_2, mood_3 from user_content where lc_id = ?";
 			myStmt = myConn.prepareStatement(sql);
 			myStmt.setInt(1, lectureID);
 			ResultSet myRS2 = myStmt.executeQuery();
 			while (myRS2.next()) {
-				mood_1 = myRS2.getFloat("mood_1");
-				mood_2 = myRS2.getFloat("mood_2");
-				mood_3 = myRS2.getFloat("mood_3");
-				if (mood_1 < mood1) {
-					mood1 = mood_1;
-				}
-				if (mood_2 < mood2) {
-					mood2 = mood_2;
-				}
-				if (mood_3 < mood3) {
-					mood3 = mood_3;
-				}			
-			}
+				mood1 += myRS2.getFloat("mood_1");
+				mood2 += myRS2.getFloat("mood_2");
+				mood3 += myRS2.getFloat("mood_3");
+				count_mood += 1;
+			} 
+			if (count_mood == 0) {
+				mood1 = 1;
+				mood2 = 1;
+				mood3 = 1;
+			} else {
+				mood1 /= count_mood;
+				mood2 /= count_mood;
+				mood3 /= count_mood;
+			}			
 			if (mood1 < 0.5) color1 = "red";
 			if (mood2 < 0.5) color2 = "red";
 			if (mood3 < 0.5) color3 = "red";
