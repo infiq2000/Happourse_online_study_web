@@ -520,8 +520,8 @@
 								<!-- Video Box -->
 								
 								
-								<div class="video-boxed" style="background-image: url(images/logo/logo10.jpg); margin-top: 20px;">
-									<a href="https://www.youtube.com/watch?v=-ncIVUXZla8&list=RDMM-ncIVUXZla8&start_radio=1&ab_channel=AviciiOfficialVEVO" class="lightbox-image intro-video-box"><span class="fa fa-play"><i class="ripple"></i></span></a>
+								<div id="video1" class="video-boxed" style="background-image: url(images/logo/logo10.jpg); margin-top: 20px;">
+									
 								</div>
 								<!-- End Video Box -->
 								
