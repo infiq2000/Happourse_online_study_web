@@ -70,7 +70,6 @@ public class UpdateInfo extends HttpServlet {
 				
 				List<Hashtag> user_hashtags = userUtil.getMyHashTags(id);
 				request.setAttribute("user_hashtags", user_hashtags);
-				
 				List<Hashtag> allHashtags = userUtil.getAllHashtags();
 				request.setAttribute("all_hashtags", allHashtags);
 			} catch (SQLException e) {

@@ -27,6 +27,7 @@ import Dao.AccountUtil;
 import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
+import Model.Hashtag;
 
 /**
  * Servlet implementation class AddNewCourse2

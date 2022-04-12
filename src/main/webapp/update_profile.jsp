@@ -1,3 +1,4 @@
+<%@page import="Model.Hashtag"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -167,11 +168,23 @@
 										<div class="box-inner" style="width: 120%;">
 											<label style="font-size:14px; font-weight: 500; font-family: 'Roboto', sans-serif;">Hashtags</label></br>
 											
-
-											<input type="button" class="btn_hash" id="checked" value="Javascript">
-											<input type="button" class="btn_hash" id="checked" value="Javascript">
-											<input type="button" class="btn_hash" value="Javascript">
-											<input type="button" class="btn_hash" value="Javascript">
+											<c:forEach var = "hashtag" items = "${all_hashtags }" >
+												<%
+													List<Hashtag> user_hashtags = (List<Hashtag>)request.getAttribute("user_hashtags");
+													List<Integer> lst_id = new ArrayList<>();
+													for (Hashtag tmp : user_hashtags){
+														lst_id.add(tmp.getHashid());
+													}
+													Hashtag hashtag = (Hashtag)pageContext.getAttribute("hashtag");
+													if (lst_id.contains(hashtag.getHashid())){
+												%>
+													<input type="button" class="btn_hash" id="checked" value="${hashtag.getHashtag_name()}">
+												<%
+													} else{
+												%>
+													<input type="button" class="btn_hash" value="${hashtag.getHashtag_name()}">
+												<%} %>
+											</c:forEach>
 											
 											
 										</div>

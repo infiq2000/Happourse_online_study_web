@@ -15,7 +15,7 @@ document.getElementById("s2").onclick = function (){
 						url:url
 				  },
 				  success: function(data) {
-				   	var row = document.getElementById ("msg2") ; 
+				   	var row = document.getElementById ("video1") ; 
 					row.innerHTML  = data;
 				  },
 				  error: function(xhr) {

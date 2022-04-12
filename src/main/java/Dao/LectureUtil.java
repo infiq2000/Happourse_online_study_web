@@ -71,6 +71,29 @@ public class LectureUtil {
 		myConn.close();
 		return contents;
 	}
+	public Content getContentsbyContendId(int content_id) throws SQLException{
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "select * from  happourse.lecturer_content where lc_id = ? ";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, content_id);
+		myRS = myStmt.executeQuery();
+		
+		Content contents = null;
+		int count = 0;
+		if (myRS.next()) {
+			count++;
+			int lc_id = myRS.getInt("lc_id");
+			String name = myRS.getString("name");
+			String type = myRS.getString("type");
+			String link = myRS.getString("link");
+			contents = new Content(lc_id,name,type, link, content_id);
+		}
+		myConn.close();
+		return contents;
+	}
 	public List<ManagedLecture> getLecturesByChapter(int chap_id) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
