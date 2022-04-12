@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
+<%@ page import="Model.Courses" %>
+<%@ page import="Model.ManagedCourses" %>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
+<%@ page import="Dao.CourseUtil" %>
+<%@ page import="Model.Chapter" %>
+<%@ page import="Model.Content" %>
+<%@ page import="Dao.LectureUtil" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,7 +93,7 @@
 						<form action="UpdateTest2" method="POST" enctype="multipart/form-data" style="background: #f5e5e8;padding: 20px; border-radius: 5px;">
 							<div class="left-column col-lg-4 col-md-12 col-sm-12">
 								<div class="inner-column">
-									<div class="form-group" style="margin-left:150px; width:500px;">
+									<div class="form-group" style="margin-left:20%; width:500px;">
 										<h2>Change Information</h2>
 										<div>
 											<img id="an" style="width: 120px;margin:0 0 0 20px;" src="${userInfo.getImg_path()}" alt=""/>
@@ -128,7 +137,7 @@
 							<div class="right-column col-lg-4 col-md-12 col-sm-12">
 								<div class="inner-column">
 									
-									<div class="form-group" style="margin-left:300px; width:500px;">
+									<div class="form-group" style="margin-left:65%; width:500px;">
 										<div>
 											<label style="font-size:14px;">Address</label>
 											<input style="margin-bottom:20px;" type="text" name="address" value="${userInfo.getAddress()}" placeholder="${userInfo.getAddress()}">
@@ -154,25 +163,21 @@
 										
 									</div>
 									
-									<div class="option-cource-box" style="margin-left:300px; width:500px; background: #f5e5e8; padding:0px;">
-										<div class="box-inner">
-											<label style="font-size:14px; font-weight: 500; font-family: 'Roboto', sans-serif;">Hashtags</label>
-											<div class="form-group tags">
-												<input type="checkbox" id="tag1" name="tag1" value="tag">
-  												<label for="tag1"> JavaScript</label><br>
-												<input type="checkbox" id="tag1" name="tag1" value="tag">
-  												<label for="tag1"> JavaScript</label><br>
-  												<input type="checkbox" id="tag1" name="tag1" value="tag">
-  												<label for="tag1"> JavaScript</label><br>
-  												<input type="checkbox" id="tag1" name="tag1" value="tag">
-  												<label for="tag1"> JavaScript</label><br>
-  												<input type="checkbox" id="tag1" name="tag1" value="tag">
-  												<label for="tag1"> JavaScript</label><br>
-											</div>
+									<div class="option-cource-box" style="margin-left:268px; width:500px; background: #f5e5e8; padding:0px;">
+										<div class="box-inner" style="width: 120%;">
+											<label style="font-size:14px; font-weight: 500; font-family: 'Roboto', sans-serif;">Hashtags</label></br>
+											
+
+											<input type="button" class="btn_hash" id="checked" value="Javascript">
+											<input type="button" class="btn_hash" id="checked" value="Javascript">
+											<input type="button" class="btn_hash" value="Javascript">
+											<input type="button" class="btn_hash" value="Javascript">
+											
+											
 										</div>
 									</div>
 									
-									<div class="form-group" style="margin-left:300px; width:500px;">
+									<div class="form-group" style="margin-left:65%; width:500px;">
 										<button type="submit" class="button-box text-center theme-btn btn-style-one" style="margin-top: 40px;">Save Information</button>
 									</div>
 								</div>
@@ -183,7 +188,7 @@
 				<div class="right-column col-lg-4 col-md-12 col-sm-12" style="margin-top: 40px;">
 					<div class="inner-column">
 						<form action="UpdatePassword" method="post">
-							<div class="form-group" style="margin-left:150px; width:500px;">
+							<div class="form-group" style="margin-left:20%; width:500px;">
 								<h2>Change Password</h2>
 								<label style="font-size:14px;">Old password</label>
 								<input style="margin-bottom:20px;" type="password" name="oldPassword" value="">
@@ -246,7 +251,7 @@
 
 </div>
 
-<!--<script src="js/ins/jquery.js"></script>-->
+<script src="js/ins/jquery.js"></script>
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
@@ -267,6 +272,7 @@
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
 		<script type="text/javascript" src="js/update.js"></script>
+		<script type="text/javascript" src="js/update_profile.js"></script>
 		<!-- Bootstrap Select JS -->
 		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 

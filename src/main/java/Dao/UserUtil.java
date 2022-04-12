@@ -16,6 +16,8 @@ import Model.Courses;
 import Model.User;
 import Model.UserAccount;
 import Model.Profiles;
+import Model.Hashtag;
+
 import Dao.AccountUtil; 
 public class UserUtil {
 	private DataSource dataSource;
@@ -241,7 +243,7 @@ public class UserUtil {
 			String description = email + birth + countryName + describe;
 			up = new Profiles(id, name, major, balance, description,img_path);
 		}
-		System.out.println("up" + up.getName());
+		System.out.println("up: " + up.getBalance());
 		myConn.close();
 		return up;
 	}
@@ -303,5 +305,40 @@ public class UserUtil {
 		
 		myStmt.executeUpdate();
 		myConn.close();
+	}
+	
+	public List<Hashtag> getMyHashTags(int uid) throws SQLException{
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT hashtag.hashid, hashtag.hashtag_name FROM happourse.user_hashtag, happourse.hashtag WHERE user_hashtag.hashid = hashtag.hashid and user_hashtag.uid = ?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, uid);
+		myRS = myStmt.executeQuery();
+		List<Hashtag> hashtags = new ArrayList<>();
+		while (myRS.next()) {
+			int id = myRS.getInt("hashid");
+			String name = myRS.getString("hashtag_name");
+			hashtags.add(new Hashtag(id, name));
+		}
+		return hashtags; 
+	}
+	
+	public List<Hashtag> getAllHashtags() throws SQLException{
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT * FROM happourse.hashtag;";
+		myStmt = myConn.prepareStatement(sql);
+		myRS = myStmt.executeQuery();
+		List<Hashtag> hashtags = new ArrayList<>();
+		while (myRS.next()) {
+			int id = myRS.getInt("hashid");
+			String name = myRS.getString("hashtag_name");
+			hashtags.add(new Hashtag(id, name));
+		}
+		return hashtags;
 	}
 }
