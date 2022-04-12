@@ -9,12 +9,12 @@ document.getElementById("s1").onclick = function (){
 						course_id:valuePassedFromJSP
 				  },
 				  success: function(data) {
-				   	var row = document.getElementById ("msg") ; 
+				   	var row = document.getElementById ("chapter231") ; 
 					row.innerHTML = data;
 				  },
 				  error: function(xhr) {
 				    //Do Something to handle error
 				  }
 				});
-		 console.log("check")
+		 console.log("check2")
 		}

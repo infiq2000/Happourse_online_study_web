@@ -19,6 +19,8 @@ import Dao.CourseUtil;
 import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
+import Model.Chapter;
+import Model.Content;
 
 /**
  * Servlet implementation class AddContent
@@ -80,8 +82,16 @@ public class AddContent extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		Content ct = null;
+		try {
+			ct = lecUtil.getContentsbyContendId(content);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		PrintWriter out = response.getWriter();
-		out.print("<p>Done "+content +" </p>");
+		out.print("<a href=\""+ct.getLink()+"\" class=\"lightbox-image intro-video-box\"><span class=\"fa fa-play\"><i class=\"ripple\"></i></span></a>");
+		//<a href="" class="lightbox-image intro-video-box"><span class="fa fa-play"><i class="ripple"></i></span></a>
 	}
 
 }
