@@ -105,11 +105,11 @@ public class ChapterUtil {
 		myConn = dataSource.getConnection();
 		String sql = "SELECT course_id FROM chapter WHERE chap_id=?;";
 		pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, chap_id);
 		myRS = pstmt.executeQuery();
 		int course_id = 0;
 		if (myRS.next()) {
 			course_id = myRS.getInt("course_id");
-			System.out.println("Get courseID: " + course_id);
 		}
 		myConn.close();
 		return course_id;
