@@ -123,7 +123,7 @@ public class Login extends HttpServlet {
 					session.setAttribute("aid", ins.getAid());
 					session.setAttribute("account_type", 1);
 
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/DashBoard");
 					dispatcher.forward(request, response);
 				}
 			}
