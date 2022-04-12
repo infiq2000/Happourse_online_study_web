@@ -43,20 +43,36 @@ public class ChapterUtil {
 				name = "0" + Integer.toString(count) + ". " + myRS.getString("name");
 			}
 			String time = "";
-			try {
-				Double duration = myRS.getDouble("duration");
-				time = convertDoubleToTime(duration);
-			} catch (Exception e) {
-				time = "0";
+			sql = "select sum(duration) as duration from lecturer_content where chap_id = ?";
+			pstmt = myConn.prepareStatement(sql);
+			pstmt.setInt(1, chapID);
+			ResultSet myRS3 = pstmt.executeQuery();
+			Double duration = 0.0;
+			if (myRS3.next()) {
+				duration = myRS3.getDouble("duration");
 			}
-			int moodCheck = myRS.getInt("mood");
-			String mood, color;
-			if (moodCheck == 1) {
-				mood = "HIGH";
-				color = "green";
-			} else {
-				mood = "LOW";
-				color = "green";
+			time = convertDoubleToTime(duration);
+			sql = "select mood_1, mood_2, mood_3 from user_content u, lecturer_content l where u.lc_id = l.lc_id and chap_id = ?";
+			pstmt = myConn.prepareStatement(sql);
+			pstmt.setInt(1, chapID);
+			ResultSet myRS2 = pstmt.executeQuery();
+			float mood1 = 0, mood2 = 0, mood3 = 0;
+			String mood = "HIGH", color = "green";
+			int count_mood = 0;
+			while (myRS2.next()) {
+				count_mood += 1;
+				mood1 += myRS2.getFloat("mood_1");
+				mood2 += myRS2.getFloat("mood_2");
+				mood3 += myRS2.getFloat("mood_3");
+			}
+			if (count_mood != 0) {
+				mood1 /= count_mood;
+				mood2 /= count_mood;
+				mood3 /= count_mood;
+				if (mood1 < 0.5 || mood2 < 0.5 || mood3 < 0.5) {
+					mood = "LOW";
+					color = "red";
+				}
 			}
 			ls.add(new Chapter(chapID, name, courseID, time, mood, color));
 		}
@@ -93,8 +109,32 @@ public class ChapterUtil {
 		int course_id = 0;
 		if (myRS.next()) {
 			course_id = myRS.getInt("course_id");
+			System.out.println("Get courseID: " + course_id);
 		}
+		myConn.close();
 		return course_id;
+	}
+
+	public void deleteChapterByChapID(int chapID) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement pstmt = null;
+		ResultSet myRS = null;
+		LectureUtil lecUtil = new LectureUtil(dataSource);
+		myConn = dataSource.getConnection();
+		String sql = "select lc_id from lecturer_content where chap_id = ?";
+		pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, chapID);
+		myRS = pstmt.executeQuery();
+		int lectureID = 0;
+		while (myRS.next()) {
+			lectureID = myRS.getInt("lc_id");
+			lecUtil.deleteLectureByLectureID(lectureID);
+		}
+		sql = "delete from chapter where chap_id = ?";
+		pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, chapID);
+		pstmt.executeUpdate();
+		myConn.close();
 	}
 	
 }

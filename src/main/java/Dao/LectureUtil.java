@@ -105,7 +105,7 @@ public class LectureUtil {
 			String duration1 = convertDoubleToTime(distance);
 			if (distance >= 3600/3) duration1 = "00:00:00 - " + duration1;
 			else if (distance >= 60/3) duration1 = "00:00 - " + duration1;
-			else duration1 = "0s - " + duration;
+			else duration1 = "0s - " + convertDoubleToTime(distance);
 			String duration2 = convertDoubleToTime(distance) + " - " + convertDoubleToTime(distance*2);
 			String duration3 = convertDoubleToTime(distance*2) + " - " + convertDoubleToTime(distance*3);
 			String color1 = "green", color2 = "green", color3 = "green";

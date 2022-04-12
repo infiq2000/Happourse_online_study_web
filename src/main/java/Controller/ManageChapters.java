@@ -44,9 +44,14 @@ public class ManageChapters extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String courseID = request.getParameter("course_id");
+		String courseID = (String) request.getParameter("course_id");
+		System.out.println(courseID);
+		if (courseID == null) {
+			courseID = request.getAttribute("course_id").toString();
+			System.out.println("Attribute: " + courseID);
+		}
 		int course_id = Integer.parseInt(courseID);
-		List<Chapter> ls = new ArrayList<>();
+		List<Chapter> ls = null;
 		try {
 			ls = chapterUtil.getChaptersByCourse(course_id);		
 		} catch (SQLException e) {
