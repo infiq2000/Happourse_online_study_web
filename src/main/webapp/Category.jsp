@@ -65,7 +65,7 @@
 											<h5>Tag</h5>
 											<ul class="clearfix">													
 												
-												<select class="custom-select-box" name ="choosen">
+												<select class="custom-select-box" name ="choosen" style="width: 90%;">
 													 <c:forEach var="hashtag" items="${list_hashtag }">
 													 	<option value = "${hashtag.getHashid()}">  ${hashtag.getHashtag_name() }</option>
 													 </c:forEach>	

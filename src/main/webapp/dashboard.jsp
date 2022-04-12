@@ -140,18 +140,23 @@
 					<div class="sec-title">
 						<div class="clearfix">
 							<div class="pull-left">
-								<h4>Latest Course Performance</h4>
+								<h4>Sale Course Performance</h4>
 							</div>
 							<div class="pull-right">
 								<a href="earning_course.jsp" class="see-all">View Earnings</a>
 							</div>
+							
+							<div style="background: white;width: 999px;padding: 20px;margin: 90px 0 0 13%;border-radius: 5px;">
+								<canvas id="myChart" style="width: 1000px; max-width: 1000px; display: block; height: 400px;"></canvas>
+							</div>
 						</div>
 					</div>
 					<!-- Graph Box -->
-					<div class="graph-box">
+					<%-- <div class="graph-box">
 						<!-- Graph -->
 						<canvas id="canvas" style="height: 430px; width: 100%;"></canvas>
-					</div>
+					</div> --%>
+					
 				</div>
 				
 				<!-- End Dashboard Graph Section -->
@@ -267,7 +272,7 @@
 
 </div>
 
-<script src="js/ins/jquery.js"></script>
+<!-- <script src="js/ins/jquery.js"></script> -->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
@@ -280,8 +285,11 @@
 <script src="js/ins/color-settings.js"></script>
 
 <!-- Chart -->
-<script src="js/ins/canvasjs.min.js"></script>
-<script src="js/ins/charts-script.js"></script>
+<!-- <script src="js/ins/canvasjs.min.js"></script>
+<script src="js/ins/charts-script.js"></script> -->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script type="text/javascript" src="js/dashboard_chart.js"></script>
 
 <!-- Js File_________________________________ -->
 
