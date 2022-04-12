@@ -1,10 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@page import="Dao.UserUtil"%>
+<%@page import="Model.Hashtag"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.*" %>
-<%@ page import="Model.Category" %>
-<%@ page import="Dao.CourseUtil" %>
+<%@ page import="Model.Courses" %>
+<%@ page import="Model.ManagedCourses" %>
 <%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
+<%@ page import="Dao.CourseUtil" %>
+<%@ page import="Model.Chapter" %>
+<%@ page import="Model.Content" %>
+<%@ page import="Dao.LectureUtil" %>
+<%@ page import="Model.Category" %>
+<%@ page import="Model.UserAccount" %>
+<%@ page import="Dao.UserUtil"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -159,14 +168,18 @@
 													</div>
 											</div> <!-- /.course-price-filter -->
 										
+										<%
+											UserUtil userUtil = new UserUtil(ds);
+									    	
+									    	List<Hashtag> ls_hashtag = userUtil.getAllHashtags();
+									    	request.setAttribute("list_hashtag", ls_hashtag);	
+										%>
+										
 										<div class="form-group tags">
 											<label>Tags</label>
-											<a href="#">JavaScript</a>
-											<a href="#">UI/ UX Design</a>
-											<a href="#">Typography</a>
-											<a href="#">Web Design</a>
-											<a href="#">Education</a>
-											<a href="#">Courses</a>
+												<c:forEach var = "hashtag" items = "${list_hashtag}" >
+													<input type="button" class="btn_hash" value="${hashtag.getHashtag_name()} ">
+												</c:forEach>
 										</div>
 									</div>
 								</div>
@@ -250,6 +263,7 @@
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
 		<script type="text/javascript" src="js/update.js"></script>
+		<script type="text/javascript" src="js/add_course.js"></script>
 		<!-- Bootstrap Select JS -->
 		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 

@@ -28,6 +28,8 @@ import Model.Category;
 import Model.Courses;
 import Model.Instructor;
 import Model.User;
+import Model.Hashtag;
+
 /**
  * Servlet implementation class Login
  */
@@ -75,6 +77,7 @@ public class Login extends HttpServlet {
 		String passWord = request.getParameter("password");
 		try {			
 			Account tmp = accUtil.validation(userName,passWord);
+			
 			if (tmp!=null) {
 				if (!tmp.isType()) {
 					User user = null;
