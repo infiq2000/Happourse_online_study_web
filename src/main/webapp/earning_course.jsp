@@ -92,9 +92,14 @@
 					</div>
 					
 					<!-- Graph Box -->
-					<div class="graph-box">
+					<%-- <div class="graph-box">
 						<!-- Graph -->
 						<canvas id="canvas" style="height: 430px; width: 100%;"></canvas>
+					</div> --%>
+					
+					<div style="background: white;width: 999px;padding: 20px;margin: 90px 0 0 13%;border-radius: 5px;">
+						<b><h4>Sale Report</h4></b>
+						<canvas id="myChart" style="width: 1000px; max-width: 1000px; display: block; height: 400px;"></canvas>
 					</div>
 					
 				</div>
@@ -230,14 +235,18 @@
 <script src="js/ins/color-settings.js"></script>
 
 <!-- Chart -->
-<script src="js/ins/canvasjs.min.js"></script>
-<script src="js/ins/charts-script.js"></script>
+<!-- <script src="js/ins/canvasjs.min.js"></script>
+<script src="js/ins/charts-script.js"></script> -->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script type="text/javascript" src="js/earning_chart.js"></script>
 
 <!-- Js File_________________________________ -->
 
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
 		<script type="text/javascript" src="js/slide.js"></script>
+		
 		<!-- Bootstrap Select JS -->
 		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 

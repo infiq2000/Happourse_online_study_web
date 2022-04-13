@@ -178,14 +178,51 @@
 													Hashtag hashtag = (Hashtag)pageContext.getAttribute("hashtag");
 													if (lst_id.contains(hashtag.getHashid())){
 												%>
-													<input type="button" class="btn_hash" id="checked" value="${hashtag.getHashtag_name()}">
+													<label style = "font-size: 25px" >
+														<%= hashtag.getHashtag_name()%>
+														<input type="checkbox" checked>
+													</label>
 												<%
 													} else{
 												%>
-													<input type="button" class="btn_hash" value="${hashtag.getHashtag_name()}">
+													<label style = "font-size: 25px" >
+														<%= hashtag.getHashtag_name()%>
+														<input type="checkbox">
+													</label>
 												<%} %>
-											</c:forEach>
+											</c:forEach> 
 											
+											
+											
+											<!-- <label style = "font-size: 25px" >
+												Java
+												<input type="checkbox">
+											</label>
+											
+											<label style = "font-size: 25px" >
+												Java
+												<input type="checkbox" checked>
+											</label>
+											
+											<label style = "font-size: 25px" >
+												Java
+												<input type="checkbox">
+											</label>
+											
+											<label style = "font-size: 25px" >
+												Java
+												<input type="checkbox">
+											</label>
+											
+											<label style = "font-size: 25px" >
+												Java
+												<input type="checkbox">
+											</label>
+											
+											<label style = "font-size: 25px" >
+												Java
+												<input type="checkbox">
+											</label> -->
 											
 										</div>
 									</div>

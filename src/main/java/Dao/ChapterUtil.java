@@ -25,6 +25,7 @@ public class ChapterUtil {
 		Connection myConn = null;
 		PreparedStatement pstmt = null;
 		ResultSet myRS = null;
+		LectureUtil lecUtil = new LectureUtil(dataSource);
 		List<Chapter> ls = new ArrayList<>();
 		myConn = dataSource.getConnection();
 		String sql = "select chap_id, chapter.name, course_id, (select sum(l.duration) from lecturer_content l, chapter c where l.chap_id = c.chap_id and course_id = ?) as duration from chapter where course_id = ?;";
@@ -52,28 +53,9 @@ public class ChapterUtil {
 				duration = myRS3.getDouble("duration");
 			}
 			time = convertDoubleToTime(duration);
-			sql = "select mood_1, mood_2, mood_3 from user_content u, lecturer_content l where u.lc_id = l.lc_id and chap_id = ?";
-			pstmt = myConn.prepareStatement(sql);
-			pstmt.setInt(1, chapID);
-			ResultSet myRS2 = pstmt.executeQuery();
-			float mood1 = 0, mood2 = 0, mood3 = 0;
-			String mood = "HIGH", color = "green";
-			int count_mood = 0;
-			while (myRS2.next()) {
-				count_mood += 1;
-				mood1 += myRS2.getFloat("mood_1");
-				mood2 += myRS2.getFloat("mood_2");
-				mood3 += myRS2.getFloat("mood_3");
-			}
-			if (count_mood != 0) {
-				mood1 /= count_mood;
-				mood2 /= count_mood;
-				mood3 /= count_mood;
-				if (mood1 < 0.5 || mood2 < 0.5 || mood3 < 0.5) {
-					mood = "LOW";
-					color = "red";
-				}
-			}
+			String mood = lecUtil.getMoodOfLecture(chapID);
+			String color = "green";
+			if (mood.equalsIgnoreCase("low")) color = "red";
 			ls.add(new Chapter(chapID, name, courseID, time, mood, color));
 		}
 		myConn.close();

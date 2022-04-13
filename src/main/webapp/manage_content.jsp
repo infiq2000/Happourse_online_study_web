@@ -74,8 +74,12 @@
 				</div>
 			</div>
 			<div class="inner-container">
-				<div class="container-content" style="width:80%; margin-left:150px;">
+				<div class="container-content" style="width:80%;margin-left:10%;">
 					<!-- Title Box -->
+					<div id="chart" style="display:none;">
+						<b><h4>Mood Report</h4></b>
+						<canvas id="myChart" style="width: 600px; max-width: 1000px; display: block; height: 120px; margin: 80px 0 0 3%"></canvas>
+					</div>
 					<div class="title-box clearfix">
 						<!-- Title Column -->
 						<div class="title-column" style="width:300px;">
@@ -93,6 +97,7 @@
 						<div class="title-column" style="width:300px;">
 							<h6>Mood</h6>
 						</div>
+						
 					</div>
 					<table class="table">
 					  <thead>
@@ -100,7 +105,7 @@
 					  <tbody>
 					  	<c:forEach var="listLectures" items="${lecture}">
 							<tr> 
-							  <td class="title" scope="col"><a href="manage_content.jsp" >${listLectures.getName()} </a></td>
+							  <td class="title" scope="col"><button style="background: white;">${listLectures.getName()} </button></td>
 							  <td class="duration" scope="col" style="text-align:center;">${listLectures.getDuration()}</td>
 							  <td class="actions" scope="col" style="text-align:center;">
 							  	<a href="DeleteLecture?lecture_id=${listLectures.getLectureID()}" onclick="if (!(confirm('Ban muon xoa bai hoc?'))) return false"><i class='fa fa-trash-o'></i></a>
@@ -113,7 +118,9 @@
 							  		<li style="color:${listLectures.getColor3()};">${listLectures.getDuration3() } --> ${listLectures.getMood3() }</li>
 							  	</ul>
 							  </td>
+							  
 							</tr>
+							
 						</c:forEach>
 					  </tbody>
 					</table>
@@ -164,8 +171,11 @@
 <script src="js/ins/color-settings.js"></script>
 
 <!-- Chart -->
-<script src="js/ins/canvasjs.min.js"></script>
-<script src="js/ins/charts-script.js"></script>
+<!-- <script src="js/ins/canvasjs.min.js"></script>
+<script src="js/ins/charts-script.js"></script> -->
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="js/content_chart.js"></script>
 
 <!-- Js File_________________________________ -->
 
