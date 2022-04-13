@@ -15,8 +15,16 @@ document.getElementById("s2").onclick = function (){
 						url:url
 				  },
 				  success: function(data) {
+					alert(data);
+					var json = JSON.parse(data);
 				   	var row = document.getElementById ("video1") ; 
-					row.innerHTML  = data;
+					row.innerHTML = json.link;
+					var row2 = document.getElementById("video2");
+					row2.innerHTML = json.test;
+					var row3 = document.getElementById("chapter231");
+					row3.innerHTML += json.show;
+					var row4 = document.getElementById("content");
+					row4.innerHTML = json.ip;
 				  },
 				  error: function(xhr) {
 				    //Do Something to handle error

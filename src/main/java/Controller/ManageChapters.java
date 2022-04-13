@@ -45,10 +45,8 @@ public class ManageChapters extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String courseID = (String) request.getParameter("course_id");
-		System.out.println(courseID);
 		if (courseID == null) {
 			courseID = request.getAttribute("course_id").toString();
-			System.out.println("Attribute: " + courseID);
 		}
 		int course_id = Integer.parseInt(courseID);
 		List<Chapter> ls = null;
