@@ -168,7 +168,7 @@
 										<div class="box-inner" style="width: 120%;">
 											<label style="font-size:14px; font-weight: 500; font-family: 'Roboto', sans-serif;">Hashtags</label></br>
 											
-											<c:forEach var = "hashtag" items = "${all_hashtags }" >
+											<%-- <c:forEach var = "hashtag" items = "${all_hashtags }" >
 												<%
 													List<Hashtag> user_hashtags = (List<Hashtag>)request.getAttribute("user_hashtags");
 													List<Integer> lst_id = new ArrayList<>();
@@ -184,8 +184,37 @@
 												%>
 													<input type="button" class="btn_hash" value="${hashtag.getHashtag_name()}">
 												<%} %>
-											</c:forEach>
+											</c:forEach> --%>
 											
+											<label style = "font-size: 25px" >
+												Java
+												<input type="checkbox">
+											</label>
+											
+											<label style = "font-size: 25px" >
+												Java
+												<input type="checkbox" checked>
+											</label>
+											
+											<label style = "font-size: 25px" >
+												Java
+												<input type="checkbox">
+											</label>
+											
+											<label style = "font-size: 25px" >
+												Java
+												<input type="checkbox">
+											</label>
+											
+											<label style = "font-size: 25px" >
+												Java
+												<input type="checkbox">
+											</label>
+											
+											<label style = "font-size: 25px" >
+												Java
+												<input type="checkbox">
+											</label>
 											
 										</div>
 									</div>
