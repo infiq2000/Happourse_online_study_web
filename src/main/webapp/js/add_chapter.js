@@ -10,11 +10,11 @@ document.getElementById("s1").onclick = function (){
 				  },
 				  success: function(data) {
 				   	var row = document.getElementById ("chapter231") ; 
-					row.innerHTML = data;
+					row.innerHTML += data;
 				  },
 				  error: function(xhr) {
 				    //Do Something to handle error
 				  }
 				});
-		 console.log("check2")
+		 console.log("check1")
 		}
