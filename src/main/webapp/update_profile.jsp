@@ -168,7 +168,7 @@
 										<div class="box-inner" style="width: 120%;">
 											<label style="font-size:14px; font-weight: 500; font-family: 'Roboto', sans-serif;">Hashtags</label></br>
 											
-											<%-- <c:forEach var = "hashtag" items = "${all_hashtags }" >
+											<c:forEach var = "hashtag" items = "${all_hashtags }" >
 												<%
 													List<Hashtag> user_hashtags = (List<Hashtag>)request.getAttribute("user_hashtags");
 													List<Integer> lst_id = new ArrayList<>();
@@ -178,15 +178,23 @@
 													Hashtag hashtag = (Hashtag)pageContext.getAttribute("hashtag");
 													if (lst_id.contains(hashtag.getHashid())){
 												%>
-													<input type="button" class="btn_hash" id="checked" value="${hashtag.getHashtag_name()}">
+													<label style = "font-size: 25px" >
+														<%= hashtag.getHashtag_name()%>
+														<input type="checkbox" checked>
+													</label>
 												<%
 													} else{
 												%>
-													<input type="button" class="btn_hash" value="${hashtag.getHashtag_name()}">
+													<label style = "font-size: 25px" >
+														<%= hashtag.getHashtag_name()%>
+														<input type="checkbox">
+													</label>
 												<%} %>
-											</c:forEach> --%>
+											</c:forEach> 
 											
-											<label style = "font-size: 25px" >
+											
+											
+											<!-- <label style = "font-size: 25px" >
 												Java
 												<input type="checkbox">
 											</label>
@@ -214,7 +222,7 @@
 											<label style = "font-size: 25px" >
 												Java
 												<input type="checkbox">
-											</label>
+											</label> -->
 											
 										</div>
 									</div>
