@@ -40,7 +40,6 @@ public class DeleteCourse extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int ins_id = (int)request.getSession(false).getAttribute("ins_id");
 		int course_id = Integer.parseInt(request.getParameter("course_id"));
 		try {
 			courseUtil.deleteCourseByCourseID(course_id);
