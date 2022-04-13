@@ -178,8 +178,13 @@
 										<div class="form-group tags">
 											<label>Tags</label>
 												<c:forEach var = "hashtag" items = "${list_hashtag}" >
-													<label>${hashtag.getHashtag_name()}</label>
-													<input type="checkbox" class="btn_hash" value="${hashtag.getHashtag_name()} ">
+													<%-- <label>${hashtag.getHashtag_name()}</label>
+													<input type="checkbox" class="btn_hash" value="${hashtag.getHashtag_name()} "> --%>
+													<label style="font-size: 14px;font-weight: 500; font-family: 'Roboto', sans-serif; margin: 10px 20px 10px 20px;background: #ebcfdd; color:#9a9696; padding: 10px;border-radius: 5px; width:220px;" >
+														
+														<input type="checkbox" style="height: 20px; width: 30px;">
+														${hashtag.getHashtag_name()}
+													</label>
 												</c:forEach>
 										</div>
 									</div>

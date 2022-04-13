@@ -178,16 +178,18 @@
 													Hashtag hashtag = (Hashtag)pageContext.getAttribute("hashtag");
 													if (lst_id.contains(hashtag.getHashid())){
 												%>
-													<label style = "font-size: 25px" >
+													<label style="font-size: 14px; font-weight: 500; font-family: 'Roboto', sans-serif; margin: 10px 20px 10px 20px;background: #ebcfdd; color:#9a9696; padding: 10px;border-radius: 5px; width:220px;" >
+														
+														<input type="checkbox" style="height: 20px; width: 30px;" checked>
 														<%= hashtag.getHashtag_name()%>
-														<input type="checkbox" checked>
 													</label>
 												<%
 													} else{
 												%>
-													<label style = "font-size: 25px" >
+													<label style="font-size: 14px;font-weight: 500; font-family: 'Roboto', sans-serif; margin: 10px 20px 10px 20px;background: #ebcfdd; color:#9a9696; padding: 10px;border-radius: 5px; width:220px;" >
+														
+														<input type="checkbox" style="height: 20px; width: 30px;">
 														<%= hashtag.getHashtag_name()%>
-														<input type="checkbox">
 													</label>
 												<%} %>
 											</c:forEach> 
@@ -301,7 +303,7 @@
 
 </div>
 
-<script src="js/ins/jquery.js"></script>
+<!-- <script src="js/ins/jquery.js"></script> -->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
