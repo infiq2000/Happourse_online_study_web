@@ -63,6 +63,8 @@ public class EditCourse extends HttpServlet {
 		}
 		request.setAttribute("course_name", course.getName());
 		request.setAttribute("course_description", course.getDesciption());
+		request.setAttribute("course_id", course_id);
+		request.setAttribute("course", course);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_course.jsp");
 		dispatcher.forward(request, response);
 	}
