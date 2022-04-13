@@ -390,7 +390,8 @@ public class CourseUtil {
 	public List<ManagedCourses> getManagedCourses(int ins_id) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement pstmt = null;
-		ResultSet myRS = null;
+		ResultSet myRS = null, myRS2 = null;
+		LectureUtil lecUtil = new LectureUtil(dataSource);
 		List<ManagedCourses> ls = new ArrayList<>();
 		myConn = dataSource.getConnection();
 		String sql = "SELECT count(u.course_id) as countCourses, c.*, ca.name as categoryName FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid where ins_id = ? GROUP BY course_id";
@@ -416,18 +417,21 @@ public class CourseUtil {
 			String description = myRS.getString("description");
 			int cid = myRS.getInt("cid");
 			String category = myRS.getString("categoryName");
-			Date publishDate = myRS.getDate("publish_date");
-			int temp = myRS.getInt("mood");
-			String mood, color;
-			if (temp == 1) {
-				mood = "HIGH";
-				color = "green";
-			} else {
-				mood = "LOW";
-				color = "red";
+			Date publishDate = myRS.getDate("publish_date");	
+			Boolean status = myRS.getBoolean("status");
+			String mood = "HIGH", color = "green";
+			sql = "select chap_id from chapter where course_id = ?;";
+			pstmt = myConn.prepareStatement(sql);
+			pstmt.setInt(1, courses_id);
+			myRS2 = pstmt.executeQuery();
+			int chapID = 0;
+			while (mood.equalsIgnoreCase("high") && myRS2.next()) {
+				chapID = myRS2.getInt("chap_id");
+				mood = lecUtil.getMoodOfLecture(chapID);
 			}
-			ls.add(new ManagedCourses(courses_id, name, skill, price, language, starRate,
-					description, ins_id, cid, countCourses, category, publishDate, mood, color));
+			if (mood.equalsIgnoreCase("low")) color = "red";
+			ls.add(new ManagedCourses(courses_id, name, skill, price, language, chapID, description, 
+					ins_id, cid, name, description, countCourses, category, category, publishDate, mood, color, status));
 		}
 		myConn.close();
 		return ls;
@@ -437,8 +441,21 @@ public class CourseUtil {
 		Connection myConn = null;
 		PreparedStatement pstmt = null;
 		ResultSet myRS = null;
+		ChapterUtil chapUtil = new ChapterUtil(dataSource);
 		myConn = dataSource.getConnection();
-		String sql = "DELETE FROM courses WHERE course_id=?;";
+		String sql = "select chap_id from chapter where course_id = ?;";
+		pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, course_id);
+		myRS = pstmt.executeQuery();
+		while (myRS.next()) {
+			int chapID = myRS.getInt("chap_id");
+			chapUtil.deleteChapterByChapID(chapID);
+		}
+		sql = "delete from user_course where course_id = ?;";
+		pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, course_id);
+		pstmt.executeUpdate();
+		sql = "DELETE FROM courses WHERE course_id=?;";
 		pstmt = myConn.prepareStatement(sql);
 		pstmt.setInt(1, course_id);
 		pstmt.execute();
@@ -448,7 +465,8 @@ public class CourseUtil {
 	public List<ManagedCourses> sortCoursesBySalesNumber(int ins_id, boolean desc) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement pstmt = null;
-		ResultSet myRS = null;
+		ResultSet myRS = null, myRS2 = null;
+		LectureUtil lecUtil = new LectureUtil(dataSource);
 		List<ManagedCourses> ls = new ArrayList<>();
 		myConn = dataSource.getConnection();
 		String sql = "";
@@ -479,17 +497,20 @@ public class CourseUtil {
 			int cid = myRS.getInt("cid");
 			String category = myRS.getString("categoryName");
 			Date publishDate = myRS.getDate("publish_date");
-			int temp = myRS.getInt("mood");
-			String mood, color;
-			if (temp == 1) {
-				mood = "HIGH";
-				color = "green";
-			} else {
-				mood = "LOW";
-				color = "red";
+			Boolean status = myRS.getBoolean("status");
+			String mood = "HIGH", color = "green";
+			sql = "select chap_id from chapter where course_id = ?;";
+			pstmt = myConn.prepareStatement(sql);
+			pstmt.setInt(1, courses_id);
+			myRS2 = pstmt.executeQuery();
+			int chapID = 0;
+			while (mood.equalsIgnoreCase("high") && myRS2.next()) {
+				chapID = myRS2.getInt("chap_id");
+				mood = lecUtil.getMoodOfLecture(chapID);
 			}
-			ls.add(new ManagedCourses(courses_id, name, skill, price, language, starRate,
-					description, ins_id, cid, countCourses, category, publishDate, mood, color));
+			if (mood.equalsIgnoreCase("low")) color = "red";
+			ls.add(new ManagedCourses(courses_id, name, skill, price, language, chapID, description, 
+					ins_id, cid, name, description, countCourses, category, category, publishDate, mood, color, status));
 		}
 		myConn.close();
 		return ls;
