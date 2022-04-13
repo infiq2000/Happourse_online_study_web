@@ -165,19 +165,12 @@
 																		<input style="width: 80px; display:inline; background: white;" id='quantity2' min='1' max='59' name='quantity' type='text' value='1' />
 																		<input style="width: 80px; display:inline;" onclick="var result = document.getElementById('quantity2'); var qty = result.value; if( !isNaN(qty)) result.value++;return false;" type='button' value='+' />
 																	</div>
-																</div>
-																
-																<div class="button-box text-center"  style="margin-top: 40px;">
-																	<button id="s2" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
-																</div>
-	
-															</div>
-															<div id = "msg2">
-													
 															</div>
 														</li>																							
 													</ul>
-													
+													<div class="button-box text-center"  style="margin-top: 40px;">
+														<button onclick="add_content" id="s2" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+													</div>
 												</li>
 											</ul>
 											
@@ -202,7 +195,7 @@
 						<!-- Right Column -->
 						<div class="right-column col-lg-4 col-md-12 col-sm-12">
 							<div class="inner-column">
-							
+								
 								<h6>Video</h6>
 								
 								<!-- Video Box -->
@@ -214,7 +207,7 @@
 								<!-- End Video Box -->
 								
 								<!-- Url Box -->
-								<div class="url-boxed">
+								<div id="video2" class="url-boxed">
 									<label>URL</label>
 									
 									<input type="text" name="username" value="" placeholder="https://www.youtube.com/Hapourse.com" required>
@@ -224,19 +217,11 @@
 								<div class="option-cource-box">
 									
 									<div class="box-inner">
-										<div class="form-group">
+										<div class="form-group" id="chapter231">
 											
 											<!-- Accordion Box -->
 											<label class="chapter-s">- Chapter</label>
-																								<%
-															List<Chapter> list_chapter = (List<Chapter>)request.getAttribute("list_chapter");
-															int n = 0;
-															if (list_chapter != null){
-																n = list_chapter.size();
-															}
-														%>
-											<ul class="accordion-box style-two" id="chapter231" style="margin-left: 40px;">
-											</ul>
+
 											<!--  xxxxx-->
 										</div>
 									</div>

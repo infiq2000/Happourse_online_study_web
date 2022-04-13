@@ -84,10 +84,19 @@ public class AddChapter extends HttpServlet {
 		}
 		request.setAttribute("list_chapter", list_chapter);
 		session.setAttribute("chapter_id",chapter_id);
-		PrintWriter out = response.getWriter();
-		for(int i=0;i< list_chapter.size();i++) {
-			out.print("<li id=\"chapter-s1\">Chapter "+i+" : "+list_chapter.get(i).getName()+"</li>");
+		int i = 0;
+		for (Chapter ct : list_chapter) {
+			if (ct.getChap_id() == chapter_id) {
+				break;
+			}
+			i += 1;
 		}
+		PrintWriter out = response.getWriter();
+		//out.print("<li id=\"chapter-s1\">Chapter "+i+" : "+list_chapter.get(i).getName()+"</li>");
+		out.print("											<ul class=\"accordion-box style-two\"  style=\"margin-left: 40px;\">\r\n"
+				+ "												<a href = \""+ "UpdateChapter" +"\"> "+"Chapter "+i+": "+name+" </a>\r\n"
+				+ "											</ul>");
+		
 		
 	}
 
