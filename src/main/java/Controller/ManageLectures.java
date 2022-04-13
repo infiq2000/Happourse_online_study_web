@@ -47,7 +47,10 @@ public class ManageLectures extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String chapterID = request.getParameter("chap_id");
+		String chapterID = (String) request.getParameter("chap_id");
+		if (chapterID == null) {
+			chapterID = request.getAttribute("chap_id").toString();
+		}
 		int chap_id = Integer.parseInt(chapterID);
 		List<ManagedLecture> ls = null;
 		try {
