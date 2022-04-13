@@ -9,6 +9,8 @@
 <%@ page import="Model.Chapter" %>
 <%@ page import="Model.Content" %>
 <%@ page import="Dao.LectureUtil" %>
+<%@ page import="Model.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,9 +51,9 @@
 
 </head>
 
-<body class="">
+<body data-customvalueone="${course_id}" class="">
 
-
+	<p>Hello ${course_id}</p>
  	
     <!-- Preloader -->
     <div class="preloader"></div>
@@ -73,81 +75,98 @@
 				<div class="clearfix">
 					<div class="pull-left">
 						<h4>Edit Courses</h4>
+						<p>Hello ${course_id}</p>
 					</div>
 				</div>
 			</div>
+		
 			<div class="inner-container">
 				<div class="row clearfix">
-					
-					<!-- Left Column -->
-					<div class="left-column col-lg-8 col-md-12 col-sm-12">
-						<div class="inner-column">
-							<h6>Basic Information</h6>
-							
-							<!-- Edit Course Form -->
-							<div class="edit-course-form">
-								<!-- Form Group -->
-								<div class="form-group">
-									<label>Course Title</label>
-									<input type="text" name="username" value = "${course_name}" required>
+					<form action="UpdateCourse" method="POST" enctype="multipart/form-data">
+						<!-- Left Column -->
+						<div class="left-column col-lg-8 col-md-12 col-sm-12">
+							<div class="inner-column">
+								<h6>Basic Information</h6>
+								
+								<!-- Edit Course Form -->
+								<div class="edit-course-form">
+									<!-- Form Group -->
+									<div class="form-group">
+										<label>Course Title</label>
+										<input type="text" name="username" value = "${course_name}" required>
+									</div>
+									
+									<div class="form-group">
+										<label>Description</label>
+										<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
+										<textarea class="" name="message" placeholder = "${course_description}">${course_description}</textarea>
+									</div>
 								</div>
 								
-								<div class="form-group">
-									<label>Description</label>
-									<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
-									<textarea class="" name="message" placeholder = "${course_description}"></textarea>
-								</div>
-							</div>
-							
-						</div>
-					</div>
-					
-					<!-- Right Column -->
-					<div class="right-column col-lg-4 col-md-12 col-sm-12">
-						<div class="inner-column">
-							
-							
-							<h6>Options</h6>
-							<div class="option-cource-box">
-								<div class="box-inner">
-									<div class="form-group">
-										<label>Image</label>
-										<img id="an" style="width: 250px; height: 120px;border-radius:5px;" src="images/logo/logo10.jpg" alt=""/>
-										<div id="displayImg" style="width: 120px; border-radius:5px;"></div>
-										<input type="file" name="upload" id="upload" onchange="ImagesFileAsURL()" style="display: inline; margin-top: 15px;"/>
-									</div>
-									<div class="form-group">
-										<label>Category</label>
-										<select class="custom-select-box">
-											<option>UI/UX</option>
-											<option>Category 01</option>
-											<option>Category 02</option>
-										</select>
-										<span class="select-category">Select a category</span>
-									</div>
-									
-									<div class="form-group">
-											<label style="margin-right: 20px; font-size:14px;">Price ($)</label>
-											<div style=" width: 50px; display:inline;">
-												<input type="text" name="price" value="" placeholder="$" required>
-											</div>
-									</div>
-									
-									<div class="form-group tags">
-										<label>Tags</label>
-										<a href="#">JavaScript</a>
-										<a href="#">UI/ UX Design</a>
-										<a href="#">Typography</a>
-										<a href="#">Web Design</a>
-										<a href="#">Education</a>
-										<a href="#">Courses</a>
-									</div>
-									
-								</div>
 							</div>
 						</div>
-					</div>
-					
+						
+						<!-- Right Column -->
+						<div class="right-column col-lg-4 col-md-12 col-sm-12">
+							<div class="inner-column">
+								<h6>Options</h6>
+								<div class="option-cource-box">
+									<div class="box-inner">
+										<div class="form-group">
+											<label>Image</label>
+											<img id="an" style="width: 250px; height: 120px;border-radius:5px;" src="images/logo/logo10.jpg" alt=""/>
+											<div id="displayImg" style="width: 120px; border-radius:5px;"></div>
+											<input type="file" name="upload" id="upload" onchange="ImagesFileAsURL()" style="display: inline; margin-top: 15px;"/>
+										</div>
+										<div class="form-group">
+											<label>Category</label>
+											<%
+												  	InitialContext ctx;
+												  	DataSource ds;
+												 	ctx = new InitialContext();
+											    	ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Happourse");
+											    	CourseUtil couUtil = new CourseUtil(ds);
+											    	List<Category> cate = couUtil.getCategories();
+											    	request.setAttribute("cate", cate);
+											    	
+												%>
+		
+												<label>Category</label>
+												<select class="custom-select-box" name ="chon">
+													 <c:forEach var="categoryName" items="${cate }">
+													 	<option value = "${categoryName.getCid()}">  ${categoryName.getName() }</option>
+													 </c:forEach>	
+												</select>
+											<!-- <select class="custom-select-box">
+												<option>UI/UX</option>
+												<option>Category 01</option>
+												<option>Category 02</option>
+											</select> -->
+											<span class="select-category">Select a category</span>
+										</div>
+										
+										<div class="form-group">
+												<label style="margin-right: 20px; font-size:14px;">Price ($)</label>
+												<div style=" width: 50px; display:inline;">
+													<input type="text" name="price" value="${course.getPrice() }" placeholder="$ ${course.getPrice()}" required>
+												</div>
+										</div>
+										
+										<div class="form-group tags">
+											<label>Tags</label>
+											<a href="#">JavaScript</a>
+											<a href="#">UI/ UX Design</a>
+											<a href="#">Typography</a>
+											<a href="#">Web Design</a>
+											<a href="#">Education</a>
+											<a href="#">Courses</a>
+										</div>
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
 					<div class="left-column col-lg-4 col-md-12 col-sm-12">
 							<div class="inner-column">
 								<!-- Edit Course Form -->
@@ -156,7 +175,7 @@
 										<!-- Accordion Box -->
 										<label class="chapter-s">- Chapter</label>
 																					
-											<table class="table">
+	<%-- 										<table class="table">
 											  <thead>
 												<th>Chapter</th>
 												<th>Duration</th>										  
@@ -191,7 +210,101 @@
 													</tr>
 												</c:forEach>
 											  </tbody>
-											</table>
+											</table> --%>
+																			<%
+								InitialContext ctx;
+							  	DataSource ds;
+							 	ctx = new InitialContext();
+						    	ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Happourse");
+								List<Chapter> chapter_list = (List<Chapter>)request.getAttribute("list_chapter");
+								LectureUtil lecUtil = new LectureUtil(ds);
+								%>
+								
+								<!-- Tab -->
+								<div class="tab" id="prod-curriculum">
+									<div class="content">
+										
+										<!-- Accordion Box -->
+										<ul class="accordion-box">
+																						<!-- Block -->
+											<%
+											  	
+												int chapter_number = 0;
+												Chapter ch1 = null;
+												if (chapter_list.size()!=0){
+													chapter_number = chapter_list.size();
+													ch1 = chapter_list.get(0);
+												}
+												int flag = -1;
+												if (chapter_number < 2){
+													flag = 0;
+												}
+												
+											%>
+											<% if (ch1 != null) { %>
+												<%
+											    	
+											    	List<Content> list_of_content1 = lecUtil.getContents(ch1.getChap_id());
+													String nameChapter = ch1.getName();
+												%>
+												<li class="accordion block">
+													<div class="acc-btn active"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%=ch1.getName() %></div>
+													<div class="acc-content current">
+														<c:forEach items="<%=list_of_content1%>" var="ct">
+															<div class="content">
+																<div class="clearfix">
+																	<div class="pull-left">
+																		<p onclick = "showContent('${ct.getLc_id()}','${ct.getChap_id() }','<%=nameChapter %>')" class="lightbox-image play-icon"><span class="fa fa-play"></span>${ct.getName()}</p>
+																	</div>
+																	<div class="pull-right">
+																		<div class="minutes">35 Minutes</div>
+																	</div>
+																</div>
+															</div>
+														</c:forEach>
+													</div>
+												</li>	
+										      <% } else { %>
+										         	<p> no chapter</p>
+										      <% } %>
+										      <% if (flag != 0) { %>
+											<c:forEach begin="1" end="<%= chapter_number-1 %>" var="i">
+											<!-- Block -->
+											<%
+												int i = (int)pageContext.getAttribute("i");
+											%>
+												<%
+											    	List<Content> list_of_content2 = lecUtil.getContents(chapter_list.get(i).getChap_id());
+													String nameChapter = chapter_list.get(i).getName();
+												%>
+												<li class="accordion block">
+													<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%=chapter_list.get(i).getName() %></div>
+													<div class="acc-content">
+														<c:forEach items="<%=list_of_content2%>" var="ct">
+															<div class="content">
+																<div class="clearfix">
+																	<div class="pull-left">
+																		<p onclick = "showContent('${ct.getLc_id()}', '${ct.getChap_id() }','<%=nameChapter %>')" class="lightbox-image play-icon"><span class="fa fa-play"></span>${ct.getName()}</p>
+																	</div>
+																	<div class="pull-right">
+																		<div class="minutes">35 Minutes</div>
+																	</div>
+																</div>
+															</div>
+														</c:forEach>
+													</div>
+												</li>
+											</c:forEach>
+										      <% } else { %>
+										         
+										      <% } %>
+											
+											
+																					
+										</ul>
+										
+									</div>
+								</div>
 										</div>
 								</div>
 							</div>
@@ -202,7 +315,7 @@
 							<!-- Edit Course Form -->
 							<div class="edit-course-form">
 								<h6 style="margin-top: 0px;">Update</h6>
-								<div class="option-cource-box" style="width: 600px;">
+								<div id="show1" class="option-cource-box" style="width: 600px;">
 									<div class="box-inner">
 									
 										<div class="edit_chapter">
@@ -285,7 +398,7 @@
 
 
 
-<!--<script src="js/ins/jquery.js"></script>-->
+<!-- <script src="js/ins/jquery.js"></script> -->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
@@ -333,6 +446,7 @@
 
 		<!-- Theme js -->
 		<script type="text/javascript" src="js/theme.js"></script>
+		<script type="text/javascript" src="js/update_content.js"></script>
 <script>
 		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		var config = {

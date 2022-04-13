@@ -9,7 +9,7 @@ public class Content {
 	
 	public Content(int lc_id, String name, String type, String link, int chap_id) {
 		super();
-		this.chap_id = chap_id;
+		this.lc_id = lc_id;
 		this.name = name;
 		this.type = type;
 		this.link = link;
