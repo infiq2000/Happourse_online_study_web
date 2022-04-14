@@ -94,22 +94,31 @@ public class UserUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "select * from courses ";
+		String sql = "SELECT i.major,i.img_path as img_ins, i.ins_name,  count(comment) as comment ,count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid inner join instructor i on i.ins_id=c.ins_id GROUP BY course_id ";
 		myStmt = myConn.prepareStatement(sql);
 		myRS = myStmt.executeQuery();
 		List<Courses> courses = new ArrayList<>();
 		while (myRS.next()) {
+			String major = myRS.getString("major");
+			String img_ins = myRS.getString("img_ins");
+			String ins_name = myRS.getString("ins_name");
+			int comment = myRS.getInt("comment");
+			int countCourses = myRS.getInt("countCourses");
 			int courses_id = myRS.getInt("course_id");
 			String name = myRS.getString("name");
 			String skill = myRS.getString("skill");
-			int price = myRS.getInt("price");
+			double price = myRS.getDouble("price");
 			String language = myRS.getString("language");
-			String description = myRS.getString("description");
+			String description =   myRS.getString("description");
+			Date publish_date= myRS.getDate("publish_date");
+			String img_path = myRS.getString("img_path");
 			double star_rate = myRS.getDouble("star_rate");
-			int  ins_id = myRS.getInt("ins_id");
+			int ins_id = myRS.getInt("ins_id");
 			int cid = myRS.getInt("cid");
-			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid));
+			System.out.println(img_path);
+			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date ));
 		}
+		myConn.close();
 		return courses;
 	}
 

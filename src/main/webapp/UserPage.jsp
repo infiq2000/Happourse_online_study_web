@@ -94,14 +94,14 @@
 							<div class="row">
 								<c:forEach var="tempCourse" items="${listCourses}">
 									<div class="col-lg-4 col-sm-6 col-xs-6">
-										<div class="single-course" style="border: 0px;">
+<%-- 										<div class="single-course" style="border: 0px;">
 											<div class="image-box"><img src="images/course/33.jpg" alt=""></div>
 											<div class="text">
 												<div class="image"><img src="images/logo/logo10.jpg" alt=""></div>
 												<div class="name clearfix">
 													<h6 class="float-left">${tempCourse.getIns_name() }</h6>
 													<strong class="s-color float-right"><del>$${tempCourse.getPrice() + 19}<sup>.99</sup></del><span class="p-bg-color float-right">$${tempCourse.getPrice()} <sup>.99</sup></span></strong>
-													<%-- <span class="p-bg-color float-right">${tempCourse.getPrice()} $ <sup>.99</sup></span> --%>
+													<span class="p-bg-color float-right">${tempCourse.getPrice()} $ <sup>.99</sup></span>
 												</div>
 												<c:url var="tempLink" value="CourseDetail">
 													<c:param name="course_id" value="${tempCourse.getCourses_id()}"></c:param>
@@ -115,6 +115,31 @@
 													<li class="float-left">
 														<i class="flaticon-comments"></i>
 														<a href="#" class="tran3s">13</a>
+													</li>
+													<li class="float-right">
+														<i class="flaticon-heart"></i>
+														<a href="#" class="tran3s">${tempCourse.getStar_rate()}</a>
+													</li>
+												</ul>
+											</div>
+										</div> <!-- /.single-course --> --%>
+										<div class="single-course">
+											<div class="image-box"><img src="${tempCourse.getImg_path() }" alt=""></div>
+											<div class="text">
+												<div class="image"><img src="${tempCourse.getImg_path_instructor() }" alt=""></div>
+												<div class="name clearfix">
+													<h6 class="float-left">${tempCourse.getIns_name() }</h6>
+													<span class="p-bg-color float-right">Free</span>
+												</div>
+												<h5><a href="course-details.html" class="tran3s"></a>${tempCourse. getDesciption()}</h5>
+												<ul class="clearfix">
+													<li class="float-left">
+														<i class="flaticon-people"></i>
+														<a href="#" class="tran3s">${tempCourse.getCountCourses()}</a>
+													</li>
+													<li class="float-left">
+														<i class="flaticon-comments"></i>
+														<a href="#" class="tran3s">${tempCourse.getTotal_comment()}</a>
 													</li>
 													<li class="float-right">
 														<i class="flaticon-heart"></i>

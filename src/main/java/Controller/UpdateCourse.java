@@ -108,7 +108,7 @@ public class UpdateCourse extends HttpServlet {
 							String abc = getAlphaNumericString(5);
 							String[] tmp = name.split("[.]");
 							item.write(new File(UPLOAD_DIRECTORY + File.separator + tmp[0] + abc + "." + tmp[1]));
-							filename = "images/course " + "/" + tmp[0] + abc + "." + tmp[1];
+							filename = "images/course" + "/" + tmp[0] + abc + "." + tmp[1];
 							System.out.println("ten file" + filename);
 						} catch (Exception ex) {
 							System.out.println("ten file" + ex);
