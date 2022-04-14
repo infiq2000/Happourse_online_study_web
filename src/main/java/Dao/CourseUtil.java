@@ -777,4 +777,37 @@ public class CourseUtil {
 		return ls;
 	}
 
+	public void updateCourse(int course_id, String course_name, String description, int cid, int price,
+			String langguage, float star_rate, float duration, int ins_id, String filename) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		myConn = dataSource.getConnection();
+		String sql = "UPDATE courses SET name=?,price=?, language=?, star_rate=?, description=?, img_path=? WHERE course_id=?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, course_name);
+		myStmt.setInt(2, price);
+		myStmt.setString(3, langguage);
+		myStmt.setFloat(4, star_rate);
+		myStmt.setString(5, description);
+		myStmt.setString(6, filename);
+		myStmt.setInt(7, course_id);
+		myStmt.executeUpdate();
+		myConn.close();
+		
+	}
+
+	public void updateChapterbyChapterId(int chapter_id, String name) throws SQLException {
+		// TODO Auto-generated method stub
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		myConn = dataSource.getConnection();
+		String sql = "UPDATE chapter SET name=? WHERE chap_id=?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, name);
+		myStmt.setInt(2, chapter_id);
+
+		myStmt.executeUpdate();
+		myConn.close();
+	}
+
 }

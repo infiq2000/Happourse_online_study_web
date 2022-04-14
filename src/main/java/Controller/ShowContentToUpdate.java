@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.json.simple.JSONObject;
@@ -61,6 +62,9 @@ public class ShowContentToUpdate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int lc_id = Integer.parseInt(request.getParameter("lc_id"));
 		int chapter_id = Integer.parseInt(request.getParameter("chapter_id"));
+		HttpSession session = request.getSession(true);
+		session.setAttribute("contentId", lc_id);
+		session.setAttribute("chapterId", chapter_id);
 		String name = request.getParameter("name");
 		Content ct = null;
 		try {
@@ -72,17 +76,17 @@ public class ShowContentToUpdate extends HttpServlet {
 		String nameContent = ct.getName();
 		String desription = "chua co database";
 		String url = ct.getLink();
-		JSONObject json = new JSONObject();
+		//JSONObject json = new JSONObject();
 		String show = "									<div class=\"box-inner\">\r\n"
 				+ "									\r\n"
 				+ "										<div class=\"edit_chapter\">\r\n"
 				+ "											<div class=\"form-group\" style=\"margin-left: 10px;\">\r\n"
 				+ "												<label style=\"font-size:14px;\">Chapter Title</label>\r\n"
-				+ "												<input type=\"text\" name=\"username\" value=\""+name+"\" placeholder=\""+name+"\" required>\r\n"
+				+ "												<input id=\"nameChapter231\" type=\"text\" name=\"username\" value=\""+name+"\" placeholder=\""+name+"\" required>\r\n"
 				+ "											</div>\r\n"
 				+ "											\r\n"
 				+ "											<div class=\"button-box text-center\"  style=\"margin-top: 40px;\">\r\n"
-				+ "												<button id=\"s1\" style=\"margin-left: 40px; background: pink; \" type=\"button\" class=\"theme-btn btn-style-two\"><span class=\"txt\">Save</span></button>																\r\n"
+				+ "												<button onclick=\"updateChapter()\" id=\"s1\" style=\"margin-left: 40px; background: pink; \" type=\"button\" class=\"theme-btn btn-style-two\"><span class=\"txt\">Save</span></button>																\r\n"
 				+ "											</div>\r\n"
 				+ "										</div>\r\n"
 				+ "										\r\n"
@@ -90,14 +94,14 @@ public class ShowContentToUpdate extends HttpServlet {
 				+ "											<!-- Content -->\r\n"
 				+ "											<div class=\"form-group\" id=\"c1\" style=\"margin-left:10px;\">\r\n"
 				+ "												<label style=\"font-size:14px;\">Content Title</label>\r\n"
-				+ "												<input type=\"text\" name=\"username\" value=\""+nameContent+"\" placeholder=\""+nameContent+"\" required>\r\n"
+				+ "												<input id = \"nameContent\" type=\"text\" name=\"username\" value=\""+nameContent+"\" placeholder=\""+nameContent+"\" required>\r\n"
 				+ "\r\n"
 				+ "												<label style=\"font-size:14px; margin-top:20px;\">Content Description</label>\r\n"
 				+ "												<span class=\"support\"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>\r\n"
-				+ "												<textarea class=\"\" name=\"message\" placeholder=\""+desription+"\">"+desription+"</textarea>\r\n"
+				+ "												<textarea id = \"desription\" class=\"\" name=\"message\" placeholder=\""+desription+"\">"+desription+"</textarea>\r\n"
 				+ "\r\n"
 				+ "												<label style=\"font-size:14px; margin-top:20px;\">Url</label>\r\n"
-				+ "												<input type=\"text\" name=\"username\" value=\""+url+"\" placeholder=\""+url+"\">\r\n"
+				+ "												<input id = \"url\" type=\"text\" name=\"username\" value=\""+url+"\" placeholder=\""+url+"\">\r\n"
 				+ "\r\n"
 				+ "												<label style=\"font-size:14px; margin-top:20px;\">Duration</label>\r\n"
 				+ "												\r\n"
@@ -120,7 +124,7 @@ public class ShowContentToUpdate extends HttpServlet {
 				+ "												</div>\r\n"
 				+ "												\r\n"
 				+ "												<div class=\"button-box text-center\"  style=\"margin-top: 40px;\">\r\n"
-				+ "													<button id=\"s1\" style=\"margin-left: 40px; background: pink; \" type=\"button\" class=\"theme-btn btn-style-two\"><span class=\"txt\">Save</span></button>																\r\n"
+				+ "													<button  onclick=\"updateContent()\" id=\"s1\" style=\"margin-left: 40px; background: pink; \" type=\"button\" class=\"theme-btn btn-style-two\"><span class=\"txt\">Save</span></button>																\r\n"
 				+ "												</div>\r\n"
 				+ "											</div>\r\n"
 				+ "										</div>\r\n"

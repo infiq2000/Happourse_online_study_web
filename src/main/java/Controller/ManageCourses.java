@@ -61,4 +61,7 @@ public class ManageCourses extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/manage_course.jsp");
 		dispatcher.forward(request, response);
 	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
 }

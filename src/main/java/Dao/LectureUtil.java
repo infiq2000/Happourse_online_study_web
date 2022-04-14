@@ -238,4 +238,18 @@ public class LectureUtil {
 		myConn.close();
 		return result;
 	}
+
+	public void updateContent(int lc_id, String nameContent, String desription, String url) throws SQLException {
+		// TODO Auto-generated method stub
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		myConn = dataSource.getConnection();
+		String sql = "UPDATE lecturer_content SET name=? , link = ? WHERE lc_id=?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, nameContent);
+		myStmt.setString(2, url);
+		myStmt.setInt(3, lc_id);
+		myStmt.executeUpdate();
+		myConn.close();
+	}
 }
