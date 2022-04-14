@@ -148,7 +148,6 @@ public class UpdateTest2 extends HttpServlet {
 		String username = fields.get("username");
 		String fullName = fields.get("fullName");
 		String major = fields.get("major");
-		System.out.println(fields.get("birth"));
 		Date birth = Date.valueOf(fields.get("birth"));
 		String phoneNumber = fields.get("phoneNumber");
 		String email = fields.get("email");
