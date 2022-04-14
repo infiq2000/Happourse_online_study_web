@@ -86,6 +86,7 @@ public class Login extends HttpServlet {
 					
 					int pagesNumber = couUtil.courseNumberPage(courses);
 					List<Courses> li = couUtil.getCoursesByPage(courses, 1);
+					
 					request.setAttribute("listCourses", li);
 					request.setAttribute("pagesNumber", pagesNumber);
 					
