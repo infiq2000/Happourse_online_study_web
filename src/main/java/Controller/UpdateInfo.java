@@ -15,12 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import com.mysql.cj.Session;
+
 import Dao.AccountUtil;
 import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
 import Model.User;
 import Model.UserAccount;
+import Model.Account;
 import Model.Hashtag;
 
 
@@ -63,6 +66,8 @@ public class UpdateInfo extends HttpServlet {
 		
 		int id = Integer.parseInt(request.getParameter("id"));
 		int accountType = (int)request.getSession(false).getAttribute("account_type");
+		String newPassword = request.getParameter("newPassword");
+		String repeatNewPassword = request.getParameter("repeatNewPassword");
 		UserAccount ua = new UserAccount();
 		if (accountType == 0) {
 			try {
@@ -71,7 +76,7 @@ public class UpdateInfo extends HttpServlet {
 				List<Hashtag> user_hashtags = userUtil.getMyHashTags(id);
 				request.setAttribute("user_hashtags", user_hashtags);
 				List<Hashtag> allHashtags = userUtil.getAllHashtags();
-				request.setAttribute("all_hashtags", allHashtags);
+				request.setAttribute("all_hashtags", allHashtags);		
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -79,13 +84,36 @@ public class UpdateInfo extends HttpServlet {
 		} else {
 			try {
 				ua = insUtil.getInstructorInformationByID(id);
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			request.setAttribute("exper", "Education");
 		}
+		
+		String old_pass = ua.getPassword();
+		request.setAttribute("old_pass", old_pass);	
+		
 		request.setAttribute("userInfo",ua);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/update_profile.jsp");;	
+		dispatcher.forward(request, response);
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Flagggggggg");
+		int id = Integer.parseInt(request.getParameter("id"));
+		System.out.println("Flag = " + id);
+		
+		String newPassword = request.getParameter("newPassword");
+		String repeatNewPassword = request.getParameter("repeatNewPassword");	
+		try {
+			System.out.println("Pass:" + newPassword);
+			int temp = accUtil.changePassword(id, newPassword);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/Profile.jsp");
 		dispatcher.forward(request, response);
 	}
 

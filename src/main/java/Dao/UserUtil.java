@@ -341,4 +341,5 @@ public class UserUtil {
 		}
 		return hashtags;
 	}
+	
 }
