@@ -109,7 +109,7 @@
 							  <td class="duration" scope="col" style="text-align:center;">${listLectures.getDuration()}</td>
 							  <td class="actions" scope="col" style="text-align:center;">
 							  	<a href="DeleteLecture?lecture_id=${listLectures.getLectureID()}" onclick="if (!(confirm('Ban muon xoa bai hoc?'))) return false"><i class='fa fa-trash-o'></i></a>
-							  	<a href="EditCourse?courseID=${listLectures.getCourseID()}"><i class='fa fa-edit'></i></a>
+							  	<a href="EditCourse?course_id=${listLectures.getCourseID()}"><i class='fa fa-edit'></i></a>
 							  </td>
 							  <td style="text-align:center;">
 							  	<ul>
@@ -158,7 +158,7 @@
 
 
 
-<!--<script src="js/ins/jquery.js"></script>-->
+<script src="js/ins/jquery.js"></script>
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>

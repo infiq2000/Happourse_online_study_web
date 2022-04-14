@@ -103,7 +103,7 @@
 							  <td class="duration" scope="col" style="text-align:center;">${listChapters.getDuration()}</td>
 							  <td class="actions" scope="col" style="text-align:center;">
 							  	<a href="DeleteChapter?chap_id=${listChapters.getChap_id()}" onclick="if (!(confirm('Ban muon xoa chuong nay?'))) return false"><i class='fa fa-trash-o'></i></a>
-							  	<a href="EditCourse?courseID=${listChapters.getCourse_id() }"><i class='fa fa-edit'></i></a>
+							  	<a href="EditCourse?course_id=${listChapters.getCourse_id() }"><i class='fa fa-edit'></i></a>
 							  </td>
 							  <td style="text-align:center; color:${listChapters.getColor()};">${listChapters.getMood()}</td>
 							</tr>
