@@ -1,11 +1,16 @@
 package Controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.stream.StreamSupport;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +18,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
+
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import Dao.AccountUtil;
 import Dao.InstructorUtil;
@@ -84,17 +93,66 @@ public class UpdateCourse extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int course_id = Integer.parseInt(request.getParameter("course_id"));
+		String filename = null;
+		HashMap<String, String> fields = new HashMap<String, String>();
+		if (ServletFileUpload.isMultipartContent(request)) {
+			try {
+				List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
+
+				for (FileItem item : multiparts) {
+					if (!item.isFormField()) {
+						String name = new File(item.getName()).getName();
+						try {
+							String abc = getAlphaNumericString(5);
+							String[] tmp = name.split("[.]");
+							item.write(new File(UPLOAD_DIRECTORY + File.separator + tmp[0] + abc + "." + tmp[1]));
+							filename = "images/course " + "/" + tmp[0] + abc + "." + tmp[1];
+							System.out.println("ten file" + filename);
+						} catch (Exception ex) {
+							System.out.println("ten file" + ex);
+						}
+
+					} else {
+						fields.put(item.getFieldName(), item.getString());
+						String name = item.getFieldName();
+						String value = item.getString();
+						System.out.println("name:" + name);
+						System.out.println("value:" + value);
+					}
+				}
+
+				// File uploaded successfully
+				request.setAttribute("message", "File Uploaded Successfully");
+			} catch (Exception ex) {
+				System.out.println("error 1" + ex);
+				request.setAttribute("message", "File Upload Failed due to " + ex);
+			}
+
+		} else {
+			request.setAttribute("message", "Sorry this Servlet only handles file upload request");
+		}
+		System.out.println(Integer.parseInt(fields.get("chon")));
+		System.out.println(Integer.parseInt(fields.get("price")));
+		String course_name = fields.get("username");
+		String description = fields.get("message");
+		int cid = Integer.parseInt(fields.get("chon"));
+		int price = Integer.parseInt(fields.get("price"));
+		int ins_id = (int)request.getSession(false).getAttribute("ins_id");
+		String langguage = "English";
+		float star_rate = 4.0f;
+		float duration = 0;
+		try {
+			courseUtil.updateCourse(course_id, course_name,description,cid,price,langguage,star_rate,duration,ins_id,filename);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("course_id", course_id);
+		request.setAttribute("updated", 1);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/EditCourse");
+		dispatcher.forward(request, response);
 	}
 
 }

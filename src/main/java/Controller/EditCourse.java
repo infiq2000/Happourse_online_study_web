@@ -50,21 +50,23 @@ public class EditCourse extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int course_id = Integer.parseInt(request.getParameter("courseID"));
+		int course_id = Integer.parseInt(request.getParameter("course_id"));
 		Courses course = null;
+		List<Chapter> list_chapter = null;
 		try {
 			course = courseUtil.getCourseDetail(course_id);
-			List<Chapter> list_chapter = lecUtil.getChapterOfCourse(course_id);
-			request.setAttribute("list_chapter", list_chapter);
+			list_chapter = lecUtil.getChapterOfCourse(course_id);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		request.setAttribute("list_chapter", list_chapter);
 		request.setAttribute("course_name", course.getName());
 		request.setAttribute("course_description", course.getDesciption());
 		request.setAttribute("course_id", course_id);
 		request.setAttribute("course", course);
+		//request.setAttribute("updated", 0);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/edit_course.jsp");
 		dispatcher.forward(request, response);
 	}

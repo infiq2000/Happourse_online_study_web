@@ -1,23 +1,25 @@
-function showContent(lc_id, chapter_id, name){
-	alert(lc_id)
-	alert(chapter_id)
-	alert(name)
-	//var course_id = $("body").attr("data-customvalueone");
+function updateContent(){
+	var course_id = $("body").attr("data-customvalueone");
+	var nameContent = document.getElementById("nameContent").value;
+	var desription = document.getElementById("desription").value;
+	var url = document.getElementById("url").value;
 	$.ajax({
-	  url: "/Happourse/ShowContentToUpdate",
+	  url: "/Happourse/UpdateContent",
 	  type: "get", //send it through get method
 	  data: {
-			lc_id: lc_id,
-			chapter_id : chapter_id,
-			name : name
+			course_id:course_id,
+			nameContent:nameContent,
+			desription : desription,
+			url :url
+			
 	  },
 	  success: function(data) {
-			var row = document.getElementById ("show1") ; 
+			var row = document.getElementById ("edit1") ; 
 					row.innerHTML = data;
 	  },
 	  error: function(xhr) {
 	    //Do Something to handle error
 	  }
 	});
-	console.log("check3")
+	console.log("check5")
 }

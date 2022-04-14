@@ -103,8 +103,7 @@ public class AddNewCourse2 extends HttpServlet {
 				for (FileItem item : multiparts) {
 					if (!item.isFormField()) {
 						String name = new File(item.getName()).getName();
-						String realPath = request.getServletContext().getRealPath("/images/avatar");
-
+						String realPath = request.getServletContext().getRealPath("/images/avatar");  
 						try {
 							String abc = getAlphaNumericString(5);
 							String[] tmp = name.split("[.]");

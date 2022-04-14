@@ -82,7 +82,7 @@
 		
 			<div class="inner-container">
 				<div class="row clearfix">
-					<form action="UpdateCourse" method="POST" enctype="multipart/form-data">
+					<form action="UpdateCourse?course_id=${course_id}" method="POST" enctype="multipart/form-data">
 						<!-- Left Column -->
 						<div class="left-column col-lg-8 col-md-12 col-sm-12">
 							<div class="inner-column">
@@ -102,7 +102,14 @@
 										<textarea class="" name="message" placeholder = "${course_description}">${course_description}</textarea>
 									</div>
 								</div>
-								
+								<c:choose>
+							  		<c:when test = "${updated == 1}">
+							  			<p>UPDATED</p>
+							  		</c:when>
+							  		<c:otherwise>
+							  			
+							  		</c:otherwise>
+							  	</c:choose>	
 							</div>
 						</div>
 						
@@ -166,146 +173,102 @@
 								</div>
 							</div>
 						</div>
+						<div class="button-box text-center" style="margin-top: 40px;">
+							<button type="submit" name="cmd" value = "save" class="theme-btn btn-style-one" style="margin-left: 40px;"><span class="txt">Save Course</span></button>
+						</div>
 					</form>
 					<div class="left-column col-lg-4 col-md-12 col-sm-12">
 							<div class="inner-column">
 								<!-- Edit Course Form -->
-								<div class="edit-course-form">
+								<div id="edit1" class="edit-course-form">
 									<div class="form-group" style="width:680px; margin-top:0px;">
 										<!-- Accordion Box -->
-										<label class="chapter-s">- Chapter</label>
-																					
-	<%-- 										<table class="table">
-											  <thead>
-												<th>Chapter</th>
-												<th>Duration</th>										  
-											  </thead>
-											  <tbody>
-											  <%
-											  	List<Chapter> list_chapter = (List<Chapter>)request.getAttribute("list_chapter");
-											  	int n = list_chapter.size();
-											  %>
-											  
-											  <c:forEach var = "i" begin="1" end = "<%=n %>" >
-													<tr>
-														<td>
-														<%	
-															InitialContext ctx;
-														  	DataSource ds;
-														 	ctx = new InitialContext();
-													    	ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Happourse");
-															int i = (int)pageContext.getAttribute("i");
-															Chapter chap = list_chapter.get(i-1);
-															LectureUtil lecUtil =  new LectureUtil(ds);
-															List<Content> list_content = lecUtil.getContents(chap.getChap_id());
-														%>														
-															Chapter ${i}
-															<ul style="margin: 20px 0 0 40px;">
-															<c:forEach var="tmp" items="<%=list_content %>">				
-																  <li><i>${tmp.getName()}</i></li>														
-															</c:forEach>
-															</ul>
-														</td>
-														<td>10 m</td>
-													</tr>
-												</c:forEach>
-											  </tbody>
-											</table> --%>
-																			<%
-								InitialContext ctx;
-							  	DataSource ds;
-							 	ctx = new InitialContext();
-						    	ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Happourse");
-								List<Chapter> chapter_list = (List<Chapter>)request.getAttribute("list_chapter");
-								LectureUtil lecUtil = new LectureUtil(ds);
-								%>
-								
-								<!-- Tab -->
-								<div class="tab" id="prod-curriculum">
-									<div class="content">
-										
-										<!-- Accordion Box -->
-										<ul class="accordion-box">
-																						<!-- Block -->
-											<%
-											  	
-												int chapter_number = 0;
-												Chapter ch1 = null;
-												if (chapter_list.size()!=0){
-													chapter_number = chapter_list.size();
-													ch1 = chapter_list.get(0);
-												}
-												int flag = -1;
-												if (chapter_number < 2){
-													flag = 0;
-												}
-												
-											%>
-											<% if (ch1 != null) { %>
+											<label class="chapter-s">- Chapter</label>
 												<%
-											    	
-											    	List<Content> list_of_content1 = lecUtil.getContents(ch1.getChap_id());
-													String nameChapter = ch1.getName();
+												List<Chapter> chapter_list = (List<Chapter>)request.getAttribute("list_chapter");
+												LectureUtil lecUtil = new LectureUtil(ds);
 												%>
-												<li class="accordion block">
-													<div class="acc-btn active"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%=ch1.getName() %></div>
-													<div class="acc-content current">
-														<c:forEach items="<%=list_of_content1%>" var="ct">
-															<div class="content">
-																<div class="clearfix">
-																	<div class="pull-left">
-																		<p onclick = "showContent('${ct.getLc_id()}','${ct.getChap_id() }','<%=nameChapter %>')" class="lightbox-image play-icon"><span class="fa fa-play"></span>${ct.getName()}</p>
-																	</div>
-																	<div class="pull-right">
-																		<div class="minutes">35 Minutes</div>
-																	</div>
+														
+											<!-- Tab -->
+											<div class="tab" id="prod-curriculum">
+												<div class="content">
+													<!-- Accordion Box -->
+													<ul class="accordion-box">
+																									<!-- Block -->
+														<%
+															int chapter_number = 0;
+															Chapter ch1 = null;
+															if (chapter_list.size()!=0){
+																chapter_number = chapter_list.size();
+																ch1 = chapter_list.get(0);
+															}
+															int flag = -1;
+															if (chapter_number < 2){
+																flag = 0;
+															}
+														%>
+														<% if (ch1 != null) { %>
+															<%
+														    	
+														    	List<Content> list_of_content1 = lecUtil.getContents(ch1.getChap_id());
+																String nameChapter = ch1.getName();
+															%>
+															<li class="accordion block">
+																<div class="acc-btn active"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%=ch1.getName() %></div>
+																<div class="acc-content current">
+																	<c:forEach items="<%=list_of_content1%>" var="ct">
+																		<div class="content">
+																			<div class="clearfix">
+																				<div class="pull-left">
+																					<p onclick = "showContent('${ct.getLc_id()}','${ct.getChap_id() }','<%=nameChapter %>')" ><span class="fa fa-play"></span>${ct.getName()}</p>
+																				</div>
+																				<div class="pull-right">
+																					<div class="minutes">35 Minutes</div>
+																				</div>
+																			</div>
+																		</div>
+																	</c:forEach>
 																</div>
-															</div>
-														</c:forEach>
-													</div>
-												</li>	
-										      <% } else { %>
-										         	<p> no chapter</p>
-										      <% } %>
-										      <% if (flag != 0) { %>
-											<c:forEach begin="1" end="<%= chapter_number-1 %>" var="i">
-											<!-- Block -->
-											<%
-												int i = (int)pageContext.getAttribute("i");
-											%>
-												<%
-											    	List<Content> list_of_content2 = lecUtil.getContents(chapter_list.get(i).getChap_id());
-													String nameChapter = chapter_list.get(i).getName();
-												%>
-												<li class="accordion block">
-													<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%=chapter_list.get(i).getName() %></div>
-													<div class="acc-content">
-														<c:forEach items="<%=list_of_content2%>" var="ct">
-															<div class="content">
-																<div class="clearfix">
-																	<div class="pull-left">
-																		<p onclick = "showContent('${ct.getLc_id()}', '${ct.getChap_id() }','<%=nameChapter %>')" class="lightbox-image play-icon"><span class="fa fa-play"></span>${ct.getName()}</p>
-																	</div>
-																	<div class="pull-right">
-																		<div class="minutes">35 Minutes</div>
-																	</div>
-																</div>
-															</div>
-														</c:forEach>
-													</div>
-												</li>
-											</c:forEach>
-										      <% } else { %>
-										         
-										      <% } %>
-											
-											
-																					
-										</ul>
-										
+															</li>	 
+													      <% } else { %>
+													         	<p> no chapter</p>
+													      <% } %>
+													      <% if (flag != 0) { %>
+																<c:forEach begin="1" end="<%= chapter_number-1 %>" var="i">
+																<!-- Block -->
+																<%
+																	int i = (int)pageContext.getAttribute("i");
+																%>
+																	<%
+																    	List<Content> list_of_content2 = lecUtil.getContents(chapter_list.get(i).getChap_id());
+																		String nameChapter = chapter_list.get(i).getName();
+																	%>
+																	<li class="accordion block">
+																		<div class="acc-btn"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%=chapter_list.get(i).getName() %></div>
+																		<div class="acc-content">
+																			<c:forEach items="<%=list_of_content2%>" var="ct">
+																				<div class="content">
+																					<div class="clearfix">
+																						<div class="pull-left">
+																							<p onclick = "showContent('${ct.getLc_id()}', '${ct.getChap_id() }','<%=nameChapter %>')" class="lightbox-image play-icon"><span class="fa fa-play"></span>${ct.getName()}</p>
+																						</div>
+																						<div class="pull-right">
+																							<div class="minutes">35 Minutes</div>
+																						</div>
+																					</div>
+																				</div>
+																			</c:forEach>
+																		</div>
+																	</li>
+																</c:forEach>
+													      <% } else { %>
+													         
+													      <% } %>
+							
+													</ul>				
+											</div>
+										</div> <!--ss  -->
 									</div>
-								</div>
-										</div>
 								</div>
 							</div>
 						</div>
@@ -321,11 +284,12 @@
 										<div class="edit_chapter">
 											<div class="form-group" style="margin-left: 10px;">
 												<label style="font-size:14px;">Chapter Title</label>
-												<input type="text" name="username" value="" placeholder="Chapter 1" required>
+												<input id="nameChapter231" type="text" name="username" value="" placeholder="Chapter 1" required>
 											</div>
 											
 											<div class="button-box text-center"  style="margin-top: 40px;">
-												<button id="s1" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+												<button onclick="updateChapter()" id="s1" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>	
+												<button id="s2" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Add</span></button>															
 											</div>
 										</div>
 										
@@ -333,14 +297,14 @@
 											<!-- Content -->
 											<div class="form-group" id="c1" style="margin-left:10px;">
 												<label style="font-size:14px;">Content Title</label>
-												<input type="text" name="username" value="" placeholder="Content 1" required>
+												<input id = "nameContent" type="text" name="username" value="" placeholder="Content 1" required>
 
 												<label style="font-size:14px; margin-top:20px;">Content Description</label>
 												<span class="support"><strong>Markdown supported:</strong>  *Italic*  l  **Bold**   l   - List Item   l   --- Horizontal Rule</span>
-												<textarea class="" name="message" placeholder="Shortly describe this content"></textarea>
+												<textarea id = "desription" class="" name="message" placeholder="Shortly describe this content"></textarea>
 
 												<label style="font-size:14px; margin-top:20px;">Url</label>
-												<input type="text" name="username" value="" placeholder="Url 1">
+												<input id = "url" type="text" name="username" value="" placeholder="Url 1">
 
 												<label style="font-size:14px; margin-top:20px;">Duration</label>
 												
@@ -363,7 +327,7 @@
 												</div>
 												
 												<div class="button-box text-center"  style="margin-top: 40px;">
-													<button id="s1" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+													<button onclick="updateContent()" id="s1" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
 												</div>
 											</div>
 										</div>
@@ -373,10 +337,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="button-box text-center" style="margin-top: 40px;">
-					<a href="manage_course.jsp"><button type="button" class="theme-btn btn-style-one" ><span class="txt">Save Course</span></button></a>
-					<a href="add_chapter.jsp"><button style="margin-left: 40px;" type="button" class="theme-btn btn-style-two"><span class="txt">Add New Chapter</span></button></a>
 				</div>
 			</div>
 		</div>
@@ -398,7 +358,7 @@
 
 
 
-<!-- <script src="js/ins/jquery.js"></script> -->
+<script src="js/ins/jquery.js"></script>
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
@@ -446,6 +406,8 @@
 
 		<!-- Theme js -->
 		<script type="text/javascript" src="js/theme.js"></script>
+		<script type="text/javascript" src="js/show_content.js"></script>
+		<script type="text/javascript" src="js/update_chapter.js"></script>
 		<script type="text/javascript" src="js/update_content.js"></script>
 <script>
 		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];

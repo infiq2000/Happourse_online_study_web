@@ -22,10 +22,10 @@ import Model.Chapter;
 import Model.Content;
 
 /**
- * Servlet implementation class UpdateContent
+ * Servlet implementation class UpdateChapter
  */
-@WebServlet("/UpdateContent")
-public class UpdateContent extends HttpServlet {
+@WebServlet("/UpdateChapter")
+public class UpdateChapter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
@@ -46,11 +46,11 @@ public class UpdateContent extends HttpServlet {
 		courseUtil = new Dao.CourseUtil(dataSource);
 		insUtil = new InstructorUtil(dataSource);
 		lecUtil = new LectureUtil(dataSource);
-	} 
+	}  
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateContent() {
+    public UpdateChapter() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -59,18 +59,16 @@ public class UpdateContent extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int lc_id = (int)request.getSession(false).getAttribute("contentId");
+		int chapter_id = (int)request.getSession(false).getAttribute("chapterId");
 		int course_id = Integer.parseInt(request.getParameter("course_id"));
-		PrintWriter out = response.getWriter();
-		String nameContent = request.getParameter("nameContent");
-		String desription = request.getParameter("desription");
-		String url = request.getParameter("url");
+		String name =  request.getParameter("name");
 		try {
-			lecUtil.updateContent(lc_id, nameContent, desription, url);
+			courseUtil.updateChapterbyChapterId(chapter_id, name);
 		} catch (SQLException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
+		System.out.println("ten chapter:" + name);
 		String html = "									<div class=\"form-group\" style=\"width:680px; margin-top:0px;\">\r\n"
 				+ "										<!-- Accordion Box -->\r\n"
 				+ "											<label class=\"chapter-s\">- Chapter</label>";
@@ -111,11 +109,11 @@ public class UpdateContent extends HttpServlet {
 					+ "																<div class=\"acc-btn active\"><div class=\"icon-outer\"><span class=\"icon icon-plus flaticon-down-arrow\"></span></div>"+ch1.getName()+"</div>\r\n"
 					+ "																<div class=\"acc-content current\">";
 			html += html3;
-			for(Content ct2: list_of_content1) {
+			for(Content ct: list_of_content1) {
 				String html4 = "																		<div class=\"content\">\r\n"
 						+ "																			<div class=\"clearfix\">\r\n"
 						+ "																				<div class=\"pull-left\">\r\n"
-						+ "																					<p onclick = \"showContent('"+ct2.getLc_id()+"','"+ct2.getChap_id()+"','"+nameChapter+"')\" class=\"lightbox-image play-icon\"><span class=\"fa fa-play\"></span>"+ct2.getName()+"</p>\r\n"
+						+ "																					<p onclick = \"showContent('"+ct.getLc_id()+"','"+ct.getChap_id()+"','"+nameChapter+"')\" class=\"lightbox-image play-icon\"><span class=\"fa fa-play\"></span>"+ct.getName()+"</p>\r\n"
 						+ "																				</div>\r\n"
 						+ "																				<div class=\"pull-right\">\r\n"
 						+ "																					<div class=\"minutes\">35 Minutes</div>\r\n"
@@ -146,11 +144,11 @@ public class UpdateContent extends HttpServlet {
 							+ "																		<div class=\"acc-btn\"><div class=\"icon-outer\"><span class=\"icon icon-plus flaticon-down-arrow\"></span></div>"+chapter_list.get(i).getName()+"</div>\r\n"
 							+ "																		<div class=\"acc-content current\">";
 					html += html7;
-					for(Content ct1 : list_of_content2) {
+					for(Content ct : list_of_content2) {
 						String html8 = "																				<div class=\"content\">\r\n"
 								+ "																					<div class=\"clearfix\">\r\n"
 								+ "																						<div class=\"pull-left\">\r\n"
-								+ "																							<p onclick = \"showContent('"+ct1.getLc_id()+"', '"+ct1.getChap_id()+"','"+nameChapter+"')\" class=\"lightbox-image play-icon\"><span class=\"fa fa-play\"></span>"+ct1.getName()+"</p>\r\n"
+								+ "																							<p onclick = \"showContent('"+ct.getLc_id()+"', '"+ct.getChap_id()+"','"+nameChapter+"')\" class=\"lightbox-image play-icon\"><span class=\"fa fa-play\"></span>"+ct.getName()+"</p>\r\n"
 								+ "																						</div>\r\n"
 								+ "																						<div class=\"pull-right\">\r\n"
 								+ "																							<div class=\"minutes\">35 Minutes</div>\r\n"
@@ -169,6 +167,7 @@ public class UpdateContent extends HttpServlet {
 				+ "										</div> <!--ss  -->\r\n"
 				+ "									</div>";
 		html += html10;
+		PrintWriter out = response.getWriter();
 		out.print(html);
 	}
 
