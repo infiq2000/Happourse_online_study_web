@@ -94,13 +94,12 @@
 							<div class="row">
 								<c:forEach var="tempCourse" items="${listCourses}">
 									<div class="col-lg-4 col-sm-6 col-xs-6">
-<%-- 										<div class="single-course" style="border: 0px;">
-											<div class="image-box"><img src="images/course/33.jpg" alt=""></div>
+										<div class="single-course" style="border: 0px;">
+											<div class="image-box"><img src="${tempCourse.getImg_path()}" alt=""></div>
 											<div class="text">
-												<div class="image"><img src="images/logo/logo10.jpg" alt=""></div>
+												<div class="image"><img src="${tempCourse.getImg_path_instructor() }" alt=""></div>
 												<div class="name clearfix">
 													<h6 class="float-left">${tempCourse.getIns_name() }</h6>
-													<strong class="s-color float-right"><del>$${tempCourse.getPrice() + 19}<sup>.99</sup></del><span class="p-bg-color float-right">$${tempCourse.getPrice()} <sup>.99</sup></span></strong>
 													<span class="p-bg-color float-right">${tempCourse.getPrice()} $ <sup>.99</sup></span>
 												</div>
 												<c:url var="tempLink" value="CourseDetail">
@@ -122,16 +121,19 @@
 													</li>
 												</ul>
 											</div>
-										</div> <!-- /.single-course --> --%>
-										<div class="single-course">
+										</div> <!-- /.single-course -->
+<%-- 										<div class="single-course">
 											<div class="image-box"><img src="${tempCourse.getImg_path() }" alt=""></div>
 											<div class="text">
 												<div class="image"><img src="${tempCourse.getImg_path_instructor() }" alt=""></div>
 												<div class="name clearfix">
 													<h6 class="float-left">${tempCourse.getIns_name() }</h6>
-													<span class="p-bg-color float-right">Free</span>
 												</div>
-												<h5><a href="course-details.html" class="tran3s"></a>${tempCourse. getDesciption()}</h5>
+												
+												<c:url var="tempLink" value="CourseDetail">
+													<c:param name="course_id" value="${tempCourse.getCourses_id()}"></c:param>
+	  											</c:url>
+												<h5><a href="${tempLink}" class="tran3s"></a>${tempCourse.getName()}</h5>
 												<ul class="clearfix">
 													<li class="float-left">
 														<i class="flaticon-people"></i>
@@ -147,7 +149,7 @@
 													</li>
 												</ul>
 											</div>
-										</div> <!-- /.single-course -->
+										</div> <!-- /.single-course --> --%>
 									</div> <!-- /.col- -->
 								</c:forEach> 
 							</div> <!-- /.row -->

@@ -18,6 +18,7 @@ import Dao.AccountUtil;
 import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
+import Model.ChartInfo;
 import Model.Courses;
 import Model.Instructor;
 
@@ -64,10 +65,12 @@ public class DashBoard extends HttpServlet {
 		float total_sales = 0;
 		int total_students = 0;
 		int total_courses = 0;
+		List<ChartInfo> list_revenue_of_ins = null;
 		try {
 			ls = insUtil.getMyCourses1(ins_id);
 			total_courses = ls.size();
 			total_students = insUtil.getMyStudent(ins_id);
+			list_revenue_of_ins = insUtil.getRevenuebyMonth(ins_id);
 		// TODO Auto-generated catch block
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -85,7 +88,8 @@ public class DashBoard extends HttpServlet {
 		catch (SQLException e) {
 		}
 		  // TODO Auto-generated catch block e.printStackTrace(); }
-		 
+		System.out.println(list_revenue_of_ins.get(0).getName());
+		request.setAttribute("revenue", list_revenue_of_ins);
 		request.setAttribute("listCourses", ls);
 		request.setAttribute("balance", balance);
 		request.setAttribute("total_sales", total_sales);

@@ -1,5 +1,6 @@
 var xValues = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
+var theData = ${jsonString};
+alert(theData);
 var COLORS = [
 		'#4dc9f6',
 		'#f67019',
@@ -16,7 +17,8 @@ new Chart("myChart", {
   type: "line",
   data: {
     labels: xValues,
-    datasets: [{ 
+    datasets: theData
+    /*[{ 
 		label: 'Course 1',
       	data: [860,1140,1060,1060,1070,1110,1330,1110,130,18],
       	borderColor: COLORS[0],
@@ -36,7 +38,7 @@ new Chart("myChart", {
       	borderColor: COLORS[2],
       	fill: false,
       	tension: 0.1
-    }]
+    }]*/
   },
   /*options: {
     legend: {display: false}

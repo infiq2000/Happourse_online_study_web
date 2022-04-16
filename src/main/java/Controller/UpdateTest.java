@@ -68,44 +68,44 @@ public class UpdateTest extends HttpServlet {
 	 */
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int aid = (int)request.getSession(false).getAttribute("aid");
-		String username = (String) request.getParameter("username");
-		String fullName = (String) request.getParameter("fullName");
-		String major = (String) request.getParameter("major");
-		Date birth = Date.valueOf((String) request.getParameter("birth"));
-		String phoneNumber = (String) request.getParameter("phoneNumber");
-		String email = (String) request.getParameter("email");
-		String address = (String) request.getParameter("address");
-		String describe = (String) request.getParameter("about");
-		String experiment = (String) request.getParameter("experiment");
-		String countryName = (String) request.getParameter("country");
-		
-		int accountType = (int)request.getSession().getAttribute("account_type");
-		
-		if (accountType == 0) {
-			try {
-				userUtil.updateUser(aid, username, fullName, major, birth, phoneNumber,
-						email, address, describe, experiment, countryName);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} else {
-			try {
-				insUtil.updateInstructor(aid, username, fullName, major, birth, 
-						email, address, describe, experiment, countryName);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		String[] a = fullName.split(" ");
-		String b = a[a.length - 1];	
-		HttpSession session = request.getSession(true);
-		session.setAttribute("name", b);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/Profile");
-		dispatcher.forward(request, response);
+//		int aid = (int)request.getSession(false).getAttribute("aid");
+//		String username = (String) request.getParameter("username");
+//		String fullName = (String) request.getParameter("fullName");
+//		String major = (String) request.getParameter("major");
+//		Date birth = Date.valueOf((String) request.getParameter("birth"));
+//		String phoneNumber = (String) request.getParameter("phoneNumber");
+//		String email = (String) request.getParameter("email");
+//		String address = (String) request.getParameter("address");
+//		String describe = (String) request.getParameter("about");
+//		String experiment = (String) request.getParameter("experiment");
+//		String countryName = (String) request.getParameter("country");
+//		
+//		int accountType = (int)request.getSession().getAttribute("account_type");
+//		
+//		if (accountType == 0) {
+//			try {
+//				userUtil.updateUser(aid, username, fullName, major, birth, phoneNumber,
+//						email, address, describe, experiment, countryName);
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		} else {
+//			try {
+//				insUtil.updateInstructor(aid, username, fullName, major, birth, 
+//						email, address, describe, experiment, countryName);
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+//		String[] a = fullName.split(" ");
+//		String b = a[a.length - 1];	
+//		HttpSession session = request.getSession(true);
+//		session.setAttribute("name", b);
+//		
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("/Profile");
+//		dispatcher.forward(request, response);
 	}
 
 }
