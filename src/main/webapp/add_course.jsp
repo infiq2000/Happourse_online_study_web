@@ -89,12 +89,12 @@
 					<div class="row clearfix">
 						
 						<!-- Left Column -->
-						<div class="left-column col-lg-8 col-md-12 col-sm-12">
+						<div class="left-column col-lg-4 col-md-12 col-sm-12">
 							<div class="inner-column">
 								<h6>Basic Information</h6>
 								
 								<!-- Edit Course Form -->
-								<div class="edit-course-form">
+								<div class="edit-course-form" style="width: 155%;">
 									
 										<!-- Form Group -->
 										<div class="form-group">
@@ -115,7 +115,7 @@
 						
 						<!-- Right Column -->
 						<div class="right-column col-lg-4 col-md-12 col-sm-12">
-							<div class="inner-column">
+							<div class="inner-column" style="margin-left: 58%;width: 150%;">
 								
 								
 								<h6>Options</h6>
@@ -161,12 +161,12 @@
 											<span class="select-category">Select a language</span>
 										</div>
 										
-										<div class="form-group">
-													<label style="margin-right: 20px; font-size:14px;">Price ($)</label>
-													<div style=" width: 50px; display:inline;">
-														<input type="text" name="price" value="" placeholder="$" required>
-													</div>
-											</div> <!-- /.course-price-filter -->
+										<div class="box-inner">
+												<label style="margin-right: 20px; font-size:14px;">Price ($)</label>
+												<div style=" width: 50px; display:inline;">
+													<input type="text" name="price" value="" placeholder="$" required>
+												</div>
+										</div> <!-- /.course-price-filter -->
 										
 										<%
 											UserUtil userUtil = new UserUtil(ds);
@@ -175,8 +175,8 @@
 									    	request.setAttribute("list_hashtag", ls_hashtag);	
 										%>
 										
-										<div class="form-group tags">
-											<label>Tags</label>
+										<div class="box-inner">
+											<label>Tags</label></br>
 												<c:forEach var = "hashtag" items = "${list_hashtag}" >
 													<%-- <label>${hashtag.getHashtag_name()}</label>
 													<input type="checkbox" class="btn_hash" value="${hashtag.getHashtag_name()} "> --%>

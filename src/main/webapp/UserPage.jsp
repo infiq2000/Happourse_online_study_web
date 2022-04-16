@@ -95,7 +95,7 @@
 								<c:forEach var="tempCourse" items="${listCourses}">
 									<div class="col-lg-4 col-sm-6 col-xs-6">
 										<div class="single-course" style="border: 0px;">
-											<div class="image-box"><img src="${tempCourse.getImg_path()}" alt=""></div>
+											<div class="image-box"><img style="width: 270px;height: 120px;" src="${tempCourse.getImg_path()}" alt=""></div>
 											<div class="text">
 												<div class="image"><img src="${tempCourse.getImg_path_instructor() }" alt=""></div>
 												<div class="name clearfix">
