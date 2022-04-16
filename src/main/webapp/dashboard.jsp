@@ -1,3 +1,4 @@
+<%@page import="Controller.DashBoard"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -7,8 +8,10 @@
 <%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
 <%@ page import="Dao.CourseUtil" %>
 <%@ page import="Model.Chapter" %>
-<%@ page import="Model.Content" %>
+<%@ page import="Model.*" %>
 <%@ page import="Dao.LectureUtil" %>
+<%@ page import="org.json.simple.JSONObject" %>
+<%@ page import="org.json.simple.JSONArray" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,8 +51,30 @@
 	<!--[if lt IE 9]><script src="js/ins/respond.js"></script><![endif]-->
 
 </head>
+							<%
 
-<body class="">
+								JSONObject json = new JSONObject();
+							    JSONArray rev;
+								List<ChartInfo> chart = (List<ChartInfo>)request.getAttribute("revenue");
+								List<Courses> ls = (List<Courses>)request.getAttribute("listCourses");
+								for(int i=0 ; i < ls.size();i++){
+									double[] mon = new double[12];
+									rev = new JSONArray();
+									for(ChartInfo ci : chart){
+										if (ci.getCourse_id()==ls.get(i).getCourses_id()){
+											mon[ci.getMonth()-1] = ci.getRevenue();
+										}
+										
+									}
+									for(int j=0;j<12;j++){
+										rev.add(mon[j]);
+									}
+									json.put(ls.get(i).getName(), rev);
+								}
+								request.setAttribute("jsonString", json);
+							%>
+
+<body onload='init(${jsonString})' class="">
 
 
  	
@@ -145,7 +170,11 @@
 							<div class="pull-right">
 								<a href="earning_course.jsp" class="see-all">View Earnings</a>
 							</div>
-							
+
+							<input type="hidden" value="<%=json.toString() %>" id="chatWindowURL"/>
+							<div>
+								<p><%=json.toString() %> </p>
+							</div>
 							<div style="background: white;width: 999px;padding: 20px;margin: 90px 0 0 13%;border-radius: 5px;">
 								<canvas id="myChart" style="width: 1000px; max-width: 1000px; display: block; height: 400px;"></canvas>
 							</div>

@@ -115,7 +115,6 @@ public class UserUtil {
 			double star_rate = myRS.getDouble("star_rate");
 			int ins_id = myRS.getInt("ins_id");
 			int cid = myRS.getInt("cid");
-			System.out.println(img_path);
 			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date ));
 		}
 		myConn.close();
