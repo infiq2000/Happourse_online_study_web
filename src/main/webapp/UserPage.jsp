@@ -100,7 +100,7 @@
 												<div class="image"><img src="${tempCourse.getImg_path_instructor() }" alt=""></div>
 												<div class="name clearfix">
 													<h6 class="float-left">${tempCourse.getIns_name() }</h6>
-													<span class="p-bg-color float-right">${tempCourse.getPrice()} $ <sup>.99</sup></span>
+													<span class="p-bg-color float-right">${tempCourse.getPrice2()} $ <sup>.99</sup></span>
 												</div>
 												<c:url var="tempLink" value="CourseDetail">
 													<c:param name="course_id" value="${tempCourse.getCourses_id()}"></c:param>
