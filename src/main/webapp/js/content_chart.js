@@ -1,9 +1,11 @@
-var title = document.querySelectorAll('.title');
+var title = document.getElementsByClassName('title');
+var duration = document.getElementsByClassName('duration');
 var chart = document.getElementById('chart');
 
 for(var i=0; i<title.length; i++){
 	
     title[i].addEventListener("click", function(){
+		console.log(title[i].innerHTML)
 		if (chart.style.display == 'none'){
 			chart.style.display = 'block';
 		}else{
