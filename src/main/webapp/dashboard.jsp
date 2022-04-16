@@ -52,12 +52,19 @@
 
 </head>
 							<%
-
-								JSONObject json = new JSONObject();
+							String[] COLORS = {"#4dc9f6","#f67019","#f53794","#537bc4",
+							  		"#acc236",
+							  		"#166a8f",
+							  		"#00a950",
+							  		"#58595b",
+							  		"#8549ba"
+							};
+								JSONArray json = new JSONArray();
 							    JSONArray rev;
 								List<ChartInfo> chart = (List<ChartInfo>)request.getAttribute("revenue");
 								List<Courses> ls = (List<Courses>)request.getAttribute("listCourses");
 								for(int i=0 ; i < ls.size();i++){
+									JSONObject tmp = new JSONObject();
 									double[] mon = new double[12];
 									rev = new JSONArray();
 									for(ChartInfo ci : chart){
@@ -69,12 +76,18 @@
 									for(int j=0;j<12;j++){
 										rev.add(mon[j]);
 									}
-									json.put(ls.get(i).getName(), rev);
+									tmp.put("label",ls.get(i).getName());
+									tmp.put("data", rev);
+									tmp.put("borderColor",COLORS[i]);
+									tmp.put("fill", "false");
+									tmp.put("tension",0.1);
+									json.add(tmp);
 								}
-								request.setAttribute("jsonString", json);
+								String rs = json.toString();
+								request.setAttribute("jsonString", json.toString());
 							%>
 
-<body onload='init(${jsonString})' class="">
+<body  data-customvalueone="${jsonString}" class="">
 
 
  	
@@ -171,10 +184,7 @@
 								<a href="earning_course.jsp" class="see-all">View Earnings</a>
 							</div>
 
-							<input type="hidden" value="<%=json.toString() %>" id="chatWindowURL"/>
-							<div>
-								<p><%=json.toString() %> </p>
-							</div>
+							<input id="theData" type="hidden" value="${jsonString }" >
 							<div style="background: white;width: 999px;padding: 20px;margin: 90px 0 0 13%;border-radius: 5px;">
 								<canvas id="myChart" style="width: 1000px; max-width: 1000px; display: block; height: 400px;"></canvas>
 							</div>
@@ -318,7 +328,7 @@
 <script src="js/ins/charts-script.js"></script> -->
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script type="text/javascript" src="js/dashboard_chart.js"></script>
+<!-- <script type="text/javascript" src="js/dashboard_chart.js"></script> -->
 
 <!-- Js File_________________________________ -->
 
@@ -350,6 +360,59 @@
 
 		<!-- Theme js -->
 		<script type="text/javascript" src="js/theme.js"></script>
+<script type="text/javascript">
+var xValues = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+/* var jsonString = '[{"borderColor":"#4dc9f6","tension":0.1,"data":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"label":"test34","fill":"false"},{"borderColor":"#f67019","tension":0.1,"data":[10.0,0.0,10.0,10.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"label":"Learn Python - Full Course for Beginners","fill":"false"},{"borderColor":"#f53794","tension":0.1,"data":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,20.0,0.0,0.0],"label":"SQL Tutorial - Full Database Course for Beginners","fill":"false"},{"borderColor":"#537bc4","tension":0.1,"data":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"label":"Machine Learning Course for Beginners","fill":"false"}]';
+var obj = JSON.parse(jsonString);
+console.log(obj) */
+var js2 = '${jsonString}'
+var obj2 = JSON.parse(js2);
+alert(obj2);
+console.log(obj2); 
+var COLORS = [
+		'#4dc9f6',
+		'#f67019',
+		'#f53794',
+		'#537bc4',
+		'#acc236',
+		'#166a8f',
+		'#00a950',
+		'#58595b',
+		'#8549ba'
+	];
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: obj2
+/*    [{ 
+		label: 'Course 1',
+      	data: [860,1140,1060,1060,1070,1110,1330,1110,130,18],
+		borderColor: COLORS[0],
+      	fill: false,
+      	tension: 0.1
+    }, 
+    { 
+		label: 'Course 2',
+      	data: [1100,1100,1700,1100,1000,1100,1000,100,1000,10],
+		borderColor: COLORS[1],
+      	fill: false,
+      	tension: 0.1
+    }, 
+    { 
+		label: 'Course 3',
+      	data: [300,700,1000,1000,1000,1000,1000,1000,200,100],
+    	borderColor: COLORS[2],
+      	fill: false,
+      	tension: 0.1
+    }]*/
+  },
+/*  options: {
+    legend: {display: false}
+  }*/
+});
+</script>
 <script>
 		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		var config = {

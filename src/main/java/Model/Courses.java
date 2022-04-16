@@ -23,6 +23,18 @@ public class Courses {
 	private double price2;
 	
 
+	public double getPrice2() {
+		return price2;
+	}
+
+
+
+	public void setPrice2(double price2) {
+		this.price2 = price2;
+	}
+
+
+
 	public Courses(int courses_id, String name, String skill, double price2, String language, double star_rate,
 			String desciption, int ins_id, int cid, String ins_name, String ins_major, int countCourses,
 			String img_path, String img_path_instructor, int total_comment, Date publish_date) {
