@@ -109,11 +109,11 @@
 												<ul class="clearfix">
 													<li class="float-left">
 														<i class="flaticon-people"></i>
-														<a href="#" class="tran3s">2,680</a>
+														<a href="#" class="tran3s">${tempCourse.getCountCourses()}</a>
 													</li>
 													<li class="float-left">
 														<i class="flaticon-comments"></i>
-														<a href="#" class="tran3s">13</a>
+														<a href="#" class="tran3s">${tempCourse.getTotal_comment()}</a>
 													</li>
 													<li class="float-right">
 														<i class="flaticon-heart"></i>
