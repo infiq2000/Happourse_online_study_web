@@ -22,6 +22,7 @@ import Model.Account;
 import Model.Chapter;
 import Model.Courses;
 import Model.Instructor;
+import Model.Review;
 import Model.User;
 
 /**
@@ -95,11 +96,15 @@ public class CourseDetail extends HttpServlet {
 			
 			String hashtagOfCourse = courseUtil.getHashtagOfCourse(course_id);
 			request.setAttribute("hashtagOfCourse", hashtagOfCourse);
-			System.out.println(hashtagOfCourse.toString());
+			
+			List<Review> reviewList = null;
+			reviewList = userUtil.getAllReview(course_id);
+			request.setAttribute("reviewList", reviewList);
+			
 			RequestDispatcher dispatcher;
 			if (courseUtil.checkSignedCourse(course_id, uid) == null) {
 				dispatcher = request.getRequestDispatcher("/Course_detail.jsp");
-			} else {				
+			} else {
 				dispatcher = request.getRequestDispatcher("/CourseSigned.jsp");
 			}		
 			dispatcher.forward(request, response);
