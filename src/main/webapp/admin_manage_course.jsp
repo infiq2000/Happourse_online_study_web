@@ -68,7 +68,7 @@
 			<div class="sec-title">
 				<div class="clearfix">
 					<div class="pull-left">
-						<h4>Manage Users</h4>
+						<h4>Manage Courses</h4>
 					</div>
 				</div>
 			</div>
@@ -77,31 +77,27 @@
 					<!-- Title Box -->
 					<div class="title-box clearfix">
 						<!-- Title Column -->
-						<div class="title-column" style="width:480px;">
-							<h6 >Full Name</h6>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:180px; text-align:center">
-							<h6 >Address</h6>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:150px;">
-							<h6 >Phone Number</h6>
+						<div class="title-column" style="width:600px;">
+							<h6 >Title</h6>
 						</div>
 						<!-- Title Column -->
 						<div class="title-column" style="width:130px;">
-							<h6>Email</h6>
+							<h6 >Publish Date</h6>
 						</div>
 						<!-- Title Column -->
 						<div class="title-column" style="width:150px;">
-							<h6>Course</h6>
+							<a href="#"><h6 >Sales</h6></a>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:100px;">
-							<h6>Balance</h6>
+						<div class="title-column" style="width:200px;">
+							<h6>Category</h6>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:130px;">
+						<div class="title-column" style="width:200px;">
+							<h6>Instructor</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column" style="width:180px;">
 							<h6>Action</h6>
 						</div>
 					</div>
@@ -111,15 +107,16 @@
 					  <tbody>
 					  	<c:forEach var="i" begin="1" end="5">
 							<tr>
-							  <td class="title" scope="col">Nguyen Duc An Son</td>
-							  <td class="post-date" scope="col" style="text-align:center;">Quang Nam</td>
-							  <td class="sales" scope="col" style="text-align:center;">0905480650</td>
-							  <td class="category" scope="col" style="text-align:center;">ansonnguyen</td>
-							  <td style="text-align:center;">4</td>
-							  <td>4000$</td>
+							  <td class="title" scope="col"><a href="admin_manage_chapter.jsp">Course 1</a></td>
+							  <td class="post-date" scope="col" style="text-align:center;">19/04/2022</td>
+							  <td class="sales" scope="col" style="text-align:center;">100</td>
+							  <td class="category" scope="col" style="text-align:center;">Computer Vision</td>
+							  <td style="text-align:center;">An Son</td>
 							  <td class="actions" scope="col" style="text-align:center;">
 							  	<a href="#"><i class='fa fa-trash-o'></i></a>
-							  
+							  	<a href="#"><i class='fa fa-check-square'></i></a>
+							  	<a href="#"><i class='fa fa-square-o'></i></a>
+							  </td>
 							</tr>
 						</c:forEach>
 					  </tbody>
