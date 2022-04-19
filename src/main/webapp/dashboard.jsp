@@ -143,7 +143,7 @@
 								<h4>Sale Course Performance</h4>
 							</div>
 							<div class="pull-right">
-								<a href="earning_course.jsp" class="see-all">View Earnings</a>
+								<a href="Earnings" class="see-all">View Earnings</a>
 							</div>
 							
 							<div style="background: white;width: 999px;padding: 20px;margin: 90px 0 0 13%;border-radius: 5px;">
