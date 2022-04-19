@@ -100,9 +100,7 @@ public class UpdateInfo extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Flagggggggg");
 		int id = Integer.parseInt(request.getParameter("id"));
-		System.out.println("Flag = " + id);
 		
 		String newPassword = request.getParameter("newPassword");
 		String repeatNewPassword = request.getParameter("repeatNewPassword");	
