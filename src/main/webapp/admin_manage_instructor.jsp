@@ -68,7 +68,7 @@
 			<div class="sec-title">
 				<div class="clearfix">
 					<div class="pull-left">
-						<h4>Manage Users</h4>
+						<h4>Manage Instructors</h4>
 					</div>
 				</div>
 			</div>
