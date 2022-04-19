@@ -56,6 +56,28 @@ public class Courses {
 		this.total_comment = total_comment;
 		this.publish_date = publish_date;
 	}
+	public Courses(String category_name, int courses_id, String name, String skill, double price2, String language, double star_rate,
+			String desciption, int ins_id, int cid, String ins_name, String ins_major, int countCourses,
+			String img_path, String img_path_instructor, int total_comment, Date publish_date) {
+		super();
+		this.category_name = category_name;
+		this.courses_id = courses_id;
+		this.name = name;
+		this.skill = skill;
+		this.price2 = price2;
+		this.language = language;
+		this.star_rate = star_rate;
+		this.desciption = desciption;
+		this.ins_id = ins_id;
+		this.cid = cid;
+		this.ins_name = ins_name;
+		this.ins_major = ins_major;
+		this.countCourses = countCourses;
+		this.img_path = img_path;
+		this.img_path_instructor = img_path_instructor;
+		this.total_comment = total_comment;
+		this.publish_date = publish_date;
+	}
 
 
 
