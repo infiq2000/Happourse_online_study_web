@@ -68,7 +68,7 @@
 						<h4>Manage Chapters</h4>
 					</div>
 					<div class="pull-right">
-						<a href="add_chapter.jsp?course_id=${course_id }" class="see-all">Add New Chapter</a>
+						<a href="EditCourse?course_id=${course_id }" class="see-all">Add New Chapter</a>
 					</div>
 				</div>
 			</div>

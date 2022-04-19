@@ -56,7 +56,6 @@ public class DeleteChapter extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Delete: " + courseID);
 		request.setAttribute("course_id", courseID);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("ManageChapters");
 		dispatcher.forward(request, response);
