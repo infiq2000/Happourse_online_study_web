@@ -243,7 +243,7 @@
 							<div class="form-group" style="margin-left:20%; width:500px;">
 								<h2>Change Password</h2>
 								<label style="font-size:14px;">Old password</label>
-								<input style="margin-bottom:20px;" type="text" name="oldPassword" value="${old_pass}">
+								<input style="margin-bottom:20px;" type="password" name="oldPassword" value="">
 								
 								<label style="font-size:14px;">New password</label>
 								<input style="margin-bottom:20px;" type="password" name="newPassword" value="">
