@@ -74,7 +74,7 @@
 											</ul>
 										</div> <!-- /.tag-option -->
 
-										<div class="course-price-filter">
+<!-- 										<div class="course-price-filter">
 											<h5>Price Range</h5>
 											<div class="price-ranger">
 												<div class="ranger-min-max-block">
@@ -90,8 +90,8 @@
 													</ul>
 												</div>
 												<div id="slider-range"></div>
-											</div> <!-- /price-ranger -->
-										</div> <!-- /.course-price-filter -->
+											</div> /price-ranger
+										</div> /.course-price-filter -->
 
 										
 
