@@ -53,59 +53,54 @@
     <div class="preloader"></div>
  	
     <!-- Main Header-->
-	<jsp:include page="Header.jsp"></jsp:include>
+	<jsp:include page="Header_admin.jsp"></jsp:include>
     <!--End Main Header -->
+    
     
     
 <div class="page-wrapper">	
 <!-- Manage Cource Section -->
     <div class="manage-cource-section">
+    	<div style="text-align: center;margin-bottom:60px;color:lightcoral; font-size: 22px; font-family: 'Roboto', sans-serif; background:#090f42; padding:20px; border-radius:5px; height:200%;	"><b><h2>Hapourse's Administration</h2></b></div>
     	<div class="auto-container">
+    		
 			<!-- Sec Title -->
 			<div class="sec-title">
 				<div class="clearfix">
 					<div class="pull-left">
 						<h4>Manage Chapters</h4>
 					</div>
-					<div class="pull-right">
-						<a href="EditCourse?course_id=${course_id }" class="see-all">Add New Chapter</a>
-					</div>
 				</div>
 			</div>
 			<div class="inner-container">
-				<div class="container-content" style="width:80%; margin-left:150px;">
+				<div class="container-content">
 					<!-- Title Box -->
 					<div class="title-box clearfix">
 						<!-- Title Column -->
-						<div class="title-column" style="width:345px;">
+						<div class="title-column" style="width:600px;">
 							<h6 >Title</h6>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:270px; text-align: center;">
-							<h6>Duration</h6>
+						<div class="title-column" style="width:130px;">
+							<h6 >Duration</h6>
 						</div>
+	
 						<!-- Title Column -->
-						<div class="title-column" style="width:300px;">
+						<div class="title-column" style="width:180px;">
 							<h6>Action</h6>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:150px;">
-							<h6>Mood</h6>
 						</div>
 					</div>
 					<table class="table">
 					  <thead>
 					  </thead>
 					  <tbody>
-					  	<c:forEach var="listChapters" items="${chapter}">
-							<tr> 
-							  <td class="title" scope="col"><a href="ManageLectures?chap_id=${listChapters.getChap_id()}">${listChapters.getName()}</a></td>
-							  <td class="duration" scope="col" style="text-align:center;">${listChapters.getDuration()}</td>
+					  	<c:forEach var="i" begin="1" end="5">
+							<tr>
+							  <td class="title" scope="col"><a href="admin_manage_content.jsp">Chapter 1</a></td>
+							  <td class="post-date" scope="col" style="text-align:center;">2 mins</td>
 							  <td class="actions" scope="col" style="text-align:center;">
-							  	<a href="DeleteChapter?chap_id=${listChapters.getChap_id()}" onclick="if (!(confirm('Ban muon xoa chuong nay?'))) return false"><i class='fa fa-trash-o'></i></a>
-							  	<a href="EditCourse?course_id=${listChapters.getCourse_id() }"><i class='fa fa-edit'></i></a>
+							  	<a href="#"><i class='fa fa-trash-o'></i></a>
 							  </td>
-							  <td style="text-align:center; color:${listChapters.getColor()};">${listChapters.getMood()}</td>
 							</tr>
 						</c:forEach>
 					  </tbody>
@@ -113,20 +108,6 @@
 				</div>
 			</div>
 			
-			<!-- Post Share Options -->
-			<div class="styled-pagination margin-top text-center">
-				<ul class="clearfix">
-					<li class="arrow"><a href="#"><span class="fa fa-angle-left"></span> </a></li>
-					<li class="prev"><a href="#">Prev</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li class="active"><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li class="next"><a href="#">Next</a></li>
-					<li class="arrow"><a href="#"><span class="fa fa-angle-right"></span> </a></li>
-				</ul>
-			</div>
 			
 		</div>
 	</div>

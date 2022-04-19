@@ -16,6 +16,7 @@ import Model.Courses;
 import Model.User;
 import Model.UserAccount;
 import Model.Profiles;
+import Model.Review;
 import Model.Hashtag;
 
 import Dao.AccountUtil; 
@@ -330,6 +331,7 @@ public class UserUtil {
 			String name = myRS.getString("hashtag_name");
 			hashtags.add(new Hashtag(id, name));
 		}
+		myConn.close();
 		return hashtags; 
 	}
 	
@@ -347,7 +349,30 @@ public class UserUtil {
 			String name = myRS.getString("hashtag_name");
 			hashtags.add(new Hashtag(id, name));
 		}
+		myConn.close();
 		return hashtags;
+	}
+
+	public List<Review> getAllReview(int course_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "select review_content, star_rate, review_date, full_name, img_path from users u, user_review r where u.uid=r.uid and course_id=?;";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, course_id);
+		myRS = myStmt.executeQuery();
+		List<Review> reviewList = new ArrayList<>();
+		while (myRS.next()) {
+			String reviewContent = myRS.getString("review_content");
+			float starRate = myRS.getFloat("star_rate");
+			Date reviewDate = myRS.getDate("review_date");
+			String fullName = myRS.getString("full_name");
+			String imgPath = myRS.getString("img_path");
+			reviewList.add(new Review(reviewContent, starRate, reviewDate, fullName, imgPath));
+		}
+		myConn.close();
+		return reviewList;
 	}
 	
 }

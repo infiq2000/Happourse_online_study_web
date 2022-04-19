@@ -45,102 +45,60 @@
 
 </head>
 
-<body class="">
+<body class="" style="background:white;">
 
 
  	
     <!-- Preloader -->
     <div class="preloader"></div>
  	
-    <!-- Main Header-->
-	<jsp:include page="Header.jsp"></jsp:include>
-    <!--End Main Header -->
     
     
-<div class="page-wrapper">	
-<!-- Manage Cource Section -->
-    <div class="manage-cource-section">
-    	<div class="auto-container">
-			<!-- Sec Title -->
-			<div class="sec-title">
-				<div class="clearfix">
-					<div class="pull-left">
-						<h4>Manage Chapters</h4>
+    
+<div class="page-wrapper" style="background:white;">	
+	<div class="auto-container">
+	        	<div class="inner-container" style="width: 30%; margin-left: 35%;">
+	            	<h2> Welcome To <span style="color:lightcoral">Admin</span></h2>
+					
+					<!-- Login Form -->
+					<div class="styled-form">
+						<form method="post" action="index.html">
+							
+							<!-- Form Group -->
+							<div class="form-group">
+								<input type="email" name="email" value="" placeholder="Email Address" required>
+							</div>
+							
+							<!-- Form Group -->
+							<div class="form-group">
+								<input type="password" name="password" value="" placeholder="Password" required>
+							</div>
+							
+							<div class="form-group">
+								<div class="clearfix">
+									<div class="pull-left">
+										<div class="check-box">
+											<input type="checkbox" name="remember-password" id="type-1"> 
+											<label for="type-1">Remember Password</label>
+										</div>
+									</div>
+									<div class="pull-right">
+										<a href="#" class="forgot">Forget Password?</a> 
+									</div>
+								</div>
+							</div>
+							
+							
+						</form>
 					</div>
-					<div class="pull-right">
-						<a href="EditCourse?course_id=${course_id }" class="see-all">Add New Chapter</a>
-					</div>
-				</div>
-			</div>
-			<div class="inner-container">
-				<div class="container-content" style="width:80%; margin-left:150px;">
-					<!-- Title Box -->
-					<div class="title-box clearfix">
-						<!-- Title Column -->
-						<div class="title-column" style="width:345px;">
-							<h6 >Title</h6>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:270px; text-align: center;">
-							<h6>Duration</h6>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:300px;">
-							<h6>Action</h6>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:150px;">
-							<h6>Mood</h6>
-						</div>
-					</div>
-					<table class="table">
-					  <thead>
-					  </thead>
-					  <tbody>
-					  	<c:forEach var="listChapters" items="${chapter}">
-							<tr> 
-							  <td class="title" scope="col"><a href="ManageLectures?chap_id=${listChapters.getChap_id()}">${listChapters.getName()}</a></td>
-							  <td class="duration" scope="col" style="text-align:center;">${listChapters.getDuration()}</td>
-							  <td class="actions" scope="col" style="text-align:center;">
-							  	<a href="DeleteChapter?chap_id=${listChapters.getChap_id()}" onclick="if (!(confirm('Ban muon xoa chuong nay?'))) return false"><i class='fa fa-trash-o'></i></a>
-							  	<a href="EditCourse?course_id=${listChapters.getCourse_id() }"><i class='fa fa-edit'></i></a>
-							  </td>
-							  <td style="text-align:center; color:${listChapters.getColor()};">${listChapters.getMood()}</td>
-							</tr>
-						</c:forEach>
-					  </tbody>
-					</table>
-				</div>
-			</div>
-			
-			<!-- Post Share Options -->
-			<div class="styled-pagination margin-top text-center">
-				<ul class="clearfix">
-					<li class="arrow"><a href="#"><span class="fa fa-angle-left"></span> </a></li>
-					<li class="prev"><a href="#">Prev</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li class="active"><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li class="next"><a href="#">Next</a></li>
-					<li class="arrow"><a href="#"><span class="fa fa-angle-right"></span> </a></li>
-				</ul>
-			</div>
-			
-		</div>
-	</div>
-	<!-- End Manage Cource Section -->
-	</div>
+					
+					
+	            </div>
+				
+				
+	        </div>
+	        </div>
 
-	<!-- Main Footer -->
-	<jsp:include page="footer.jsp"></jsp:include>
-	
-    
-	<!-- Scroll Top Button -->
-			<button class="scroll-top tran3s">
-				<i class="fa fa-angle-up" aria-hidden="true"></i>
-			</button>
 
 
 

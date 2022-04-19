@@ -191,95 +191,55 @@
 											</li>
 										</ul>
 									</div> <!-- /.feedback-container -->
-									<div class="single-review clearfix">
-										<img src="images/course/30.jpg" alt="" class="float-left">
-										<div class="text float-left">
-											<div class="clearfix">
-												<div class="float-left">
-													<h6>Marie Karles</h6>
-													<span>March 8, 2016 - 8:00am</span>
-												</div>
-												<ul class="float-right">
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												</ul>
-											</div> <!-- /.clearfix -->
-											<p>Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totamru rem aperiam, eaque ipsa quae ab illo inventore</p>
-										</div> <!-- /.text -->
-									</div> <!-- /.single-review -->
-									<div class="single-review clearfix">
-										<img src="images/course/31.jpg" alt="" class="float-left">
-										<div class="text float-left">
-											<div class="clearfix">
-												<div class="float-left">
-													<h6>Hasan Abdullah</h6>
-													<span>March 8, 2016 - 8:00am</span>
-												</div>
-												<ul class="float-right">
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												</ul>
-											</div> <!-- /.clearfix -->
-											<p>Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totamru rem aperiam, eaque ipsa quae ab illo inventore</p>
-										</div> <!-- /.text -->
-									</div> <!-- /.single-review -->
-									<div class="single-review clearfix">
-										<img src="images/course/32.jpg" alt="" class="float-left">
-										<div class="text float-left">
-											<div class="clearfix">
-												<div class="float-left">
-													<h6>Solayman Mi.</h6>
-													<span>March 8, 2016 - 8:00am</span>
-												</div>
-												<ul class="float-right">
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												</ul>
-											</div> <!-- /.clearfix -->
-											<p>Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totamru rem aperiam, eaque ipsa quae ab illo inventore</p>
-										</div> <!-- /.text -->
-									</div> <!-- /.single-review -->
+									<c:forEach var="tempReview" items="${reviewList}">
+										<div class="single-review clearfix">
+											<img src="${tempReview.getImg_path() }" alt="" class="float-left">
+											<div class="text float-left">
+												<div class="clearfix">
+													<div class="float-left">
+														<h6>${tempReview.getUser_name() }</h6>
+														<span>${tempReview.getReview_date() }</span>
+													</div>
+													<ul class="float-right">
+												      	<c:forEach var="i" begin="1" end="5">
+												      		<c:choose>
+												      			<c:when test="${tempReview.getStar_rate() >= i}">
+												      				<li><i class="fa fa-star" aria-hidden="true"></i></li>
+												      			</c:when>
+												      			<c:otherwise>
+												      				<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+												      			</c:otherwise>
+												      		</c:choose>
+												        </c:forEach>
+													</ul>
+												</div> <!-- /.clearfix -->
+												<p>${tempReview.getReview_content() }</p>
+											</div> <!-- /.text -->
+										</div> <!-- /.single-review -->
+									</c:forEach>
 								</div> <!-- /.course-feedback -->
 
 								<div class="submit-review-form">
+								  <form action="#">
 									<h3>Submit a Review</h3>
-									<p>Your Ratings</p>
-									<div class="rate">
-									    <input type="radio" id="star5" name="rate" value="5" />
-									    <label for="star5" title="text">5 stars</label>
-									    <input type="radio" id="star4" name="rate" value="4" />
-									    <label for="star4" title="text">4 stars</label>
-									    <input type="radio" id="star3" name="rate" value="3" />
-									    <label for="star3" title="text">3 stars</label>
-									    <input type="radio" id="star2" name="rate" value="2" />
-									    <label for="star2" title="text">2 stars</label>
-									    <input type="radio" id="star1" name="rate" value="1" />
-									    <label for="star1" title="text">1 star</label>
-									  </div></br>
-									<form action="#">
-										<div class="row">
-											<div class="col-sm-6">
-												<label>Your Full Name</label>
-												<input type="text" placeholder="Your Name">
-											</div>
-											<div class="col-sm-6">
-												<label>E-mail</label>
-												<input type="email" placeholder="sample@email.com">
-											</div>
-										</div>
-										<label>Your Message</label>
-										<textarea placeholder="Write Commnent..."></textarea>
-										<input type="submit" value="Submit Review" class="s-bg-color">
-									</form>
+									<label>Your Ratings</label>
+									<div class="row">
+									    <div class="col-lg-12">
+									      <div class="star-rating">
+									        <span class="fa fa-star-o" data-rating="1"></span>
+									        <span class="fa fa-star-o" data-rating="2"></span>
+									        <span class="fa fa-star-o" data-rating="3"></span>
+									        <span class="fa fa-star-o" data-rating="4"></span>
+									        <span class="fa fa-star-o" data-rating="5"></span>
+									        <input type="hidden" name="review-rate" class="rating-value" value="0">
+									      </div>
+									    </div>
+									</div>
+									<br>
+									<label>Your Message</label>
+									<textarea placeholder="Write Commnent..."></textarea>
+									<input type="submit" value="Submit Review" class="s-bg-color">
+								  </form>
 								</div> <!-- /.submit-review-form -->
 							</div> <!-- /.details-wrapper -->
 						</div> <!-- /.col- -->
@@ -336,97 +296,6 @@
 										<a href="#" class="tran3s p-bg-color follow hvr-trim" style="background: darkblue;">Follow Now</a>
 									</div> <!-- /.wrapper -->
 								</div> <!-- /.sidebar-instructor-info -->
-
-								<div class="sidebar-categories">
-									<h4>Categories</h4>
-									<div class="panel-group theme-accordion" id="accordion">
-									  <div class="panel">
-									    <div class="panel-heading active-panel">
-									      <h6 class="panel-title">
-									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-									        Web Develoment</a>
-									      </h6>
-									    </div>
-									    <div id="collapse1" class="panel-collapse collapse in">
-									      <div class="panel-body">
-									      	<ul>
-<!-- 									      		<li><a href="#" class="tran3s">Html/Css</a></li>
-									      		<li><a href="#" class="tran3s">jQuery</a></li>
-									      		<li><a href="#" class="tran3s">Sass/less</a></li> -->
-									      	</ul>
-									      </div>
-									    </div>
-									  </div> <!-- /panel 1 -->
-									  <div class="panel">
-									    <div class="panel-heading">
-									      <h6 class="panel-title">
-									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-									        Data Science</a>
-									      </h6>
-									    </div>
-									    <div id="collapse2" class="panel-collapse collapse">
-									      <div class="panel-body">
-	<!-- 								      	<ul>
-									      		<li><a href="#" class="tran3s">Html/Css</a></li>
-									      		<li><a href="#" class="tran3s">jQuery</a></li>
-									      		<li><a href="#" class="tran3s">Sass/less</a></li>
-									      	</ul> -->
-									      </div>
-									    </div>
-									  </div> <!-- /panel 2 -->
-									  <div class="panel">
-									    <div class="panel-heading">
-									      <h6 class="panel-title">
-									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-									        Machine Learning</a>
-									      </h6>
-									    </div>
-									    <div id="collapse3" class="panel-collapse collapse">
-									      <div class="panel-body">
-<!-- 									      	<ul>
-									      		<li><a href="#" class="tran3s">Html/Css</a></li>
-									      		<li><a href="#" class="tran3s">jQuery</a></li>
-									      		<li><a href="#" class="tran3s">Sass/less</a></li>
-									      	</ul> -->
-									      </div>
-									    </div>
-									  </div> <!-- /panel 3 -->
-									  <div class="panel">
-									    <div class="panel-heading">
-									      <h6 class="panel-title">
-									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-									        Probability and Statistic</a>
-									      </h6>
-									    </div>
-									    <div id="collapse4" class="panel-collapse collapse">
-									      <div class="panel-body">
-<!-- 									      	<ul>
-									      		<li><a href="#" class="tran3s">Html/Css</a></li>
-									      		<li><a href="#" class="tran3s">jQuery</a></li>
-									      		<li><a href="#" class="tran3s">Sass/less</a></li>
-									      	</ul> -->
-									      </div>
-									    </div>
-									  </div> <!-- /panel 4 -->
-									  <div class="panel">
-									    <div class="panel-heading">
-									      <h6 class="panel-title">
-									        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-									        Others</a>
-									      </h6>
-									    </div>
-									    <div id="collapse5" class="panel-collapse collapse">
-									      <div class="panel-body">
-									      	<ul>
-									      		<li><a href="#" class="tran3s">Html/Css</a></li>
-									      		<li><a href="#" class="tran3s">jQuery</a></li>
-									      		<li><a href="#" class="tran3s">Sass/less</a></li>
-									      	</ul>
-									      </div>
-									    </div>
-									  </div> <!-- /panel 5 -->
-									</div> <!-- end #accordion -->
-								</div> <!-- /.sidebar-categories -->
 							</div> <!-- /.course-sidebar -->
 						</div> <!-- /.col- -->
 					</div> <!-- /.row -->
@@ -483,6 +352,30 @@
 
 		<!-- Theme js -->
 		<script type="text/javascript" src="js/theme.js"></script>
+		
+		<script>
+		var $star_rating = $('.star-rating .fa');
+
+		var SetRatingStar = function() {
+		  return $star_rating.each(function() {
+		    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+		      return $(this).removeClass('fa-star-o').addClass('fa-star');
+		    } else {
+		      return $(this).removeClass('fa-star').addClass('fa-star-o');
+		    }
+		  });
+		};
+
+		$star_rating.on('click', function() {
+		  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+		  return SetRatingStar();
+		});
+
+		SetRatingStar();
+		$(document).ready(function() {
+
+		});
+		</script>
 
 		</div> <!-- /.main-page-wrapper -->
 	</body>

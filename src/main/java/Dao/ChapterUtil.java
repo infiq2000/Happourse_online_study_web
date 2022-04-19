@@ -28,10 +28,9 @@ public class ChapterUtil {
 		LectureUtil lecUtil = new LectureUtil(dataSource);
 		List<Chapter> ls = new ArrayList<>();
 		myConn = dataSource.getConnection();
-		String sql = "select chap_id, chapter.name, course_id, (select sum(l.duration) from lecturer_content l, chapter c where l.chap_id = c.chap_id and course_id = ?) as duration from chapter where course_id = ?;";
+		String sql = "select chap_id, chapter.name, course_id as duration from chapter where course_id = ?;";
 		pstmt = myConn.prepareStatement(sql);
 		pstmt.setInt(1, courseID);
-		pstmt.setInt(2, courseID);
 		myRS = pstmt.executeQuery();
 		int count = 0;
 		while (myRS.next()) {

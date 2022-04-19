@@ -53,7 +53,7 @@
     <div class="preloader"></div>
  	
     <!-- Main Header-->
-	
+	<jsp:include page="Header_admin.jsp"></jsp:include>
     <!--End Main Header -->
     
     
@@ -61,7 +61,7 @@
 <div class="page-wrapper">	
 <!-- Manage Cource Section -->
     <div class="manage-cource-section">
-    	<div style="text-align: center;margin-bottom:60px;color:lightcoral; font-size: 22px; font-family: 'Roboto', sans-serif; background:#090f42; padding:20px; border-radius:5px; height:200%;	"><b><h2>Administrator</h2></b></div>
+    	<div style="text-align: center;margin-bottom:60px;color:lightcoral; font-size: 22px; font-family: 'Roboto', sans-serif; background:#090f42; padding:20px; border-radius:5px; height:200%;	"><b><h2>Hapourse's Administration</h2></b></div>
     	<div class="auto-container">
     		
 			<!-- Sec Title -->
