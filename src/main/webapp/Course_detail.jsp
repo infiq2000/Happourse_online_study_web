@@ -197,9 +197,9 @@
 											</li>
 										</ul>
 									</div> <!-- /.feedback-container -->
-									<c:forEach var="tempReview" items="reviewList">
+									<c:forEach var="tempReview" items="${reviewList}">
 										<div class="single-review clearfix">
-											<img src="${tempReview.getImg_path() }" alt="" class="float-left">
+											<img src="${tempReview.getImg_path()}" alt="" class="float-left">
 											<div class="text float-left">
 												<div class="clearfix">
 													<div class="float-left">
