@@ -19,6 +19,8 @@ import Dao.AccountUtil;
 import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
+import Model.Account;
+import Model.UserAccount;
 
 
 /**
@@ -61,22 +63,37 @@ public class ChangePassword extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int accountType = (int)request.getSession(false).getAttribute("account_type");		
 		int aid = (int)request.getSession(false).getAttribute("aid");
+		Account acc = null;
+		UserAccount ua = new UserAccount();
+		try {
+			acc = accUtil.getAccount(aid);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}		
 		
+		String oldPassword = request.getParameter("oldPassword");
 		String newPassword = request.getParameter("newPassword");
 		String repeatNewPassword = request.getParameter("repeatNewPassword");	
-		if (newPassword.compareTo(repeatNewPassword) == 0) {
-			try {
-				int temp = accUtil.changePassword(aid, newPassword);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		if (oldPassword.compareTo(acc.getPassword()) == 0) {
+			if (newPassword.compareTo(repeatNewPassword) == 0) {
+				try {
+					int temp = accUtil.changePassword(aid, newPassword);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/userprofile.jsp");
+				dispatcher.forward(request, response);
+			}else {
+				System.out.println("RepeatPassword is wrong!");
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/userprofile.jsp");
-			dispatcher.forward(request, response);
-		}else {
-			System.out.println("RepeatPassword is wrong!");
+		} else {
+			System.out.println("Old password is wrong!");
 		}
+		
 		
 	}
 
