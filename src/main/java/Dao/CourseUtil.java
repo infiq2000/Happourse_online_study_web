@@ -48,39 +48,100 @@ public class CourseUtil {
 	}
 	
 	public Courses getCourseDetail(int course_id) throws SQLException {
+//		Connection myConn = null;
+//		PreparedStatement myStmt = null;
+//		ResultSet myRS = null;
+//
+//		myConn = dataSource.getConnection();
+//		String sql = "SELECT * FROM happourse.courses c, Happourse.instructor i WHERE course_id=? AND (c.ins_id = i.ins_id);";
+//		myStmt = myConn.prepareStatement(sql);
+//		myStmt.setInt(1, course_id);
+//		myRS = myStmt.executeQuery();
+//		Courses course = null;
+//		if (myRS.next()) {			
+//			course = takeCourseFromRS(myRS);
+//		}
+//		myConn.close();
+//		return course;
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
-
 		myConn = dataSource.getConnection();
-		String sql = "SELECT * FROM happourse.courses c, Happourse.instructor i WHERE course_id=? AND (c.ins_id = i.ins_id);";
+		String sql = "SELECT ca.name as category_name ,i.major,i.img_path as img_ins, i.ins_name,  count(comment) as comment ,count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid inner join instructor i on i.ins_id=c.ins_id WHERE (c.ins_id = i.ins_id) and c.course_id = ? GROUP BY course_id ";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, course_id);
 		myRS = myStmt.executeQuery();
-		Courses course = null;
-		if (myRS.next()) {			
-			course = takeCourseFromRS(myRS);
+		Courses courses = null;
+		if (myRS.next()) {
+			String cate_name = myRS.getString("category_name");
+			String major = myRS.getString("major");
+			String img_ins = myRS.getString("img_ins");
+			String ins_name = myRS.getString("ins_name");
+			int comment = myRS.getInt("comment");
+			int countCourses = myRS.getInt("countCourses");
+			int courses_id = myRS.getInt("course_id");
+			String name = myRS.getString("name");
+			String skill = myRS.getString("skill");
+			double price = myRS.getDouble("price");
+			String language = myRS.getString("language");
+			String description =   myRS.getString("description");
+			Date publish_date= myRS.getDate("publish_date");
+			String img_path = myRS.getString("img_path");
+			double star_rate = myRS.getDouble("star_rate");
+			int ins_id = myRS.getInt("ins_id");
+			int cid = myRS.getInt("cid");
+			courses = new Courses(cate_name,courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date );
 		}
 		myConn.close();
-		return course;
+		return courses;
 	}
 
 	public List<Courses> listCourse_Id(int uid) throws SQLException {
+//		Connection myConn = null;
+//		PreparedStatement myStmt = null;
+//		ResultSet myRS = null;
+//		myConn = dataSource.getConnection();
+//		String sql = "SELECT * FROM Happourse.courses c, Happourse.instructor i WHERE c.ins_id = i.ins_id  AND c.course_id IN ( SELECT course_id FROM Happourse.user_course WHERE uid = ?)";
+//		myStmt = myConn.prepareStatement(sql);
+//		myStmt.setInt(1, uid);
+//		myRS = myStmt.executeQuery();
+//		List<Courses> ls = new ArrayList<>();
+//		while (myRS.next()) {			
+//			Courses course = takeCourseFromRS(myRS);
+//			ls.add(course);
+//		}
+//		myConn.close();
+//		return ls;
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "SELECT * FROM Happourse.courses c, Happourse.instructor i WHERE c.ins_id = i.ins_id  AND c.course_id IN ( SELECT course_id FROM Happourse.user_course WHERE uid = ?)";
+		String sql = "SELECT ca.name, i.major,i.img_path as img_ins, i.ins_name,  count(comment) as comment ,count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid inner join instructor i on i.ins_id=c.ins_id WHERE (c.ins_id = i.ins_id) and u.uid = ? GROUP BY course_id ";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, uid);
 		myRS = myStmt.executeQuery();
-		List<Courses> ls = new ArrayList<>();
-		while (myRS.next()) {			
-			Courses course = takeCourseFromRS(myRS);
-			ls.add(course);
+		List<Courses> courses = new ArrayList<>();
+		while (myRS.next()) {
+			String major = myRS.getString("major");
+			String img_ins = myRS.getString("img_ins");
+			String ins_name = myRS.getString("ins_name");
+			int comment = myRS.getInt("comment");
+			int countCourses = myRS.getInt("countCourses");
+			int courses_id = myRS.getInt("course_id");
+			String name = myRS.getString("name");
+			String skill = myRS.getString("skill");
+			double price = myRS.getDouble("price");
+			String language = myRS.getString("language");
+			String description =   myRS.getString("description");
+			Date publish_date= myRS.getDate("publish_date");
+			String img_path = myRS.getString("img_path");
+			double star_rate = myRS.getDouble("star_rate");
+			int ins_id = myRS.getInt("ins_id");
+			int cid = myRS.getInt("cid");
+			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date ));
 		}
 		myConn.close();
-		return ls;
+		return courses;
 	}
 
 	public void insert(int course_id, int uid) throws SQLException {
