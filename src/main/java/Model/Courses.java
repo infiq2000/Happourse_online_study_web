@@ -1,5 +1,7 @@
 package Model;
 
+import java.sql.Date;
+
 public class Courses {
 	private int courses_id;
 	private String name;
@@ -15,7 +17,100 @@ public class Courses {
 	private int countCourses;
 	private String category_name;
 	private String img_path;
+	private String img_path_instructor;
+	private int total_comment;
+	private Date publish_date;
+	private double price2;
 	
+
+	public double getPrice2() {
+		return price2;
+	}
+
+
+
+	public void setPrice2(double price2) {
+		this.price2 = price2;
+	}
+
+
+
+	public Courses(int courses_id, String name, String skill, double price2, String language, double star_rate,
+			String desciption, int ins_id, int cid, String ins_name, String ins_major, int countCourses,
+			String img_path, String img_path_instructor, int total_comment, Date publish_date) {
+		super();
+		this.courses_id = courses_id;
+		this.name = name;
+		this.skill = skill;
+		this.price2 = price2;
+		this.language = language;
+		this.star_rate = star_rate;
+		this.desciption = desciption;
+		this.ins_id = ins_id;
+		this.cid = cid;
+		this.ins_name = ins_name;
+		this.ins_major = ins_major;
+		this.countCourses = countCourses;
+		this.img_path = img_path;
+		this.img_path_instructor = img_path_instructor;
+		this.total_comment = total_comment;
+		this.publish_date = publish_date;
+	}
+	public Courses(String category_name, int courses_id, String name, String skill, double price2, String language, double star_rate,
+			String desciption, int ins_id, int cid, String ins_name, String ins_major, int countCourses,
+			String img_path, String img_path_instructor, int total_comment, Date publish_date) {
+		super();
+		this.category_name = category_name;
+		this.courses_id = courses_id;
+		this.name = name;
+		this.skill = skill;
+		this.price2 = price2;
+		this.language = language;
+		this.star_rate = star_rate;
+		this.desciption = desciption;
+		this.ins_id = ins_id;
+		this.cid = cid;
+		this.ins_name = ins_name;
+		this.ins_major = ins_major;
+		this.countCourses = countCourses;
+		this.img_path = img_path;
+		this.img_path_instructor = img_path_instructor;
+		this.total_comment = total_comment;
+		this.publish_date = publish_date;
+	}
+
+
+
+	public Date getPublish_date() {
+		return publish_date;
+	}
+
+
+	public void setPublish_date(Date publish_date) {
+		this.publish_date = publish_date;
+	}
+
+
+	public String getImg_path_instructor() {
+		return img_path_instructor;
+	}
+
+
+	public void setImg_path_instructor(String img_path_instructor) {
+		this.img_path_instructor = img_path_instructor;
+	}
+
+
+	public int getTotal_comment() {
+		return total_comment;
+	}
+
+
+	public void setTotal_comment(int total_comment) {
+		this.total_comment = total_comment;
+	}
+
+
 	public String getImg_path() {
 		return img_path;
 	}

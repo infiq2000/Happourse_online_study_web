@@ -42,7 +42,7 @@ import Dao.UserUtil;
 public class UpdateTest2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private final String UPLOAD_DIRECTORY = "D:\\ANSON\\java\\Hapourse\\Happourse_online_study_web\\src\\main\\webapp\\images\\avatar";
+	private final String UPLOAD_DIRECTORY = "C:\\Users\\Tan Dat\\git\\Happourse\\src\\main\\webapp\\images\\avatar";
 
 	@Resource(name = "jdbc/Happourse")
 	private DataSource dataSource;
@@ -148,7 +148,6 @@ public class UpdateTest2 extends HttpServlet {
 		String username = fields.get("username");
 		String fullName = fields.get("fullName");
 		String major = fields.get("major");
-		System.out.println(fields.get("birth"));
 		Date birth = Date.valueOf(fields.get("birth"));
 		String phoneNumber = fields.get("phoneNumber");
 		String email = fields.get("email");

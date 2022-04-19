@@ -138,6 +138,7 @@ public class AccountUtil {
 				if(lstIndex.contains(i)) {
 					i++;
 				} else {
+					myConn.close();
 					return i;
 				}
 			}
@@ -145,5 +146,32 @@ public class AccountUtil {
 		finally {
 			myConn.close();
 		}
+	}
+	
+	public int changePassword(int aid, String password) throws SQLException {		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		// create SQL update statement;
+		try {
+			myConn = dataSource.getConnection();
+			
+			// create SQL update statement
+			String sql = "UPDATE account SET account.password = ? WHERE account.aid= ?";
+			
+			// prepare statement
+			myStmt = myConn.prepareStatement(sql);
+			
+			// set params
+			myStmt.setString(1, password);
+			myStmt.setInt(2, aid);
+			
+			// execute SQL statement
+			myStmt.execute();
+		}
+		finally {
+			myConn.close();
+			return 1;
+		}	
 	}
 }

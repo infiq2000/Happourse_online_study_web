@@ -239,7 +239,7 @@
 	
 				<div class="right-column col-lg-4 col-md-12 col-sm-12" style="margin-top: 40px;">
 					<div class="inner-column">
-						<form action="UpdatePassword" method="post">
+						<form action="ChangePassword" method="post">
 							<div class="form-group" style="margin-left:20%; width:500px;">
 								<h2>Change Password</h2>
 								<label style="font-size:14px;">Old password</label>

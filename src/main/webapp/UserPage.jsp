@@ -66,7 +66,7 @@
 			-->
 			<jsp:include page="inner_banner.jsp" />
 
-
+	
 			<!-- 
 			=============================================
 				Our Course
@@ -79,6 +79,31 @@
 						<!-- 	"Show course" -->
 						
 						<div class="col-lg-9 col-md-8 col-xs-12 popular-course float-right">
+	<!-- 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+								<div class="course-sidebar">
+	
+									<div class="course-filter">
+											<div class="course-price-filter">
+												<h5>Price Range</h5>
+												<div class="price-ranger">
+													<div class="ranger-min-max-block">
+														<ul class="clearfix">
+															<li class="float-left">
+																<label for="min">From</label>
+																<input type="text" class="min" readonly>
+															</li>
+															<li class="float-left">
+																<label for="max">To</label>
+																<input type="text" class="max" readonly>
+															</li>
+														</ul>
+													</div>
+													<div id="slider-range"></div>
+												</div> /price-ranger
+											</div> /.course-price-filter
+									</div> /.course-filter
+								</div> /.course-sidebar
+							</div> /.col- -->
 							<div class="course-style-filter clearfix">
 								<ul class="float-left clearfix">
 									<li><a href="CourseByType?type=all" class="tran3s ${allActive }" id="type1">All</a></li>
@@ -95,13 +120,12 @@
 								<c:forEach var="tempCourse" items="${listCourses}">
 									<div class="col-lg-4 col-sm-6 col-xs-6">
 										<div class="single-course" style="border: 0px;">
-											<div class="image-box"><img src="images/course/33.jpg" alt=""></div>
+											<div class="image-box"><img style="width: 270px;height: 120px;" src="${tempCourse.getImg_path()}" alt=""></div>
 											<div class="text">
-												<div class="image"><img src="images/logo/logo10.jpg" alt=""></div>
+												<div class="image"><img src="${tempCourse.getImg_path_instructor() }" alt=""></div>
 												<div class="name clearfix">
 													<h6 class="float-left">${tempCourse.getIns_name() }</h6>
-													<strong class="s-color float-right"><del>$${tempCourse.getPrice() + 19}<sup>.99</sup></del><span class="p-bg-color float-right">$${tempCourse.getPrice()} <sup>.99</sup></span></strong>
-													<%-- <span class="p-bg-color float-right">${tempCourse.getPrice()} $ <sup>.99</sup></span> --%>
+													<span class="p-bg-color float-right">${tempCourse.getPrice2()} $ <sup>.99</sup></span>
 												</div>
 												<c:url var="tempLink" value="CourseDetail">
 													<c:param name="course_id" value="${tempCourse.getCourses_id()}"></c:param>
@@ -110,11 +134,11 @@
 												<ul class="clearfix">
 													<li class="float-left">
 														<i class="flaticon-people"></i>
-														<a href="#" class="tran3s">2,680</a>
+														<a href="#" class="tran3s">${tempCourse.getCountCourses()}</a>
 													</li>
 													<li class="float-left">
 														<i class="flaticon-comments"></i>
-														<a href="#" class="tran3s">13</a>
+														<a href="#" class="tran3s">${tempCourse.getTotal_comment()}</a>
 													</li>
 													<li class="float-right">
 														<i class="flaticon-heart"></i>
@@ -123,6 +147,34 @@
 												</ul>
 											</div>
 										</div> <!-- /.single-course -->
+<%-- 										<div class="single-course">
+											<div class="image-box"><img src="${tempCourse.getImg_path() }" alt=""></div>
+											<div class="text">
+												<div class="image"><img src="${tempCourse.getImg_path_instructor() }" alt=""></div>
+												<div class="name clearfix">
+													<h6 class="float-left">${tempCourse.getIns_name() }</h6>
+												</div>
+												
+												<c:url var="tempLink" value="CourseDetail">
+													<c:param name="course_id" value="${tempCourse.getCourses_id()}"></c:param>
+	  											</c:url>
+												<h5><a href="${tempLink}" class="tran3s"></a>${tempCourse.getName()}</h5>
+												<ul class="clearfix">
+													<li class="float-left">
+														<i class="flaticon-people"></i>
+														<a href="#" class="tran3s">${tempCourse.getCountCourses()}</a>
+													</li>
+													<li class="float-left">
+														<i class="flaticon-comments"></i>
+														<a href="#" class="tran3s">${tempCourse.getTotal_comment()}</a>
+													</li>
+													<li class="float-right">
+														<i class="flaticon-heart"></i>
+														<a href="#" class="tran3s">${tempCourse.getStar_rate()}</a>
+													</li>
+												</ul>
+											</div>
+										</div> <!-- /.single-course --> --%>
 									</div> <!-- /.col- -->
 								</c:forEach> 
 							</div> <!-- /.row -->
@@ -135,8 +187,34 @@
 						</div> <!-- /.popular-course -->
 
 						<!-- ************************* SIDEBAR ***************************** -->
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							<div class="course-sidebar">	
+								<div class="course-filter">
+										<div class="course-price-filter">
+											<h4>Price Range</h4>
+											<div class="price-ranger">
+												<div class="ranger-min-max-block">
+													<ul class="clearfix">
+														<li class="float-left">
+															<label for="min">From</label>
+															<input ondblclick="price()" id ="minPrice" type="text" class="min" readonly>
+														</li>
+														<li class="float-left">
+															<label for="max">To</label>
+															<input ondblclick="price()" id ="maxPrice" type="text" class="max" readonly>
+														</li>
+													</ul>
+												</div>
+												<div id="slider-range"></div>
+											</div> 
+										</div> 
+								</div> <!-- /.course-filter -->
+							</div> <!-- /.course-sidebar -->
+						</div> <!-- /.col- -->
 						<jsp:include page="Category.jsp" />
 						
+					<div id="slider-range"></div>
+				</div> <!-- /price-ranger -->
 						
 						<!-- Doan category bi xoa -->
 

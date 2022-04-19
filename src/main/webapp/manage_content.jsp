@@ -78,23 +78,23 @@
 					<!-- Title Box -->
 					<div id="chart" style="display:none;">
 						<b><h4>Mood Report</h4></b>
-						<canvas id="myChart" style="width: 600px; max-width: 1000px; display: block; height: 120px; margin: 80px 0 0 3%"></canvas>
+						<canvas id="myChart" style="width: 600px; max-width: 1000px; height: 120px; margin: 80px 0 0 3%"></canvas>
 					</div>
 					<div class="title-box clearfix">
 						<!-- Title Column -->
-						<div class="title-column" style="width:300px;">
+						<div class="title-column" style="width:50%;">
 							<h6 >Title</h6>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:220px; text-align: center;">
+						<div class="title-column" style="width:13%; text-align: center;">
 							<h6>Duration</h6>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:230px;">
+						<div class="title-column" style="width:13%;">
 							<h6>Action</h6>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:300px;">
+						<div class="title-column" style="width:23%;">
 							<h6>Mood</h6>
 						</div>
 						
@@ -105,17 +105,17 @@
 					  <tbody>
 					  	<c:forEach var="listLectures" items="${lecture}">
 							<tr> 
-							  <td class="title" scope="col"><button style="background: white;">${listLectures.getName()} </button></td>
-							  <td class="duration" scope="col" style="text-align:center;">${listLectures.getDuration()}</td>
+							  <td class="title" scope="col"><button id="title" style="background: white;">${listLectures.getName()} </button></td>
+							  <td class="duration" scope="col" style="text-align:center;"><p id="duration">${listLectures.getDuration()}</p></td>
 							  <td class="actions" scope="col" style="text-align:center;">
 							  	<a href="DeleteLecture?lecture_id=${listLectures.getLectureID()}" onclick="if (!(confirm('Ban muon xoa bai hoc?'))) return false"><i class='fa fa-trash-o'></i></a>
 							  	<a href="EditCourse?course_id=${listLectures.getCourseID()}"><i class='fa fa-edit'></i></a>
 							  </td>
 							  <td style="text-align:center;">
 							  	<ul>
-							  		<li style="color:${listLectures.getColor1()};">${listLectures.getDuration1() } --> ${listLectures.getMood1() }</li>
-							  		<li style="color:${listLectures.getColor2()};">${listLectures.getDuration2() } --> ${listLectures.getMood2() }</li>
-							  		<li style="color:${listLectures.getColor3()};">${listLectures.getDuration3() } --> ${listLectures.getMood3() }</li>
+							  		<li style="color:${listLectures.getColor1()};">${listLectures.getDuration1() }   <i class='fa fa-long-arrow-right'></i>   ${listLectures.getMood1() }</li>
+							  		<li style="color:${listLectures.getColor2()};">${listLectures.getDuration2() }   <i class='fa fa-long-arrow-right'></i>   ${listLectures.getMood2() }</li>
+							  		<li style="color:${listLectures.getColor3()};">${listLectures.getDuration3() }   <i class='fa fa-long-arrow-right'></i>   ${listLectures.getMood3() }</li>
 							  	</ul>
 							  </td>
 							  
@@ -158,7 +158,7 @@
 
 
 
-<script src="js/ins/jquery.js"></script>
+<!-- <script src="js/ins/jquery.js"></script> -->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>

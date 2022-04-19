@@ -82,15 +82,15 @@
 							</div> <!-- /.course-style-filter -->
 								<c:forEach var="tempCourse" items="${listCourses}">
 									<div class="single-course clearfix trending">
-									<div class="image-box float-left"><img src="images/course/33.jpg" alt=""></div>
+									<div class="image-box float-left"><img src="${tempCourse.getImg_path()}" alt=""></div>
 									<div class="text float-left" style="border:0px;">
 										<div class="name clearfix">
-											<div class="image"><img src="images/logo/logo10.jpg" alt=""></div>
+											<div class="image"><img src="${tempCourse.getImg_path_instructor() }" alt=""></div>
 											<div class="float-left">
 												<h6> ${tempCourse.getIns_name()}</h6>
 												<i>${tempCourse.getIns_major()}</i>
 											</div>
-											<strong class="s-color float-right"><del>$${tempCourse.getPrice() + 19}<sup>.99</sup></del>$${tempCourse.getPrice()}<sup>.99</sup></strong>
+											<strong class="s-color float-right"><del>$${tempCourse.getPrice2() + 19}<sup>.99</sup></del>$${tempCourse.getPrice2()}<sup>.99</sup></strong>
 										</div>
 										<c:url var="tempLink2" value="CourseDetail">
 													<c:param name="course_id" value="${tempCourse.getCourses_id()}"></c:param>

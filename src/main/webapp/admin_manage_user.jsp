@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
+<%@ page import="Model.Courses" %>
+<%@ page import="Model.ManagedCourses" %>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
+<%@ page import="Dao.CourseUtil" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +31,6 @@
 	<link href="css/ins/bootstrap.css" rel="stylesheet">
 	<link href="css/ins/main.css" rel="stylesheet">
 	<link href="css/ins/responsive.css" rel="stylesheet">
-	
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 	
 	<!-- Color Switcher Mockup -->
@@ -46,162 +51,88 @@
  	
     <!-- Preloader -->
     <div class="preloader"></div>
-
-
-
-			<!-- 
-			=============================================
-				Theme Header
-			============================================== 
-			-->
-			<jsp:include page="Header.jsp"></jsp:include>
-			
-			<!-- 
-			=============================================
-				Theme Inner Banner
-			============================================== 
-			-->
-
-
-
-
-			<!-- 
-			=============================================
-				Our Instructors Profile
-			============================================== 
-			-->
-			<!-- Instructor Page Section -->
-<div class="page-wrapper">
-    <div class="instructor-page-section">
+ 	
+    <!-- Main Header-->
+	
+    <!--End Main Header -->
+    
+    
+    
+<div class="page-wrapper">	
+<!-- Manage Cource Section -->
+    <div class="manage-cource-section">
+    	<div style="text-align: center;margin-bottom:60px;color:lightcoral; font-size: 22px; font-family: 'Roboto', sans-serif; background:#090f42; padding:20px; border-radius:5px; height:200%;	"><b><h2>Administrator</h2></b></div>
     	<div class="auto-container">
-			<div class="upper-content">
-				<div class="row clearfix">
-					
-					<!-- Left Column -->
-					<div class="left-column col-lg-9 col-md-12 col-sm-12">
-						<!-- Content -->
-						<div class="content">
-							<!-- Author Image -->
-							<div class="author-image">
-<%-- 							\images\avatar\unicornAe5pR.jpg
-							${user_info.getImg_path()} 
-							images/avatar/unicornpG5vb.jpg
---%>
-								<img src="${user_info.getImg_path() }" alt="" />
-							</div>
-<%-- 										<%
-								String imagePath = (String)request.getSession(false).getAttribute("imagename"); 
-							%>
-							<% if (imagePath != null) { %>
-								     <h1> imagename: <%=imagePath %></h1>   
-							<% } else { %>
-								         
-							<% } %> --%>
-							<h4>${user_info.getName() }</h4>
-							<div class="designation">${user_info.getMajor()}</div>
-							<ul class="social-box">
-								<li class="facebook"><a href="https://www.facebook.com/" class="fa fa-facebook"></a></li>
-								<li class="google"><a href="https://www.google.com/" class="fa fa-google"></a></li>
-								<li class="twitter"><a href="https://twitter.com/" class="fa fa-twitter"></a></li>
-							</ul>
-							
-							<!-- Fact Counter -->
-							<div class="fact-counter">
-								<div class="row clearfix">
-								
-									<!-- Column -->
-									<div class="column counter-column col-lg-3 col-md-6 col-sm-12">
-										<div class="inner">
-											<h5 class="counter-title">My Courses</h5>
-											<div class="count-outer count-box">
-												<span class="count-text" data-speed="2000" data-stop="${myCourses}"></span>
-											</div>
-										</div>
-									</div>
-							
-									<!-- Column -->
-									<div class="column counter-column col-lg-3 col-md-6 col-sm-12">
-										<div class="inner">
-											<h5 class="counter-title">Reviews</h5>
-											<div class="count-outer count-box">
-												<span class="count-text" data-speed="2000" data-stop="15">0</span>
-											</div>
-										</div>
-									</div>
-							
-									<!-- Column -->
-									<div class="column counter-column col-lg-3 col-md-6 col-sm-12">
-										<div class="inner">
-											<h5 class="counter-title">Certificates</h5>
-											<div class="count-outer count-box">
-												<span class="count-text" data-speed="2000" data-stop="4">0</span>
-											</div>
-										</div>
-									</div>
-									
-									<!-- Column -->
-									<div class="column counter-column col-lg-3 col-md-6 col-sm-12">
-										<div class="inner">
-											<h5 class="counter-title">Balance</h5>
-											<div class="count-outer count-box">
-												$<span class="count-text" data-speed="2000" data-stop="${user_info.getBalance()}"></span>
-											</div>
-										</div>
-									</div>
-							
-								</div>
-							</div>
-							
-						</div>
-						
+    		
+			<!-- Sec Title -->
+			<div class="sec-title">
+				<div class="clearfix">
+					<div class="pull-left">
+						<h4>Manage Users</h4>
 					</div>
-					<!-- Right Column -->
-					<div class="right-column col-lg-3 col-md-12 col-sm-12">
-						<div class="buttons-box">
-							<a href="UpdateInfo?id=${user_info.getId()}" class="theme-btn btn-style-one">Edit Profile</a>
-						</div>
-					</div>
-					
 				</div>
-				
+			</div>
+			<div class="inner-container">
+				<div class="container-content">
+					<!-- Title Box -->
+					<div class="title-box clearfix">
+						<!-- Title Column -->
+						<div class="title-column" style="width:480px;">
+							<h6 >Full Name</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column" style="width:180px; text-align:center">
+							<h6 >Address</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column" style="width:150px;">
+							<h6 >Phone Number</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column" style="width:130px;">
+							<h6>Email</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column" style="width:150px;">
+							<h6>Course</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column" style="width:100px;">
+							<h6>Balance</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column" style="width:130px;">
+							<h6>Action</h6>
+						</div>
+					</div>
+					<table class="table">
+					  <thead>
+					  </thead>
+					  <tbody>
+					  	<c:forEach var="i" begin="1" end="5">
+							<tr>
+							  <td class="title" scope="col">Nguyen Duc An Son</td>
+							  <td class="post-date" scope="col" style="text-align:center;">Quang Nam</td>
+							  <td class="sales" scope="col" style="text-align:center;">0905480650</td>
+							  <td class="category" scope="col" style="text-align:center;">ansonnguyen</td>
+							  <td style="text-align:center;">4</td>
+							  <td>4000$</td>
+							  <td class="actions" scope="col" style="text-align:center;">
+							  	<a href="#"><i class='fa fa-trash-o'></i></a>
+							  
+							</tr>
+						</c:forEach>
+					  </tbody>
+					</table>
+				</div>
 			</div>
 			
-			<!-- Lower Content -->
-			<div class="lower-content">
-				
-				<!-- Instructor Info Tabs-->
-				<div class="instructor-info-tabs">
-					<!-- Instructor Tabs-->
-					<div class="instructor-tabs tabs-box">
-						
-						<!-- Tabs Container -->
-						<div class="tabs-content">
-							
-							<!-- Tab / Active Tab -->
-							<div class="tab active-tab" id="prod-about">
-								<div class="content">
-									<h6>About Me</h6>
-									<div class="text">
-										<p>${user_info.getDescription()}</p>
-									</div>
-								</div>
-							</div>
-							
-
-							
-						</div>
-					</div>
-				</div>
-				
-			</div>
 			
 		</div>
 	</div>
-</div>
-	<!-- End Instructor Page Section -->
-	
-	
-	
+	<!-- End Manage Cource Section -->
+	</div>
+
 	<!-- Main Footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
 	
@@ -213,35 +144,7 @@
 
 
 
-
-<!-- Color Palate / Color Switcher -->
-<div class="color-palate">
-    <div class="color-trigger">
-        <i class="fa fa-gear"></i>
-    </div>
-    <div class="color-palate-head">
-        <h6>Choose Your Color</h6>
-    </div>
-    <div class="various-color clearfix">
-        <div class="colors-list">
-            <span class="palate color-one active" data-theme-file="css/ins/color-themes/theme-one.css"></span>
-            <span class="palate color-two" data-theme-file="css/ins/color-themes/theme-two.css"></span>
-            <span class="palate color-three" data-theme-file="css/ins/color-themes/theme-three.css"></span>
-            <span class="palate color-four" data-theme-file="css/ins/color-themes/theme-four.css"></span>
-            <span class="palate color-five" data-theme-file="css/ins/color-themes/theme-five.css"></span>
-            <span class="palate color-six" data-theme-file="css/ins/color-themes/theme-six.css"></span>
-            <span class="palate color-seven" data-theme-file="css/ins/color-themes/theme-seven.css"></span>
-            <span class="palate color-eight" data-theme-file="css/ins/color-themes/theme-eight.css"></span>
-			<span class="palate color-nine" data-theme-file="css/ins/color-themes/theme-nine.css"></span>
-			<span class="palate color-ten" data-theme-file="css/ins/color-themes/theme-ten.css"></span>
-			<span class="palate color-eleven" data-theme-file="css/ins/color-themes/theme-eleven.css"></span>
-			<span class="palate color-twelve" data-theme-file="css/ins/color-themes/theme-twelve.css"></span>
-        </div>
-    </div>
-
-</div>
-
-<script src="js/ins/jquery.js"></script>
+<!--<script src="js/ins/jquery.js"></script>-->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
@@ -441,7 +344,38 @@
 			window.myLine.update();
 		});
 		
+		function add_content(){
+			
+			var qt = document.getElementById("quantity4");
+			for (i = 1; i < qt.value; i++){		
+				var node = document.getElementById("content1").cloneNode(true)
+				var ul = document.getElementById("content");
+				ul.appendChild(node);
+			}
+			
+		}
 		
+		function remove_content(){
+			var parent = document.getElementById("content");
+		    var child = document.getElementById("content1");
+		    parent.removeChild(child);
+		}
+		
+		function add_chapter(){
+			
+			var qt = document.getElementById("quantity3");
+			for (i = 1; i < qt.value; i++){	
+				var node = document.getElementById("chapter1").cloneNode(true)
+				var ul = document.getElementById("chapter");
+				ul.appendChild(node);
+			}
+		}
+		
+		function remove_chapter(){
+			var parent = document.getElementById("chapter");
+		    var child = document.getElementById("chapter1");
+		    parent.removeChild(child);
+		}
 	</script>
 
 </body>
