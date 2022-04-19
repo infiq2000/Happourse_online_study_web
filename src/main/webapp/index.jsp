@@ -740,6 +740,8 @@
 								<input type="text" placeholder="Your Email">
 								<button class="tran3s p-bg-color"><i class="flaticon-envelope-back-view-outline"></i></button>
 							</form>
+							</br>
+							<h6 style="padding: 10px;width: 50%;background: white;color: black;border-radius: 5px;"><a href="admin_login.jsp">Admin Login</a></h6>
 						</div>
 					</div> <!-- /.row -->
 				</div> <!-- /.container -->
