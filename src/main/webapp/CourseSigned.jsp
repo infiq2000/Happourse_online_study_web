@@ -105,6 +105,7 @@
 										</div>
 									</div>
 								</div> <!-- /.course-info -->
+								<img src="${course_detail.getImg_path()}" alt="">
 								<a href="CourseLesson?course_id=${course_id}" class="tran3s p-bg-color follow hvr-trim" style="padding: 15px 102px 15px 102px;border-radius: 3px;color: white; display:inline">LEARN NOW</a>
 								<p class="p1"> </p>
 								<div class="learn-list">
