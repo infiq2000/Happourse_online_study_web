@@ -197,63 +197,34 @@
 											</li>
 										</ul>
 									</div> <!-- /.feedback-container -->
-									<div class="single-review clearfix">
-										<img src="images/course/30.jpg" alt="" class="float-left">
-										<div class="text float-left">
-											<div class="clearfix">
-												<div class="float-left">
-													<h6>Marie Karles</h6>
-													<span>March 8, 2016 - 8:00am</span>
-												</div>
-												<ul class="float-right">
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												</ul>
-											</div> <!-- /.clearfix -->
-											<p>Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totamru rem aperiam, eaque ipsa quae ab illo inventore</p>
-										</div> <!-- /.text -->
-									</div> <!-- /.single-review -->
-									<div class="single-review clearfix">
-										<img src="images/course/31.jpg" alt="" class="float-left">
-										<div class="text float-left">
-											<div class="clearfix">
-												<div class="float-left">
-													<h6>Hasan Abdullah</h6>
-													<span>March 8, 2016 - 8:00am</span>
-												</div>
-												<ul class="float-right">
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												</ul>
-											</div> <!-- /.clearfix -->
-											<p>Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totamru rem aperiam, eaque ipsa quae ab illo inventore</p>
-										</div> <!-- /.text -->
-									</div> <!-- /.single-review -->
-									<div class="single-review clearfix">
-										<img src="images/course/32.jpg" alt="" class="float-left">
-										<div class="text float-left">
-											<div class="clearfix">
-												<div class="float-left">
-													<h6>Solayman Mi.</h6>
-													<span>March 8, 2016 - 8:00am</span>
-												</div>
-												<ul class="float-right">
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												</ul>
-											</div> <!-- /.clearfix -->
-											<p>Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totamru rem aperiam, eaque ipsa quae ab illo inventore</p>
-										</div> <!-- /.text -->
-									</div> <!-- /.single-review -->
+									<c:forEach var="tempReview" items="reviewList">
+										<div class="single-review clearfix">
+											<img src="${tempReview.getImg_path() }" alt="" class="float-left">
+											<div class="text float-left">
+												<div class="clearfix">
+													<div class="float-left">
+														<h6>${tempReview.getUser_name() }</h6>
+														<span>${tempReview.getReview_date() }</span>
+													</div>
+													<div class="float-right">
+														<div class="row">
+														    <div class="col-lg-12">
+														      <ul class="star-rating-comment">
+														        <li class="fa fa-star-o" data-rating="1"></li>
+														        <li class="fa fa-star-o" data-rating="2"></li>
+														        <li class="fa fa-star-o" data-rating="3"></li>
+														        <li class="fa fa-star-o" data-rating="4"></li>
+														        <li class="fa fa-star-o" data-rating="5"></li>
+														        <input type="hidden" name="review-rate-comment" class="rating-value-comment" value="${tempReview.getStar_rate() }">
+														      </ul>
+														    </div>
+														</div>
+													</div>
+												</div> <!-- /.clearfix -->
+												<p>${tempReview.getReview_content() }</p>
+											</div> <!-- /.text -->
+										</div> <!-- /.single-review -->
+									</c:forEach>
 								</div> <!-- /.course-feedback -->
 							</div> <!-- /.details-wrapper -->
 						</div> <!-- /.col- -->
