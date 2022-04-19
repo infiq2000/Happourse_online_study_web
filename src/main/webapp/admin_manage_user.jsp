@@ -53,7 +53,7 @@
     <div class="preloader"></div>
  	
     <!-- Main Header-->
-	<jsp:include page="Header.jsp"></jsp:include>
+	
     <!--End Main Header -->
     
     
@@ -61,86 +61,72 @@
 <div class="page-wrapper">	
 <!-- Manage Cource Section -->
     <div class="manage-cource-section">
+    	<div style="text-align: center;margin-bottom:60px;color:lightcoral; font-size: 22px; font-family: 'Roboto', sans-serif; background:#090f42; padding:20px; border-radius:5px; height:200%;	"><b><h2>Administrator</h2></b></div>
     	<div class="auto-container">
+    		
 			<!-- Sec Title -->
 			<div class="sec-title">
 				<div class="clearfix">
 					<div class="pull-left">
-						<h4>Manage Contents</h4>
-					</div>
-					<div class="pull-right">
-						<a href="add_chapter.jsp?course_id=${course_id }" class="see-all">Add New Content</a>
+						<h4>Manage Users</h4>
 					</div>
 				</div>
 			</div>
 			<div class="inner-container">
-				<div class="container-content" style="width:80%;margin-left:10%;">
+				<div class="container-content">
 					<!-- Title Box -->
-					<div id="chart" style="display:none;">
-						<b><h4>Mood Report</h4></b>
-						<canvas id="myChart" style="width: 600px; max-width: 1000px; height: 120px; margin: 80px 0 0 3%"></canvas>
-					</div>
 					<div class="title-box clearfix">
 						<!-- Title Column -->
-						<div class="title-column" style="width:50%;">
-							<h6 >Title</h6>
+						<div class="title-column" style="width:480px;">
+							<h6 >Full Name</h6>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:13%; text-align: center;">
-							<h6>Duration</h6>
+						<div class="title-column" style="width:180px; text-align:center">
+							<h6 >Address</h6>
 						</div>
 						<!-- Title Column -->
-						<div class="title-column" style="width:13%;">
+						<div class="title-column" style="width:150px;">
+							<h6 >Phone Number</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column" style="width:130px;">
+							<h6>Email</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column" style="width:150px;">
+							<h6>Course</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column" style="width:100px;">
+							<h6>Balance</h6>
+						</div>
+						<!-- Title Column -->
+						<div class="title-column" style="width:130px;">
 							<h6>Action</h6>
 						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:23%;">
-							<h6>Mood</h6>
-						</div>
-						
 					</div>
 					<table class="table">
 					  <thead>
 					  </thead>
 					  <tbody>
-					  	<c:forEach var="listLectures" items="${lecture}">
-							<tr> 
-							  <td class="title" scope="col"><button id="title" style="background: white;">${listLectures.getName()} </button></td>
-							  <td class="duration" scope="col" style="text-align:center;"><p id="duration">${listLectures.getDuration()}</p></td>
+					  	<c:forEach var="i" begin="1" end="5">
+							<tr>
+							  <td class="title" scope="col">Nguyen Duc An Son</td>
+							  <td class="post-date" scope="col" style="text-align:center;">Quang Nam</td>
+							  <td class="sales" scope="col" style="text-align:center;">0905480650</td>
+							  <td class="category" scope="col" style="text-align:center;">ansonnguyen</td>
+							  <td style="text-align:center;">4</td>
+							  <td>4000$</td>
 							  <td class="actions" scope="col" style="text-align:center;">
-							  	<a href="DeleteLecture?lecture_id=${listLectures.getLectureID()}" onclick="if (!(confirm('Ban muon xoa bai hoc?'))) return false"><i class='fa fa-trash-o'></i></a>
-							  	<a href="EditCourse?course_id=${listLectures.getCourseID()}"><i class='fa fa-edit'></i></a>
-							  </td>
-							  <td style="text-align:center;">
-							  	<ul>
-							  		<li style="color:${listLectures.getColor1()};">${listLectures.getDuration1() }   <i class='fa fa-long-arrow-right'></i>   ${listLectures.getMood1() }</li>
-							  		<li style="color:${listLectures.getColor2()};">${listLectures.getDuration2() }   <i class='fa fa-long-arrow-right'></i>   ${listLectures.getMood2() }</li>
-							  		<li style="color:${listLectures.getColor3()};">${listLectures.getDuration3() }   <i class='fa fa-long-arrow-right'></i>   ${listLectures.getMood3() }</li>
-							  	</ul>
-							  </td>
+							  	<a href="#"><i class='fa fa-trash-o'></i></a>
 							  
 							</tr>
-							
 						</c:forEach>
 					  </tbody>
 					</table>
 				</div>
 			</div>
 			
-			<!-- Post Share Options -->
-			<div class="styled-pagination margin-top text-center">
-				<ul class="clearfix">
-					<li class="arrow"><a href="#"><span class="fa fa-angle-left"></span> </a></li>
-					<li class="prev"><a href="#">Prev</a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li class="active"><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li class="next"><a href="#">Next</a></li>
-					<li class="arrow"><a href="#"><span class="fa fa-angle-right"></span> </a></li>
-				</ul>
-			</div>
 			
 		</div>
 	</div>
@@ -158,7 +144,7 @@
 
 
 
-<!-- <script src="js/ins/jquery.js"></script> -->
+<!--<script src="js/ins/jquery.js"></script>-->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
@@ -171,11 +157,8 @@
 <script src="js/ins/color-settings.js"></script>
 
 <!-- Chart -->
-<!-- <script src="js/ins/canvasjs.min.js"></script>
-<script src="js/ins/charts-script.js"></script> -->
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script src="js/content_chart.js"></script>
+<script src="js/ins/canvasjs.min.js"></script>
+<script src="js/ins/charts-script.js"></script>
 
 <!-- Js File_________________________________ -->
 
