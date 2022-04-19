@@ -69,7 +69,7 @@
 									rev = new JSONArray();
 									for(ChartInfo ci : chart){
 										if (ci.getCourse_id()==ls.get(i).getCourses_id()){
-											mon[ci.getMonth()-1] = ci.getRevenue();
+											mon[ci.getMonth()-1] = ci.getTotalCourse();
 										}
 										
 									}
@@ -79,8 +79,8 @@
 									tmp.put("label",ls.get(i).getName());
 									tmp.put("data", rev);
 									tmp.put("borderColor",COLORS[i]);
-									tmp.put("fill", "false");
-									tmp.put("tension",0.1);
+									tmp.put("fill", "true");
+									tmp.put("tension",0.5);
 									json.add(tmp);
 								}
 								String rs = json.toString();
@@ -362,13 +362,9 @@
 		<script type="text/javascript" src="js/theme.js"></script>
 <script type="text/javascript">
 var xValues = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-/* var jsonString = '[{"borderColor":"#4dc9f6","tension":0.1,"data":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"label":"test34","fill":"false"},{"borderColor":"#f67019","tension":0.1,"data":[10.0,0.0,10.0,10.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"label":"Learn Python - Full Course for Beginners","fill":"false"},{"borderColor":"#f53794","tension":0.1,"data":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,20.0,0.0,0.0],"label":"SQL Tutorial - Full Database Course for Beginners","fill":"false"},{"borderColor":"#537bc4","tension":0.1,"data":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],"label":"Machine Learning Course for Beginners","fill":"false"}]';
-var obj = JSON.parse(jsonString);
-console.log(obj) */
+
 var js2 = '${jsonString}'
 var obj2 = JSON.parse(js2);
-alert(obj2);
-console.log(obj2); 
 var COLORS = [
 		'#4dc9f6',
 		'#f67019',

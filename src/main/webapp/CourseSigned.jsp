@@ -289,7 +289,7 @@
 							<div class="course-sidebar">
 								<div class="sidebar-course-information">
 									<ul class="price clearfix">
-										<li class="float-left"><strong class="s-color"><del>${course_detail.getPrice() + 19}$<sup>.99</sup></del>${course_detail.getPrice()}$<sup></sup></strong></li>
+										<li class="float-left"><strong class="s-color"><del>${course_detail.getPrice2() + 19}$<sup>.99</sup></del>${course_detail.getPrice2()}$<sup></sup></strong></li>
 										<li class="float-right"><a href="#" class="tran3s"><i class="flaticon-like"></i></a></li>
 									</ul>
 									<ul class="info-list row">
