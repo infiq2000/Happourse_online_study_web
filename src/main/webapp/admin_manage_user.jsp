@@ -109,7 +109,7 @@
 					  <thead>
 					  </thead>
 					  <tbody>
-					  	<c:forEach var="i" begin="1" end="5">
+					  	<c:forEach var="user" items="${lst_users}">
 							<tr>
 							  <td class="title" scope="col">Nguyen Duc An Son</td>
 							  <td class="post-date" scope="col" style="text-align:center;">Quang Nam</td>
