@@ -238,7 +238,35 @@ public class LectureUtil {
 		myConn.close();
 		return result;
 	}
-
+	public List<Float> getMoodofLectureID(int lectureID ) throws SQLException{
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "select * from user_content where lc_id = ?;";
+		float mood1 = 0, mood2 = 0, mood3 = 0;
+		int count_mood = 0;
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, lectureID);
+		myRS = myStmt.executeQuery();
+		while (myRS.next()) {
+			count_mood += 1;
+			mood1 += myRS.getFloat("mood_1");
+			mood2 += myRS.getFloat("mood_2");
+			mood3 += myRS.getFloat("mood_3");
+		}
+		if (count_mood > 0) {
+			mood1 /= count_mood;
+			mood2 /= count_mood;
+			mood3 /= count_mood;
+		}
+		List<Float> rs = new ArrayList<>();
+		rs.add((float)0.0);
+		rs.add(mood1);
+		rs.add(mood2);
+		rs.add(mood3);
+		return rs;
+	}
 	public void updateContent(int lc_id, String nameContent, String desription, String url) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection myConn = null;
