@@ -200,20 +200,18 @@
 														<h6>${tempReview.getUser_name() }</h6>
 														<span>${tempReview.getReview_date() }</span>
 													</div>
-													<div class="float-right">
-														<div class="row">
-														    <div class="col-lg-12">
-														      <ul class="star-rating-comment">
-														        <li class="fa fa-star-o" data-rating="1"></li>
-														        <li class="fa fa-star-o" data-rating="2"></li>
-														        <li class="fa fa-star-o" data-rating="3"></li>
-														        <li class="fa fa-star-o" data-rating="4"></li>
-														        <li class="fa fa-star-o" data-rating="5"></li>
-														        <input type="hidden" name="review-rate-comment" class="rating-value-comment" value="${tempReview.getStar_rate() }">
-														      </ul>
-														    </div>
-														</div>
-													</div>
+													<ul class="float-right">
+												      	<c:forEach var="i" begin="1" end="5">
+												      		<c:choose>
+												      			<c:when test="${tempReview.getStar_rate() >= i}">
+												      				<li><i class="fa fa-star" aria-hidden="true"></i></li>
+												      			</c:when>
+												      			<c:otherwise>
+												      				<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+												      			</c:otherwise>
+												      		</c:choose>
+												        </c:forEach>
+													</ul>
 												</div> <!-- /.clearfix -->
 												<p>${tempReview.getReview_content() }</p>
 											</div> <!-- /.text -->
@@ -251,7 +249,7 @@
 							<div class="course-sidebar">
 								<div class="sidebar-course-information">
 									<ul class="price clearfix">
-										<li class="float-left"><strong class="s-color"><del>${course_detail.getPrice() + 19}$<sup>.99</sup></del>${course_detail.getPrice()}$<sup></sup></strong></li>
+										<li class="float-left"><strong class="s-color"><del>${course_detail.getPrice2() + 19}$<sup>.99</sup></del>${course_detail.getPrice2()}$<sup></sup></strong></li>
 										<li class="float-right"><a href="#" class="tran3s"><i class="flaticon-like"></i></a></li>
 									</ul>
 									<ul class="info-list row">
@@ -354,29 +352,6 @@
 
 		<!-- Theme js -->
 		<script type="text/javascript" src="js/theme.js"></script>
-		<script>
-		var $star_rating = $('.star-rating-comment .fa');
-
-		var SetRatingStar = function() {
-		  return $star_rating.each(function() {
-		    if (parseInt($star_rating.siblings('input.rating-value-comment').val()) >= parseInt($(this).data('rating'))) {
-		      return $(this).removeClass('fa-star-o').addClass('fa-star');
-		    } else {
-		      return $(this).removeClass('fa-star').addClass('fa-star-o');
-		    }
-		  });
-		};
-
-		$star_rating.on('click', function() {
-		  $star_rating.siblings('input.rating-value-comment').val($(this).data('rating'));
-		  return SetRatingStar();
-		});
-
-		SetRatingStar();
-		$(document).ready(function() {
-
-		});
-		</script>
 		
 		<script>
 		var $star_rating = $('.star-rating .fa');

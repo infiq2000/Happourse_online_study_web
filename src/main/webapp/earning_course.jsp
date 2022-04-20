@@ -2,9 +2,11 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="java.util.*" %>
-<%@ page import="Model.Category" %>
+<%@ page import="Model.*" %>
 <%@ page import="Dao.CourseUtil" %>
 <%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
+<%@ page import="org.json.simple.JSONObject" %>
+<%@ page import="org.json.simple.JSONArray" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +45,42 @@
 	<!--[if lt IE 9]><script src="js/ins/respond.js"></script><![endif]-->
 
 </head>
-
+							<%
+							String[] COLORS = {"#4dc9f6","#f67019","#f53794","#537bc4",
+							  		"#acc236",
+							  		"#166a8f",
+							  		"#00a950",
+							  		"#58595b",
+							  		"#8549ba"
+							};
+								JSONArray json = new JSONArray();
+							    JSONArray rev;
+								List<ChartInfo> chart = (List<ChartInfo>)request.getAttribute("revenue");
+								List<Courses> ls = (List<Courses>)request.getAttribute("listCourses");
+								for(int i=0 ; i < ls.size();i++){
+									JSONObject tmp = new JSONObject();
+									double[] mon = new double[12];
+									rev = new JSONArray();
+									for(ChartInfo ci : chart){
+										
+										if (ci.getCourse_id()==ls.get(i).getCourses_id()){
+											mon[ci.getMonth()-1] = ci.getRevenue();
+										}
+										
+									}
+									for(int j=0;j<12;j++){
+										rev.add(mon[j]);
+									}
+									tmp.put("label",ls.get(i).getName());
+									tmp.put("data", rev);
+									tmp.put("borderColor",COLORS[i]);
+									tmp.put("fill", "false");
+									tmp.put("tension",0.1);
+									json.add(tmp);
+								}
+								String rs = json.toString();
+								request.setAttribute("jsonString", json.toString());
+							%>
 <body class="">
 
 
@@ -239,7 +276,7 @@
 <script src="js/ins/charts-script.js"></script> -->
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script type="text/javascript" src="js/earning_chart.js"></script>
+<!-- <script type="text/javascript" src="js/earning_chart.js"></script> -->
 
 <!-- Js File_________________________________ -->
 
@@ -273,6 +310,54 @@
 
 		<!-- Theme js -->
 		<script type="text/javascript" src="js/theme.js"></script>
+<script type="text/javascript">
+var xValues = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var js2 = '${jsonString}'
+var obj2 = JSON.parse(js2);
+var COLORS = [
+		'#4dc9f6',
+		'#f67019',
+		'#f53794',
+		'#537bc4',
+		'#acc236',
+		'#166a8f',
+		'#00a950',
+		'#58595b',
+		'#8549ba'
+	];
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: obj2
+/*    [{ 
+		label: 'Course 1',
+      	data: [860,1140,1060,1060,1070,1110,1330,1110,130,18],
+		borderColor: COLORS[0],
+      	fill: false,
+      	tension: 0.1
+    }, 
+    { 
+		label: 'Course 2',
+      	data: [1100,1100,1700,1100,1000,1100,1000,100,1000,10],
+		borderColor: COLORS[1],
+      	fill: false,
+      	tension: 0.1
+    }, 
+    { 
+		label: 'Course 3',
+      	data: [300,700,1000,1000,1000,1000,1000,1000,200,100],
+    	borderColor: COLORS[2],
+      	fill: false,
+      	tension: 0.1
+    }]*/
+  },
+/*  options: {
+    legend: {display: false}
+  }*/
+});
+</script>
 <script>
 		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		var config = {
