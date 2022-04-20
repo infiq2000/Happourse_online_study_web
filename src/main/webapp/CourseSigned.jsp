@@ -147,47 +147,30 @@
 									<div class="feedback-container">
 										<ul class="clearfix">
 											<li class="float-left">
-												<h2>4.9</h2>
-												<p>Avarage rating (9)</p>
+												<h2>${averageRating }</h2>
+												<p>Avarage rating (${reviewList.size() })</p>
 												<ul>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
-												</ul>
+													<c:forEach var="i" begin="1" end="5">
+											      		<c:choose>
+											      			<c:when test="${numberStars >= i}">
+											      				<li><i class="fa fa-star" aria-hidden="true"></i></li>
+											      			</c:when>
+											      			<c:otherwise>
+											      				<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+											      			</c:otherwise>
+											      		</c:choose>
+											        </c:forEach>
+										        </ul>
 											</li>
 											<li class="float-left">
-												<ul class="clearfix">
-													<li>5 Star</li>
-													<li><div style="width:77%;"></div></li>
-													<li>87%</li>
-													<li class="float-right">(5 Reviews)</li>
-												</ul>
-												<ul class="clearfix">
-													<li>4 Star</li>
-													<li><div style="width:70%;"></div></li>
-													<li>70%</li>
-													<li class="float-right">(2 Reviews)</li>
-												</ul>
-												<ul class="clearfix">
-													<li>3 Star</li>
-													<li><div style="width:60%;"></div></li>
-													<li>32%</li>
-													<li class="float-right">(1 Reviews)</li>
-												</ul>
-												<ul class="clearfix">
-													<li>2 Star</li>
-													<li><div style="width:45%;"></div></li>
-													<li>10%</li>
-													<li class="float-right">(1 Reviews)</li>
-												</ul>
-												<ul class="clearfix">
-													<li>1 Star</li>
-													<li><div style="width:2%;"></div></li>
-													<li>0%</li>
-													<li class="float-right">(0 Reviews)</li>
-												</ul>
+												<c:forEach var="temp" begin="1" end="5">
+													<ul class="clearfix">
+														<li>${6-temp} Star</li>
+														<li><div style="width:${Math.round(listFeedback[6-temp]*100/reviewList.size())}%;"></div></li>
+														<li>${Math.round(listFeedback[6-temp]*100/reviewList.size())}%</li>
+														<li class="float-right">(${listFeedback[6-temp]} Reviews)</li>
+													</ul>										
+												</c:forEach>
 											</li>
 										</ul>
 									</div> <!-- /.feedback-container -->

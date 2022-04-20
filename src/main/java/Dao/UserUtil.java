@@ -482,5 +482,28 @@ public class UserUtil {
 		}
 		return users;
 	}
+
+	public float getAverageRating(List<Review> reviewList) {
+		float sumRating = 0;
+		int count = 0;
+		for (Review review : reviewList) {
+			count += 1;
+			sumRating += review.getStar_rate();
+		}
+		if (count == 0) return 5;
+		return (float) (Math.round(sumRating*10/count)/10.0);
+	}
+
+	public int[] countFeedback(List<Review> reviewList) {
+		int[] listFeedback = {0,0,0,0,0,0};
+		int i = 1;
+		while (i <= 5) {
+			for (Review review : reviewList) {
+				if ((int) review.getStar_rate() == i) listFeedback[i] += 1;
+			}
+			i += 1;
+		}
+		return listFeedback;
+	}
 	
 }
