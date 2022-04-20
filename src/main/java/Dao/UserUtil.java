@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 import Controller.Profile;
+import Model.Account;
 import Model.Courses;
 import Model.User;
 import Model.UserAccount;
@@ -458,7 +459,7 @@ public class UserUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "SELECT * FROM happourse.users;";
+		String sql = "select users.* , count(user_course.course_id) as count from users, user_course where users.uid = user_course.uid group by user_course.uid";
 		myStmt = myConn.prepareStatement(sql);
 		myRS = myStmt.executeQuery();
 		List<User> users = new ArrayList<>();
@@ -470,15 +471,14 @@ public class UserUtil {
 			String phone_number = myRS.getString("phone_number");
 			String email = myRS.getString("email");
 			int aid = myRS.getInt("aid");
-			String address = myRS.getString("address");
 			String describe = myRS.getString("describe");
 			String experiment = myRS.getString("experiment");
 			double balance = myRS.getDouble("balance");
 			String img_path = myRS.getString("img_path");
 			String country_ID = myRS.getString("country_ID");
-			
-			users.add(new User(uid, full_name, major, birth, phone_number, email, aid, address, describe, 
-					experiment, balance, img_path, country_ID));
+			int count = myRS.getInt("count");
+			users.add(new User(uid, full_name, major, birth, phone_number, email, aid, describe, 
+					experiment, balance, img_path, country_ID, count));
 		}
 		return users;
 	}

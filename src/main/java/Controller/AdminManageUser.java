@@ -27,6 +27,7 @@ import Model.User;
 @WebServlet("/AdminManageUser")
 public class AdminManageUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
 	UserUtil userUtil;
        
@@ -54,8 +55,6 @@ public class AdminManageUser extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Flagggggggg");
-		System.out.println(users.size());
 		request.setAttribute("lst_users", users);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin_manage_user.jsp");

@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import Dao.CourseUtil;
+import Dao.UserUtil;
 import Model.Courses;
 import Model.ManagedCourses;
 
@@ -39,8 +40,7 @@ public class ManageCourses extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
     	super.init();
     	courseUtil = new Dao.CourseUtil(dataSource);
-    }
-    
+    }    
 
 
 	/**

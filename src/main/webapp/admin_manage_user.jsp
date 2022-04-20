@@ -82,7 +82,7 @@
 						</div>
 						<!-- Title Column -->
 						<div class="title-column" style="width:180px; text-align:center">
-							<h6 >Address</h6>
+							<h6 >Country</h6>
 						</div>
 						<!-- Title Column -->
 						<div class="title-column" style="width:150px;">
@@ -111,12 +111,12 @@
 					  <tbody>
 					  	<c:forEach var="user" items="${lst_users}">
 							<tr>
-							  <td class="title" scope="col">Nguyen Duc An Son</td>
-							  <td class="post-date" scope="col" style="text-align:center;">Quang Nam</td>
-							  <td class="sales" scope="col" style="text-align:center;">0905480650</td>
-							  <td class="category" scope="col" style="text-align:center;">ansonnguyen</td>
-							  <td style="text-align:center;">4</td>
-							  <td>4000$</td>
+							  <td class="title" scope="col">${user.getFull_name()}</td>
+							  <td class="post-date" scope="col" style="text-align:center;">${user.getCountry_id()}</td>
+							  <td class="sales" scope="col" style="text-align:center;">${user.getPhone_number()}</td>
+							  <td class="category" scope="col" style="text-align:center;">${user.getEmail()}</td>
+							  <td style="text-align:center;">${user.getNumber_courses()}</td>
+							  <td>${user.getBalance()}$</td>
 							  <td class="actions" scope="col" style="text-align:center;">
 							  	<a href="#"><i class='fa fa-trash-o'></i></a>
 							  
