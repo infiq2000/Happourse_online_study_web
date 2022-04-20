@@ -220,7 +220,7 @@
 								</div> <!-- /.course-feedback -->
 
 								<div class="submit-review-form">
-								  <form action="#">
+								  <form action="ReviewCourse" method="post">
 									<h3>Submit a Review</h3>
 									<label>Your Ratings</label>
 									<div class="row">
@@ -232,12 +232,13 @@
 									        <span class="fa fa-star-o" data-rating="4"></span>
 									        <span class="fa fa-star-o" data-rating="5"></span>
 									        <input type="hidden" name="review-rate" class="rating-value" value="0">
+									        <input type="hidden" name="course_id" value="${course_id}">
 									      </div>
 									    </div>
 									</div>
 									<br>
 									<label>Your Message</label>
-									<textarea placeholder="Write Commnent..."></textarea>
+									<textarea placeholder="Write Commnent..." name="review-content"></textarea>
 									<input type="submit" value="Submit Review" class="s-bg-color">
 								  </form>
 								</div> <!-- /.submit-review-form -->
