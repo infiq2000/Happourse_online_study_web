@@ -380,21 +380,77 @@ public class UserUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "select review_content, star_rate, review_date, full_name, img_path from users u, user_review r where u.uid=r.uid and course_id=?;";
+		String sql = "select review_content, rate, review_time, full_name, img_path from users u, user_review r where u.uid=r.uid and course_id=?;";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, course_id);
 		myRS = myStmt.executeQuery();
 		List<Review> reviewList = new ArrayList<>();
 		while (myRS.next()) {
 			String reviewContent = myRS.getString("review_content");
-			float starRate = myRS.getFloat("star_rate");
-			Date reviewDate = myRS.getDate("review_date");
+			float starRate = myRS.getFloat("rate");
+			Date reviewDate = myRS.getDate("review_time");
 			String fullName = myRS.getString("full_name");
 			String imgPath = myRS.getString("img_path");
+			if (imgPath == null) imgPath = "images/avatar/avatarrfv4Ab.jpg";
 			reviewList.add(new Review(reviewContent, starRate, reviewDate, fullName, imgPath));
 		}
 		myConn.close();
 		return reviewList;
+	}
+
+	public void addReviewOfUser(int uid, int course_id, float rating, String review_content) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		String sql = "insert into user_review values (?,?,?,?,?,?);";
+		myConn = dataSource.getConnection();
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, getReviewIndex());
+		myStmt.setString(2, review_content);
+		myStmt.setFloat(3, rating);
+		@SuppressWarnings("deprecation")
+        java.util.Date utilDate = new java.util.Date();
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        myStmt.setDate(4, sqlDate);
+        myStmt.setInt(5, uid);
+        myStmt.setInt(6, course_id);
+        myStmt.executeUpdate();
+        myConn.close();
+		
+	}
+	
+	public int getReviewIndex() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		String sql = "select * from user_review";
+		myConn = dataSource.getConnection();
+		myStmt = myConn.prepareStatement(sql);
+		myRS = myStmt.executeQuery();
+		int i = 1;
+		while (myRS.next()) {
+			if (i != myRS.getInt("review_id")) {
+				myConn.close();
+				return i;
+			}
+			i += 1;
+		}
+		return i;
+	}
+
+	public int checkReviewed(int uid, int course_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		String sql = "select * from user_review where uid=? and course_id=?;";
+		myConn = dataSource.getConnection();
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, uid);
+		myStmt.setInt(2, course_id);
+		myRS = myStmt.executeQuery();
+		int i = 0;
+		if (myRS.next()) i = 1;
+		myConn.close();
+		return i;
 	}
 	
 	public List<User> getAllUsers() throws SQLException{

@@ -199,27 +199,25 @@
 									</div> <!-- /.feedback-container -->
 									<c:forEach var="tempReview" items="${reviewList}">
 										<div class="single-review clearfix">
-											<img src="${tempReview.getImg_path()}" alt="" class="float-left">
+											<img src="${tempReview.getImg_path() }" alt="" class="float-left">
 											<div class="text float-left">
 												<div class="clearfix">
 													<div class="float-left">
 														<h6>${tempReview.getUser_name() }</h6>
 														<span>${tempReview.getReview_date() }</span>
 													</div>
-													<div class="float-right">
-														<div class="row">
-														    <div class="col-lg-12">
-														      <ul class="star-rating-comment">
-														        <li class="fa fa-star-o" data-rating="1"></li>
-														        <li class="fa fa-star-o" data-rating="2"></li>
-														        <li class="fa fa-star-o" data-rating="3"></li>
-														        <li class="fa fa-star-o" data-rating="4"></li>
-														        <li class="fa fa-star-o" data-rating="5"></li>
-														        <input type="hidden" name="review-rate-comment" class="rating-value-comment" value="${tempReview.getStar_rate() }">
-														      </ul>
-														    </div>
-														</div>
-													</div>
+													<ul class="float-right">
+												      	<c:forEach var="i" begin="1" end="5">
+												      		<c:choose>
+												      			<c:when test="${tempReview.getStar_rate() >= i}">
+												      				<li><i class="fa fa-star" aria-hidden="true"></i></li>
+												      			</c:when>
+												      			<c:otherwise>
+												      				<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+												      			</c:otherwise>
+												      		</c:choose>
+												        </c:forEach>
+													</ul>
 												</div> <!-- /.clearfix -->
 												<p>${tempReview.getReview_content() }</p>
 											</div> <!-- /.text -->

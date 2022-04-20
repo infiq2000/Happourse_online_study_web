@@ -218,29 +218,34 @@
 										</div> <!-- /.single-review -->
 									</c:forEach>
 								</div> <!-- /.course-feedback -->
-
-								<div class="submit-review-form">
-								  <form action="#">
-									<h3>Submit a Review</h3>
-									<label>Your Ratings</label>
-									<div class="row">
-									    <div class="col-lg-12">
-									      <div class="star-rating">
-									        <span class="fa fa-star-o" data-rating="1"></span>
-									        <span class="fa fa-star-o" data-rating="2"></span>
-									        <span class="fa fa-star-o" data-rating="3"></span>
-									        <span class="fa fa-star-o" data-rating="4"></span>
-									        <span class="fa fa-star-o" data-rating="5"></span>
-									        <input type="hidden" name="review-rate" class="rating-value" value="0">
-									      </div>
-									    </div>
-									</div>
-									<br>
-									<label>Your Message</label>
-									<textarea placeholder="Write Commnent..."></textarea>
-									<input type="submit" value="Submit Review" class="s-bg-color">
-								  </form>
-								</div> <!-- /.submit-review-form -->
+								<c:choose>
+									<c:when test="${checkReviewed == 0}">
+										<div class="submit-review-form">
+										  <form action="ReviewCourse" method="post">
+											<h3>Submit a Review</h3>
+											<label>Your Ratings</label>
+											<div class="row">
+											    <div class="col-lg-12">
+											      <div class="star-rating">
+											        <span class="fa fa-star-o" data-rating="1"></span>
+											        <span class="fa fa-star-o" data-rating="2"></span>
+											        <span class="fa fa-star-o" data-rating="3"></span>
+											        <span class="fa fa-star-o" data-rating="4"></span>
+											        <span class="fa fa-star-o" data-rating="5"></span>
+											        <input type="hidden" name="review-rate" class="rating-value" value="0">
+											        <input type="hidden" name="course_id" value="${course_id}">
+											      </div>
+											    </div>
+											</div>
+											<br>
+											<label>Your Message</label>
+											<textarea placeholder="Write Commnent..." name="review-content"></textarea>
+											<input type="submit" value="Submit Review" class="s-bg-color">
+										  </form>
+										</div> <!-- /.submit-review-form -->
+									</c:when>
+								</c:choose>
+								
 							</div> <!-- /.details-wrapper -->
 						</div> <!-- /.col- -->
 
