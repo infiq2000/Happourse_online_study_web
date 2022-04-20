@@ -185,9 +185,13 @@ public class AccountUtil {
 		myStmt.setString(1, username);
 		myRS = myStmt.executeQuery();
 		String pass = null;
-		while (myRS.next()) {
+		if (myRS.next()) {
 			pass = myRS.getString("password");
 		}
+		else {
+			myConn.close();
+			return false;
+		}			
 		myConn.close();
 		if (pass.compareTo(password) == 0) 
 			return true;

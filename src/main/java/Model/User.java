@@ -16,6 +16,7 @@ public class User {
 	private double balance;
 	private String img_path;
 	private String country_id;
+	private int number_courses;
 	
 	public User(int uid, String full_name, String major, int aid) {
 		super();
@@ -25,8 +26,7 @@ public class User {
 		this.aid = aid;
 	}
 	
-	public User(int uid, String full_name, String major, Date birth, String phone_number, String email, int aid, 
-			String address, String describe, String experiment, double balance, String img_path, String country_id) {
+	public User(int uid, String full_name, String major, Date birth, String phone_number, String email, int aid, String describe, String experiment, double balance, String img_path, String country_id, int number_courses) {
 		super();
 		this.uid = uid;
 		this.full_name = full_name;
@@ -35,14 +35,22 @@ public class User {
 		this.phone_number = phone_number;
 		this.email = email;
 		this.aid = aid;
-		this.address = address;
 		this.describe = describe;
 		this.experiment = experiment;
 		this.balance = balance;
 		this.img_path = img_path;
 		this.country_id = country_id;
+		this.number_courses = number_courses;
 	}
 	
+	public int getNumber_courses() {
+		return number_courses;
+	}
+
+	public void setNumber_courses(int number_courses) {
+		this.number_courses = number_courses;
+	}
+
 	public Date getBirth() {
 		return birth;
 	}
@@ -65,14 +73,6 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
 	}
 
 	public String getDescribe() {
