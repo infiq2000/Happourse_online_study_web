@@ -1,6 +1,7 @@
 package Dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -198,4 +199,30 @@ public class AccountUtil {
 		return false;
 			
 	}
+	
+	public List<Account> getAllAccounts() throws SQLException{
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT * FROM happourse.account;";
+		myStmt = myConn.prepareStatement(sql);
+		myRS = myStmt.executeQuery();
+		List<Account> accounts = new ArrayList<>();
+		while (myRS.next()) {
+			int aid = myRS.getInt("aid");
+			String username = myRS.getString("username");
+			String password = myRS.getString("password");
+			int type = myRS.getInt("type");
+			boolean temp = true;
+			if (type == 0) 
+				temp = true;
+			else
+				temp = false;
+			accounts.add(new Account(aid, username, password, temp));
+		}
+		return accounts;
+	}
 }
+
+
