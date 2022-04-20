@@ -102,9 +102,18 @@ public class CourseDetail extends HttpServlet {
 			reviewList = userUtil.getAllReview(course_id);
 			request.setAttribute("reviewList", reviewList);
 			
+			float averageRating = userUtil.getAverageRating(reviewList);
+			request.setAttribute("averageRating", averageRating);
+			
+			int numberStars = Math.round(averageRating);
+			request.setAttribute("numberStars", numberStars);
+			
 			int checkReviewed = 0;
 			checkReviewed = userUtil.checkReviewed(uid, course_id);
 			request.setAttribute("checkReviewed", checkReviewed);
+			
+			int[] listFeedback = userUtil.countFeedback(reviewList);
+			request.setAttribute("listFeedback", listFeedback);
 			
 			RequestDispatcher dispatcher;
 			if (courseUtil.checkSignedCourse(course_id, uid) == null) {
