@@ -11,7 +11,7 @@
 				<div class="container">
 					<div class="header-wrapper clearfix">
 						<!-- Logo -->
-						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/x.png" alt="Logo"></a></div>
+						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/3.gif" alt="Logo" width=80px></a></div>
 
 						<!-- ============================ Theme Menu ========================= -->
 						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">
@@ -28,9 +28,9 @@
 						   <div class="collapse navbar-collapse" id="navbar-collapse-1">
 								<ul class="nav">
 									
-									<li><a href="admin_manage_account.jsp" class="tran3s">Manage Accounts</a></li>
+									<li><a href="AdminManageAccount" class="tran3s">Manage Accounts</a></li>
 									
-									<li><a href="admin_manage_user.jsp" class="tran3s">Manage Users</a></li>
+									<li><a href="AdminManageUser" class="tran3s">Manage Users</a></li>
 									
 									<li><a href="admin_manage_instructor.jsp" class="tran3s">Manage Instructors</a></li>
 									

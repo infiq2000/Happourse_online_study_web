@@ -17,7 +17,7 @@
 					<div class="row">
 						<div class="col-md-3 col-sm-6">
 							<div class="footer-logo">
-								<a href="index.jsp"><img src="images/logo/x.png" alt="Logo"></a>
+								<a href="index.jsp"><img src="images/logo/3.gif" alt="Logo" width=80px></a>
 								<p>It was some time before he obtained any answer, and the reply, when made, was unpropitious.</p>
 								<ul>
 									<li><a href="" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>

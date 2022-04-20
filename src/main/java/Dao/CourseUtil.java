@@ -116,7 +116,7 @@ public class CourseUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "SELECT ca.name, i.major,i.img_path as img_ins, i.ins_name,count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid inner join instructor i on i.ins_id=c.ins_id WHERE (c.ins_id = i.ins_id) and u.uid = ? GROUP BY course_id ";
+		String sql = "SELECT ca.name as category_name, c.name as name, i.major,i.img_path as img_ins, i.ins_name,count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid inner join instructor i on i.ins_id=c.ins_id WHERE (c.ins_id = i.ins_id) and u.uid = ? GROUP BY course_id ";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, uid);
 		myRS = myStmt.executeQuery();
@@ -129,6 +129,7 @@ public class CourseUtil {
 			int countCourses = myRS.getInt("countCourses");
 			int courses_id = myRS.getInt("course_id");
 			String name = myRS.getString("name");
+			String category_name = myRS.getString("category_name");
 			String skill = myRS.getString("skill");
 			double price = myRS.getDouble("price");
 			String language = myRS.getString("language");
@@ -138,7 +139,7 @@ public class CourseUtil {
 			double star_rate = 0;
 			int ins_id = myRS.getInt("ins_id");
 			int cid = myRS.getInt("cid");
-			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date ));
+			courses.add(new Courses(category_name,courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date ));
 		}
 		myConn.close();
 		return courses;

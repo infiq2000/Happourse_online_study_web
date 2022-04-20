@@ -94,10 +94,10 @@
 					  <thead>
 					  </thead>
 					  <tbody>
-					  	<c:forEach var="i" begin="1" end="5">
+					  	<c:forEach var="acc" items="${lst_accounts}">
 							<tr>
-							  <td class="title" scope="col"><a href="admin_manage_content.jsp">Anson</a></td>
-							  <td class="post-date" scope="col" style="text-align:center;">anson123</td>
+							  <td class="title" scope="col"><a href="admin_manage_content.jsp">${acc.getUsername()}</a></td>
+							  <td class="post-date" scope="col" style="text-align:center;">${acc.getPassword()}</td>
 							  <td class="actions" scope="col" style="text-align:center;">
 							  	<a href="#"><i class='fa fa-trash-o'></i></a>
 							  </td>

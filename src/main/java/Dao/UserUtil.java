@@ -14,6 +14,7 @@ import javax.sql.DataSource;
 import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 import Controller.Profile;
+import Model.Account;
 import Model.Courses;
 import Model.User;
 import Model.UserAccount;
@@ -380,21 +381,129 @@ public class UserUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "select review_content, star_rate, review_date, full_name, img_path from users u, user_review r where u.uid=r.uid and course_id=?;";
+		String sql = "select review_content, rate, review_time, full_name, img_path from users u, user_review r where u.uid=r.uid and course_id=?;";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, course_id);
 		myRS = myStmt.executeQuery();
 		List<Review> reviewList = new ArrayList<>();
 		while (myRS.next()) {
 			String reviewContent = myRS.getString("review_content");
-			float starRate = myRS.getFloat("star_rate");
-			Date reviewDate = myRS.getDate("review_date");
+			float starRate = myRS.getFloat("rate");
+			Date reviewDate = myRS.getDate("review_time");
 			String fullName = myRS.getString("full_name");
 			String imgPath = myRS.getString("img_path");
+			if (imgPath == null) imgPath = "images/avatar/avatarrfv4Ab.jpg";
 			reviewList.add(new Review(reviewContent, starRate, reviewDate, fullName, imgPath));
 		}
 		myConn.close();
 		return reviewList;
+	}
+
+	public void addReviewOfUser(int uid, int course_id, float rating, String review_content) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		String sql = "insert into user_review values (?,?,?,?,?,?);";
+		myConn = dataSource.getConnection();
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, getReviewIndex());
+		myStmt.setString(2, review_content);
+		myStmt.setFloat(3, rating);
+		@SuppressWarnings("deprecation")
+        java.util.Date utilDate = new java.util.Date();
+        java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+        myStmt.setDate(4, sqlDate);
+        myStmt.setInt(5, uid);
+        myStmt.setInt(6, course_id);
+        myStmt.executeUpdate();
+        myConn.close();
+		
+	}
+	
+	public int getReviewIndex() throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		String sql = "select * from user_review";
+		myConn = dataSource.getConnection();
+		myStmt = myConn.prepareStatement(sql);
+		myRS = myStmt.executeQuery();
+		int i = 1;
+		while (myRS.next()) {
+			if (i != myRS.getInt("review_id")) {
+				myConn.close();
+				return i;
+			}
+			i += 1;
+		}
+		return i;
+	}
+
+	public int checkReviewed(int uid, int course_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		String sql = "select * from user_review where uid=? and course_id=?;";
+		myConn = dataSource.getConnection();
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, uid);
+		myStmt.setInt(2, course_id);
+		myRS = myStmt.executeQuery();
+		int i = 0;
+		if (myRS.next()) i = 1;
+		myConn.close();
+		return i;
+	}
+	
+	public List<User> getAllUsers() throws SQLException{
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "select users.* , count(user_course.course_id) as count from users, user_course where users.uid = user_course.uid group by user_course.uid";
+		myStmt = myConn.prepareStatement(sql);
+		myRS = myStmt.executeQuery();
+		List<User> users = new ArrayList<>();
+		while (myRS.next()) {
+			int uid = myRS.getInt("uid");
+			String full_name = myRS.getString("full_name");
+			String major = myRS.getString("major");
+			Date birth = myRS.getDate("birth");
+			String phone_number = myRS.getString("phone_number");
+			String email = myRS.getString("email");
+			int aid = myRS.getInt("aid");
+			String describe = myRS.getString("describe");
+			String experiment = myRS.getString("experiment");
+			double balance = myRS.getDouble("balance");
+			String img_path = myRS.getString("img_path");
+			String country_ID = myRS.getString("country_ID");
+			int count = myRS.getInt("count");
+			users.add(new User(uid, full_name, major, birth, phone_number, email, aid, describe, 
+					experiment, balance, img_path, country_ID, count));
+		}
+		return users;
+	}
+
+	public float getAverageRating(List<Review> reviewList) {
+		float sumRating = 0;
+		int count = 0;
+		for (Review review : reviewList) {
+			count += 1;
+			sumRating += review.getStar_rate();
+		}
+		if (count == 0) return 5;
+		return (float) (Math.round(sumRating*10/count)/10.0);
+	}
+
+	public int[] countFeedback(List<Review> reviewList) {
+		int[] listFeedback = {0,0,0,0,0,0};
+		int i = 1;
+		while (i <= 5) {
+			for (Review review : reviewList) {
+				if ((int) review.getStar_rate() == i) listFeedback[i] += 1;
+			}
+			i += 1;
+		}
+		return listFeedback;
 	}
 	
 }

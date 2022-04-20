@@ -66,6 +66,7 @@ public class CourseDetail extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int course_id = Integer.parseInt(request.getParameter("course_id"));
+		if (Integer.toString(course_id) == null) course_id = Integer.parseInt(request.getAttribute("course_id").toString());
 		int uid = (int)request.getSession(false).getAttribute("uid");
 		int aid = (int)request.getSession(false).getAttribute("aid");
 		try {
@@ -100,6 +101,19 @@ public class CourseDetail extends HttpServlet {
 			List<Review> reviewList = null;
 			reviewList = userUtil.getAllReview(course_id);
 			request.setAttribute("reviewList", reviewList);
+			
+			float averageRating = userUtil.getAverageRating(reviewList);
+			request.setAttribute("averageRating", averageRating);
+			
+			int numberStars = Math.round(averageRating);
+			request.setAttribute("numberStars", numberStars);
+			
+			int checkReviewed = 0;
+			checkReviewed = userUtil.checkReviewed(uid, course_id);
+			request.setAttribute("checkReviewed", checkReviewed);
+			
+			int[] listFeedback = userUtil.countFeedback(reviewList);
+			request.setAttribute("listFeedback", listFeedback);
 			
 			RequestDispatcher dispatcher;
 			if (courseUtil.checkSignedCourse(course_id, uid) == null) {

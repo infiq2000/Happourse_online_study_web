@@ -160,6 +160,10 @@
 						<div class="buttons-box">
 							<a href="UpdateInfo?id=${user_info.getId()}" class="theme-btn btn-style-one">Edit Profile</a>
 						</div>
+						
+						<div class="buttons-box">
+							<a href="checkout.jsp" class="theme-btn" style="background:lightcoral;padding: 10px;border-radius: 50px;color: white;">Buy Hapcoin</a>
+						</div>
 					</div>
 					
 				</div>
@@ -181,7 +185,7 @@
 							<div class="tab active-tab" id="prod-about">
 								<div class="content">
 									<h6>About Me</h6>
-									<div class="text">
+									<div class="text" style="padding: 50px;background: white;border-radius: 5px;">
 										<p>${user_info.getDescription()}</p>
 									</div>
 								</div>
@@ -241,7 +245,7 @@
 
 </div>
 
-<script src="js/ins/jquery.js"></script>
+<!-- <script src="js/ins/jquery.js"></script> -->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
