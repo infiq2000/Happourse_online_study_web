@@ -62,16 +62,20 @@
 					
 					<!-- Login Form -->
 					<div class="styled-form">
-						<form method="post" action="index.html">
+						<form method="post" action="AdminLogin">
 							
 							<!-- Form Group -->
 							<div class="form-group">
-								<input type="email" name="email" value="" placeholder="Email Address" required>
+								<input type="text" name="username" value="" placeholder="Username" required>
 							</div>
 							
 							<!-- Form Group -->
 							<div class="form-group">
 								<input type="password" name="password" value="" placeholder="Password" required>
+							</div>
+							
+							<div class="form-group">
+								<input type="submit" name="submit" value="Login" style="background: lightcoral;color: white;">
 							</div>
 							
 							<div class="form-group">
