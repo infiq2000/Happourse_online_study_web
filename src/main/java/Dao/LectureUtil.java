@@ -265,6 +265,7 @@ public class LectureUtil {
 		rs.add(mood1);
 		rs.add(mood2);
 		rs.add(mood3);
+		myConn.close();
 		return rs;
 	}
 	public void updateContent(int lc_id, String nameContent, String desription, String url) throws SQLException {
