@@ -2,6 +2,8 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import Dao.AccountUtil;
+import Dao.UserUtil;
+import Model.User;
 
 /**
  * Servlet implementation class AdminLogin
@@ -24,6 +28,8 @@ public class AdminLogin extends HttpServlet {
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
 	AccountUtil accUtil;
+	UserUtil userUtil;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -35,6 +41,7 @@ public class AdminLogin extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
     	super.init();
     	accUtil = new Dao.AccountUtil(dataSource);
+    	userUtil = new Dao.UserUtil(dataSource);
     }
 
 	/**
@@ -47,6 +54,16 @@ public class AdminLogin extends HttpServlet {
 		
 		try {
 			if (accUtil.loginAdmin(userName, passWord) == true) {
+				
+				List<User> users = new ArrayList<>();
+				try {
+					users = userUtil.getAllUsers();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+				request.setAttribute("lst_users", users);
+
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/admin_manage_user.jsp");
 				dispatcher.forward(request, response);
 			}else {
