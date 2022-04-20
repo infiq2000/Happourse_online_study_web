@@ -15,7 +15,6 @@ document.getElementById("s2").onclick = function (){
 						url:url
 				  },
 				  success: function(data) {
-					alert(data);
 					var json = JSON.parse(data);
 				   	var row = document.getElementById ("video1") ; 
 					row.innerHTML = json.link;

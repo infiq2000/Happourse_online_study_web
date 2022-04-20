@@ -447,12 +447,34 @@ public class InstructorUtil {
 		myStmt.executeUpdate();
 		myConn.close();
 	}
+	public List<ChartInfo> getTotalCoursebyMonth(int ins_id) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "select  i.ins_id, c.name , c.course_id,  count(c.course_id) as totalCourse , u.start_date, month(u.start_date) as month from instructor i, courses c, user_course u where c.ins_id = i.ins_id and c.course_id=u.course_id and i.ins_id=?  group by c.course_id, month";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, ins_id);
+		myRS = myStmt.executeQuery();
+		List<ChartInfo> ls = new ArrayList<ChartInfo>();
+		while (myRS.next()) {
+			String name = myRS.getString("name");
+			int course_id = myRS.getInt("course_id");
+			int totalCourse = myRS.getInt("totalCourse");
+			Date start_date = myRS.getDate("start_date");
+			int month = myRS.getInt("month");
+			ls.add(new ChartInfo(ins_id, name, course_id, totalCourse, start_date, month));
+		}
+		myConn.close();
+		return ls;
+		
+	}
 	public List<ChartInfo> getRevenuebyMonth(int ins_id) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "select  i.ins_id, c.name , c.course_id, sum(c.price) as revenue , u.start_date, month(u.start_date) as month from instructor i, courses c, user_course u where c.ins_id = i.ins_id and c.course_id=u.course_id and i.ins_id=? group by c.course_id, month";
+		String sql = "select  i.ins_id, c.name , c.course_id,  sum(c.price) as revenue , u.start_date, month(u.start_date) as month from instructor i, courses c, user_course u where c.ins_id = i.ins_id and c.course_id=u.course_id and i.ins_id=?  group by c.course_id, month";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, ins_id);
 		myRS = myStmt.executeQuery();
@@ -461,13 +483,13 @@ public class InstructorUtil {
 			String name = myRS.getString("name");
 			int course_id = myRS.getInt("course_id");
 			double revenue = myRS.getDouble("revenue");
+			System.out.println("revenue: "+ revenue);
 			Date start_date = myRS.getDate("start_date");
 			int month = myRS.getInt("month");
 			ls.add(new ChartInfo(ins_id, name, course_id, revenue, start_date, month));
 		}
 		myConn.close();
 		return ls;
-		
 	}
 }
 

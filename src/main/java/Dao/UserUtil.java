@@ -6,10 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+import java.util.Arrays;
 import java.util.List;
 
 import javax.sql.DataSource;
+
+import com.mysql.cj.x.protobuf.MysqlxDatatypes.Array;
 
 import Controller.Profile;
 import Model.Courses;
@@ -90,12 +92,30 @@ public class UserUtil {
 			myConn.close();
 		}
 	}
+	public List<Object> getRate_TotalComment(int course_id) throws SQLException{
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "select avg(rate) as rate, count(review_content) as comment from user_review where course_id = ? group by course_id";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, course_id);
+		myRS = myStmt.executeQuery();
+		int comment = 0;
+		double rate = 0;
+		if (myRS.next()) {
+			rate = myRS.getDouble("rate");
+			comment = myRS.getInt("comment");
+		}
+		myRS.close();
+		return Arrays.asList(comment,rate);
+	}
 	public List<Courses> getAll_Courses() throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "SELECT i.major,i.img_path as img_ins, i.ins_name,  count(comment) as comment ,count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid inner join instructor i on i.ins_id=c.ins_id GROUP BY course_id ";
+		String sql = "SELECT i.major,i.img_path as img_ins, i.ins_name ,count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid inner join instructor i on i.ins_id=c.ins_id GROUP BY course_id ";
 		myStmt = myConn.prepareStatement(sql);
 		myRS = myStmt.executeQuery();
 		List<Courses> courses = new ArrayList<>();
@@ -103,9 +123,11 @@ public class UserUtil {
 			String major = myRS.getString("major");
 			String img_ins = myRS.getString("img_ins");
 			String ins_name = myRS.getString("ins_name");
-			int comment = myRS.getInt("comment");
+			
 			int countCourses = myRS.getInt("countCourses");
 			int courses_id = myRS.getInt("course_id");
+			int comment = 0 ;
+			
 			String name = myRS.getString("name");
 			String skill = myRS.getString("skill");
 			double price = myRS.getDouble("price");
@@ -113,7 +135,7 @@ public class UserUtil {
 			String description =   myRS.getString("description");
 			Date publish_date= myRS.getDate("publish_date");
 			String img_path = myRS.getString("img_path");
-			double star_rate = myRS.getDouble("star_rate");
+			double star_rate = 0;
 			int ins_id = myRS.getInt("ins_id");
 			int cid = myRS.getInt("cid");
 			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date ));
