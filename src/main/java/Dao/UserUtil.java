@@ -397,4 +397,34 @@ public class UserUtil {
 		return reviewList;
 	}
 	
+	public List<User> getAllUsers() throws SQLException{
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT * FROM happourse.users;";
+		myStmt = myConn.prepareStatement(sql);
+		myRS = myStmt.executeQuery();
+		List<User> users = new ArrayList<>();
+		while (myRS.next()) {
+			int uid = myRS.getInt("uid");
+			String full_name = myRS.getString("full_name");
+			String major = myRS.getString("major");
+			Date birth = myRS.getDate("birth");
+			String phone_number = myRS.getString("phone_number");
+			String email = myRS.getString("email");
+			int aid = myRS.getInt("aid");
+			String address = myRS.getString("address");
+			String describe = myRS.getString("describe");
+			String experiment = myRS.getString("experiment");
+			double balance = myRS.getDouble("balance");
+			String img_path = myRS.getString("img_path");
+			String country_ID = myRS.getString("country_ID");
+			
+			users.add(new User(uid, full_name, major, birth, phone_number, email, aid, address, describe, 
+					experiment, balance, img_path, country_ID));
+		}
+		return users;
+	}
+	
 }
