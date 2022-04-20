@@ -116,7 +116,7 @@
 									<li><a href="course-list.html" class="tran3s"><i class="fa fa-list" aria-hidden="true"></i></a></li>
 								</ul>
 							</div>
-							<div class="row">
+							<div id="course" class="row">
 								<c:forEach var="tempCourse" items="${listCourses}">
 									<div class="col-lg-4 col-sm-6 col-xs-6">
 										<div class="single-course" style="border: 0px;">
@@ -147,34 +147,7 @@
 												</ul>
 											</div>
 										</div> <!-- /.single-course -->
-<%-- 										<div class="single-course">
-											<div class="image-box"><img src="${tempCourse.getImg_path() }" alt=""></div>
-											<div class="text">
-												<div class="image"><img src="${tempCourse.getImg_path_instructor() }" alt=""></div>
-												<div class="name clearfix">
-													<h6 class="float-left">${tempCourse.getIns_name() }</h6>
-												</div>
-												
-												<c:url var="tempLink" value="CourseDetail">
-													<c:param name="course_id" value="${tempCourse.getCourses_id()}"></c:param>
-	  											</c:url>
-												<h5><a href="${tempLink}" class="tran3s"></a>${tempCourse.getName()}</h5>
-												<ul class="clearfix">
-													<li class="float-left">
-														<i class="flaticon-people"></i>
-														<a href="#" class="tran3s">${tempCourse.getCountCourses()}</a>
-													</li>
-													<li class="float-left">
-														<i class="flaticon-comments"></i>
-														<a href="#" class="tran3s">${tempCourse.getTotal_comment()}</a>
-													</li>
-													<li class="float-right">
-														<i class="flaticon-heart"></i>
-														<a href="#" class="tran3s">${tempCourse.getStar_rate()}</a>
-													</li>
-												</ul>
-											</div>
-										</div> <!-- /.single-course --> --%>
+
 									</div> <!-- /.col- -->
 								</c:forEach> 
 							</div> <!-- /.row -->
@@ -197,12 +170,13 @@
 													<ul class="clearfix">
 														<li class="float-left">
 															<label for="min">From</label>
-															<input ondblclick="price()" id ="minPrice" type="text" class="min" readonly>
+															<input id ="minPrice" type="text" class="min" readonly>
 														</li>
 														<li class="float-left">
 															<label for="max">To</label>
-															<input ondblclick="price()" id ="maxPrice" type="text" class="max" readonly>
+															<input id ="maxPrice" type="text" class="max" readonly>
 														</li>
+														<button onclick="price()" class="tran6s" type="submit"><i class="fa fa-search"></i></button>	
 													</ul>
 												</div>
 												<div id="slider-range"></div>
@@ -281,6 +255,7 @@
 		<!-- Js File_________________________________ -->
 		
 		<!-- j Query -->
+		<script type="text/javascript" src="js/SearchPrice.js"></script> 
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
 		<!-- Bootstrap Select JS -->
 		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>

@@ -20,6 +20,7 @@ import Dao.AccountUtil;
 import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
+import Model.ChartInfo;
 import Model.Courses;
 
 /**
@@ -50,11 +51,16 @@ public class Earnings extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int ins_id = (int)request.getSession(false).getAttribute("ins_id");
 		List<Courses> ls = null;
+		List<ChartInfo> list_revenue_of_ins = null;
 		try {
 			 ls = insUtil.getMyCourses(ins_id);
+			 list_revenue_of_ins = insUtil.getRevenuebyMonth(ins_id);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		for(ChartInfo ch:list_revenue_of_ins) {
+			System.out.println("revenue2: " + ch.getRevenue());
 		}
 		request.setAttribute("listCourses", ls);
 		int thisMonth = Calendar.getInstance().get(Calendar.MONTH)+1;
@@ -85,7 +91,7 @@ public class Earnings extends HttpServlet {
 		}
 		request.setAttribute("totalRevenue", totalRevenue);
 		request.setAttribute("countCourses", countCourses);
-		request.setAttribute("totalRevenueMonth", totalRevenueMonth);
+		request.setAttribute("revenue", list_revenue_of_ins);
 		request.setAttribute("countCoursesMonth", countCoursesMonth);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/earning_course.jsp");
 		dispatcher.forward(request, response);
