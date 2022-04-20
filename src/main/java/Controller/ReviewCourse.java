@@ -3,6 +3,7 @@ package Controller;
 import java.io.IOException;
 
 import javax.annotation.Resource;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,7 +43,21 @@ public class ReviewCourse extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int uid = (int)request.getSession(false).getAttribute("uid");
 		int course_id = Integer.parseInt(request.getParameter("course_id"));
-		System.out.println(course_id);
+		float rating = Float.parseFloat(request.getParameter("review-rate"));
+		String review_content = request.getParameter("review-content").toString();
+		try {
+			userUtil.addReviewOfUser(uid, course_id, rating, review_content);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		request.setAttribute("course_id", course_id);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("CourseDetail");
+		dispatcher.forward(request, response);
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
 	}
 
 }
