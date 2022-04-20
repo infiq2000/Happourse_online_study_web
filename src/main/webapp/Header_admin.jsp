@@ -28,9 +28,9 @@
 						   <div class="collapse navbar-collapse" id="navbar-collapse-1">
 								<ul class="nav">
 									
-									<li><a href="admin_manage_account.jsp" class="tran3s">Manage Accounts</a></li>
+									<li><a href="AdminManageAccount" class="tran3s">Manage Accounts</a></li>
 									
-									<li><a href="admin_manage_user.jsp" class="tran3s">Manage Users</a></li>
+									<li><a href="AdminManageUser" class="tran3s">Manage Users</a></li>
 									
 									<li><a href="admin_manage_instructor.jsp" class="tran3s">Manage Instructors</a></li>
 									

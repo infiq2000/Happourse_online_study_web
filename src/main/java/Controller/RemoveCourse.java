@@ -80,7 +80,7 @@ public class RemoveCourse extends HttpServlet {
 
 			courseUtil.removeCourse(uid,course_id);
 			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/Course_detail.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("CourseDetail");
 			dispatcher.forward(request, response);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

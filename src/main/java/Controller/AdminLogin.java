@@ -15,53 +15,72 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import Dao.CourseUtil;
+import Dao.AccountUtil;
 import Dao.UserUtil;
-import Model.Courses;
-import Model.ManagedCourses;
+import Model.User;
 
 /**
- * Servlet implementation class ManageCourses
+ * Servlet implementation class AdminLogin
  */
-@WebServlet("/ManageCourses")
-public class ManageCourses extends HttpServlet {
+@WebServlet("/AdminLogin")
+public class AdminLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
-	CourseUtil courseUtil; 
+	AccountUtil accUtil;
+	UserUtil userUtil;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageCourses() {
+    public AdminLogin() {
         super();
         // TODO Auto-generated constructor stub
     }
     
     public void init(ServletConfig config) throws ServletException {
     	super.init();
-    	courseUtil = new Dao.CourseUtil(dataSource);
-    }    
-
+    	accUtil = new Dao.AccountUtil(dataSource);
+    	userUtil = new Dao.UserUtil(dataSource);
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int ins_id = (int)request.getSession(false).getAttribute("ins_id");
-		List<ManagedCourses> ls = new ArrayList<>();
+		// TODO Auto-generated method stub
+		String userName = request.getParameter("username");
+		String passWord = request.getParameter("password");
+		
 		try {
-			ls = courseUtil.getManagedCourses(ins_id);
+			if (accUtil.loginAdmin(userName, passWord) == true) {
+				
+				List<User> users = new ArrayList<>();
+				try {
+					users = userUtil.getAllUsers();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+				request.setAttribute("lst_users", users);
+
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/admin_manage_user.jsp");
+				dispatcher.forward(request, response);
+			}else {
+				System.out.println("Wrong password!");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("desc", "false");
-		request.setAttribute("listCourses", ls);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/manage_course.jsp");
-		dispatcher.forward(request, response);
 	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }

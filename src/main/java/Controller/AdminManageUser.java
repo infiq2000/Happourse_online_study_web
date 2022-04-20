@@ -19,49 +19,54 @@ import Dao.CourseUtil;
 import Dao.UserUtil;
 import Model.Courses;
 import Model.ManagedCourses;
+import Model.User;
 
 /**
- * Servlet implementation class ManageCourses
+ * Servlet implementation class AdminManageUser
  */
-@WebServlet("/ManageCourses")
-public class ManageCourses extends HttpServlet {
+@WebServlet("/AdminManageUser")
+public class AdminManageUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
-	CourseUtil courseUtil; 
+	UserUtil userUtil;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageCourses() {
+    public AdminManageUser() {
         super();
         // TODO Auto-generated constructor stub
     }
-    
     public void init(ServletConfig config) throws ServletException {
     	super.init();
-    	courseUtil = new Dao.CourseUtil(dataSource);
-    }    
-
+    	 userUtil = new Dao.UserUtil(dataSource);
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int ins_id = (int)request.getSession(false).getAttribute("ins_id");
-		List<ManagedCourses> ls = new ArrayList<>();
+		List<User> users = new ArrayList<>();
 		try {
-			ls = courseUtil.getManagedCourses(ins_id);
+			users = userUtil.getAllUsers();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("desc", "false");
-		request.setAttribute("listCourses", ls);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/manage_course.jsp");
+		request.setAttribute("lst_users", users);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin_manage_user.jsp");
 		dispatcher.forward(request, response);
 	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }

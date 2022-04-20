@@ -15,53 +15,55 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import Dao.CourseUtil;
-import Dao.UserUtil;
-import Model.Courses;
-import Model.ManagedCourses;
+import Dao.AccountUtil;
+
+import Model.Account;
 
 /**
- * Servlet implementation class ManageCourses
+ * Servlet implementation class AdminManageAccount
  */
-@WebServlet("/ManageCourses")
-public class ManageCourses extends HttpServlet {
+@WebServlet("/AdminManageAccount")
+public class AdminManageAccount extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
-	CourseUtil courseUtil; 
+	AccountUtil accUtil;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ManageCourses() {
+    public AdminManageAccount() {
         super();
         // TODO Auto-generated constructor stub
     }
-    
     public void init(ServletConfig config) throws ServletException {
     	super.init();
-    	courseUtil = new Dao.CourseUtil(dataSource);
-    }    
-
+   	 accUtil = new Dao.AccountUtil(dataSource);
+   }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int ins_id = (int)request.getSession(false).getAttribute("ins_id");
-		List<ManagedCourses> ls = new ArrayList<>();
+		List<Account> accounts = new ArrayList<>();	
 		try {
-			ls = courseUtil.getManagedCourses(ins_id);
+			accounts = accUtil.getAllAccounts();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("desc", "false");
-		request.setAttribute("listCourses", ls);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/manage_course.jsp");
+		request.setAttribute("lst_accounts", accounts);
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/admin_manage_account.jsp");
 		dispatcher.forward(request, response);
 	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }
