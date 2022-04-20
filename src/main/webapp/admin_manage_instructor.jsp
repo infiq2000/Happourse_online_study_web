@@ -68,7 +68,7 @@
 			<div class="sec-title">
 				<div class="clearfix">
 					<div class="pull-left">
-						<h4>Manage Users</h4>
+						<h4>Manage Instructors</h4>
 					</div>
 				</div>
 			</div>
@@ -109,7 +109,7 @@
 					  <thead>
 					  </thead>
 					  <tbody>
-					  	<c:forEach var="user" items="${lst_users}">
+					  	<c:forEach var="i" begin="1" end="5">
 							<tr>
 							  <td class="title" scope="col">Nguyen Duc An Son</td>
 							  <td class="post-date" scope="col" style="text-align:center;">Quang Nam</td>

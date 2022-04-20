@@ -174,4 +174,24 @@ public class AccountUtil {
 			return 1;
 		}	
 	}
+	
+	public boolean loginAdmin(String username, String password) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "select * from happourse.admin where username = ?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, username);
+		myRS = myStmt.executeQuery();
+		String pass = null;
+		while (myRS.next()) {
+			pass = myRS.getString("password");
+		}
+		myConn.close();
+		if (pass.compareTo(password) == 0) 
+			return true;
+		return false;
+			
+	}
 }

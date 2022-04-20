@@ -69,7 +69,7 @@
 						<h4>Manage Contents</h4>
 					</div>
 					<div class="pull-right">
-						<a href="add_chapter.jsp?course_id=${course_id }" class="see-all">Add New Content</a>
+						<a href="EditCourse?course_id=${course_id }" class="see-all">Add New Content</a>
 					</div>
 				</div>
 			</div>

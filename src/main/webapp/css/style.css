@@ -3723,3 +3723,16 @@ footer .bottom-footer {
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
 }
+.star-rating {
+  line-height:32px;
+  font-size:3em;
+}
+
+.star-rating .fa-star{color: yellow;}
+
+.star-rating-comment {
+  line-height:32px;
+  font-size:normal normal normal 14px/1 FontAwesome;
+}
+
+.star-rating-comment .fa-star{color: yellow;}

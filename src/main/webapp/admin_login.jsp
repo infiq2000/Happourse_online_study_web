@@ -45,102 +45,64 @@
 
 </head>
 
-<body class="">
+<body class="" style="background:white;">
 
 
  	
     <!-- Preloader -->
     <div class="preloader"></div>
  	
-    <!-- Main Header-->
-	<jsp:include page="Header_admin.jsp"></jsp:include>
-    <!--End Main Header -->
     
     
     
-<div class="page-wrapper">	
-<!-- Manage Cource Section -->
-    <div class="manage-cource-section">
-    	<div style="text-align: center;margin-bottom:60px;color:lightcoral; font-size: 22px; font-family: 'Roboto', sans-serif; background:#090f42; padding:20px; border-radius:5px; height:200%;	"><b><h2>Hapourse's Administration</h2></b></div>
-    	<div class="auto-container">
-    		
-			<!-- Sec Title -->
-			<div class="sec-title">
-				<div class="clearfix">
-					<div class="pull-left">
-						<h4>Manage Users</h4>
+<div class="page-wrapper" style="background:white;">	
+	<div class="auto-container">
+	        	<div class="inner-container" style="width: 30%; margin-left: 35%;">
+	            	<h2> Welcome To <span style="color:lightcoral">Admin</span></h2>
+					
+					<!-- Login Form -->
+					<div class="styled-form">
+						<form method="post" action="AdminLogin">
+							
+							<!-- Form Group -->
+							<div class="form-group">
+								<input type="text" name="username" value="" placeholder="Username" required>
+							</div>
+							
+							<!-- Form Group -->
+							<div class="form-group">
+								<input type="password" name="password" value="" placeholder="Password" required>
+							</div>
+							
+							<div class="form-group">
+								<input type="submit" name="submit" value="Login" style="background: lightcoral;color: white;">
+							</div>
+							
+							<div class="form-group">
+								<div class="clearfix">
+									<div class="pull-left">
+										<div class="check-box">
+											<input type="checkbox" name="remember-password" id="type-1"> 
+											<label for="type-1">Remember Password</label>
+										</div>
+									</div>
+									<div class="pull-right">
+										<a href="#" class="forgot">Forget Password?</a> 
+									</div>
+								</div>
+							</div>
+							
+							
+						</form>
 					</div>
-				</div>
-			</div>
-			<div class="inner-container">
-				<div class="container-content">
-					<!-- Title Box -->
-					<div class="title-box clearfix">
-						<!-- Title Column -->
-						<div class="title-column" style="width:480px;">
-							<h6 >Full Name</h6>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:180px; text-align:center">
-							<h6 >Address</h6>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:150px;">
-							<h6 >Phone Number</h6>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:130px;">
-							<h6>Email</h6>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:150px;">
-							<h6>Course</h6>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:100px;">
-							<h6>Balance</h6>
-						</div>
-						<!-- Title Column -->
-						<div class="title-column" style="width:130px;">
-							<h6>Action</h6>
-						</div>
-					</div>
-					<table class="table">
-					  <thead>
-					  </thead>
-					  <tbody>
-					  	<c:forEach var="user" items="${lst_users}">
-							<tr>
-							  <td class="title" scope="col">Nguyen Duc An Son</td>
-							  <td class="post-date" scope="col" style="text-align:center;">Quang Nam</td>
-							  <td class="sales" scope="col" style="text-align:center;">0905480650</td>
-							  <td class="category" scope="col" style="text-align:center;">ansonnguyen</td>
-							  <td style="text-align:center;">4</td>
-							  <td>4000$</td>
-							  <td class="actions" scope="col" style="text-align:center;">
-							  	<a href="#"><i class='fa fa-trash-o'></i></a>
-							  
-							</tr>
-						</c:forEach>
-					  </tbody>
-					</table>
-				</div>
-			</div>
-			
-			
-		</div>
-	</div>
-	<!-- End Manage Cource Section -->
-	</div>
+					
+					
+	            </div>
+				
+				
+	        </div>
+	        </div>
 
-	<!-- Main Footer -->
-	<jsp:include page="footer.jsp"></jsp:include>
-	
-    
-	<!-- Scroll Top Button -->
-			<button class="scroll-top tran3s">
-				<i class="fa fa-angle-up" aria-hidden="true"></i>
-			</button>
 
 
 

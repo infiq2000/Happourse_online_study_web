@@ -105,8 +105,8 @@
 										</div>
 									</div>
 								</div> <!-- /.course-info -->
-								<img src="images/course/35.jpg" alt="">
-								<p class="p1">${course_detail.getDesciption()}</p>
+								<img src="${course_detail.getImg_path()}" alt="">
+								<p class="p1"> ${course_detail.getDesciption()} </p>
 								<div class="learn-list">
 									<h3>What Will I Learn?</h3>
 									<ul class="row">
@@ -197,63 +197,34 @@
 											</li>
 										</ul>
 									</div> <!-- /.feedback-container -->
-									<div class="single-review clearfix">
-										<img src="images/course/30.jpg" alt="" class="float-left">
-										<div class="text float-left">
-											<div class="clearfix">
-												<div class="float-left">
-													<h6>Marie Karles</h6>
-													<span>March 8, 2016 - 8:00am</span>
-												</div>
-												<ul class="float-right">
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												</ul>
-											</div> <!-- /.clearfix -->
-											<p>Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totamru rem aperiam, eaque ipsa quae ab illo inventore</p>
-										</div> <!-- /.text -->
-									</div> <!-- /.single-review -->
-									<div class="single-review clearfix">
-										<img src="images/course/31.jpg" alt="" class="float-left">
-										<div class="text float-left">
-											<div class="clearfix">
-												<div class="float-left">
-													<h6>Hasan Abdullah</h6>
-													<span>March 8, 2016 - 8:00am</span>
-												</div>
-												<ul class="float-right">
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												</ul>
-											</div> <!-- /.clearfix -->
-											<p>Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totamru rem aperiam, eaque ipsa quae ab illo inventore</p>
-										</div> <!-- /.text -->
-									</div> <!-- /.single-review -->
-									<div class="single-review clearfix">
-										<img src="images/course/32.jpg" alt="" class="float-left">
-										<div class="text float-left">
-											<div class="clearfix">
-												<div class="float-left">
-													<h6>Solayman Mi.</h6>
-													<span>March 8, 2016 - 8:00am</span>
-												</div>
-												<ul class="float-right">
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-													<li><i class="fa fa-star" aria-hidden="true"></i></li>
-												</ul>
-											</div> <!-- /.clearfix -->
-											<p>Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totamru rem aperiam, eaque ipsa quae ab illo inventore</p>
-										</div> <!-- /.text -->
-									</div> <!-- /.single-review -->
+									<c:forEach var="tempReview" items="${reviewList}">
+										<div class="single-review clearfix">
+											<img src="${tempReview.getImg_path()}" alt="" class="float-left">
+											<div class="text float-left">
+												<div class="clearfix">
+													<div class="float-left">
+														<h6>${tempReview.getUser_name() }</h6>
+														<span>${tempReview.getReview_date() }</span>
+													</div>
+													<div class="float-right">
+														<div class="row">
+														    <div class="col-lg-12">
+														      <ul class="star-rating-comment">
+														        <li class="fa fa-star-o" data-rating="1"></li>
+														        <li class="fa fa-star-o" data-rating="2"></li>
+														        <li class="fa fa-star-o" data-rating="3"></li>
+														        <li class="fa fa-star-o" data-rating="4"></li>
+														        <li class="fa fa-star-o" data-rating="5"></li>
+														        <input type="hidden" name="review-rate-comment" class="rating-value-comment" value="${tempReview.getStar_rate() }">
+														      </ul>
+														    </div>
+														</div>
+													</div>
+												</div> <!-- /.clearfix -->
+												<p>${tempReview.getReview_content() }</p>
+											</div> <!-- /.text -->
+										</div> <!-- /.single-review -->
+									</c:forEach>
 								</div> <!-- /.course-feedback -->
 							</div> <!-- /.details-wrapper -->
 						</div> <!-- /.col- -->
@@ -263,7 +234,7 @@
 							<div class="course-sidebar">
 								<div class="sidebar-course-information">
 									<ul class="price clearfix">
-										<li class="float-left"><strong class="s-color"><del>${course_detail.getPrice() + 19}<sup>.99</sup></del>${course_detail.getPrice()}<sup>.99</sup></strong></li>
+										<li class="float-left"><strong class="s-color"><del>${course_detail.getPrice2() + 19}<sup>.99</sup></del>${course_detail.getPrice2()}<sup>.99</sup></strong></li>
 										<li class="float-right"><a href="#" class="tran3s"><i class="flaticon-like"></i></a></li>
 									</ul>
 									<ul class="info-list row">
@@ -297,7 +268,7 @@
 									<h4>Instructor Info</h4>
 									<div class="wrapper">
 										<div class="name">
-											<img src="images/course/28.jpg" alt="">
+											<img src="${course_detail.getImg_path_instructor()}" alt="">
 											<h6>${ins_info.getIns_name()}.</h6>
 											<span>${ins_info.getMajor() }</span>
 											<ul>

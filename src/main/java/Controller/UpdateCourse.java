@@ -34,7 +34,7 @@ import Dao.UserUtil;
 @WebServlet("/UpdateCourse")
 public class UpdateCourse extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final String UPLOAD_DIRECTORY = "C:\\Users\\Tan Dat\\git\\Happourse\\src\\main\\webapp\\images\\course";
+	private final String UPLOAD_DIRECTORY = "D:\\Code\\DATN\\Happourse_online_study_web\\src\\main\\webapp\\images\\course";
 	@Resource(name="jdbc/Happourse")
 	private DataSource dataSource;
 	Dao.CourseUtil courseUtil; 

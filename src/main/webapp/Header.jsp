@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Hapourse - Online Study Website</title>
 </head>
 <body>
 <header class="theme-menu-wrapper menu-style-one">

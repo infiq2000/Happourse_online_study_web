@@ -66,7 +66,7 @@
 			-->
 			<jsp:include page="inner_banner.jsp" />
 
-
+	
 			<!-- 
 			=============================================
 				Our Course
@@ -79,6 +79,31 @@
 						<!-- 	"Show course" -->
 						
 						<div class="col-lg-9 col-md-8 col-xs-12 popular-course float-right">
+	<!-- 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+								<div class="course-sidebar">
+	
+									<div class="course-filter">
+											<div class="course-price-filter">
+												<h5>Price Range</h5>
+												<div class="price-ranger">
+													<div class="ranger-min-max-block">
+														<ul class="clearfix">
+															<li class="float-left">
+																<label for="min">From</label>
+																<input type="text" class="min" readonly>
+															</li>
+															<li class="float-left">
+																<label for="max">To</label>
+																<input type="text" class="max" readonly>
+															</li>
+														</ul>
+													</div>
+													<div id="slider-range"></div>
+												</div> /price-ranger
+											</div> /.course-price-filter
+									</div> /.course-filter
+								</div> /.course-sidebar
+							</div> /.col- -->
 							<div class="course-style-filter clearfix">
 								<ul class="float-left clearfix">
 									<li><a href="CourseByType?type=all" class="tran3s ${allActive }" id="type1">All</a></li>
@@ -109,11 +134,11 @@
 												<ul class="clearfix">
 													<li class="float-left">
 														<i class="flaticon-people"></i>
-														<a href="#" class="tran3s">2,680</a>
+														<a href="#" class="tran3s">${tempCourse.getCountCourses()}</a>
 													</li>
 													<li class="float-left">
 														<i class="flaticon-comments"></i>
-														<a href="#" class="tran3s">13</a>
+														<a href="#" class="tran3s">${tempCourse.getTotal_comment()}</a>
 													</li>
 													<li class="float-right">
 														<i class="flaticon-heart"></i>
@@ -162,8 +187,34 @@
 						</div> <!-- /.popular-course -->
 
 						<!-- ************************* SIDEBAR ***************************** -->
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+							<div class="course-sidebar">	
+								<div class="course-filter">
+										<div class="course-price-filter">
+											<h4>Price Range</h4>
+											<div class="price-ranger">
+												<div class="ranger-min-max-block">
+													<ul class="clearfix">
+														<li class="float-left">
+															<label for="min">From</label>
+															<input ondblclick="price()" id ="minPrice" type="text" class="min" readonly>
+														</li>
+														<li class="float-left">
+															<label for="max">To</label>
+															<input ondblclick="price()" id ="maxPrice" type="text" class="max" readonly>
+														</li>
+													</ul>
+												</div>
+												<div id="slider-range"></div>
+											</div> 
+										</div> 
+								</div> <!-- /.course-filter -->
+							</div> <!-- /.course-sidebar -->
+						</div> <!-- /.col- -->
 						<jsp:include page="Category.jsp" />
 						
+					<div id="slider-range"></div>
+				</div> <!-- /price-ranger -->
 						
 						<!-- Doan category bi xoa -->
 
