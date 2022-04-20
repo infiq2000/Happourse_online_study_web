@@ -58,11 +58,11 @@
 <div class="page-wrapper" style="background:white;">	
 	<div class="auto-container">
 	        	<div class="inner-container" style="width: 30%; margin-left: 35%;">
-	            	<h2> Welcome To <span style="color:lightcoral">Admin</span></h2>
+	            	<h2 style="margin-left: 12%;margin-bottom: 10%;"> Welcome To <span style="color:lightcoral">Admin</span></h2>
 					
 					<!-- Login Form -->
 					<div class="styled-form">
-						<form method="post" action="index.html">
+						<form method="post" action="admin_manage_account.jsp">
 							
 							<!-- Form Group -->
 							<div class="form-group">
@@ -72,6 +72,11 @@
 							<!-- Form Group -->
 							<div class="form-group">
 								<input type="password" name="password" value="" placeholder="Password" required>
+							</div>
+							
+							<!-- Form Group -->
+							<div class="form-group">
+								<input type="submit" name="submit" value="Login" style="background: lightcoral;color: white;">
 							</div>
 							
 							<div class="form-group">

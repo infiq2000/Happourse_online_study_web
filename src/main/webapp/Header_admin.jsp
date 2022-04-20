@@ -11,7 +11,7 @@
 				<div class="container">
 					<div class="header-wrapper clearfix">
 						<!-- Logo -->
-						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/x.png" alt="Logo"></a></div>
+						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/3.gif" alt="Logo" width=80px></a></div>
 
 						<!-- ============================ Theme Menu ========================= -->
 						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">
