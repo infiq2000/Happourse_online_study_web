@@ -352,7 +352,7 @@ header.menu-style-one .header-wrapper .logo {
   overflow: hidden;
   z-index: 9;
   height: 100%;
-  padding: 14px 0 13px 18px;
+  padding: 5px;
 }
 header.menu-style-one .header-wrapper .logo:before {
   content: '';
@@ -1348,7 +1348,7 @@ header.menu-style-two.fixed .logo {width: 10%;top:0;}
 .our-blog .single-blog>a:hover {color: #fff;}
 /*---------------------- Instructor Banner ------------------*/
 .instructor-banner {
-  background: url(../images/home/slide-6.jpg) no-repeat center;/*  9.jpg*/
+  background: url(../images/home/online-class.jpg) no-repeat center;
   background-size: cover;
   margin-top: 90px;
 }

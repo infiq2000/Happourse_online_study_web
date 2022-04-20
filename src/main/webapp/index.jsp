@@ -54,7 +54,7 @@
 				<div class="container">
 					<div class="header-wrapper clearfix">
 						<!-- Logo -->
-						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/x.png" alt="Logo"></a></div>
+						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/3.gif" alt="Logo" width=80px></a></div>
 
 						<!-- ============================ Theme Menu ========================= -->
 						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">
@@ -70,32 +70,10 @@
 						   <!-- Collect the nav links, forms, and other content for toggling -->
 						   <div class="collapse navbar-collapse" id="navbar-collapse-1">
 								<ul class="nav">
-									<li class="dropdown-holder menu-list"><a href="index.html" class="tran3s">Home</a>
+									<li class="dropdown-holder menu-list"><a href="index.jsp" class="tran3s">Home</a>
 										<ul class="sub-menu">
-											<li><a href="index.html">Home version one</a></li>
-											<li><a href="index-2.html">Home version Two</a></li>
-										</ul>
-									</li>
-									
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Pages</a>
-										<ul class="sub-menu width-half">
-											<li><a href="about-us.html">About Us</a></li>
-											<li><a href="our-teacher.html">Our teacher</a></li>
-											<li><a href="teachers-profile.html">teachers profile</a></li>
-											<li><a href="shop.html">Shop page</a></li>
-											<li><a href="shop-details.html">Shop Details</a></li>
-											<li><a href="portfolio-3-column.html">portfolio 3 column</a></li>
-											<li><a href="portfolio-4-column.html">portfolio 4 column</a></li>
-											<li><a href="pricing-plan.html">Pricing Plan</a></li>
-											<li><a href="faq.html">Faq Page</a></li>
-											<li><a href="404.html">Error Page</a></li>
-											<li><a href="Signup.jsp">Registration</a></li>
-											<li class="dropdown-holder"><a href="#">Third Level menu</a>
-												<ul class="second-sub-menu">
-													<li><a href="#">menu one</a></li>
-													<li><a href="#">menu two</a></li>
-												</ul>
-											</li>
+											<li><a href="index.jsp">Home version one</a></li>
+											<li><a href="index.jsp">Home version Two</a></li>
 										</ul>
 									</li>
 									
@@ -106,6 +84,7 @@
 											<li><a href="blog-details.html">blog Details</a></li>
 										</ul>
 									</li>
+									
 									<li><a href="contact-us.html" class="tran3s">Contact Us</a></li>
 									
 									
@@ -205,6 +184,7 @@
 			-->
 			<div class="find-course-block">
 				<div class="container">
+					
 					<div class="theme-title text-center">
 						<h6>Choose Your Course</h6>
 						<h2>We Have Tones of Course for You!!</h2>
@@ -672,12 +652,10 @@
 			-->
 			<div class="partent-logo-section">
 				<div class="container">
-					<div id="partner-logo">
-						<div class="item"><img src="images/logo/p-1.png" alt="logo"></div>
-						<div class="item"><img src="images/logo/p-2.png" alt="logo"></div>
-						<div class="item"><img src="images/logo/p-3.png" alt="logo"></div>
-						<div class="item"><img src="images/logo/p-4.png" alt="logo"></div>
-					</div>
+					<video controls autoplay style="width: 500px;height: 500px; margin: 0 0 40px 30%;">
+					  <source src="images/logo/video.mp4" type="video/mp4">
+					  Your browser does not support the video tag.
+					</video>
 				</div>
 			</div> <!-- /.partent-logo-section -->
 
@@ -694,7 +672,7 @@
 					<div class="row">
 						<div class="col-md-3 col-sm-6">
 							<div class="footer-logo">
-								<a href="index.jsp"><img src="images/logo/x.png" alt="Logo"></a>
+								<a href="index.jsp"><img src="images/logo/3.gif" alt="Logo" width=80px></a>
 								<p>It was some time before he obtained any answer, and the reply, when made, was unpropitious.</p>
 								<ul>
 									<li><a href="" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
