@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import com.mysql.cj.protocol.Message;
+//import com.mysql.cj.protocol.Message;
 
 import Dao.AccountUtil;
 import Dao.CourseUtil;
