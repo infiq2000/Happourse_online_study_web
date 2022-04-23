@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
+<%@ page import="Model.Courses" %>
+<%@ page import="Model.ManagedCourses" %>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
+<%@ page import="Dao.CourseUtil" %>
+<%@ page import="Model.Chapter" %>
+<%@ page import="Model.*" %>
+<%@ page import="Dao.LectureUtil" %>
+<%@ page import="org.json.simple.JSONObject" %>
+<%@ page import="org.json.simple.JSONArray" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +25,13 @@
 </head>
  <body oncontextmenu='return false' class='snippet-body'>
        <div class="px-4 px-lg-0">
-  <!-- For demo purpose -->
+<%--   <!-- For demo purpose -->
+      <!-- Preloader -->
+    <div class="preloader"></div>
+ 	
+    <!-- Main Header-->
+	<jsp:include page="Header.jsp"></jsp:include>
+    <!--End Main Header --> --%>
   <div class="container text-white py-5 text-center">
     <h1 class="display-4">Bootstrap 4 shopping cart</h1>
     <p class="lead mb-0">Build a fully structred shopping cart page using Bootstrap 4. </p>
