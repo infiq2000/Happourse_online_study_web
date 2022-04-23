@@ -144,7 +144,7 @@
 
 
 
-<!--<script src="js/ins/jquery.js"></script>-->
+<script src="js/ins/jquery.js"></script>
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>

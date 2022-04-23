@@ -5,6 +5,23 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <dependencies>
+  	<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-dbcp -->
+	<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-dbcp -->
+	<dependency>
+	    <groupId>org.apache.tomcat</groupId>
+	    <artifactId>tomcat-dbcp</artifactId>
+	    <version>8.5.78</version>
+	</dependency>
+  	<dependency>
+	  <groupId>org.apache.maven.plugin-tools</groupId>
+	  <artifactId>maven-plugin-annotations</artifactId>
+	  <version>3.6.4</version>
+	</dependency>
+  	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>8.0.19</version>
+	</dependency>
   	 <dependency>
 		<groupId>javax.servlet</groupId>
 		<artifactId>javax.servlet-api</artifactId>
