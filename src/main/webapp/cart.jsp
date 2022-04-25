@@ -17,9 +17,9 @@
   <meta charset='utf-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link href="css/cart/cart.css" rel="stylesheet">
-  
+<!--   <link rel="stylesheet" type="text/css" href="css/style.css"> -->
   <link href="css/cart/bootstap.min.css" rel="stylesheet">
-  <link href="css/cart/bootstap.min.css" rel="stylesheet">
+  <link href="css/cart/font-awesome.min.css" rel="stylesheet">
   <title>cart</title>
      
 </head>
@@ -33,11 +33,7 @@
 	<jsp:include page="Header.jsp"></jsp:include>
     <!--End Main Header --> --%>
   <div class="container text-white py-5 text-center">
-    <h1 class="display-4">Bootstrap 4 shopping cart</h1>
-    <p class="lead mb-0">Build a fully structred shopping cart page using Bootstrap 4. </p>
-    <p class="lead">Snippet by <a href="https://bootstrapious.com/snippets" class="text-white font-italic">
-            <u>Bootstrapious</u></a>
-    </p>
+    <h1 class="display-4">HAPPOURSE CART</h1>
   </div>
   <!-- End -->
 
@@ -77,7 +73,7 @@
                   </th>
                   <td class="border-0 align-middle"><strong>$79.00</strong></td>
                   <td class="border-0 align-middle"><strong>3</strong></td>
-                  <td class="border-0 align-middle"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                  <td class="border-0 align-middle"><a href="#" class="text-dark"><i class='fa fa-trash-o'></i></a></td>
                 </tr>
                 <tr>
                   <th scope="row">
@@ -150,6 +146,52 @@
     </div>
   </div>
 </div>
-                                
+<script src="js/ins/jquery.js"></script>
+<script src="js/ins/popper.min.js"></script>
+<script src="js/ins/bootstrap.min.js"></script>
+<script src="js/ins/jquery.fancybox.js"></script>
+<script src="js/ins/appear.js"></script>
+<script src="js/ins/isotope.js"></script>
+<script src="js/ins/owl.js"></script>
+<script src="js/ins/wow.js"></script>
+<script src="js/ins/jquery-ui.js"></script>
+<script src="js/ins/script.js"></script>
+<script src="js/ins/color-settings.js"></script>
+
+<!-- Chart -->
+<script src="js/ins/canvasjs.min.js"></script>
+<script src="js/ins/charts-script.js"></script>
+
+<!-- Js File_________________________________ -->
+
+		<!-- j Query -->
+		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
+		<script type="text/javascript" src="js/slide.js"></script>
+		<!-- Bootstrap Select JS -->
+		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
+
+		<!-- Bootstrap JS -->
+		<script type="text/javascript" src="vendor/bootstrap/bootstrap.min.js"></script>
+
+		<!-- Vendor js _________ -->
+		<!-- Camera Slider -->
+		<script type='text/javascript' src='vendor/Camera-master/scripts/jquery.mobile.customized.min.js'></script>
+	    <script type='text/javascript' src='vendor/Camera-master/scripts/jquery.easing.1.3.js'></script> 
+	    <script type='text/javascript' src='vendor/Camera-master/scripts/camera.min.js'></script>
+	    <!-- Mega menu  -->
+		<script type="text/javascript" src="vendor/bootstrap-mega-menu/js/menu.js"></script>
+		
+		<!-- WOW js -->
+		<script type="text/javascript" src="vendor/WOW-master/dist/wow.min.js"></script>
+		<!-- owl.carousel -->
+		<script type="text/javascript" src="vendor/owl-carousel/owl.carousel.min.js"></script>
+		<!-- js count to -->
+		<script type="text/javascript" src="vendor/Counter/jquery.counterup.min.js"></script>
+		<script src="vendor/Counter/jquery.waypoints.min.js"></script>
+		<!-- js ui -->
+		<script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+
+		<!-- Theme js -->
+		<script type="text/javascript" src="js/theme.js"></script>                                
 </body>
 </html>
