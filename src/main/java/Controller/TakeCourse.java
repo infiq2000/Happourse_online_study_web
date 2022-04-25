@@ -2,6 +2,7 @@ package Controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.RequestDispatcher;
@@ -18,6 +19,7 @@ import Dao.InstructorUtil;
 import Dao.LectureUtil;
 import Dao.UserUtil;
 import Model.Account;
+import Model.ChartInfo;
 import Model.Courses;
 import Model.Instructor;
 import Model.User;
@@ -61,10 +63,13 @@ public class TakeCourse extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int course_id = Integer.parseInt(request.getParameter("course_id"));
+		List<Courses> ls = null;
 		try {
-		
 			Courses detailC = courseUtil.getCourseDetail(course_id);
 			request.setAttribute("course_detail",detailC);	
+			
+			ls = courseUtil.getCourseByCategory(detailC.getCid());
+			request.setAttribute("listCourses", ls);
 			
 			String cate = insUtil.getCate(detailC.getCid());
 			request.setAttribute("cate", cate);
