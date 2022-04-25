@@ -204,7 +204,7 @@
 								<c:choose>
 									<c:when test="${checkReviewed == 0}">
 										<div class="submit-review-form">
-										  <form action="ReviewCourse" method="post">
+										  <form action="ReviewCourse" method="get">
 											<h3>Submit a Review</h3>
 											<label>Your Ratings</label>
 											<div class="row">
