@@ -174,8 +174,14 @@
 									class="text-muted">Total</strong>
 									<h5 class="font-weight-bold"><%=total2%></h5></li>
 							</ul>
-							<a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed
-								to checkout</a>
+							<form action= "Authorize_payment" method = "post">
+								<input name="subtotal" type="hidden" value="<%=total%>">
+								<input name="fee" type="hidden" value="<%=fee%>">
+								<input name="tax" type="hidden" value="0">
+								<input name="total" type="hidden" value="<%=total2%>">
+								<button type="submit">Procceed to checkout</button>
+							</form>
+
 						</div>
 					</div>
 				</div>
