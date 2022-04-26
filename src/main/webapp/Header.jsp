@@ -35,15 +35,9 @@
 										</ul>
 									</li>
 									
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Blog</a>
-										<ul class="sub-menu">
-											<li><a href="blog-grid.html">Blog grid</a></li>
-											<li><a href="blog-list.html">Blog List</a></li>
-											<li><a href="blog-details.html">blog Details</a></li>
-										</ul>
-									</li>
+									<li><a href="blog.jsp" class="tran3s">Blog</a></li>
 									
-									<li><a href="contact-us.html" class="tran3s">Contact Us</a></li>
+									<li><a href="contact.jsp" class="tran3s">Contact Us</a></li>
 									
 									<li>
 										<div class="search-container">
