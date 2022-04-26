@@ -3,8 +3,8 @@
   <Resource name="jdbc/Happourse" 
   			auth="Container" type="javax.sql.DataSource"
                maxActive="100" maxIdle="30" maxWait="10000"
-               username="dat" password="myduyen1810" 
+               username="webstudent" password="webstudent" 
                driverClassName="com.mysql.cj.jdbc.Driver"
-               url="jdbc:mysql://happousedb.cd17fbe7mci8.us-west-1.rds.amazonaws.com:3306/happourse?useSSL=false&amp;serverTimezone=UTC"
+               url="jdbc:mysql://localhost:3306/happourse?useSSL=false&amp;serverTimezone=UTC"
                factory = "org.apache.tomcat.jdbc.pool.DataSourceFactory"/>
 </Context>

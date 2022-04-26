@@ -67,9 +67,10 @@
 										</li>
 							      	<% } else { %>
 							         	<li><a href="MyLearning">My Learning</a></li>
+							         	<li><a href="cart.jsp"><i class="fa fa-shopping-cart"></i></a></li>
 							      	<% } %>
 									
-
+									
 									
 									<%
 										String name = (String)session.getAttribute("name");

@@ -112,8 +112,11 @@
 								<a href="${Link4}" class="add-cart tran3s"
 									onclick="if (!(confirm('Ban da muon dang ki khoa hoc?'))) return false"
 									style="background: red; color: white;">BUY NOW </a>
-								 <a class="add-cart tran3s" href="#" class="wishlist tran3s">ADD
-									TO CART</a> <a href="#" class="wishlist tran3s">ADD TO WISHLIST</a>
+								<form action="CartController/add" method = "Post">
+									<input name="course_id" type="hidden" value="${course_id}">
+									 <button>ADD TO CART</button>
+								</form>
+								 <a href="#" class="wishlist tran3s">ADD TO WISHLIST</a>
 							</div>
 							<!-- /.info -->
 						</div>
