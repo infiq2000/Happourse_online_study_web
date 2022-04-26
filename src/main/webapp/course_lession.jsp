@@ -79,7 +79,7 @@
 					<!-- Video Box -->
 					<div class="video-box">
 						<figure class="video-image">
-							<img src="images/logo/logo10.jpg" alt="">
+							<img src="${course_detail.getImg_path()}" alt="">
 						</figure>
 						<a href="https://youtu.be/7m8ek8D9me0" class="lightbox-image overlay-box"><span class="flaticon-media-play-symbol"><i class='fa fa-play'></i></span></a>
 					</div>

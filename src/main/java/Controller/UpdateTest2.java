@@ -42,7 +42,7 @@ import Dao.UserUtil;
 public class UpdateTest2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	private final String UPLOAD_DIRECTORY = "C:\\Users\\Tan Dat\\git\\Happourse\\src\\main\\webapp\\images\\avatar";
+	private final String UPLOAD_DIRECTORY = "C:\\Users\\Tan Dat\\git\\Happourse_online_study_web\\src\\main\\webapp\\images\\avatar";
 
 	@Resource(name = "jdbc/Happourse")
 	private DataSource dataSource;

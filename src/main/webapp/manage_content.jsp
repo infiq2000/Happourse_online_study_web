@@ -74,11 +74,15 @@
 				</div>
 			</div>
 			<div class="inner-container">
+				<input id="data" name="hihihi" type="hidden" value="hello">
+    			<%
+    			  String username= request.getParameter("hihihi");
+				 %>
+    			<p id= "hihe"></p>
 				<div class="container-content" style="width:80%;margin-left:10%;">
 					<!-- Title Box -->
-					<div id="chart" style="display:none;">
-						<b><h4>Mood Report</h4></b>
-						<canvas id="myChart" style="width: 600px; max-width: 1000px; height: 120px; margin: 80px 0 0 3%"></canvas>
+					<div id="chart" style="background: white;width: 999px;padding: 20px;margin: 90px 0 0 13%;border-radius: 5px;">
+						<canvas id="myChart" style="width: 1000px; max-width: 1000px; display: block; height: 400px;"></canvas>
 					</div>
 					<div class="title-box clearfix">
 						<!-- Title Column -->
@@ -105,7 +109,9 @@
 					  <tbody>
 					  	<c:forEach var="listLectures" items="${lecture}">
 							<tr> 
-							  <td class="title" scope="col"><button id="title" style="background: white;">${listLectures.getName()} </button></td>
+<%-- 							   <input id="lc_id" type="hidden" value="${listLectures.getLectureID()}" >
+							   <input id="name_lec" type="hidden" value="${listLectures.getName()}" > --%>
+							  <td onclick = "showChart('${listLectures.getLectureID()}','${listLectures.getName()}')" class="title" scope="col"><button id="title" style="background: white;">${listLectures.getName()} </button></td>
 							  <td class="duration" scope="col" style="text-align:center;"><p id="duration">${listLectures.getDuration()}</p></td>
 							  <td class="actions" scope="col" style="text-align:center;">
 							  	<a href="DeleteLecture?lecture_id=${listLectures.getLectureID()}" onclick="if (!(confirm('Ban muon xoa bai hoc?'))) return false"><i class='fa fa-trash-o'></i></a>
@@ -158,7 +164,7 @@
 
 
 
-<!-- <script src="js/ins/jquery.js"></script> -->
+<script src="js/ins/jquery.js"></script>
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
@@ -175,13 +181,13 @@
 <script src="js/ins/charts-script.js"></script> -->
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-<script src="js/content_chart.js"></script>
+<!-- <script type="text/javascript" src="js/dashboard_chart.js"></script> -->
+<script type="text/javascript" src="js/showContentChart.js"></script>
 
 <!-- Js File_________________________________ -->
 
 		<!-- j Query -->
 		<script type="text/javascript" src="vendor/jquery.2.2.3.min.js"></script>
-		<script type="text/javascript" src="js/slide.js"></script>
 		<!-- Bootstrap Select JS -->
 		<script type="text/javascript" src="vendor/bootstrap-select/dist/js/bootstrap-select.js"></script>
 
@@ -208,6 +214,28 @@
 
 		<!-- Theme js -->
 		<script type="text/javascript" src="js/theme.js"></script>
+<script type="text/javascript">
+var xValues = [0, 1, 2, 3];
+
+var COLORS = ['#f67019',];
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{ 
+		label: 'Content 1',
+      	data: [1,0,1,1],
+      	borderColor: COLORS[0],
+      	fill: false,
+      	tension: 0.1
+    },]
+  },
+  /*options: {
+    legend: {display: false}
+  }*/
+});
+</script>
 <script>
 		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		var config = {
@@ -360,39 +388,6 @@
 
 			window.myLine.update();
 		});
-		
-		function add_content(){
-			
-			var qt = document.getElementById("quantity4");
-			for (i = 1; i < qt.value; i++){		
-				var node = document.getElementById("content1").cloneNode(true)
-				var ul = document.getElementById("content");
-				ul.appendChild(node);
-			}
-			
-		}
-		
-		function remove_content(){
-			var parent = document.getElementById("content");
-		    var child = document.getElementById("content1");
-		    parent.removeChild(child);
-		}
-		
-		function add_chapter(){
-			
-			var qt = document.getElementById("quantity3");
-			for (i = 1; i < qt.value; i++){	
-				var node = document.getElementById("chapter1").cloneNode(true)
-				var ul = document.getElementById("chapter");
-				ul.appendChild(node);
-			}
-		}
-		
-		function remove_chapter(){
-			var parent = document.getElementById("chapter");
-		    var child = document.getElementById("chapter1");
-		    parent.removeChild(child);
-		}
 	</script>
 
 </body>
