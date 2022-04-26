@@ -82,7 +82,7 @@
 							</div>
 							<div class="column col-lg-6 col-md-6 col-sm-12">
 								<ul class="contact-info-list">
-									<li></li>
+									<li<
 									<li><span class="icon"><i class='fa fa-envelope'></i></span><a href="#">happourse@gmail.com</a></li>
 									<li><span class="icon"><i class='fa fa-phone'></i></span><a href="#">+1 (123) 456-7890</a></li>
 								</ul>
