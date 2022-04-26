@@ -43,7 +43,7 @@
 										</ul>
 									</li>
 									
-									<li><a href="contact-us.html" class="tran3s">Contact Us</a></li>
+									<li><a href="contact.jsp" class="tran3s">Contact Us</a></li>
 									
 									<li>
 										<div class="search-container">
