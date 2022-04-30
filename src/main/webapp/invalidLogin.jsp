@@ -10,7 +10,7 @@
 		<!-- For Resposive Device -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Happourse - Muốn giàu hãy học đừng chơi coin</title>
+		<title>Happourse - Online Study Website </title>
 
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
