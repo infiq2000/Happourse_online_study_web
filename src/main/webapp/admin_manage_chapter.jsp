@@ -16,7 +16,7 @@
 	<!-- For Resposive Device -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<title>Hapourse - Online Study Website </title>
+	<title>Happourse - Online Study Website </title>
 	
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
@@ -125,7 +125,7 @@
 
 
 
-<!--<script src="js/ins/jquery.js"></script>-->
+<script src="js/ins/jquery.js"></script><!---->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>

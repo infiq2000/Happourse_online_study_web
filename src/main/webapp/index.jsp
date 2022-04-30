@@ -10,7 +10,7 @@
 		<!-- For Resposive Device -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<title>Hapourse - Online Study Website</title>
+		<title>Happourse - Online Study Website</title>
 
 		<!-- Favicon -->
 		<link rel="icon" type="image/png" sizes="56x56" href="images/fav-icon/icon.png">
@@ -54,7 +54,7 @@
 				<div class="container">
 					<div class="header-wrapper clearfix">
 						<!-- Logo -->
-						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/3.gif" alt="Logo" width=80px></a></div>
+						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/v11.gif" alt="Logo" width=80px></a></div>
 
 						<!-- ============================ Theme Menu ========================= -->
 						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">
@@ -77,15 +77,9 @@
 										</ul>
 									</li>
 									
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Blog</a>
-										<ul class="sub-menu">
-											<li><a href="blog-grid.html">Blog grid</a></li>
-											<li><a href="blog-list.html">Blog List</a></li>
-											<li><a href="blog-details.html">blog Details</a></li>
-										</ul>
-									</li>
+									<li><a href="blog.jsp" class="tran3s">Blog</a></li>
 									
-									<li><a href="contact-us.html" class="tran3s">Contact Us</a></li>
+									<li><a href="contact.jsp" class="tran3s">Contact Us</a></li>
 									
 									
 									
@@ -645,19 +639,7 @@
 			</div> <!-- /.instructor-banner -->
 
 
-			<!-- 
-			=============================================
-				Partner Logo
-			============================================== 
-			-->
-			<div class="partent-logo-section">
-				<div class="container">
-					<video controls autoplay style="width: 500px;height: 500px; margin: 0 0 40px 30%;">
-					  <source src="images/logo/video.mp4" type="video/mp4">
-					  Your browser does not support the video tag.
-					</video>
-				</div>
-			</div> <!-- /.partent-logo-section -->
+		
 
 
 
@@ -672,7 +654,7 @@
 					<div class="row">
 						<div class="col-md-3 col-sm-6">
 							<div class="footer-logo">
-								<a href="index.jsp"><img src="images/logo/3.gif" alt="Logo" width=80px></a>
+								<a href="index.jsp"><img src="images/logo/v11.gif" alt="Logo" width=80px></a>
 								<p>It was some time before he obtained any answer, and the reply, when made, was unpropitious.</p>
 								<ul>
 									<li><a href="" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
