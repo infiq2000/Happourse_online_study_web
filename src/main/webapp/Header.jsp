@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Hapourse - Online Study Website</title>
+<title>Happourse - Online Study Website</title>
 </head>
 <body>
 <header class="theme-menu-wrapper menu-style-one">
 				<div class="container">
 					<div class="header-wrapper clearfix">
 						<!-- Logo -->
-						<div class="logo float-left tran4s"><a href="UserPage"><img src="images/logo/3.gif" alt="Logo" width=80px></a></div>
+						<div class="logo float-left tran4s"><a href="UserPage"><img src="images/logo/v11.gif" alt="Logo" width=80px></a></div>
 
 						<!-- ============================ Theme Menu ========================= -->
 						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">

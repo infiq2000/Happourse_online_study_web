@@ -9,7 +9,7 @@
 <%@ page import="Model.Chapter"%>
 <%@ page import="Model.*"%>
 <%@ page import="Dao.LectureUtil"%>
-<%@ page import="org.json.simple.JSONObject"%>
+
 <%@ page import="org.json.simple.JSONArray"%>
 <!DOCTYPE html>
 <html>
