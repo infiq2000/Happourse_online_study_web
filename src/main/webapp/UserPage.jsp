@@ -118,8 +118,10 @@
 							</div>
 							<div id="course" class="row">
 								<c:forEach var="tempCourse" items="${listCourses}">
-									<div class="col-lg-4 col-sm-6 col-xs-6">
-										<div class="single-course" style="border: 0px;">
+									
+										 <c:if test = "${tempCourse.getStatus()==1}">
+										 <div class="col-lg-4 col-sm-6 col-xs-6">
+         									<div class="single-course" style="border: 0px;">
 											<div class="image-box"><img style="width: 270px;height: 120px;" src="${tempCourse.getImg_path()}" alt=""></div>
 											<div class="text">
 												<div class="image"><img src="${tempCourse.getImg_path_instructor() }" alt=""></div>
@@ -147,8 +149,11 @@
 												</ul>
 											</div>
 										</div> <!-- /.single-course -->
+											</div> <!-- /.col- -->
+      									</c:if>
+										
 
-									</div> <!-- /.col- -->
+								
 								</c:forEach> 
 							</div> <!-- /.row -->
 							<ul class="theme-pagination clearfix">

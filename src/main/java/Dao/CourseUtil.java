@@ -270,7 +270,8 @@ public class CourseUtil {
 			String img_path = myRS.getString("img_path");
 			double star_rate = 0;
 			int ins_id = myRS.getInt("ins_id");
-			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date ));
+			int status = myRS.getInt("status");
+			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date, status ));
 		}
 		myConn.close();
 		return courses;
@@ -332,7 +333,14 @@ public class CourseUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "SELECT i.major,i.img_path as img_ins, i.ins_name ,count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid inner join instructor i on i.ins_id=c.ins_id where c.name like ? GROUP BY course_id ";
+		String sql = "SELECT i.major, i.img_path as img_ins, i.ins_name ,count(u.course_id) as countCourses, c.*, avg(ur.rate) as star_rate2, count( distinct ur.review_id)\r\n"
+				+ "FROM courses c \r\n"
+				+ "left join user_course u on u.course_id=c.course_id \r\n"
+				+ "left join category ca on ca.cid=c.cid \r\n"
+				+ "inner join instructor i on i.ins_id=c.ins_id \r\n"
+				+ "left join user_review ur on c.course_id = ur.course_id\r\n"
+				+ "WHERE c.name like ?\r\n "
+				+ "GROUP BY course_id ";
 		myStmt = myConn.prepareStatement(sql);
 		//myStmt.setInt(1, cid);
 		myStmt.setString(1, "%"+name+"%");
@@ -342,7 +350,7 @@ public class CourseUtil {
 			String major = myRS.getString("major");
 			String img_ins = myRS.getString("img_ins");
 			String ins_name = myRS.getString("ins_name");
-			int comment = 0;
+			int comment = myRS.getInt("countCourses");
 			int countCourses = myRS.getInt("countCourses");
 			int courses_id = myRS.getInt("course_id");
 			//String name = myRS.getString("name");
@@ -352,10 +360,11 @@ public class CourseUtil {
 			String description =   myRS.getString("description");
 			Date publish_date= myRS.getDate("publish_date");
 			String img_path = myRS.getString("img_path");
-			double star_rate = myRS.getDouble("star_rate");
+			double star_rate = myRS.getDouble("star_rate2");
 			int ins_id = myRS.getInt("ins_id");
 			int cid = myRS.getInt("cid");
-			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date ));
+			int status = myRS.getInt("status");
+			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date,status ));
 		}
 		myConn.close();
 		return courses;
@@ -380,7 +389,13 @@ public class CourseUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "SELECT i.major,i.img_path as img_ins, i.ins_name,count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid inner join instructor i on i.ins_id=c.ins_id WHERE (c.ins_id = i.ins_id) GROUP BY course_id ORDER BY publish_date DESC";
+		String sql = " SELECT i.major, i.img_path as img_ins, i.ins_name ,count(u.course_id) as countCourses, c.*, avg(ur.rate) as star_rate2, count( distinct ur.review_id)\r\n"
+				+ "FROM courses c \r\n"
+				+ "left join user_course u on u.course_id=c.course_id \r\n"
+				+ "left join category ca on ca.cid=c.cid \r\n"
+				+ "inner join instructor i on i.ins_id=c.ins_id \r\n"
+				+ "left join user_review ur on c.course_id = ur.course_id\r\n"
+				+ "GROUP BY course_id ORDER BY publish_date DESC";
 		myStmt = myConn.prepareStatement(sql);
 		//myStmt.setInt(1, cid);
 		myRS = myStmt.executeQuery();
@@ -389,7 +404,7 @@ public class CourseUtil {
 			String major = myRS.getString("major");
 			String img_ins = myRS.getString("img_ins");
 			String ins_name = myRS.getString("ins_name");
-			int comment = 0;
+			int comment = myRS.getInt("countCourses");
 			int countCourses = myRS.getInt("countCourses");
 			int courses_id = myRS.getInt("course_id");
 			String name = myRS.getString("name");
@@ -399,10 +414,11 @@ public class CourseUtil {
 			String description =   myRS.getString("description");
 			Date publish_date= myRS.getDate("publish_date");
 			String img_path = myRS.getString("img_path");
-			double star_rate = 0;
+			double star_rate = myRS.getDouble("star_rate2");
 			int ins_id = myRS.getInt("ins_id");
 			int cid = myRS.getInt("cid");
-			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date ));
+			int status = myRS.getInt("status");
+			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date,status ));
 		}
 		myConn.close();
 		return courses;
@@ -428,16 +444,24 @@ public class CourseUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "SELECT i.major,i.img_path as img_ins, i.ins_name,count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid inner join instructor i on i.ins_id=c.ins_id WHERE (c.ins_id = i.ins_id) and price = ? GROUP BY course_id ORDER BY countCourses DESC";
+		String sql = "SELECT i.major, i.img_path as img_ins, i.ins_name ,count(u.course_id) as countCourses, c.*, avg(ur.rate) as star_rate2, count( distinct ur.review_id)\r\n"
+				+ "FROM courses c \r\n"
+				+ "left join user_course u on u.course_id=c.course_id \r\n"
+				+ "left join category ca on ca.cid=c.cid \r\n"
+				+ "inner join instructor i on i.ins_id=c.ins_id \r\n"
+				+ "left join user_review ur on c.course_id = ur.course_id\r\n"
+				+ "where price=? "
+				+ "GROUP BY course_id";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, 0);
 		myRS = myStmt.executeQuery();
 		List<Courses> courses = new ArrayList<>();
 		while (myRS.next()) {
+			System.out.println("0");
 			String major = myRS.getString("major");
 			String img_ins = myRS.getString("img_ins");
 			String ins_name = myRS.getString("ins_name");
-			int comment = 0;
+			int comment = myRS.getInt("countCourses");
 			int countCourses = myRS.getInt("countCourses");
 			int courses_id = myRS.getInt("course_id");
 			String name = myRS.getString("name");
@@ -447,10 +471,11 @@ public class CourseUtil {
 			String description =   myRS.getString("description");
 			Date publish_date= myRS.getDate("publish_date");
 			String img_path = myRS.getString("img_path");
-			double star_rate = 0;
+			double star_rate =  myRS.getDouble("star_rate2");
 			int ins_id = myRS.getInt("ins_id");
 			int cid = myRS.getInt("cid");
-			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date ));
+			int status = myRS.getInt("status");
+			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date,status ));
 		}
 		myConn.close();
 		return courses;
@@ -475,7 +500,13 @@ public class CourseUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "SELECT i.major,i.img_path as img_ins, i.ins_name, count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid inner join instructor i on i.ins_id=c.ins_id WHERE (c.ins_id = i.ins_id) GROUP BY course_id ORDER BY countCourses DESC";
+		String sql = "SELECT i.major, i.img_path as img_ins, i.ins_name ,count(u.course_id) as countCourses, c.*, avg(ur.rate) as star_rate2, count( distinct ur.review_id)\r\n"
+				+ "FROM courses c \r\n"
+				+ "left join user_course u on u.course_id=c.course_id \r\n"
+				+ "left join category ca on ca.cid=c.cid \r\n"
+				+ "inner join instructor i on i.ins_id=c.ins_id \r\n"
+				+ "left join user_review ur on c.course_id = ur.course_id\r\n"
+				+ "GROUP BY course_id ORDER BY countCourses DESC";
 		myStmt = myConn.prepareStatement(sql);
 		//myStmt.setInt(1, cid);
 		myRS = myStmt.executeQuery();
@@ -484,7 +515,7 @@ public class CourseUtil {
 			String major = myRS.getString("major");
 			String img_ins = myRS.getString("img_ins");
 			String ins_name = myRS.getString("ins_name");
-			int comment = 0;
+			int comment =  myRS.getInt("countCourses");
 			int countCourses = myRS.getInt("countCourses");
 			int courses_id = myRS.getInt("course_id");
 			String name = myRS.getString("name");
@@ -494,10 +525,11 @@ public class CourseUtil {
 			String description =   myRS.getString("description");
 			Date publish_date= myRS.getDate("publish_date");
 			String img_path = myRS.getString("img_path");
-			double star_rate =0;
+			double star_rate = myRS.getDouble("star_rate2");
 			int ins_id = myRS.getInt("ins_id");
 			int cid = myRS.getInt("cid");
-			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date ));
+			int status = myRS.getInt("status");
+			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date , status));
 		}
 		myConn.close();
 		return courses;
@@ -1027,7 +1059,13 @@ public class CourseUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "SELECT i.major,i.img_path as img_ins, i.ins_name ,count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid inner join instructor i on i.ins_id=c.ins_id where c.price > ? and c.price < ? GROUP BY course_id ";
+		String sql = "SELECT i.major, i.img_path as img_ins, i.ins_name ,count(u.course_id) as countCourses, c.*, avg(ur.rate) as star_rate2, count( distinct ur.review_id)\r\n"
+				+ "FROM courses c \r\n"
+				+ "left join user_course u on u.course_id=c.course_id \r\n"
+				+ "left join category ca on ca.cid=c.cid \r\n"
+				+ "inner join instructor i on i.ins_id=c.ins_id \r\n"
+				+ "left join user_review ur on c.course_id = ur.course_id\r\n"
+				+ "where c.price > ? and c.price < ? GROUP BY course_id ";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, minPrice);
 		myStmt.setInt(2, maxPrice);
@@ -1040,7 +1078,7 @@ public class CourseUtil {
 			
 			int countCourses = myRS.getInt("countCourses");
 			int courses_id = myRS.getInt("course_id");
-			int comment = 0 ;
+			int comment =  myRS.getInt("countCourses");
 			
 			String name = myRS.getString("name");
 			String skill = myRS.getString("skill");
@@ -1049,10 +1087,11 @@ public class CourseUtil {
 			String description =   myRS.getString("description");
 			Date publish_date= myRS.getDate("publish_date");
 			String img_path = myRS.getString("img_path");
-			double star_rate = 0;
+			double star_rate = myRS.getDouble("star_rate2");;
 			int ins_id = myRS.getInt("ins_id");
 			int cid = myRS.getInt("cid");
-			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date ));
+			int status = myRS.getInt("status");
+			courses.add(new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date , status));
 		}
 		myConn.close();
 		return courses;
