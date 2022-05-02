@@ -1,3 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page import="java.util.*"%>
+<%@ page import="Model.Courses"%>
+<%@ page import="Model.ManagedCourses"%>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*"%>
+<%@ page import="Dao.CourseUtil"%>
+<%@ page import="Model.Chapter"%>
+<%@ page import="Model.*"%>
+<%@ page import="Dao.LectureUtil"%>
+
+<%@ page import="org.json.simple.JSONArray"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,22 +66,17 @@
 						<h4>Checkout</h4>
 					</div>
 					<div class="checkout-section">
-						<h6>Billing Details</h6>
-						
+						<h6>Description</h6>
 						<!-- Checkout Form -->
 						<div class="checkout-form">
-							<form method="post" action="index.html">
-								
+
 								<div class="row clearfix">
 								
 									<div class="col-lg-12 col-md-12 col-sm-12 form-group">
 										<span class="icon flaticon-edit-3"></span>
-										<textarea class="" name="message" placeholder="Address"></textarea>
+										<textarea class="" name="message" placeholder="${transaction.description}" value="${transaction.description}"></textarea>
 									</div>
-									
-									<div class="col-lg-12 col-md-12 col-sm-12 form-group">
-										<h2>Select Payment Method</h2>
-									</div>
+								
 									
 									<!-- Signup Info Tabs-->
 									<div class="checkout-info-tabs col-lg-12 col-md-12 col-sm-12">
@@ -77,79 +85,55 @@
 										<div class="checkout-tabs tabs-box">
 											
 											<!-- Tab Btns -->
-											<ul class="tab-btns tab-buttons clearfix">
-												<li data-tab="#prod-debitcard" class="active-btn tab-btn"><span class="icon flaticon-credit-card"></span> Credit/ Debit card</li>
-												<li data-tab="#prod-bank" class="tab-btn"><span class="icon flaticon-finance"></span> Bank Transfer</li>
-												<li data-tab="#prod-paypal" class="tab-btn"><span class="icon flaticon-web-browser"></span> Paypal / Payoneer</li>
-											</ul>
-											
-											<!-- Tabs Container -->
+
+					
 											<div class="tabs-content">
 												
 												<!-- Tab / Active Tab -->
 												<div class="tab active-tab" id="prod-debitcard">
 													<div class="row clearfix">
-														
-														<!-- Form Group -->
-														<div class="form-group col-lg-6 col-md-12 col-sm-12">
-															<label>Holder Name</label>
-															<input type="text" name="username" value="" placeholder="First Name" required>
-														</div>
-														
-														<!-- Form Group -->
-														<div class="form-group col-lg-6 col-md-12 col-sm-12">
-															<label>Card Number</label>
-															<input type="text" name="card" value="" placeholder="000-0000-000" required>
-														</div>
-														
-														<div class="form-group col-lg-4 col-md-6 col-sm-12">
-															<label>Expiration Month</label>
-															<select class="custom-select-box">
-																<option>Expiration Month</option>
-																<option>January</option>
-																<option>Ferruary</option>
-																<option>March</option>
-																<option>April</option>
-																<option>May</option>
-																<option>June</option>
-																<option>July</option>
-																<option>August</option>
-																<option>September</option>
-																<option>October</option>
-																<option>November</option>
-																<option>December</option>
-															</select>
-														</div>
-														
-														<div class="form-group col-lg-4 col-md-6 col-sm-12">
-															<label>Expiration Year</label>
-															<input type="text" name="year" value="" placeholder="Year" required>
-														</div>
-														
-														<div class="form-group col-lg-4 col-md-6 col-sm-12">
-															<label>Expiration Year</label>
-															<input type="text" name="cvc" value="" placeholder="CVC" required>
-														</div>
-														
 														<div class="col-lg-12 col-md-12 col-sm-12 form-group">
 															<h2>Order Details</h2>
 														</div>
-														
-														<div class="col-lg-12 col-md-12 col-sm-12 form-group">
-															<!-- Order Box -->
-															<div class="order-box">
-																<ul>
-																	<li class="clearfix">Basic Plan <span class="pull-right">$29</span></li>
-																	<li class="clearfix">Tax <span class="pull-right">$3</span></li>
-																	<li class="clearfix"><strong>Total</strong> <span class="pull-right">$32</span></li>
-																</ul>
-															</div>
-														</div>
-														
+																						<%
+								HashMap<Integer, CourseCart> cart = (HashMap<Integer, CourseCart>) request.getSession(false).getAttribute("cart");
+								float total = 0;
+								boolean flag = cart != null ? true : false;
+								/* 								if (cart != null) {
+															for (Map.Entry<Integer, CourseCart> entry : cart.entrySet()) {
+																total += entry.getValue().course.getPrice2();
+																//System.out.println(entry.getValue().course.getName());
+															}
+														} */
+								request.setAttribute("flag", flag);
+								%>
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+								<div class="order-box">
+								<ul>
+								<c:if test="${flag}">
+										<%
+										for (Map.Entry<Integer, CourseCart> entry : cart.entrySet()) {
+											Integer key = entry.getKey();
+											CourseCart courseCart = entry.getValue();
+											total += courseCart.course.getPrice2();
+											//System.out.println(entry.getValue().course.getName());
+										%>
+											<li class="clearfix"><%=courseCart.course.getName()%> <span class="pull-right">$<%=courseCart.course.getPrice2()%></span></li>
+
+										<%
+										}
+										%>
+									</c:if>
+									</ul>
+									</div>
+									</div>
 														<div class="col-lg-12 col-md-12 col-sm-12 form-group text-right">
-															<button class="theme-btn btn-style-one" type="submit" name="submit-form"><span class="txt">Confirm Checkout</span></button>
+															<form action="execute_payment"  method="post" >														
+																<input type="hidden" name="paymentId"  value="${paymentId}">
+																<input type="hidden" name="PayerID"   value="${PayerID}">
+																<button class="theme-btn btn-style-one" type="submit" name="submit-form"><span class="txt">Pay now</span></button>
+															</form>
 														</div>
-														
 													</div>
 												</div>
 												
@@ -312,9 +296,10 @@
 								<!-- Order Box -->
 								<div class="order-box">
 									<ul>
-										<li class="clearfix">Basic Plan <span class="pull-right">$29</span></li>
-										<li class="clearfix">Tax <span class="pull-right">$3</span></li>
-										<li class="clearfix"><strong>Total</strong> <span class="pull-right">$32</span></li>
+										<li class="clearfix">Subtotal:  <span class="pull-right">${transaction.amount.details.subtotal} USD</span></li>
+										<li class="clearfix">Fee <span class="pull-right">${transaction.amount.details.shipping} USD</span></li>
+										<li class="clearfix"><strong>Tax</strong> <span class="pull-right">${transaction.amount.details.tax} USD</span></li>
+										<li class="clearfix"><strong>Total</strong> <span class="pull-right">${transaction.amount.total} USD</span></li>
 									</ul>
 								</div>
 							</div>
