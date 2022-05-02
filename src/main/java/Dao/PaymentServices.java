@@ -70,7 +70,7 @@ public class PaymentServices {
 	}
 	private RedirectUrls getRedirectURLs() {
 	    RedirectUrls redirectUrls = new RedirectUrls();
-	    redirectUrls.setCancelUrl("http://localhost:8080/Happourse/cancel.html");
+	    redirectUrls.setCancelUrl("http://localhost:8080/Happourse/cancel.jsp");
 	    redirectUrls.setReturnUrl("http://localhost:8080/Happourse/review_payment");
 	     
 	    return redirectUrls;
@@ -78,18 +78,22 @@ public class PaymentServices {
 	
 	private List<Transaction> getTransactionInformation(Orders orderDetail) {
 	    Details details = new Details();
-	    details.setShipping("10.00");
-	    details.setSubtotal("20.00");
-	    details.setTax("2.00");
+	    details.setShipping(String.format("%,.2f", orderDetail.getFee()));
+	    System.out.println(String.format("%,.2f", orderDetail.getTotal()));
+	    System.out.println(String.format("%,.2f", orderDetail.getSubtotal()));
+	    System.out.println(String.format("%,.2f", orderDetail.getFee()));
+	    System.out.println(String.format("%,.2f", orderDetail.getTax()));
+	    details.setSubtotal(String.format("%,.2f", orderDetail.getSubtotal()));
+	    details.setTax("0.00");
 	 
 	    Amount amount = new Amount();
 	    amount.setCurrency("USD");
-	    amount.setTotal("32.00");
+	    amount.setTotal(String.format("%,.2f", orderDetail.getTotal()));
 	    amount.setDetails(details);
 	 
 	    Transaction transaction = new Transaction();
 	    transaction.setAmount(amount);
-	    transaction.setDescription("dat");
+	    transaction.setDescription("Description");
 	     
 	    ItemList itemList = new ItemList();
 	    List<Item> items = new ArrayList<>();
@@ -97,8 +101,8 @@ public class PaymentServices {
 	    Item item = new Item();
 	    item.setCurrency("USD");
 	    item.setName("dat");
-	    item.setPrice("20.00");
-	    item.setTax("2.00");
+	    item.setPrice(String.format("%,.2f", orderDetail.getSubtotal()));
+	    item.setTax("0.00");
 	    item.setQuantity("1");
 	     
 	    items.add(item);
