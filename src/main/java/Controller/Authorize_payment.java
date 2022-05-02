@@ -67,7 +67,7 @@ public class Authorize_payment extends HttpServlet {
 		float tax = Float.parseFloat(request.getParameter("tax"));
 		float total = Float.parseFloat(request.getParameter("total"));
 		int uid = (int)request.getSession(false).getAttribute("uid");
-		Orders orderDetail = new Orders(uid, subtotal, fee, tax, total);
+		Orders orderDetail = new Orders(uid, subtotal, total,fee, tax);
 		try {
 			PaymentServices paymentServices = new PaymentServices();
 			String approvalLink = paymentServices.authorizePayment(orderDetail);
