@@ -113,7 +113,7 @@
 									</c:if>
 									<%
 									float fee = total / 100 * 2;
-									float total2 = total - fee;
+									float total2 = total + fee;
 									%>
 									<c:if test="${!flag}">
 										<div class="alert alert-primary" role="alert">no data!</div>

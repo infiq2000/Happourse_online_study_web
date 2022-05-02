@@ -67,7 +67,7 @@
 				
 				<!-- Content Side -->
                 <div class="content-side col-lg-2 col-md-12 col-sm-12" style="margin: 5% 2%;">
-					<img alt="" src="images/logo/d.jpg" style="border-radius: 50%;width: 150px;margin: 0 5%;border: 3px solid black;">
+					<img alt="" src="images/logo/dat.jpg" style="border-radius: 50%;width: 150px;margin: 0 5%;border: 3px solid black;">
 					<h6 style="text-align: center;color: lightcoral;font-size: 14px;font-family: 'Roboto', sans-serif;">Tan Dat</h6>
                 </div>
                 
