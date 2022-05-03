@@ -84,6 +84,9 @@ public class execute_payment extends HttpServlet {
 				for (Map.Entry<Integer, CourseCart> entry : cart.entrySet()) {
 					Integer key = entry.getKey();
 					CourseCart courseCart = entry.getValue();
+					if(courseCart.course.getCourses_id()==10101) {
+						userUtil.buyHPCoin(uid);
+					}
 					courseUtil.insert(courseCart.course.getCourses_id(), uid);
 				}
 			}

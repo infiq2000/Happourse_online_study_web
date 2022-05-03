@@ -97,6 +97,7 @@ public class CartController extends HttpServlet {
 
 	private void addtoCart(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
 		int id = Integer.parseInt(request.getParameter("course_id"));
+		System.out.println("1: " + id);
 		Courses course = courseUtil.getCourseDetail(id);
 		HttpSession session = request.getSession();
 		CourseCart courseCart;

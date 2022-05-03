@@ -116,7 +116,7 @@ public class UserUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "SELECT i.major, i.img_path as img_ins, i.ins_name ,count(u.course_id) as countCourses, c.*, avg(ur.rate) as star_rate2, count( distinct ur.review_id)\r\n"
+		String sql = "SELECT i.major, i.img_path as img_ins, i.ins_name ,count(u.course_id) as countCourses, c.*, avg(ur.rate) as star_rate2, count( distinct ur.review_id) as comment\r\n"
 				+ "FROM courses c \r\n"
 				+ "left join user_course u on u.course_id=c.course_id \r\n"
 				+ "left join category ca on ca.cid=c.cid \r\n"
@@ -133,7 +133,7 @@ public class UserUtil {
 			
 			int countCourses = myRS.getInt("countCourses");
 			int courses_id = myRS.getInt("course_id");
-			int comment = myRS.getInt("countCourses") ;
+			int comment = myRS.getInt("comment") ;
 			
 			String name = myRS.getString("name");
 			String skill = myRS.getString("skill");
@@ -511,6 +511,20 @@ public class UserUtil {
 			i += 1;
 		}
 		return listFeedback;
+	}
+
+	public void buyHPCoin(int uid) throws SQLException {
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		myConn = dataSource.getConnection();
+		String sql = "UPDATE users SET balance = balance + 220 WHERE uid = ?";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, uid);
+	
+		myStmt.executeUpdate();
+		myConn.close();
+		
 	}
 	
 }

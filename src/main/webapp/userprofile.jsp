@@ -161,9 +161,10 @@
 							<a href="UpdateInfo?id=${user_info.getId()}" class="theme-btn btn-style-one">Edit Profile</a>
 						</div>
 						
-						<div class="buttons-box">
-							<a href="checkout.jsp" class="theme-btn" style="background:lightcoral;padding: 10px;border-radius: 50px;color: white;">Buy Hapcoin</a>
-						</div>
+						<form action="CartController/add" method = "Post">
+							<input name="course_id" type="hidden" value="10101">
+							<button>BUY HAPPOURSE COIN</button>
+						</form>
 					</div>
 					
 				</div>
