@@ -670,7 +670,7 @@ public class CourseUtil {
 			int cid = myRS.getInt("cid");
 			String category = myRS.getString("categoryName");
 			Date publishDate = myRS.getDate("publish_date");	
-			Boolean status = myRS.getInt("status") == 1? true : false;
+			int status = myRS.getInt("status");
 			String mood = "HIGH", color = "green";
 			sql = "select chap_id from chapter where course_id = ?;";
 			pstmt = myConn.prepareStatement(sql);
@@ -749,7 +749,7 @@ public class CourseUtil {
 			int cid = myRS.getInt("cid");
 			String category = myRS.getString("categoryName");
 			Date publishDate = myRS.getDate("publish_date");
-			Boolean status = myRS.getBoolean("status");
+			int status = myRS.getInt("status");
 			String mood = "HIGH", color = "green";
 			sql = "select chap_id from chapter where course_id = ?;";
 			pstmt = myConn.prepareStatement(sql);
