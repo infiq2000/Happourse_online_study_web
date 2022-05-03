@@ -116,7 +116,7 @@
 							  	<a href="DeleteCourse?course_id=${tempCourses.getCourses_id()}" onclick="if (!(confirm('Ban muon xoa khoa hoc?'))) return false"><i class='fa fa-trash-o'></i></a>
 							  	<a href="EditCourse?course_id=${tempCourses.getCourses_id()}"><i class='fa fa-edit'></i></a>
 							  	<c:choose>
-							  		<c:when test = "${tempCourses.getStatus()}">
+							  		<c:when test = "${tempCourses.getStatus() == 1}">
 							  			<a href="#"><i class='fa fa-check-square'></i></a>
 							  		</c:when>
 							  		<c:otherwise>
