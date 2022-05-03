@@ -7,7 +7,7 @@ public class ManagedCourses extends Courses{
 	private Date publishDate;
 	private String mood;
 	private String color;
-	private Boolean status;
+	private int status;
 	public String getCategory() {
 		return category;
 	}
@@ -32,15 +32,15 @@ public class ManagedCourses extends Courses{
 	public void setColor(String color) {
 		this.color = color;
 	}
-	public Boolean getStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(Boolean status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	public ManagedCourses(int courses_id, String name, String skill, int price, String language, double star_rate,
 			String desciption, int ins_id, int cid, String ins_name, String ins_major, int countCourses,
-			String category_name, String category, Date publishDate, String mood, String color, Boolean status) {
+			String category_name, String category, Date publishDate, String mood, String color, int status) {
 		super(courses_id, name, skill, price, language, star_rate, desciption, ins_id, cid, ins_name, ins_major,
 				countCourses, category_name);
 		this.category = category;
