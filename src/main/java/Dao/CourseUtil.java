@@ -67,7 +67,14 @@ public class CourseUtil {
 		PreparedStatement myStmt = null;
 		ResultSet myRS = null;
 		myConn = dataSource.getConnection();
-		String sql = "SELECT ca.name as category_name ,i.major,i.img_path as img_ins, i.ins_name ,count(u.course_id) as countCourses, c.* FROM courses c left join user_course u on u.course_id=c.course_id left join category ca on ca.cid=c.cid inner join instructor i on i.ins_id=c.ins_id WHERE (c.ins_id = i.ins_id) and c.course_id = ? GROUP BY course_id ";
+		String sql = "SELECT ca.name as category_name,i.major, i.img_path as img_ins, i.ins_name ,count(u.course_id) as countCourses, c.*, avg(ur.rate) as star_rate2, count( distinct ur.review_id) as comment\r\n"
+				+ "FROM courses c \r\n"
+				+ "left join user_course u on u.course_id=c.course_id \r\n"
+				+ "left join category ca on ca.cid=c.cid \r\n"
+				+ "inner join instructor i on i.ins_id=c.ins_id \r\n"
+				+ "left join user_review ur on c.course_id = ur.course_id\r\n"
+				+ "WHERE c.course_id = ?\r\n"
+				+ "GROUP BY course_id ";
 		myStmt = myConn.prepareStatement(sql);
 		myStmt.setInt(1, course_id);
 		myRS = myStmt.executeQuery();
@@ -77,7 +84,7 @@ public class CourseUtil {
 			String major = myRS.getString("major");
 			String img_ins = myRS.getString("img_ins");
 			String ins_name = myRS.getString("ins_name");
-			int comment = 0;
+			int comment = myRS.getInt("comment");
 			int countCourses = myRS.getInt("countCourses");
 			int courses_id = myRS.getInt("course_id");
 			String name = myRS.getString("name");
@@ -87,10 +94,11 @@ public class CourseUtil {
 			String description =   myRS.getString("description");
 			Date publish_date= myRS.getDate("publish_date");
 			String img_path = myRS.getString("img_path");
-			double star_rate = 0;
+			double star_rate = myRS.getDouble("star_rate");
 			int ins_id = myRS.getInt("ins_id");
 			int cid = myRS.getInt("cid");
-			courses = new Courses(cate_name,courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date );
+			int status = myRS.getInt("status");
+			courses = new Courses(courses_id,name,skill,price,language,star_rate,description,ins_id, cid,ins_name, major, countCourses,img_path, img_ins,comment, publish_date, status );
 		}
 		myConn.close();
 		return courses;
@@ -404,7 +412,7 @@ public class CourseUtil {
 			String major = myRS.getString("major");
 			String img_ins = myRS.getString("img_ins");
 			String ins_name = myRS.getString("ins_name");
-			int comment = myRS.getInt("countCourses");
+			int comment = myRS.getInt("comment");
 			int countCourses = myRS.getInt("countCourses");
 			int courses_id = myRS.getInt("course_id");
 			String name = myRS.getString("name");
@@ -461,7 +469,7 @@ public class CourseUtil {
 			String major = myRS.getString("major");
 			String img_ins = myRS.getString("img_ins");
 			String ins_name = myRS.getString("ins_name");
-			int comment = myRS.getInt("countCourses");
+			int comment = myRS.getInt("comment");
 			int countCourses = myRS.getInt("countCourses");
 			int courses_id = myRS.getInt("course_id");
 			String name = myRS.getString("name");
@@ -515,7 +523,7 @@ public class CourseUtil {
 			String major = myRS.getString("major");
 			String img_ins = myRS.getString("img_ins");
 			String ins_name = myRS.getString("ins_name");
-			int comment =  myRS.getInt("countCourses");
+			int comment =  myRS.getInt("comment");
 			int countCourses = myRS.getInt("countCourses");
 			int courses_id = myRS.getInt("course_id");
 			String name = myRS.getString("name");
@@ -1076,7 +1084,7 @@ public class CourseUtil {
 			String img_ins = myRS.getString("img_ins");
 			String ins_name = myRS.getString("ins_name");
 			
-			int countCourses = myRS.getInt("countCourses");
+			int countCourses = myRS.getInt("comment");
 			int courses_id = myRS.getInt("course_id");
 			int comment =  myRS.getInt("countCourses");
 			

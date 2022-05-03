@@ -150,7 +150,7 @@ $('*').keydown(function(e){
     }
 }).keydown(function(event){
     if(checkCtrl){
-        if(event.keyCode=='90'){
+        if(event.keyCode=='81'){
 			var img_url = screen();
 			localStorage.setItem("ocr_img", img_url);
 			console.log(localStorage);
