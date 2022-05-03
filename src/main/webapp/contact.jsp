@@ -72,12 +72,12 @@
                 </div>
                 
                 <div class="content-side col-lg-2 col-md-12 col-sm-12" style="margin: 5% 2%;">
-					<img alt="" src="images/logo/k.jpg" style="border-radius: 50%;width: 150px;margin: 0 5%;border: 3px solid black;">
+					<img alt="" src="images/logo/k1.jpg" style="border-radius: 50%;width: 150px;margin: 0 5%;border: 3px solid black;">
 					<h6 style="text-align: center;color: lightcoral;font-size: 14px;font-family: 'Roboto', sans-serif;">Tuan Khoi</h6>
                 </div>
                 
                 <div class="content-side col-lg-2 col-md-12 col-sm-12" style="margin: 5% 2%;">
-					<img alt="" src="images/logo/l.jpg" style="border-radius: 50%;width: 150px;margin: 0 5%;border: 3px solid black;">
+					<img alt="" src="images/logo/l1.jpg" style="border-radius: 50%;width: 150px;margin: 0 5%;border: 3px solid black;">
 					<h6 style="text-align: center;color: lightcoral;font-size: 14px;font-family: 'Roboto', sans-serif;">Duong Long</h6>
                 </div>
                 
@@ -87,7 +87,7 @@
                 </div>
                 
                 <div class="content-side col-lg-2 col-md-12 col-sm-12" style="margin: 5% 0%;">
-					<img alt="" src="images/logo/t.JPG" style="border-radius: 50%;width: 150px;margin: 0 5%;border: 3px solid black;">
+					<img alt="" src="images/logo/s1.jpg" style="border-radius: 50%;width: 150px;margin: 0 5%;border: 3px solid black;">
 					<h6 style="text-align: center;color: lightcoral;font-size: 14px;font-family: 'Roboto', sans-serif;">An Son</h6>
                 </div>
 
