@@ -129,11 +129,34 @@ camera_button.addEventListener('click', async function() {
 	
 });
 
-function screen(){
+/*function screen(){
 	html2canvas(screenshotTarget).then((canvas) => {
 	    var base64image = canvas.toDataURL("image/jpeg").replace(/^data:image\/jpeg;base64,/, "");
 	    console.log(base64image);
 	    return base64image;
+	});
+}*/
+
+function screen(){
+	const screenshotTarget = document.body;
+
+	html2canvas(screenshotTarget).then((canvas) => {
+	    const base64image = canvas.toDataURL("image/png");
+	    console.log(base64image)
+	    window.location.href = base64image;
+	    $.ajax({
+				  url: "/Happourse/GetPicture",
+				  type: "post", //send it through get method
+				  data: {
+						base64image : base64image
+				  },
+				  success: function(data) {
+
+				  },
+				  error: function(xhr) {
+				    //Do Something to handle error
+				  }
+				});
 	});
 }
 
@@ -152,9 +175,9 @@ $('*').keydown(function(e){
     if(checkCtrl){
         if(event.keyCode=='81'){
 			var img_url = screen();
-			localStorage.setItem("ocr_img", img_url);
-			console.log(localStorage);
-			var win = window.open('ocr.jsp', '_blank');
+			//localStorage.setItem("ocr_img", img_url);
+			//console.log(localStorage);
+			var win = window.open('/Happourse/crop/index.html', '_blank');
   			win.focus();
             checkCtrl=false;
         }

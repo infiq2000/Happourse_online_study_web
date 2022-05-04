@@ -202,15 +202,20 @@ window.onload = function () {
           break;
 
         case 'getCroppedCanvas':
+
           if (result) {
             // Bootstrap's Modal
+            
             $('#getCroppedCanvasModal').modal().find('.modal-body').html(result);
-
+            document.getElementById('data').value = result.toDataURL(uploadedImageType);
             if (!download.disabled) {
               download.download = uploadedImageName;
               download.href = result.toDataURL(uploadedImageType);
+              
             }
+           
           }
+         
 
           break;
 

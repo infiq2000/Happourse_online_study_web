@@ -3150,10 +3150,11 @@
       } // All the numerical parameters should be integer for `drawImage`
       // https://github.com/fengyuanchen/cropper/issues/476
 
-
+	  
       context.drawImage.apply(context, [source].concat(_toConsumableArray(params.map(function (param) {
         return Math.floor(normalizeDecimalNumber(param));
       }))));
+      
       return canvas;
     },
 
