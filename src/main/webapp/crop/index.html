@@ -25,10 +25,7 @@
   <!-- Header -->
   <header class="navbar navbar-light navbar-expand-md">
     <div class="container">
-      <a class="navbar-brand" href="./">Cropper.js</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+
       <div class="collapse navbar-collapse justify-content-end" id="navbar-collapse" role="navigation">
         <ul class="nav navbar-nav">
           <li class="nav-item">
@@ -76,21 +73,6 @@
   </header>
 
   <!-- Jumbotron -->
-  <div class="jumbotron bg-primary text-white rounded-0">
-    <div class="container">
-      <div class="row">
-        <div class="col-md">
-          <h1>Cropper.js <small class="h6">v1.5.12</small></h1>
-          <p class="lead">JavaScript image cropper.</p>
-        </div>
-        <div class="col-md">
-          <div class="carbonads">
-            <script id="_carbonads_js" src="https://cdn.carbonads.com/carbon.js?serve=CKYI55Q7&placement=fengyuanchengithubio" async></script>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Content -->
   <div class="container">
@@ -99,7 +81,7 @@
         <!-- <h3>Demo:</h3> -->
         <div class="docs-demo">
           <div class="img-container">
-            <img src="images/picture.jpg" alt="Picture">
+            <img src="note/img.png" alt="Picture">
           </div>
         </div>
       </div>
@@ -580,10 +562,14 @@
                 <label class="form-check-label" for="toggleDragModeOnDblclick">toggleDragModeOnDblclick</label>
               </div>
             </li>
+            
           </ul>
         </div><!-- /.dropdown -->
-
-        <a class="btn btn-success btn-block" data-toggle="tooltip" href="https://fengyuanchen.github.io/photo-editor" title="An advanced example of Cropper.js">Photo Editor</a>
+        	<input id="data" name="hihihi" type="hidden" value="123">
+           <button onclick = "getCropped()">
+            GetNote
+            <span class="caret"></span>
+          </button>
 
       </div><!-- /.docs-toggles -->
     </div>
@@ -604,7 +590,27 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="https://unpkg.com/jquery@3/dist/jquery.slim.min.js" crossorigin="anonymous"></script>
+ <script>
+ function getCropped(){
+	 	var base64 = document.getElementById("data").value;
+	 	console.log(base64)
+    	$.ajax({
+			  url: "/Happourse/GetCropped",
+			  type: "post", //send it through get method
+			  data: {
+					base64image : base64
+			  },
+			  success: function(data) {
+		
+			  },
+			  error: function(xhr) {
+			    //Do Something to handle error
+			  }
+			});
+}
+ </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- <script src="https://unpkg.com/jquery@3/dist/jquery.slim.min.js" crossorigin="anonymous"></script> -->
   <script src="https://unpkg.com/bootstrap@4/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script src="https://fengyuanchen.github.io/shared/google-analytics.js" crossorigin="anonymous"></script>
   <script src="js/cropper.js"></script>
