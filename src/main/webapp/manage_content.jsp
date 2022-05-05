@@ -78,11 +78,11 @@
     			<%
     			  String username= request.getParameter("hihihi");
 				 %>
-    			<p id= "hihe"></p>
+    			<p id= "hihe" style="display:none;"></p>
 				<div class="container-content" style="width:80%;margin-left:10%;">
 					<!-- Title Box -->
-					<div id="chart" style="background: white;width: 999px;padding: 20px;margin: 90px 0 0 13%;border-radius: 5px;">
-						<canvas id="myChart" style="width: 1000px; max-width: 1000px; display: block; height: 400px;"></canvas>
+					<div id="chart" style="display: none;background: white;width: 999px;padding: 20px;margin: 90px 0 0 13%;border-radius: 5px;">
+						<canvas id="myChart" style="width: 1000px; max-width: 1000px;  height: 400px;"></canvas>
 					</div>
 					<div class="title-box clearfix">
 						<!-- Title Column -->
@@ -164,7 +164,7 @@
 
 
 
-<script src="js/ins/jquery.js"></script>
+<!-- <script src="js/ins/jquery.js"></script> -->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>

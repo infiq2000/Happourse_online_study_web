@@ -1,4 +1,5 @@
 function showChart(lc_id, name_lec){
+	document.getElementById("chart").style.display = 'block';
 	$.ajax({
 	  url: "/Happourse/ShowChartInContent",
 	  type: "get", //send it through get method
