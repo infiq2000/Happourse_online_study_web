@@ -163,7 +163,7 @@
 						
 						<form action="CartController/add" method = "Post">
 							<input name="course_id" type="hidden" value="10101">
-							<button>BUY HAPPOURSE COIN</button>
+							<button class="theme-btn btn-style-one" style="margin-left:17%; width:66%; background:lightcoral;">Buy Hapcoin</button>
 						</form>
 					</div>
 					
