@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 
@@ -51,14 +52,11 @@ public class GetCropped extends HttpServlet {
         // Convert Base64 String to File
         byte[] decodedBytes = Base64.getDecoder().decode(base64);
         Files.write(Paths.get("C:\\Users\\Tan Dat\\git\\Happourse_online_study_web\\src\\main\\webapp\\crop\\note\\cropped.jpg"), decodedBytes);
-        Tesseract tesseract = new Tesseract();
+        ITesseract tesseract = new Tesseract();
         try {
   
-            tesseract.setDatapath("C:/User/Tan Dat/git/Happourse_online_study_web/src/main/webapp/crop/note");
-  
-            // the path of your tess data folder
-            // inside the extracted file
-            String text = tesseract.doOCR(new File("cropped.jpg"));
+
+            String text = tesseract.doOCR(new File("C:\\Users\\Tan Dat\\git\\Happourse_online_study_web\\src\\main\\webapp\\crop\\note\\cropped.jpg"));
   
             // path of your image file
             System.out.print(text);
