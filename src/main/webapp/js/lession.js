@@ -141,7 +141,7 @@ function screen(){
 	const screenshotTarget = document.body;
 
 	html2canvas(screenshotTarget).then((canvas) => {
-	    const base64image = canvas.toDataURL("image/png");
+	    const base64image = canvas.toDataURL("image/jpeg");
 	    console.log(base64image)
 	    window.location.href = base64image;
 	    $.ajax({
