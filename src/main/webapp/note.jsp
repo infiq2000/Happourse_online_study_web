@@ -1,5 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@page import="Dao.UserUtil"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.*" %>
+<%@ page import="Model.Category" %>
+<%@ page import="Dao.CourseUtil" %>
+<%@ page import="java.sql.*, javax.sql.*, java.io.*, javax.naming.*" %>
+<%@ page import="Model.*" %>
+<%@ page import="Dao.UserUtil" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +15,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-	3/5/2021 <br>
-R
- Language for Statistical Computing&Data Science
- Millions of users around the world
+	<%
+		InitialContext ctx;
+	  	DataSource ds;
+	 	ctx = new InitialContext();
+		ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Happourse");
+		UserUtil userUtil = new UserUtil(ds);
+		int uid = (int)request.getSession(false).getAttribute("uid");
+		
+		List<Note> ls = new ArrayList<>();
+		try {
+			ls = userUtil.getNote(uid);
+			request.setAttribute("lsNote", ls);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	%>
+	<p>hello </p>
+	<c:forEach var = "note" items="${lsNote}">
+		<p> 
+			${note.getTimeDate()}
+			<br>
+			${note.getContentN()}
+			<br>
+			<br>
+		</p>
+	</c:forEach>
 </body>
 </html>
