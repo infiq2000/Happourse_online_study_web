@@ -97,7 +97,7 @@ camera_button.addEventListener('click', async function() {
    	let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
 	video.srcObject = stream;
 	
-	var intervalID = setInterval(capture, 3000);
+	var intervalID = setInterval(capture, 1000);
 	
 	camera_stop.addEventListener('click', async function() {
 		setTimeout(() => { 
