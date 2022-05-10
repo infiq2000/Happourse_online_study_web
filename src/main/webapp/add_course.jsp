@@ -125,7 +125,7 @@
 										
 										<div class="form-group">
 											<label>Image</label>
-											<img id="an" style="width: 250px; height: 120px;border-radius:5px;" src="images/logo/logo10.jpg" alt=""/>
+											<img id="an" style="width: 150px; height: 150px;border-radius:5px;" src="images/logo/v.png" alt=""/>
 											<div id="displayImg" style="width: 120px; border-radius:5px;"></div>
 											<input type="file" name="upload" id="upload" onchange="ImagesFileAsURL()" style="display: inline; margin-top: 15px;"/>
 										</div>
@@ -144,7 +144,7 @@
 											%>
 	
 											<label>Category</label>
-											<select class="custom-select-box" name ="chon">
+											<select class="custom-select-box" name ="chon" style="padding: 5px;background: lightcoral;color: white;border-radius: 5px;">
 												 <c:forEach var="categoryName" items="${cate }">
 												 	<option value = "${categoryName.getCid()}">  ${categoryName.getName() }</option>
 												 </c:forEach>	
@@ -154,7 +154,7 @@
 										
 										<div class="form-group">
 											<label>Language</label>
-											<select class="custom-select-box">
+											<select class="custom-select-box" style="padding: 5px;background: lightcoral;color: white;border-radius: 5px;">
 												<option>English</option>
 												<option>Vietnamese</option>
 											</select>
@@ -164,7 +164,7 @@
 										<div class="box-inner">
 												<label style="margin-right: 20px; font-size:14px;">Price ($)</label>
 												<div style=" width: 50px; display:inline;">
-													<input type="text" name="price" value="" placeholder="$" required>
+													<input type="text" name="price" value="" placeholder="$" required style="padding: 5px;background: lightcoral;color: white;border-radius: 5px;">
 												</div>
 										</div> <!-- /.course-price-filter -->
 										
@@ -248,7 +248,7 @@
 
 </div>
 
-<script src="js/ins/jquery.js"></script>
+<!-- <script src="js/ins/jquery.js"></script> -->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>

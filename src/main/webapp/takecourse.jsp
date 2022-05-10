@@ -114,9 +114,8 @@
 									style="background: red; color: white;">BUY NOW </a>
 								<form action="CartController/add" method = "Post">
 									<input name="course_id" type="hidden" value="${course_id}">
-									 <button>ADD TO CART</button>
+									 <button style="padding: 10px;margin-top: 20px;width: 21.5%;border-radius: 3px;background: #5a50bf;color: white;">ADD TO CART</button>
 								</form>
-								 <a href="#" class="wishlist tran3s">ADD TO WISHLIST</a>
 							</div>
 							<!-- /.info -->
 						</div>
