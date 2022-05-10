@@ -121,7 +121,7 @@
 									<div class="box-inner">
 										<div class="form-group">
 											<label>Image</label>
-											<img id="an" style="width: 250px; height: 120px;border-radius:5px;" src="images/logo/logo10.jpg" alt=""/>
+											<img id="an" style="width: 150px; height: 150px;border-radius:5px;" src="images/logo/v.png" alt=""/>
 											<div id="displayImg" style="width: 120px; border-radius:5px;"></div>
 											<input type="file" name="upload" id="upload" onchange="ImagesFileAsURL()" style="display: inline; margin-top: 15px;"/>
 										</div>
@@ -138,8 +138,7 @@
 											    	
 												%>
 		
-												<label>Category</label>
-												<select class="custom-select-box" name ="chon">
+												<select class="custom-select-box" name ="chon" >
 													 <c:forEach var="categoryName" items="${cate }">
 													 	<option value = "${categoryName.getCid()}">  ${categoryName.getName() }</option>
 													 </c:forEach>	
@@ -155,7 +154,7 @@
 										<div class="form-group">
 												<label style="margin-right: 20px; font-size:14px;">Price ($)</label>
 												<div style=" width: 50px; display:inline;">
-													<input type="text" name="price" value="${course.getPrice() }" placeholder="$ ${course.getPrice()}" required>
+													<input type="text" name="price" value="${course.getPrice() }" placeholder="$ ${course.getPrice()}" required style="padding: 5px;background: lightcoral;color: white;border-radius: 5px;">
 												</div>
 										</div>
 										
