@@ -122,8 +122,9 @@ public class LectureUtil {
 			}
 			int chapterID = myRS.getInt("chap_id");
 			int courseID = myRS.getInt("course_id");
+			double time = 0;
 			Time durationTime = myRS.getTime("duration", Calendar.getInstance());
-			double time = durationTime.getHours() * 3600 + durationTime.getMinutes() * 60 + durationTime.getSeconds();
+			if (durationTime != null) time = durationTime.getHours() * 3600 + durationTime.getMinutes() * 60 + durationTime.getSeconds();
 			double distance = time/3;
 			String duration1 = convertDoubleToTime(distance);
 			if (distance >= 3600/3) duration1 = "00:00:00 - " + duration1;
