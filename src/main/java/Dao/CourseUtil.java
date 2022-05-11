@@ -707,10 +707,14 @@ public class CourseUtil {
 		pstmt = myConn.prepareStatement(sql);
 		pstmt.setInt(1, course_id);
 		pstmt.executeUpdate();
+		sql = "delete from user_review where course_id = ?;";
+		pstmt = myConn.prepareStatement(sql);
+		pstmt.setInt(1, course_id);
+		pstmt.executeUpdate();
 		sql = "DELETE FROM courses WHERE course_id=?;";
 		pstmt = myConn.prepareStatement(sql);
 		pstmt.setInt(1, course_id);
-		pstmt.execute();
+		pstmt.executeUpdate();
 		myConn.close();
 	}
 
