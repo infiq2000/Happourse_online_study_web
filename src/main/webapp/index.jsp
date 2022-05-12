@@ -735,20 +735,24 @@
 					        <form action="Login" method="Post">
 					        	<h3>Login with Site Account</h3>
 					        	<div class="wrapper">
+					        		<c:if test = "${not empty message}">
+					        			<div class="aleart aleart-${alert}">
+					        				${message}
+					        			</div>
+					        		</c:if>
 					        		<!-- // Sửa ở đây -->
 					        		<input name="username" type="text" placeholder="Username or Email">
 					        		<input name="password" type="password" placeholder="Password">
 					        		<ul class="clearfix">
 										<li class="float-left">
-											<input type="checkbox" id="remember">
-											<label for="remember">Remember Me</label>
+
 										</li>
 										<li class="float-right"><a href="#" class="s-color">Lost Your Password?</a></li>
 									</ul>
 									<button class="p-bg-color hvr-trim">Login</button>
 					        	</div>
 					        </form>
-					        <div><a href="sign-up.html" class="p-color tran3s">Not an account?  Sign Up</a></div>
+					        <div><a href="Signup.jsp" class="p-color tran3s">Not an account?  Sign Up</a></div>
 					    </div> <!-- /.modal-body -->
 				    </div> <!-- /.modal-content -->
 				</div> <!-- /.modal-dialog -->
