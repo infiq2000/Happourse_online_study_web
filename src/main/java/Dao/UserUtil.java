@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,7 +22,7 @@ import Model.UserAccount;
 import Model.Profiles;
 import Model.Review;
 import Model.Hashtag;
-
+import Model.Note;
 import Dao.AccountUtil; 
 public class UserUtil {
 	private DataSource dataSource;
@@ -525,6 +526,39 @@ public class UserUtil {
 		myStmt.executeUpdate();
 		myConn.close();
 		
+	}
+
+	public List<Note> getNote(int uid) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRS = null;
+		myConn = dataSource.getConnection();
+		String sql = "SELECT * FROM happourse.note where uid = ? order by dateandtime desc ";
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setInt(1, uid);
+		myRS = myStmt.executeQuery();
+		List<Note> ls = new ArrayList<>();
+		while (myRS.next()) {
+			String content = myRS.getString("content");
+			Timestamp ts = myRS.getTimestamp("dateandtime");
+			ls.add(new Note(content, ts));
+		}
+		myConn.close();
+		return ls;
+	}
+
+	public void insertNode(int uid, String text) throws SQLException {
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		String sql = "insert into happourse.note(content, dateandtime, uid) values (?,?,?);";
+		myConn = dataSource.getConnection();
+		myStmt = myConn.prepareStatement(sql);
+		myStmt.setString(1, text);
+		myStmt.setTimestamp(2, timestamp);
+		myStmt.setInt(3, uid);
+        myStmt.executeUpdate();
+        myConn.close();
 	}
 	
 }

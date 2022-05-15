@@ -288,7 +288,7 @@
 											
 											<div class="button-box text-center"  style="margin-top: 40px;">
 												<button onclick="updateChapter()" id="s1" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>	
-												<button id="s2" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Add</span></button>															
+												<button onclick="addChapter()" id="s2" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Add</span></button>															
 											</div>
 										</div>
 										
@@ -327,6 +327,7 @@
 												
 												<div class="button-box text-center"  style="margin-top: 40px;">
 													<button onclick="updateContent()" id="s1" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Save</span></button>																
+													<button onclick="addContent()" id="s2" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Add</span></button>
 												</div>
 											</div>
 										</div>
@@ -357,7 +358,7 @@
 
 
 
-<script src="js/ins/jquery.js"></script>
+<!-- <script src="js/ins/jquery.js"></script> -->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
