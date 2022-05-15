@@ -75,73 +75,78 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("username");
 		String passWord = request.getParameter("password");
-		try {			
-			Account tmp = accUtil.validation(userName,passWord);
-			
-			if (tmp!=null) {
-				if (!tmp.isType()) {
-					User user = null;
-					user = userUtil.getUser(tmp.getAid());
-					List<Courses> courses = userUtil.getAll_Courses();
-					
-					int pagesNumber = couUtil.courseNumberPage(courses);
-					List<Courses> li = couUtil.getCoursesByPage(courses, 1);
-					
-					request.setAttribute("listCourses", li);
-					request.setAttribute("pagesNumber", pagesNumber);
-					
-					request.setAttribute("user_info",user);
-					String[] a = user.getFull_name().split(" ");
-					String b = a[a.length - 1];
-					
-					request.setAttribute("allActive", "active");
-					HttpSession session = request.getSession(true);
-					session.setAttribute("name", b);
-					session.setAttribute("uid", user.getUid());
-					session.setAttribute("id", user.getUid());
-					session.setAttribute("aid", user.getAid());
-					session.setAttribute("account_type", 0);
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
-					dispatcher.forward(request, response);
+		if (userName == "" || passWord == ""){
+			System.out.println("Khong duoc de trong");
+		} else {
+			try {			
+				Account tmp = accUtil.validation(userName,passWord);
+				
+				if (tmp!=null) {
+					if (!tmp.isType()) {
+						User user = null;
+						user = userUtil.getUser(tmp.getAid());
+						List<Courses> courses = userUtil.getAll_Courses();
+						
+						int pagesNumber = couUtil.courseNumberPage(courses);
+						List<Courses> li = couUtil.getCoursesByPage(courses, 1);
+						
+						request.setAttribute("listCourses", li);
+						request.setAttribute("pagesNumber", pagesNumber);
+						
+						request.setAttribute("user_info",user);
+						String[] a = user.getFull_name().split(" ");
+						String b = a[a.length - 1];
+						
+						request.setAttribute("allActive", "active");
+						HttpSession session = request.getSession(true);
+						session.setAttribute("name", b);
+						session.setAttribute("uid", user.getUid());
+						session.setAttribute("id", user.getUid());
+						session.setAttribute("aid", user.getAid());
+						session.setAttribute("account_type", 0);
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/UserPage.jsp");
+						dispatcher.forward(request, response);
+					}
+					else {
+						Instructor ins = null;
+						
+						ins = insUtil.getIns(tmp.getAid());
+						List<Courses> courses = userUtil.getAll_Courses();
+						
+						int pagesNumber = couUtil.courseNumberPage(courses);
+						List<Courses> li = couUtil.getCoursesByPage(courses, 1);
+						request.setAttribute("listCourses", li);
+						request.setAttribute("pagesNumber", pagesNumber);
+						
+						request.setAttribute("user_info",ins);
+						String[] a = ins.getIns_name().split(" ");
+						String b = a[a.length - 1];
+						
+						request.setAttribute("allActive", "active");
+						HttpSession session = request.getSession(true);
+						session.setAttribute("name", b);
+						session.setAttribute("ins_id", ins.getIns_id());
+						session.setAttribute("id", ins.getIns_id());
+						session.setAttribute("aid", ins.getAid());
+						session.setAttribute("account_type", 1);
+
+						RequestDispatcher dispatcher = request.getRequestDispatcher("/DashBoard");
+						dispatcher.forward(request, response);
+					}
 				}
 				else {
-					Instructor ins = null;
-					
-					ins = insUtil.getIns(tmp.getAid());
-					List<Courses> courses = userUtil.getAll_Courses();
-					
-					int pagesNumber = couUtil.courseNumberPage(courses);
-					List<Courses> li = couUtil.getCoursesByPage(courses, 1);
-					request.setAttribute("listCourses", li);
-					request.setAttribute("pagesNumber", pagesNumber);
-					
-					request.setAttribute("user_info",ins);
-					String[] a = ins.getIns_name().split(" ");
-					String b = a[a.length - 1];
-					
-					request.setAttribute("allActive", "active");
-					HttpSession session = request.getSession(true);
-					session.setAttribute("name", b);
-					session.setAttribute("ins_id", ins.getIns_id());
-					session.setAttribute("id", ins.getIns_id());
-					session.setAttribute("aid", ins.getAid());
-					session.setAttribute("account_type", 1);
-
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/DashBoard");
-					dispatcher.forward(request, response);
+					 request.setAttribute("errorString", "Username or password is incorrect");
+					 RequestDispatcher dispatcher = request.getRequestDispatcher("/invalidLogin.jsp");
+					 dispatcher.forward(request, response);
 				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			else {
-				 request.setAttribute("errorString", "Username or password is incorrect");
-				 RequestDispatcher dispatcher = request.getRequestDispatcher("/invalidLogin.jsp");
-				 dispatcher.forward(request, response);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+		
 	}
 }

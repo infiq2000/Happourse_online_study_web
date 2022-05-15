@@ -60,33 +60,39 @@ public class SignUp extends HttpServlet {
 		String password = request.getParameter("txtPassword");
 		String repassword = request.getParameter("txtRepeatPassword");
 		String[] isInstructor = request.getParameterValues("checkboxInstructor");
+		String msg = null;
 		int type = -1;
-		if (checkPass(password, repassword)) {
-			try {
-				if (accUtil.checkOverlap(username) == false) {
-					int aid = accUtil.getIndex();
-					type = 0;
-					if (isInstructor == null) {						
-						type =0;
-						accUtil.addAccount(aid, username, email, password, type);
+		if (username == "" || email == "" || password == "" || repassword == "") {
+			msg = "Khong duoc de trong!";
+		} else {
+			if (checkPass(password, repassword)) {
+				try {
+					if (accUtil.checkOverlap(username) == false) {
+						int aid = accUtil.getIndex();
+						type = 0;
+						if (isInstructor == null) {						
+							type =0;
+							accUtil.addAccount(aid, username, email, password, type);
+							userUtil.addUser(aid);
+						}else {
+							type = 1;
+							accUtil.addAccount(aid, username, email, password, type);
+							insUtil.addIns(aid);
+						}
 						userUtil.addUser(aid);
-					}else {
-						type = 1;
-						accUtil.addAccount(aid, username, email, password, type);
-						insUtil.addIns(aid);
+						response.sendRedirect("index.jsp");
+					} else {
+						msg = "Username da bi trung!";
 					}
-					userUtil.addUser(aid);
-					response.sendRedirect("index.jsp");
-				} else {
-					/* SomeService service = new SomeService(); */
-				
-					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} else {
+				msg = "Khong trung mat khau!";
 			}
 		}
+		
 	}
 
 	private Boolean checkPass(String password, String repassword) {
