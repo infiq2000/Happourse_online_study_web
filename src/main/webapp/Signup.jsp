@@ -54,7 +54,7 @@
 				<div class="container">
 					<div class="header-wrapper clearfix">
 						<!-- Logo -->
-						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/x.png" alt="Logo"></a></div>
+						<div class="logo float-left tran4s"><a href="index.jsp"><img src="images/logo/v11.gif" alt="Logo" width=80px></a></div>
 
 						<!-- ============================ Theme Menu ========================= -->
 						<nav class="theme-main-menu float-right navbar" id="mega-menu-wrapper">
@@ -70,43 +70,16 @@
 						   <!-- Collect the nav links, forms, and other content for toggling -->
 						   <div class="collapse navbar-collapse" id="navbar-collapse-1">
 								<ul class="nav">
-									<li class="dropdown-holder menu-list"><a href="index.html" class="tran3s">Home</a>
+									<li class="dropdown-holder menu-list"><a href="index.jsp" class="tran3s">Home</a>
 										<ul class="sub-menu">
-											<li><a href="index.html">Home version one</a></li>
-											<li><a href="index-2.html">Home version Two</a></li>
+											<li><a href="index.jsp">Home version one</a></li>
+											<li><a href="index.jsp">Home version Two</a></li>
 										</ul>
 									</li>
 									
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Pages</a>
-										<ul class="sub-menu width-half">
-											<li><a href="about-us.html">About Us</a></li>
-											<li><a href="our-teacher.html">Our teacher</a></li>
-											<li><a href="teachers-profile.html">teachers profile</a></li>
-											<li><a href="shop.html">Shop page</a></li>
-											<li><a href="shop-details.html">Shop Details</a></li>
-											<li><a href="portfolio-3-column.html">portfolio 3 column</a></li>
-											<li><a href="portfolio-4-column.html">portfolio 4 column</a></li>
-											<li><a href="pricing-plan.html">Pricing Plan</a></li>
-											<li><a href="faq.html">Faq Page</a></li>
-											<li><a href="404.html">Error Page</a></li>
-											<li><a href="Signup.jsp">Registration</a></li>
-											<li class="dropdown-holder"><a href="#">Third Level menu</a>
-												<ul class="second-sub-menu">
-													<li><a href="#">menu one</a></li>
-													<li><a href="#">menu two</a></li>
-												</ul>
-											</li>
-										</ul>
-									</li>
+									<li><a href="blog.jsp" class="tran3s">Blog</a></li>
 									
-									<li class="dropdown-holder menu-list"><a href="#" class="tran3s">Blog</a>
-										<ul class="sub-menu">
-											<li><a href="blog-grid.html">Blog grid</a></li>
-											<li><a href="blog-list.html">Blog List</a></li>
-											<li><a href="blog-details.html">blog Details</a></li>
-										</ul>
-									</li>
-									<li><a href="contact-us.html" class="tran3s">Contact Us</a></li>
+									<li><a href="contact.jsp" class="tran3s">Contact Us</a></li>
 									
 									
 									
@@ -138,7 +111,31 @@
 				</div> <!-- /.opacity -->
 			</div> <!-- /.inner-banner -->
 
-	        
+	        <script>
+			function checkValid(){
+				var username = document.forms["SignupForm"]["txtUsername"].value;
+				var email = document.forms["SignupForm"]["txtEmail"].value;
+				var pass = document.forms["SignupForm"]["txtPassword"].value;
+				var repass = document.forms["SignupForm"]["txtRepeatPassword"].value;
+				
+				if (username == ""){
+					alert("Username must be filled out");
+					return false;
+				} else if (pass == ""){
+					alert("Password must be filled out");
+					return false;
+				} else if (repass == ""){
+					alert("Repeat password must be filled out");
+					return false;
+				} else if (email == ""){
+					alert("Email must be filled out");
+					return false;
+				} else if (pass != repass){
+					alert("Password and repeat password must be same");
+					return false;
+				}
+			}			
+			</script>
 
 			<!-- Sign-Up Modal -->
 			<div class="signUpModal theme-modal-box">
@@ -154,7 +151,7 @@
 					        	<li class="float-left"><a href="https://www.linkedin.com/"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
 					        </ul>
 					     
-					        <form action="SignUp" method="post">
+					        <form name = "SignupForm" action="SignUp" method="post">
 					        	<h3>Sign Up</h3>
 					        	<div class="wrapper">
 					        		<input name = "txtUsername" type="text" placeholder="Username">
@@ -169,7 +166,7 @@
 									alert( "This is an Error message" );
 									</script>
 									<p></p> -->
-									<button class="p-bg-color hvr-trim">Sign up</button> 
+									<button class="p-bg-color hvr-trim" onclick = "return checkValid()">Sign up</button> 
 					        	</div>
 					        </form>
 					    </div> <!-- /.modal-body -->
@@ -200,6 +197,7 @@
 					        	<li class="float-left"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
 					        	<li class="float-left"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
 					        </ul>
+					      					        
 					        <form action="#">
 					        	<h3>Login with Site Account</h3>
 					        	<div class="wrapper">
