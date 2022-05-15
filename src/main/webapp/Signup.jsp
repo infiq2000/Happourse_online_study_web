@@ -111,7 +111,28 @@
 				</div> <!-- /.opacity -->
 			</div> <!-- /.inner-banner -->
 
-	        
+	        <script>
+			function checkValid(){
+				var username = document.forms["SignupForm"]["txtUsername"].value;
+				var email = document.forms["SignupForm"]["txtEmail"].value;
+				var pass = document.forms["SignupForm"]["txtPassword"].value;
+				var repass = document.forms["SignupForm"]["txtRepeatPassword"].value;
+				
+				if (username == ""){
+					alert("Username must be filled out");
+					return false;
+				} else if (pass == ""){
+					alert("Password must be filled out");
+					return false;
+				} else if (repass == ""){
+					alert("Repeat password must be filled out");
+					return false;
+				} else if (email == ""){
+					alert("Email must be filled out");
+					return false;
+				}
+			}			
+			</script>
 
 			<!-- Sign-Up Modal -->
 			<div class="signUpModal theme-modal-box">
@@ -127,7 +148,7 @@
 					        	<li class="float-left"><a href="https://www.linkedin.com/"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
 					        </ul>
 					     
-					        <form action="SignUp" method="post">
+					        <form name = "SignupForm" action="SignUp" method="post">
 					        	<h3>Sign Up</h3>
 					        	<div class="wrapper">
 					        		<input name = "txtUsername" type="text" placeholder="Username">
@@ -142,7 +163,7 @@
 									alert( "This is an Error message" );
 									</script>
 									<p></p> -->
-									<button class="p-bg-color hvr-trim">Sign up</button> 
+									<button class="p-bg-color hvr-trim" onclick = "return checkValid()">Sign up</button> 
 					        	</div>
 					        </form>
 					    </div> <!-- /.modal-body -->
@@ -173,6 +194,7 @@
 					        	<li class="float-left"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
 					        	<li class="float-left"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
 					        </ul>
+					      					        
 					        <form action="#">
 					        	<h3>Login with Site Account</h3>
 					        	<div class="wrapper">

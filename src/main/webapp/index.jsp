@@ -718,7 +718,23 @@
 				</div> <!-- /.bottom-footer -->
 			</footer>
 
-
+			<script>
+			function checkValid(){
+				var username = document.forms["loginFrom"]["username"].value;
+				var password = document.forms["loginFrom"]["password"].value;
+				
+				if (username == ""){
+					alert("Username must be filled out");
+					return false;
+				}
+				
+				if (password == ""){
+					alert("Password must be filled out");
+					return false;
+				}
+			}			
+			</script>
+			
 			<!-- Sign-in Modal -->
 			<div class="modal fade signInModal theme-modal-box" role="dialog">
 				<div class="modal-dialog">
@@ -732,14 +748,9 @@
 					        	<li class="float-left"><a href="https://twitter.com/"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
 					        	<li class="float-left"><a href="https://www.linkedin.com/"><i class="fa fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
 					        </ul>
-					        <form action="Login" method="Post">
+					        <form name = "loginFrom" action="Login" method="Post">
 					        	<h3>Login with Site Account</h3>
 					        	<div class="wrapper">
-					        		<c:if test = "${not empty message}">
-					        			<div class="aleart aleart-${alert}">
-					        				${message}
-					        			</div>
-					        		</c:if>
 					        		<!-- // Sửa ở đây -->
 					        		<input name="username" type="text" placeholder="Username or Email">
 					        		<input name="password" type="password" placeholder="Password">
@@ -749,7 +760,8 @@
 										</li>
 										<li class="float-right"><a href="#" class="s-color">Lost Your Password?</a></li>
 									</ul>
-									<button class="p-bg-color hvr-trim">Login</button>
+									<button id = "btnLogin" class="p-bg-color hvr-trim" onclick = "return checkValid()">Login</button>
+									
 					        	</div>
 					        </form>
 					        <div><a href="Signup.jsp" class="p-color tran3s">Not an account?  Sign Up</a></div>
