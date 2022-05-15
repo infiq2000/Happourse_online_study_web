@@ -130,6 +130,9 @@
 				} else if (email == ""){
 					alert("Email must be filled out");
 					return false;
+				} else if (pass != repass){
+					alert("Password and repeat password must be same");
+					return false;
 				}
 			}			
 			</script>
