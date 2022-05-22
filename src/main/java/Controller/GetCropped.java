@@ -74,30 +74,16 @@ public class GetCropped extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		  String base64 = request.getParameter("base64image");
+			System.out.println("hello");
+		  String text = request.getParameter("base64image");
+		  System.out.println(text);
 		  int uid = (int)request.getSession(false).getAttribute("uid");
-		  System.out.println(base64.substring(0,60)); 
-		  String[] a = base64.split(",");
-		  base64 = a[1]; 
-		  byte[] decodedBytes = Base64.getDecoder().decode(base64); 
-		  Files.write(Paths.get("C:\\Users\\Tan Dat\\git\\Happourse_online_study_web\\src\\main\\webapp\\crop\\note\\cropped.jpg"), decodedBytes);
-		  
-			Tesseract tesseract = new Tesseract();
-			try {
-				// the path of your tess data folder
-				tesseract.setDatapath("C:\\Users\\Tan Dat\\Desktop\\Tess4J\\tessdata"); // tessData path
-				// inside the extracted file
-				String text = tesseract.doOCR(new File(
-						"C:\\Users\\Tan Dat\\git\\Happourse_online_study_web\\src\\main\\webapp\\crop\\note\\cropped.jpg"));
-				// path of your image file
-				userUtil.insertNode(uid, text);
-				System.out.print(text);
-			} catch (TesseractException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		  try {
+			userUtil.insertNode(uid, text);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

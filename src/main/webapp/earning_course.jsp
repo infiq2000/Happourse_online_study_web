@@ -73,7 +73,7 @@
 									}
 									tmp.put("label",ls.get(i).getName());
 									tmp.put("data", rev);
-									tmp.put("borderColor",COLORS[i]);
+									tmp.put("borderColor",COLORS[i%9]);
 									tmp.put("fill", "false");
 									tmp.put("tension",0.1);
 									json.add(tmp);

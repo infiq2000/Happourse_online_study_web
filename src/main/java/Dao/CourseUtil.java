@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -403,7 +404,7 @@ public class CourseUtil {
 				+ "left join category ca on ca.cid=c.cid \r\n"
 				+ "inner join instructor i on i.ins_id=c.ins_id \r\n"
 				+ "left join user_review ur on c.course_id = ur.course_id\r\n"
-				+ "GROUP BY course_id ORDER BY publish_date DESC";
+				+ "GROUP BY course_id ORDER BY publish_date ASC";
 		myStmt = myConn.prepareStatement(sql);
 		//myStmt.setInt(1, cid);
 		myRS = myStmt.executeQuery();
@@ -801,6 +802,7 @@ public class CourseUtil {
 
 	public int insertNewCourse(String course_name, String description, int cid, int price, String language,
 			float star_rate, float duration, int ins_id, String img_path) throws SQLException {
+		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		int course_id = 0;
@@ -810,7 +812,7 @@ public class CourseUtil {
 			
 			// create SQL update statement
 			//course_id, name, skill, price, language, star_rate, description, duration, ins_id, cid
-			String sql = "insert into happourse.courses (course_id, name, skill, price, language, star_rate, description, ins_id, cid, img_path)" + "values(?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+			String sql = "insert into happourse.courses (course_id, name, skill, price, language, star_rate, description, ins_id, cid, img_path,publish_date)" + "values(?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)";
 			
 			// prepare statement
 			myStmt = myConn.prepareStatement(sql);
@@ -827,6 +829,7 @@ public class CourseUtil {
 			myStmt.setInt(8, ins_id);
 			myStmt.setInt(9, cid);
 			myStmt.setString(10, img_path);
+			myStmt.setTimestamp(11, timestamp);
 			// execute SQL statement
 			myStmt.execute();
 		}

@@ -214,7 +214,7 @@
 															%>
 															<li class="accordion block">
 																<div class="acc-btn active"><div class="icon-outer"><span class="icon icon-plus flaticon-down-arrow"></span></div><%=ch1.getName() %></div>
-																<div class="acc-content current">
+																<div class="acc-content">
 																	<c:forEach items="<%=list_of_content1%>" var="ct">
 																		<div class="content">
 																			<div class="clearfix">
@@ -249,7 +249,7 @@
 																				<div class="content">
 																					<div class="clearfix">
 																						<div class="pull-left">
-																							<p onclick = "showContent('${ct.getLc_id()}', '${ct.getChap_id() }','<%=nameChapter %>')" class="lightbox-image play-icon"><span class="fa fa-play"></span>${ct.getName()}</p>
+																							<p onclick = "showContent('${ct.getLc_id()}', '${ct.getChap_id() }','<%=nameChapter %>')" ><span class="fa fa-play"></span>${ct.getName()}</p>
 																						</div>
 																						<div class="pull-right">
 																							<div class="minutes">35 Minutes</div>
@@ -358,7 +358,7 @@
 
 
 
-<!-- <script src="js/ins/jquery.js"></script> -->
+<script src="js/ins/jquery.js"></script>
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>

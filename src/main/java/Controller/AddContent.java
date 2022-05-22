@@ -71,6 +71,7 @@ public class AddContent extends HttpServlet {
 		int chapter_id = (int)request.getSession(false).getAttribute("chapter_id");
 		System.out.println("chapter_id: " + chapter_id);
 		String url = request.getParameter("url");
+		System.out.println("url: " +  url);
 		int content = -1;
 		try {
 			content = courseUtil.getIndexOfContent();

@@ -557,7 +557,7 @@ public class UserUtil {
 		myStmt.setString(1, text);
 		myStmt.setTimestamp(2, timestamp);
 		myStmt.setInt(3, uid);
-        myStmt.executeUpdate();
+		myStmt.execute();
         myConn.close();
 	}
 	

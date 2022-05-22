@@ -32,7 +32,7 @@
 			e.printStackTrace();
 		}
 	%>
-	<p>hello </p>
+	<p>NOTE </p>
 	<c:forEach var = "note" items="${lsNote}">
 		<p> 
 			${note.getTimeDate()}

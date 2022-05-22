@@ -144,7 +144,7 @@ function screen(){
 	    const base64image = canvas.toDataURL("image/jpeg");
 	    console.log(base64image)
 	    window.location.href = base64image;
-	    $.ajax({
+/*	    $.ajax({
 				  url: "/Happourse/GetPicture",
 				  type: "post", //send it through get method
 				  data: {
@@ -156,7 +156,7 @@ function screen(){
 				  error: function(xhr) {
 				    //Do Something to handle error
 				  }
-				});
+				});*/
 	});
 }
 
@@ -174,10 +174,10 @@ $('*').keydown(function(e){
 }).keydown(function(event){
     if(checkCtrl){
         if(event.keyCode=='81'){
-			var img_url = screen();
+			//var img_url = screen();
 			//localStorage.setItem("ocr_img", img_url);
 			//console.log(localStorage);
-			var win = window.open('/Happourse/crop/index.html', '_blank');
+			var win = window.open('/Happourse/cropped.jsp', '_blank');
   			win.focus();
             checkCtrl=false;
         }

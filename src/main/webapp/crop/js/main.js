@@ -47,8 +47,8 @@ window.onload = function () {
   };
   var cropper = new Cropper(image, options);
   var originalImageURL = image.src;
-  var uploadedImageType = 'image/jpeg';
-  var uploadedImageName = 'cropped.jpg';
+  var uploadedImageType = 'image/png';
+  var uploadedImageName = 'cropped.png';
   var uploadedImageURL;
 
   // Tooltip
@@ -207,7 +207,7 @@ window.onload = function () {
             // Bootstrap's Modal
             
             $('#getCroppedCanvasModal').modal().find('.modal-body').html(result);
-            document.getElementById('data').value = result.toDataURL(uploadedImageType);
+            //	document.getElementById('data').value = result.toDataURL(uploadedImageType);
             if (!download.disabled) {
               download.download = uploadedImageName;
               download.href = result.toDataURL(uploadedImageType);

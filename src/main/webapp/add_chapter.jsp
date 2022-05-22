@@ -146,7 +146,8 @@
 																<textarea id = "desription" class="" name="message" placeholder="Shortly describe this content"></textarea>
 																<label style="font-size:14px;">Url</label>
 																<input id = "url" type="text" name="username" value="" placeholder="Url 1">
-	
+																<input type="hidden" id="Link123" name="custId" value="123">
+																<button onclick="upLoad()" id="upload" style="margin-left: 40px; background: pink; " type="button" class="theme-btn btn-style-two"><span class="txt">Upload</span></button>
 																<label style="font-size:14px;">Duration</label>
 																
 																<div style="margin: 0 0 20px 40px;">
@@ -210,7 +211,7 @@
 								<div id="video2" class="url-boxed">
 									<label>URL</label>
 									
-									<input type="text" name="username" value="" placeholder="https://www.youtube.com/Hapourse.com" required>
+									<input id ="youtube" type="text" name="username" value="" placeholder="https://www.youtube.com/Hapourse.com" required>
 									<span class="valid">Enter valid url address</span>
 								</div>
 								<!-- End Url Box -->
@@ -234,7 +235,9 @@
 				</div>
 			</div>
 		</div>
-	</div>
+		
+		$("#texens").val("tinkumaster");
+	</div> 
 	<!-- End Manage Cource Section -->
 	
 	
@@ -280,7 +283,7 @@
 
 </div>
 
-<script src="js/ins/jquery.js"></script>
+<!-- <script src="js/ins/jquery.js"></script> -->
 <script src="js/ins/popper.min.js"></script>
 <script src="js/ins/bootstrap.min.js"></script>
 <script src="js/ins/jquery.fancybox.js"></script>
@@ -331,7 +334,27 @@
 		<script type="text/javascript" src="js/add_chapter.js"></script>
 		<script type="text/javascript" src="js/add_content.js"></script>
 <script>
-		
+function upLoad(){
+ 	const nameContent = document.getElementById("nameContent");
+ 	const url = document.getElementById("url")
+ 	const youtube = document.getElementById("youtube");
+ 	var text = "";
+    const entry = {
+        name: nameContent.value,
+        url:url.value
+    };
+    let res = fetch('http://127.0.0.1:8989/test',{
+            method: "POST",
+            body: JSON.stringify(entry),
+            cache: "no-cache",
+            headers: new Headers({
+              "content-type": "application/json"
+            })
+    }).then(res => res.json()).then(data => {
+    	$("#url").val(data["greeting"]);
+    });
+
+}
 		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		var config = {
 			type: 'line',

@@ -1,4 +1,5 @@
-package com.mobiarch.paste;
+package Controller;
+
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,7 +46,8 @@ public class FileUploader extends HttpServlet {
 		}
 
 	    //Read the file contents from the input stream
-		File saveTo = new File("image." + extension);
+		String path = "C:\\Users\\Tan Dat\\git\\Happourse\\src\\main\\webapp\\crop\\note\\";
+		File saveTo = new File(path+ "cropped." + extension );
 		FileOutputStream os = new FileOutputStream(saveTo);
 		InputStream is = request.getInputStream();
 	    byte buff[] = new byte[256];

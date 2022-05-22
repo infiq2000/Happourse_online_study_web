@@ -103,7 +103,7 @@
 										<ul class="rating">
 											<c:forEach var="i" begin="1" end="5">
 												<c:choose>
-													<c:when test="${course_detail.getStar_rate() >= i}">
+													<c:when test="${course_detail.getStar_rate() > i}">
 														<li><i class="fa fa-star" aria-hidden="true"></i></li>
 													</c:when>
 													<c:otherwise>

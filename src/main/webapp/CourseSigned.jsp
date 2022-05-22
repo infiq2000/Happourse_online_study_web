@@ -74,7 +74,7 @@
 							<div class="details-wrapper">
 								<div class="course-title">
 									<h2>${course_detail.getName()}</h2>
-									<span>Posted on 24 Mar, 22016</span>
+									<span>Posted : ${course_detail.getPublish_date()}</span>
 								</div> <!-- /.course-title -->
 								<div class="course-info row">
 									<div class="col-xs-4">
@@ -94,14 +94,26 @@
 									<div class="col-xs-4">
 										<div>
 											<i class="flaticon-star"></i>
-											<p><b>${course_detail.getStar_rate()}</b> (23)</p>
+											<p><b>${course_detail.getStar_rate()}</b></p>
 											<ul>
+												<c:forEach var="i" begin="1" end="5">
+													<c:choose>
+														<c:when test="${numberStars >= i}">
+															<li><i class="fa fa-star" aria-hidden="true"></i></li>
+														</c:when>
+														<c:otherwise>
+															<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+														</c:otherwise>
+													</c:choose>
+												</c:forEach>
+											</ul>
+<!-- 											<ul>
 												<li><i class="fa fa-star" aria-hidden="true"></i></li>
 												<li><i class="fa fa-star" aria-hidden="true"></i></li>
 												<li><i class="fa fa-star" aria-hidden="true"></i></li>
 												<li><i class="fa fa-star" aria-hidden="true"></i></li>
 												<li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
-											</ul>
+											</ul> -->
 										</div>
 									</div>
 								</div> <!-- /.course-info -->
